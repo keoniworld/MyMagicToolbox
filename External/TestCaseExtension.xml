@@ -1,0 +1,171 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TestCaseExtension</name>
+    </assembly>
+    <members>
+        <member name="T:TestCaseExtension.TestCaseSourceException">
+            <summary>Represents a failure during the location/generation of TestCaseSources</summary>
+        </member>
+        <member name="M:TestCaseExtension.TestCaseSourceException.#ctor(System.String,System.Object[])">
+            <summary>Create a TestCaseSource Exception with a message given by the
+            	formatString and arguments</summary>
+        </member>
+        <member name="T:TestCaseExtension.TestCaseData">
+            <summary>Represents data to be handed to a <c>TestCase</c> via a <c>TestCaseSource</c>.</summary>
+        </member>
+        <member name="M:TestCaseExtension.TestCaseData.#ctor(System.Object)">
+            <summary>Create a TestCaseData with the given argument</summary>
+        </member>
+        <member name="M:TestCaseExtension.TestCaseData.#ctor(System.Object,System.Object)">
+            <summary>Create a TestCaseData with the given two arguments</summary>
+        </member>
+        <member name="M:TestCaseExtension.TestCaseData.#ctor(System.Object,System.Object,System.Object)">
+            <summary>Create a TestCaseData with the given three arguments</summary>
+        </member>
+        <member name="M:TestCaseExtension.TestCaseData.#ctor(System.Object[])">
+            <summary>Create a TestCaseData with the given arguments</summary>
+        </member>
+        <member name="M:TestCaseExtension.TestCaseData.SetName(System.String)">
+            <summary>Set the Name of this test-case.  Only for documentation, not used by the implementation</summary>
+        </member>
+        <member name="M:TestCaseExtension.TestCaseData.ToString">
+            <summary>Return a string representation of the arguments of this TestCaseData</summary>
+        </member>
+        <member name="P:TestCaseExtension.TestCaseData.TestArguments">
+            <summary>The arguments for the <c>TestCase</c></summary>
+        </member>
+        <member name="P:TestCaseExtension.TestCaseData.Name">
+            <summary>The Name/description of this TestCase.  Use <c>SetName()</c> to set inline.</summary>
+        </member>
+        <member name="T:TestCaseExtension.TestCaseSourceAttribute">
+            <summary>Takes TestCase data from a given static method, field, or property</summary>
+        </member>
+        <member name="M:TestCaseExtension.TestCaseSourceAttribute.#ctor(System.String)">
+            <summary>Link the given TestCaseSource from the current Type to the annotated method</summary>
+        </member>
+        <member name="M:TestCaseExtension.TestCaseSourceAttribute.#ctor(System.Type,System.String)">
+            <summary>Link the given TestCaseSource from the given Type to the annotated method</summary>
+        </member>
+        <member name="P:TestCaseExtension.TestCaseSourceAttribute.ProvidingType">
+            <summary>The type in which to look for the static Method, Property, or Field</summary>
+        </member>
+        <member name="P:TestCaseExtension.TestCaseSourceAttribute.MethodOrPropertyName">
+            <summary>Method, Property, or Field name that will provide TestCaseData</summary>
+        </member>
+        <member name="T:TestCaseExtension.ExplicitAttribute">
+            <summary>Marks a TestMethod as not to be run, description is unused, but kept for
+            	documentation purposes.  Added for compatability to NUnit Tests.</summary>
+        </member>
+        <member name="P:TestCaseExtension.ExplicitAttribute.Description">
+            <summary>Human-readable description/reason for ignoring the TestMethod.
+            	This property is ignored by the implementation.</summary>
+        </member>
+        <member name="T:TestCaseExtension.TestCaseAttribute">
+            <summary>TestMethod enhancement to run a method multiple times with different arguments.</summary>
+        </member>
+        <member name="M:TestCaseExtension.TestCaseAttribute.#ctor(System.Object)">
+            <summary>Create a TestCase with the given argument</summary>
+        </member>
+        <member name="M:TestCaseExtension.TestCaseAttribute.#ctor(System.Object,System.Object)">
+            <summary>Create a TestCase with the given two arguments</summary>
+        </member>
+        <member name="M:TestCaseExtension.TestCaseAttribute.#ctor(System.Object,System.Object,System.Object)">
+            <summary>Create a TestCase with the given three arguments</summary>
+        </member>
+        <member name="M:TestCaseExtension.TestCaseAttribute.#ctor(System.Object[])">
+            <summary>Create a TestCase with the given arguments</summary>
+        </member>
+        <member name="P:TestCaseExtension.TestCaseAttribute.TestArguments">
+            <summary>Arguments for the specific testcase</summary>
+        </member>
+        <member name="P:TestCaseExtension.TestCaseAttribute.Description">
+            <summary>Human-readable description for the testcase, ignored by the implementation</summary>
+        </member>
+        <member name="T:TestCaseExtension.TestCaseClassAttribute">
+            <summary>Marks a class as a test class that contains <c>TestMethod</c>s that may have <c>TestCase</c> or
+            	<c>TestCaseSource</c> attributes applied.  Use in place of the MSTest <c>TestClass</c> attribute
+            	on the test class.</summary>
+        </member>
+        <member name="M:TestCaseExtension.TestCaseClassAttribute.GetExecution">
+            <summary>Gets the execution instance for the TestCasClass extension</summary>
+        </member>
+        <member name="P:TestCaseExtension.TestCaseClassAttribute.ExtensionId">
+            <summary>The Unique ID of the TestCaseClass extension</summary>
+        </member>
+        <member name="T:TestCaseExtension.TestCaseExecution">
+            <summary>Wrapper for the invocation of <c>TestMethods</c> within a <c>TestCaseClass</c>.</summary>
+        </member>
+        <member name="M:TestCaseExtension.TestCaseExecution.CreateTestMethodInvoker(Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodInvokerContext)">
+            <summary>Create a new Invoker for this TestCaseExecution and the given context</summary>
+        </member>
+        <member name="M:TestCaseExtension.TestCaseExecution.Dispose">
+            <summary>Dispose this TestCaseExecution</summary>
+        </member>
+        <member name="M:TestCaseExtension.TestCaseExecution.Initialize(Microsoft.VisualStudio.TestTools.UnitTesting.TestExecution)">
+            <summary>Initialize this TestCaseExecution</summary>
+        </member>
+        <member name="T:TestCaseExtension.TestCaseFailureException">
+            <summary>Exception class for a collection of <c>TestCase</c> failures</summary>
+        </member>
+        <member name="M:TestCaseExtension.TestCaseFailureException.LogFailure(System.Object[],System.Reflection.MethodInfo,System.Exception)">
+            <summary>Log the TestCase failure of the given method and fiailure Exception</summary>
+        </member>
+        <member name="P:TestCaseExtension.TestCaseFailureException.HasFailures">
+            <summary>Have any of the <c>TestCase</c>s failed?</summary>
+        </member>
+        <member name="P:TestCaseExtension.TestCaseFailureException.Message">
+            <summary>A summary of any <c>TestCase</c> failures, e.g., the result message from
+            	each failing <c>TestCase</c></summary>
+        </member>
+        <member name="T:TestCaseExtension.TestCaseInvoker">
+            <summary>Responsible for Invoking <c>TestMethods</c> within a <c>TestCaseClass</c>.  Handles
+            	both methods with and without <c>TestCase</c>/<c>TestCaseSource</c> attrubutes.</summary>
+        </member>
+        <member name="M:TestCaseExtension.TestCaseInvoker.#ctor(Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodInvokerContext)">
+            <summary>Create a TestInvoker with the given invokerContext</summary>
+        </member>
+        <member name="M:TestCaseExtension.TestCaseInvoker.Invoke(System.Object[])">
+            <summary>Invokes a <c>TestMethod</c> with the given arguments.</summary>
+        </member>
+        <member name="T:TestCaseExtension.Internal.TestExtensionUtil">
+            <summary>Useful utility/extension methods for Reflection and Enumerables</summary>
+        </member>
+        <member name="M:TestCaseExtension.Internal.TestExtensionUtil.GetType(System.String)">
+            <summary>Get the type with the given typeName (full path)</summary>
+        </member>
+        <member name="M:TestCaseExtension.Internal.TestExtensionUtil.GetStaticMembers(System.Type,System.String)">
+            <summary>Retrieve the static Members of this Type with the given memberName</summary>
+        </member>
+        <member name="M:TestCaseExtension.Internal.TestExtensionUtil.ValueOf``1(System.Type,System.Reflection.MemberInfo)">
+            <summary>Retrieve the value of the staic member (Field, Property, or no-argument Method)</summary>
+        </member>
+        <member name="M:TestCaseExtension.Internal.TestExtensionUtil.GetMemberType(System.Reflection.MemberInfo)">
+            <summary>Get the Type of the MemberInfo (Field, Property, Method, or Event)</summary>
+        </member>
+        <member name="M:TestCaseExtension.Internal.TestExtensionUtil.IsExplicitOrIgnored(System.Reflection.MethodInfo)">
+            <summary>Is this Method marked with an Ignore or Explicit attribute?</summary>
+        </member>
+        <member name="M:TestCaseExtension.Internal.TestExtensionUtil.GetAttributes``1(System.Reflection.MethodInfo)">
+            <summary>Get the Attributes of the given type on thie Method</summary>
+        </member>
+        <member name="M:TestCaseExtension.Internal.TestExtensionUtil.DeepestException(System.Exception)">
+            <summary>Get the inner-most Exception within this one</summary>
+        </member>
+        <member name="M:TestCaseExtension.Internal.TestExtensionUtil.StringJoin``1(System.Collections.Generic.IEnumerable{``0},System.String)">
+            <summary>Concatenate string versions of the elements in this IEnumerable separated by
+            	the given string separator</summary>
+        </member>
+        <member name="M:TestCaseExtension.Internal.TestExtensionUtil.StringJoin``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.String},System.String)">
+            <summary>Concatenate the elements in this IEnumerable converted by the given conversion
+            	function, separated by the given string separator</summary>
+        </member>
+        <member name="M:TestCaseExtension.Internal.TestExtensionUtil.GenericTypeString(System.Type)">
+            <summary>Convert this Type into a string that includes generic type-parameters.
+            	E.g., "KeyValuePair&lt;Double, String&gt;" rather than "System.Collections.Generic.KeyValuePair`2"</summary>
+        </member>
+        <member name="M:TestCaseExtension.Internal.TestExtensionUtil.SimpleName(System.Type)">
+            <summary>Returns the Name of the type without the Namspace prefix</summary>
+        </member>
+    </members>
+</doc>

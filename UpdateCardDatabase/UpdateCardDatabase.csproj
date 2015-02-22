@@ -12,6 +12,7 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>68203013</NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -22,6 +23,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -83,6 +85,10 @@
     <ProjectReference Include="..\MagicLibrary\MagicLibrary.csproj">
       <Project>{43c3af0c-505b-4c22-b6d8-3c41f909749a}</Project>
       <Name>MagicLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MyMagicCollection.Shared\MyMagicCollection.Shared.csproj">
+      <Project>{1f52765d-dc89-4f1d-a155-fda2c7133e2a}</Project>
+      <Name>MyMagicCollection.Shared</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

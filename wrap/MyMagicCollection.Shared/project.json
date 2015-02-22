@@ -1,0 +1,12 @@
+{
+  "version": "1.0.0-*",
+  "frameworks": {
+    "net46": {
+      "wrappedProject": "../../MyMagicCollection.Shared/MyMagicCollection.Shared.csproj",
+      "bin": {
+        "assembly": "../../MyMagicCollection.Shared/obj/{configuration}/MyMagicCollection.Shared.dll",
+        "pdb": "../../MyMagicCollection.Shared/obj/{configuration}/MyMagicCollection.Shared.pdb"
+      }
+    }
+  }
+}

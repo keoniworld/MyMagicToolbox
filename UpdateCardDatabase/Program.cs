@@ -1,10 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Text;
 using CsvHelper;
+using CsvHelper.Configuration;
 using Dapper;
-using MagicLibrary;
 using MagicDatabase;
+using MagicLibrary;
+using MyMagicCollection.Shared.Models;
 
 namespace UpdateCardDatabase
 {
@@ -62,15 +67,44 @@ namespace UpdateCardDatabase
             var connection = database.SimpleDbConnection();
             connection.Open();
 
+            var exportFileName = Path.Combine(provider.ExeFolder, "APP_DATA", "MagicDatabase.csv");
+            if (File.Exists(exportFileName))
+            {
+                File.Delete(exportFileName);
+            }
+
+            var exportSetFileName = Path.Combine(provider.ExeFolder, "APP_DATA", "MagicDatabaseSets.csv");
+            if (File.Exists(exportSetFileName))
+            {
+                File.Delete(exportSetFileName);
+            }
+
             connection.Query("delete from MagicCard");
             int count = 0;
             var inputFiles = Directory.EnumerateFiles(provider.ExeFolder, "*.csv", SearchOption.AllDirectories).ToList();
 
-            var propertyList = typeof(Card).GetPropertyNames(null);
+            var propertyList = typeof(MagicCardDefinition).GetPropertyNames(null);
             var insertStatement = string.Format(
                 "INSERT INTO MagicCard ({0}) VALUES ({1});",
                 string.Join(", ", propertyList),
                 string.Join(", ", propertyList.Select(p => "@" + p)));
+
+            var textWriter = new StreamWriter(exportFileName);
+
+            var config = new CsvConfiguration()
+            {
+                Encoding = Encoding.UTF8,
+                HasHeaderRecord = true,
+                CultureInfo = CultureInfo.InvariantCulture,
+            };
+
+            var availableSets = new Dictionary<string, MagicSetDefinition>();
+
+            var writer = new CsvWriter(textWriter, config);
+            writer.WriteHeader(typeof(MagicCardDefinition));
+
+            var setWriter = new CsvWriter(new StreamWriter(exportSetFileName), config);
+            setWriter.WriteHeader<MagicSetDefinition>();
 
             foreach (var inputCsvName in inputFiles)
             {
@@ -82,7 +116,7 @@ namespace UpdateCardDatabase
                 {
                     count += 1;
 
-                    var card = new Card();
+                    var card = new MagicCardDefinition();
                     card.Id = count;
                     card.NameDE = inputCsv.GetField<string>("name_DE");
                     card.NameEN = inputCsv.GetField<string>("name");
@@ -98,11 +132,21 @@ namespace UpdateCardDatabase
                     card.LegalityCommander = ComputeLegality(inputCsv.GetField<string>("legality_Commander"));
                     card.LegalityFrenchCommander = ComputeLegality(inputCsv.GetField<string>("legality_French_Commander"));
 
-                    card.RulesText = inputCsv.GetField<string>("ability")
-                        .Replace("£", Environment.NewLine);
+                    card.RulesText = inputCsv.GetField<string>("ability");
+                    // .Replace("£", Environment.NewLine);
 
-                    card.RulesTextDE = inputCsv.GetField<string>("ability_DE")
-                        .Replace("£", Environment.NewLine);
+                    card.RulesTextDE = inputCsv.GetField<string>("ability_DE");
+                    // .Replace("£", Environment.NewLine);
+
+                    writer.WriteRecord<MagicCardDefinition>(card);
+
+                    var setName = inputCsv.GetField<string>("set");
+                    if (!string.IsNullOrWhiteSpace(setName) && !availableSets.ContainsKey(card.SetCode))
+                    {
+                        var definition = new MagicSetDefinition { Name = setName, Code = card.SetCode };
+                        availableSets.Add(card.SetCode, definition);
+                        setWriter.WriteRecord(definition);
+                    }
 
                     Console.WriteLine(count + " Reading " + card.NameEN + "(" + card.SetCode + ")...");
 
@@ -110,12 +154,14 @@ namespace UpdateCardDatabase
                     ////    "Select * from MagicCard where Id = @Id",
                     ////    new { card.Id});
 
-                    connection.Query(insertStatement, card);
+                    // connection.Query(insertStatement, card);
 
                     // if (count % 100==0) break;
                 }
 
                 inputCsv.Dispose();
+                writer.Dispose();
+                setWriter.Dispose();
             }
 
             Console.WriteLine("Cleaning database...");

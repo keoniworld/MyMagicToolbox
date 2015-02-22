@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using Dapper;
 using MagicLibrary;
 using MoreLinq;
+using MyMagicCollection.Shared;
+using MyMagicCollection.Shared.Models;
 
 namespace MagicDatabase
 {
@@ -41,12 +43,12 @@ namespace MagicDatabase
             return new SQLiteConnection("Data Source=" + DatabaseName);
         }
 
-        public Card FindCardById(string magicCardId)
+        public MagicCardDefinition FindCardById(string magicCardId)
         {
-            return _connection.Query<Card>("SELECT * from MagicCard where CardId = @CardId", new { CardId = magicCardId }).FirstOrDefault();
+            return _connection.Query<MagicCardDefinition>("SELECT * from MagicCard where CardId = @CardId", new { CardId = magicCardId }).FirstOrDefault();
         }
 
-        public IEnumerable<Card> FindCards(ICardSearchModel searchModel)
+        public IEnumerable<MagicCardDefinition> FindCards(ICardSearchModel searchModel)
         {
             var query = new StringBuilder();
             query.Append("SELECT * from MagicCard where ");
@@ -80,7 +82,7 @@ namespace MagicDatabase
             // add initial ordering
             query.Append(" order by NameEN");
 
-            var found = _connection.Query<Card>(
+            var found = _connection.Query<MagicCardDefinition>(
                 query.ToString(),
                 new { SearchTerm = "%" + searchModel.SearchTerm + "%" });
 

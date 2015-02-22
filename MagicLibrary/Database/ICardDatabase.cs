@@ -1,5 +1,8 @@
 ﻿using System.Collections.Generic;
 using MagicLibrary;
+using MyMagicCollection.Shared;
+using MyMagicCollection.Shared.Models;
+
 namespace MagicDatabase
 {
     public interface ICardDatabase
@@ -8,9 +11,9 @@ namespace MagicDatabase
 
         void Dispose();
 
-        Card FindCardById(string magicCardId);
+        MagicCardDefinition FindCardById(string magicCardId);
 
-        IEnumerable<Card> FindCards(ICardSearchModel searchModel);
+        IEnumerable<MagicCardDefinition> FindCards(ICardSearchModel searchModel);
 
         IEnumerable<Set> GetAllSets();
     }

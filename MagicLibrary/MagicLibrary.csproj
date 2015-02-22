@@ -12,6 +12,7 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>b9c550b3</NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -75,7 +76,6 @@
   <ItemGroup>
     <Compile Include="CardPrice.cs" />
     <Compile Include="Database\ApplicationSettings.cs" />
-    <Compile Include="Database\Card.cs" />
     <Compile Include="Database\CardDatabase.cs" />
     <Compile Include="Database\CardDatabaseFolderProvider.cs" />
     <Compile Include="Database\CardType.cs" />
@@ -111,7 +111,12 @@
     <Compile Include="Price\RequestResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\MyMagicCollection.Shared\MyMagicCollection.Shared.csproj">
+      <Project>{1f52765d-dc89-4f1d-a155-fda2c7133e2a}</Project>
+      <Name>MyMagicCollection.Shared</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="App_Data\MagicDatabase.s3db">

@@ -14,7 +14,7 @@ namespace MyMagicCollection.Caliburn
         {
         }
 
-        public CardViewModel(Card card)
+        public CardViewModel(MagicCardDefinition card)
         {
             Name = card.NameEN;
             CardId = card.CardId;

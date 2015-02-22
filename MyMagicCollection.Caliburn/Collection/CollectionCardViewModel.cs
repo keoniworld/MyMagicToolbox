@@ -13,7 +13,7 @@ namespace MyMagicCollection.Caliburn.Collection
     public class CollectionCardViewModel : ICollectionCardViewModel
     {
         private readonly ICardDatabase _cardDatabase;
-        private Card _card;
+        private MagicCardDefinition _card;
         private readonly MagicCollectionItem _collectionItem;
 
         private CollectionCardViewModel(

@@ -14,7 +14,7 @@ namespace MyMagicCollection.Caliburn
 {
     [Export]
     [ImplementPropertyChanged]
-    public class DeckToolsViewModel
+    public sealed class DeckToolsViewModel
     {
         private readonly ICardDatabase _cardDatabase;
 
@@ -23,13 +23,13 @@ namespace MyMagicCollection.Caliburn
         {
             _cardDatabase = cardDatabase;
 
-            AvailableLanguages = (IEnumerable<MagicContracts.Language>)Enum.GetValues(typeof(MagicContracts.Language));
-            Language = MagicContracts.Language.English;
+            AvailableLanguages = (IEnumerable<MagicLibrary.Language>)Enum.GetValues(typeof(MagicLibrary.Language));
+            Language = MagicLibrary.Language.English;
         }
 
-        public IEnumerable<MagicContracts.Language> AvailableLanguages { get; private set; }
+        public IEnumerable<MagicLibrary.Language> AvailableLanguages { get; private set; }
 
-        public MagicContracts.Language Language { get; set; }
+        public MagicLibrary.Language Language { get; set; }
 
         public bool IsFoil { get; set; }
 

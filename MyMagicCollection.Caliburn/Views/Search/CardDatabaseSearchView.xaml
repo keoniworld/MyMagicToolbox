@@ -13,6 +13,7 @@
             <CheckBox x:Name="SearchName">Card Name</CheckBox>
             <CheckBox x:Name="SearchRulesText" Margin="3,0,0,0">Rules Text</CheckBox>
             <CheckBox x:Name="DistinctNames" Margin="3,0,0,0">Distinct Names</CheckBox>
+            <ComboBox x:Name="Sets" DisplayMemberPath="Nname" Margin="3,0,0,0" Width="250"/>
         </StackPanel>
     </StackPanel>
 </UserControl>

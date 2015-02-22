@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using Caliburn.Micro;
-using MagicContracts;
+using MagicLibrary;
 
 namespace MyMagicCollection.Caliburn
 {
@@ -24,7 +24,6 @@ namespace MyMagicCollection.Caliburn
         /// </summary>
         private CompositionContainer _container;
 
-        //@@TBD: See if there's more needed.
         /// <summary>
         /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
         /// </summary>
@@ -71,11 +70,21 @@ namespace MyMagicCollection.Caliburn
         /// <exception cref="System.Exception">This exception will be thrown when XXX.</exception>
         protected override object GetInstance(Type serviceType, string key)
         {
-            string contract = string.IsNullOrEmpty(key) ? AttributedModelServices.GetContractName(serviceType) : key;
-            var exports = _container.GetExportedValues<object>(contract);
+            string contract = "";
+            try
+            {
+                contract = string.IsNullOrEmpty(key) ? AttributedModelServices.GetContractName(serviceType) : key;
+                var exports = _container.GetExportedValues<object>(contract).ToArray();
 
-            if (exports.Any())
-                return exports.First();
+                if (exports.Any())
+                {
+                    return exports.First();
+                }
+            }
+            catch (Exception error)
+            {
+                int debug = 0;
+            }
 
             throw new Exception(string.Format("Could not locate any instances of contract {0}.", contract));
         }
@@ -84,7 +93,7 @@ namespace MyMagicCollection.Caliburn
         /// Gets all instances.
         /// </summary>
         /// <param name="serviceType">Type of the service.</param>
-        /// <returns>Returns an instance of <see cref="IEnumerable&lt;System.Object&gt;"/>.</returns>
+        /// <returns>Returns an instance of <see cref="object"/>.</returns>
         protected override IEnumerable<object> GetAllInstances(Type serviceType)
         {
             return _container.GetExportedValues<object>(AttributedModelServices.GetContractName(serviceType));
@@ -93,7 +102,7 @@ namespace MyMagicCollection.Caliburn
         protected override void OnStartup(object sender, System.Windows.StartupEventArgs e)
         {
             base.OnStartup(sender, e);
-            
+
             Application.MainWindow.SizeToContent = SizeToContent.Manual;
             Application.MainWindow.WindowState = WindowState.Maximized;
         }

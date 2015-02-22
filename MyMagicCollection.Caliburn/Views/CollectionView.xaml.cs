@@ -22,7 +22,7 @@ namespace MyMagicCollection.Caliburn
     {
         public CollectionView()
         {
-            InitializeComponent();
+            InitializeComponent();            
         }
     }
 }

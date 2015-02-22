@@ -4,6 +4,7 @@ using System.ComponentModel.Composition;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MagicDatabase;
 using PropertyChanged;
 
 namespace MyMagicCollection.Caliburn
@@ -12,7 +13,10 @@ namespace MyMagicCollection.Caliburn
     [ImplementPropertyChanged]
     public class CardDatabaseSearchViewModel : CardSearchViewModel
     {
-        public CardDatabaseSearchViewModel()
+        [ImportingConstructor]
+        public CardDatabaseSearchViewModel(
+            ICardDatabase cardDatabase)
+        : base(cardDatabase)
         {
             SearchName = true;
             DistinctNames = true;

@@ -80,13 +80,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MagicContracts\MagicContracts.csproj">
-      <Project>{aff4e369-284c-424d-9094-bc6d367f8ac5}</Project>
-      <Name>MagicContracts</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MagicDatabase\MagicDatabase.csproj">
-      <Project>{7e91c844-de99-4742-aed7-c25afe3185ac}</Project>
-      <Name>MagicDatabase</Name>
+    <ProjectReference Include="..\MagicLibrary\MagicLibrary.csproj">
+      <Project>{43c3af0c-505b-4c22-b6d8-3c41f909749a}</Project>
+      <Name>MagicLibrary</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

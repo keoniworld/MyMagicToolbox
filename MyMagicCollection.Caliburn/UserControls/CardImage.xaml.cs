@@ -6,7 +6,7 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using MagicContracts;
+using MagicLibrary;
 using PropertyChanged;
 
 namespace MyMagicCollection.Caliburn.UserControls

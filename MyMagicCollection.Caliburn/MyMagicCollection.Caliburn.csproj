@@ -91,6 +91,11 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="CaliburnMEFMvvmAppBootstrapper.cs" />
+    <Compile Include="Collection\CollectionCardViewModel.cs" />
+    <Compile Include="Collection\SingleCollectionViewModell.cs" />
+    <Compile Include="UserControls\CardDetails.xaml.cs">
+      <DependentUpon>CardDetails.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\CardGrid.xaml.cs">
       <DependentUpon>CardGrid.xaml</DependentUpon>
     </Compile>
@@ -154,6 +159,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="UserControls\CardDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\CardGrid.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -188,25 +197,13 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MagicContracts\MagicContracts.csproj">
-      <Project>{aff4e369-284c-424d-9094-bc6d367f8ac5}</Project>
-      <Name>MagicContracts</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MagicDatabase\MagicDatabase.csproj">
-      <Project>{7e91c844-de99-4742-aed7-c25afe3185ac}</Project>
-      <Name>MagicDatabase</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MagicFileFormats\MagicFileFormats.csproj">
-      <Project>{69286e25-1d7b-4cde-8876-c685f68a3185}</Project>
-      <Name>MagicFileFormats</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\PriceLibrary\PriceLibrary.csproj">
-      <Project>{aceaf554-1270-4976-acb9-cec1eb586a8e}</Project>
-      <Name>PriceLibrary</Name>
-    </ProjectReference>
+    <Resource Include="FodyWeavers.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="FodyWeavers.xml" />
+    <ProjectReference Include="..\MagicLibrary\MagicLibrary.csproj">
+      <Project>{43c3af0c-505b-4c22-b6d8-3c41f909749a}</Project>
+      <Name>MagicLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.1.26.4\build\Fody.targets" Condition="Exists('..\packages\Fody.1.26.4\build\Fody.targets')" />

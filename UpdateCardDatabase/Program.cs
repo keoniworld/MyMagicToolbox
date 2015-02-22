@@ -3,7 +3,7 @@ using System.IO;
 using System.Linq;
 using CsvHelper;
 using Dapper;
-using MagicContracts;
+using MagicLibrary;
 using MagicDatabase;
 
 namespace UpdateCardDatabase

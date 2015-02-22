@@ -6,6 +6,28 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-        <Label x:Name="CollectionName"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        
+        <StackPanel Orientation="Horizontal">
+            
+            <Label>Current Collection:</Label>
+            <ComboBox Width="250" x:Name="Collections" DisplayMemberPath="CollectionName"/>
+            
+            <Button x:Name="CreateNewCollection">New</Button>
+        </StackPanel>
+        
+        <StackPanel Grid.Row="1">
+            <Label>Collection Details</Label>
+            <StackPanel Orientation="Horizontal">
+                <Label >Name:</Label>
+                <TextBox Width="250" x:Name="SelectedCollectionName" VerticalContentAlignment="Center"/>
+            </StackPanel>
+        </StackPanel>
+        
+        <!-- TODO: Grid with card details & search feature-->
     </Grid>
 </UserControl>

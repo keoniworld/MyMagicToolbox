@@ -7,7 +7,7 @@
     <ProjectGuid>{AFF4E369-284C-424D-9094-BC6D367F8AC5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MagicContracts</RootNamespace>
+    <RootNamespace>MagicLibrary</RootNamespace>
     <AssemblyName>MagicContracts</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -40,14 +40,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CardPrice.cs" />
-    <Compile Include="Helper.cs" />
-    <Compile Include="IApplicationSettings.cs" />
-    <Compile Include="IApplicationSettingsExtension.cs" />
-    <Compile Include="ICardSearchModel.cs" />
-    <Compile Include="IDeckCard.cs" />
-    <Compile Include="Language.cs" />
-    <Compile Include="MefHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

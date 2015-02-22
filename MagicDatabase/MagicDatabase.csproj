@@ -66,37 +66,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplicationSettings.cs" />
-    <Compile Include="Card.cs" />
-    <Compile Include="CardDatabaseFolderProvider.cs" />
-    <Compile Include="ICardDatabase.cs" />
-    <Compile Include="ICardDatabaseFolderProvider.cs" />
-    <Compile Include="IUserDatabase.cs" />
-    <Compile Include="MagicCardItem.cs" />
-    <Compile Include="MagicCollection.cs" />
-    <Compile Include="SettingsItem.cs" />
-    <Compile Include="UserDatabase.cs" />
-    <Compile Include="CardType.cs" />
-    <Compile Include="CardDatabase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Set.cs" />
-    <Compile Include="UserDatabaseController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="App_Data\MagicDatabase.s3db">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\UserDatabase.s3db">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\MagicContracts\MagicContracts.csproj">
-      <Project>{aff4e369-284c-424d-9094-bc6d367f8ac5}</Project>
-      <Name>MagicContracts</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.94.0\build\net45\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.94.0\build\net45\System.Data.SQLite.Core.targets')" />

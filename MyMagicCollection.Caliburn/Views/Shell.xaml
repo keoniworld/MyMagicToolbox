@@ -9,6 +9,10 @@
              MinWidth="640"
              MinHeight="480">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
         <TabControl>
             <TabItem Header="Database">
                 <ContentControl x:Name="CardDatabaseViewModel" />
@@ -20,5 +24,23 @@
                 <ContentControl x:Name="DeckToolsViewModel" />
             </TabItem>
         </TabControl>
+        <StatusBar Grid.Row="1">
+            <StatusBar.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <!--<ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="100" />-->
+                        </Grid.ColumnDefinitions>
+                    </Grid>
+                </ItemsPanelTemplate>
+            </StatusBar.ItemsPanel>
+            <StatusBarItem>
+                <Label x:Name="StatusBarMessage"/>
+            </StatusBarItem>
+        </StatusBar>
     </Grid>
 </UserControl>

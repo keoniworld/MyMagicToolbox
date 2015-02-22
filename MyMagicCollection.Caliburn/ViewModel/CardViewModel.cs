@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 using MagicDatabase;
-using MagicFileContracts;
+using MagicLibrary;
 using MagicFileFormats;
 using PropertyChanged;
 
@@ -8,7 +8,7 @@ namespace MyMagicCollection.Caliburn
 {
     [ImplementPropertyChanged]
     [DebuggerDisplay("{CardId}, {Quantity}, {Name}, {Location}, {SetCode}")]
-    public class CardViewModel : IDeckCard
+    public sealed class CardViewModel : IDeckCard
     {
         public CardViewModel()
         {
@@ -26,7 +26,7 @@ namespace MyMagicCollection.Caliburn
 
         }
 
-        public CardViewModel(DeckCard card)
+        public CardViewModel(IDeckCard card)
         {
             Name = card.Name;
             Quantity = card.Quantity;

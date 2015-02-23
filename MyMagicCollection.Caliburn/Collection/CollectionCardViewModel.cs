@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MagicDatabase;
 using MagicLibrary;
+using MyMagicCollection.Shared.Models;
 using PropertyChanged;
 
 namespace MyMagicCollection.Caliburn.Collection

@@ -205,6 +205,10 @@
       <Project>{43c3af0c-505b-4c22-b6d8-3c41f909749a}</Project>
       <Name>MagicLibrary</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MyMagicCollection.Shared\MyMagicCollection.Shared.csproj">
+      <Project>{1f52765d-dc89-4f1d-a155-fda2c7133e2a}</Project>
+      <Name>MyMagicCollection.Shared</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.1.26.4\build\Fody.targets" Condition="Exists('..\packages\Fody.1.26.4\build\Fody.targets')" />

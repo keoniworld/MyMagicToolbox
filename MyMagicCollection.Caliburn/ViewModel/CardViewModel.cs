@@ -3,6 +3,7 @@ using MagicDatabase;
 using MagicLibrary;
 using MagicFileFormats;
 using PropertyChanged;
+using MyMagicCollection.Shared.Models;
 
 namespace MyMagicCollection.Caliburn
 {

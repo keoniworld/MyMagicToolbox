@@ -7,6 +7,16 @@
         "assembly": "../../MyMagicCollection.Shared/obj/{configuration}/MyMagicCollection.Shared.dll",
         "pdb": "../../MyMagicCollection.Shared/obj/{configuration}/MyMagicCollection.Shared.pdb"
       }
+    },
+    "net45": {
+      "wrappedProject": "../../MyMagicCollection.Shared/MyMagicCollection.Shared.csproj",
+      "bin": {
+        "assembly": "../../MyMagicCollection.Shared/obj/{configuration}/MyMagicCollection.Shared.dll",
+        "pdb": "../../MyMagicCollection.Shared/obj/{configuration}/MyMagicCollection.Shared.pdb"
+      },
+      "dependencies": {
+        "CsvHelper": "2.11.0"
+      }
     }
   }
 }

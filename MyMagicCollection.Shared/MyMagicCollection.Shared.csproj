@@ -44,18 +44,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CSV\MagicDatabaseLoader.cs" />
+    <Compile Include="Helper\EmbeddedResourceHelper.cs" />
     <Compile Include="Models\MagicCardDefinition.cs" />
     <Compile Include="Models\MagicSetDefinition.cs" />
+    <Compile Include="Models\StaticMagicData.cs" />
     <Compile Include="PathHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="CSV\MagicDatabase.csv">
+    <EmbeddedResource Include="CSV\MagicDatabase.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="CSV\MagicDatabaseSets.csv">
+    </EmbeddedResource>
+    <EmbeddedResource Include="CSV\MagicDatabaseSets.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    </EmbeddedResource>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

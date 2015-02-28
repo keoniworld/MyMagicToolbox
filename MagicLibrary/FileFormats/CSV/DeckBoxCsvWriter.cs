@@ -6,12 +6,13 @@ using System.Text;
 using System.Threading.Tasks;
 using CsvHelper;
 using MagicLibrary;
+using MyMagicCollection.Shared.Models;
 
 namespace MagicFileFormats.CSV
 {
     public class DeckBoxCsvWriter
     {
-        public void Write(string fileName, IEnumerable<IDeckCard> cards, bool isFoil, Language language)
+        public void Write(string fileName, IEnumerable<IDeckCard> cards, bool isFoil, MagicLanguage language)
         {
             var outputCsv = new CsvWriter(File.CreateText(fileName));
 

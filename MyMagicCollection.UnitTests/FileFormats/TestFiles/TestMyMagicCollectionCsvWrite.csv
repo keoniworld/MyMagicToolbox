@@ -1,0 +1,6 @@
+Name
+My collection
+----- CARDSDELIMITER -----
+RowId,Quantity,QuantityTrade,QuantityWanted,IsFoil,Language,CardId,Grade
+row1,0,0,0,False,English,card id 1,LightlyPlayed
+row2,0,1,0,False,German,card id 2,NearMint

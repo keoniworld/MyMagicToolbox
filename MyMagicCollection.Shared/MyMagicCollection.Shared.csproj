@@ -44,12 +44,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CSV\MagicDatabaseLoader.cs" />
+    <Compile Include="FileFormats\MyMagicCollection\MagicCollectionCsvMapper.cs" />
+    <Compile Include="FileFormats\MyMagicCollection\MyMagicCollectionCsv.cs" />
     <Compile Include="Helper\EmbeddedResourceHelper.cs" />
+    <Compile Include="Minimods\Minimod.ExpressionExtensions.Generated.cs" />
+    <Compile Include="Minimods\Minimod.NotificationObject.Generated.cs" />
     <Compile Include="Models\MagicCardDefinition.cs" />
+    <Compile Include="Models\MagicCollection.cs" />
+    <Compile Include="Models\MagicCollectionCard.cs" />
+    <Compile Include="ViewModels\MagicCollectionCardViewModel.cs" />
+    <Compile Include="Models\MagicGrade.cs" />
+    <Compile Include="Models\MagicLanguage.cs" />
+    <Compile Include="Models\MagicRarity.cs" />
     <Compile Include="Models\MagicSetDefinition.cs" />
     <Compile Include="Models\StaticMagicData.cs" />
     <Compile Include="PathHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\MagicCollectionViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="CSV\MagicDatabase.csv">
@@ -60,6 +71,7 @@
     </EmbeddedResource>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -12,4 +12,5 @@
 bin/
 obj/
 Testresults/
-
+vbs.cache/
+.vs/

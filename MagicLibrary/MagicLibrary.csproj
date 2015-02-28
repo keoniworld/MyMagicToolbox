@@ -101,7 +101,6 @@
     <Compile Include="IDeckCard.cs" />
     <Compile Include="INotificationCenter.cs" />
     <Compile Include="ISingleCollectionViewModel.cs" />
-    <Compile Include="Language.cs" />
     <Compile Include="MefHelper.cs" />
     <Compile Include="NotificationCenter.cs" />
     <Compile Include="NotificationCenterEventArgs.cs" />

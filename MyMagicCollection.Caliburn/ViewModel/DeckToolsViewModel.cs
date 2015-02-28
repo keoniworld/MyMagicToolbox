@@ -7,6 +7,7 @@ using MagicDatabase;
 using MagicFileFormats.CSV;
 using MagicFileFormats.Dec;
 using Microsoft.Win32;
+using MyMagicCollection.Shared.Models;
 using PriceLibrary;
 using PropertyChanged;
 
@@ -23,13 +24,13 @@ namespace MyMagicCollection.Caliburn
         {
             _cardDatabase = cardDatabase;
 
-            AvailableLanguages = (IEnumerable<MagicLibrary.Language>)Enum.GetValues(typeof(MagicLibrary.Language));
-            Language = MagicLibrary.Language.English;
+            AvailableLanguages = (IEnumerable<MagicLanguage>)Enum.GetValues(typeof(MagicLanguage));
+            Language = MagicLanguage.English;
         }
 
-        public IEnumerable<MagicLibrary.Language> AvailableLanguages { get; private set; }
+        public IEnumerable<MagicLanguage> AvailableLanguages { get; private set; }
 
-        public MagicLibrary.Language Language { get; set; }
+        public MagicLanguage Language { get; set; }
 
         public bool IsFoil { get; set; }
 

@@ -34,6 +34,40 @@ namespace UpdateCardDatabase
             return false;
         }
 
+        public static MagicRarity? ComputeRarity(string input)
+        {
+            switch (input.ToLowerInvariant())
+            {
+                case "l":
+                    return MagicRarity.Land;
+
+                case "t":
+                case "t // t":
+                    return MagicRarity.Token;
+
+                case "u":
+                case "u // u":
+                    return MagicRarity.Uncommon;
+
+                case "c":
+                case "c // c":
+                    return MagicRarity.Common;
+
+                case "m":
+                case "m // m":
+                    return MagicRarity.Mythic;
+
+                case "r":
+                case "r // r":
+                    return MagicRarity.Rare;
+
+                case "":
+                    return null;
+            }
+
+            throw new InvalidOperationException("Invalid rarity " + input);
+        }
+
         public static string DeEscape(string input)
         {
             if (string.IsNullOrWhiteSpace(input))
@@ -67,13 +101,13 @@ namespace UpdateCardDatabase
             var connection = database.SimpleDbConnection();
             connection.Open();
 
-            var exportFileName = Path.Combine(provider.ExeFolder, "APP_DATA", "MagicDatabase.csv");
+            var exportFileName = Path.Combine(provider.ExeFolder, "CSV", "MagicDatabase.csv");
             if (File.Exists(exportFileName))
             {
                 File.Delete(exportFileName);
             }
 
-            var exportSetFileName = Path.Combine(provider.ExeFolder, "APP_DATA", "MagicDatabaseSets.csv");
+            var exportSetFileName = Path.Combine(provider.ExeFolder, "CSV", "MagicDatabaseSets.csv");
             if (File.Exists(exportSetFileName))
             {
                 File.Delete(exportSetFileName);
@@ -131,6 +165,7 @@ namespace UpdateCardDatabase
                     card.LegalityPauper = ComputeLegality(inputCsv.GetField<string>("legality_Pauper"));
                     card.LegalityCommander = ComputeLegality(inputCsv.GetField<string>("legality_Commander"));
                     card.LegalityFrenchCommander = ComputeLegality(inputCsv.GetField<string>("legality_French_Commander"));
+                    card.Rarity = ComputeRarity(inputCsv.GetField<string>("rarity"));
 
                     card.RulesText = inputCsv.GetField<string>("ability");
                     // .Replace("£", Environment.NewLine);

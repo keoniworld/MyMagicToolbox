@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
 using MagicLibrary;
+using MyMagicCollection.Shared.Models;
 
 namespace PriceLibrary
 {
@@ -14,7 +15,7 @@ namespace PriceLibrary
     {
         public static string CreateGetProductsUrl(
             string name,
-            Language language,
+            MagicLanguage language,
             bool isExact,
             int? startIndex)
         {

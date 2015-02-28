@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using MagicLibrary;
+using MyMagicCollection.Shared.Models;
 
 namespace PriceLibrary
 {
@@ -19,7 +20,7 @@ namespace PriceLibrary
             try
             {
                 var helper = new RequestHelper();
-                var result = helper.MakeRequest(RequestHelper.CreateGetProductsUrl(_card.Name, MagicLibrary.Language.English, true, null));
+                var result = helper.MakeRequest(RequestHelper.CreateGetProductsUrl(_card.Name, MagicLanguage.English, true, null));
 
                 var productNode = result.Response.Root.Element("product");
                 var priceGuide = productNode.Element("priceGuide");

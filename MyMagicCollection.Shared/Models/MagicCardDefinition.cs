@@ -33,5 +33,7 @@
         public bool? LegalityCommander { get; set; }
 
         public bool? LegalityFrenchCommander { get; set; }
+
+        public MagicRarity? Rarity { get; set; }
     }
 }

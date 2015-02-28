@@ -15,7 +15,9 @@
         "pdb": "../../MyMagicCollection.Shared/obj/{configuration}/MyMagicCollection.Shared.pdb"
       },
       "dependencies": {
-        "CsvHelper": "2.11.0"
+        "CsvHelper": "2.11.0",
+        "Minimod.ExpressionExtensions": "1.0.0.0",
+        "Minimod.NotificationObject": "1.0.0.0"
       }
     }
   }

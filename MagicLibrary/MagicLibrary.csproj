@@ -99,11 +99,8 @@
     <Compile Include="ICollectionCardViewModel.cs" />
     <Compile Include="ICurrentCollectionProvider.cs" />
     <Compile Include="IDeckCard.cs" />
-    <Compile Include="INotificationCenter.cs" />
     <Compile Include="ISingleCollectionViewModel.cs" />
     <Compile Include="MefHelper.cs" />
-    <Compile Include="NotificationCenter.cs" />
-    <Compile Include="NotificationCenterEventArgs.cs" />
     <Compile Include="Price\CardPriceRequest.cs" />
     <Compile Include="Price\OAuthHeader.cs" />
     <Compile Include="Price\RequestHelper.cs" />

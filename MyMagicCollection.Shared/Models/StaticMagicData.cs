@@ -19,6 +19,7 @@ namespace MyMagicCollection.Shared.Models
             SetDefinitions = loader.LoadSetDatabase();
 
             CardDefinitionsByCardId = CardDefinitions.ToDictionary(c => c.CardId);
+            SetDefinitionsBySetCode=SetDefinitions.ToDictionary(c => c.Code);
 
             stopWatch.Stop();
             Debug.WriteLine("Loading static MTG data took " + stopWatch.Elapsed);
@@ -29,5 +30,7 @@ namespace MyMagicCollection.Shared.Models
         public static IEnumerable<MagicSetDefinition> SetDefinitions { get; private set; }
 
         public static IReadOnlyDictionary<string, MagicCardDefinition> CardDefinitionsByCardId { get; private set; }
+
+        public static IReadOnlyDictionary<string, MagicSetDefinition> SetDefinitionsBySetCode { get; private set; }
     }
 }

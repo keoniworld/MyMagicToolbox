@@ -100,9 +100,6 @@
     <Compile Include="UserControls\CardGrid.xaml.cs">
       <DependentUpon>CardGrid.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\CardImage.xaml.cs">
-      <DependentUpon>CardImage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\Search\CardDatabaseSearchView.xaml.cs">
       <DependentUpon>CardDatabaseSearchView.xaml</DependentUpon>
     </Compile>
@@ -165,10 +162,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\CardGrid.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UserControls\CardImage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

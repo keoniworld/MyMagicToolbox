@@ -1,12 +1,12 @@
 ﻿(function () {
     'use strict';
 
-    angular.module('myMagicCollectionApp', [
+    angular.module('MagicCollectionApp', [
         // Angular modules 
         'ngRoute',
 
         // Custom modules 
-        'myMagicCollectionService'
+        'MagicCollectionServices'
 
         // 3rd Party Modules
         

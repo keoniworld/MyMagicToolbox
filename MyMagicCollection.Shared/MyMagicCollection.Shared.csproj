@@ -47,20 +47,24 @@
     <Compile Include="FileFormats\MyMagicCollection\MagicCollectionCsvMapper.cs" />
     <Compile Include="FileFormats\MyMagicCollection\MyMagicCollectionCsv.cs" />
     <Compile Include="Helper\EmbeddedResourceHelper.cs" />
+    <Compile Include="Helper\PathHelper.cs" />
     <Compile Include="Minimods\Minimod.ExpressionExtensions.Generated.cs" />
     <Compile Include="Minimods\Minimod.NotificationObject.Generated.cs" />
+    <Compile Include="Models\CardLookup.cs" />
     <Compile Include="Models\MagicCardDefinition.cs" />
     <Compile Include="Models\MagicCollection.cs" />
     <Compile Include="Models\MagicCollectionCard.cs" />
-    <Compile Include="ViewModels\MagicCollectionCardViewModel.cs" />
+    <Compile Include="Notification\INotificationCenter.cs" />
+    <Compile Include="Notification\NotificationCenter.cs" />
+    <Compile Include="Notification\NotificationCenterEventArgs.cs" />
+    <Compile Include="ViewModels\MagicBinderCardViewModel.cs" />
     <Compile Include="Models\MagicGrade.cs" />
     <Compile Include="Models\MagicLanguage.cs" />
     <Compile Include="Models\MagicRarity.cs" />
     <Compile Include="Models\MagicSetDefinition.cs" />
     <Compile Include="Models\StaticMagicData.cs" />
-    <Compile Include="PathHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModels\MagicCollectionViewModel.cs" />
+    <Compile Include="ViewModels\MagicBinderViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="CSV\MagicDatabase.csv">

@@ -12,11 +12,11 @@ namespace MyMagicCollection.Shared.ViewModels
 	public class MagicBinderCardViewModel : NotificationObject
 	{
         private readonly MagicCardDefinition _definition;
-        private readonly MagicCollectionCard _card;
+        private readonly MagicBinderCard _card;
 
         public MagicBinderCardViewModel(
 			MagicCardDefinition definition,
-			MagicCollectionCard card)
+			MagicBinderCard card)
         {
 			_definition = definition;
 			_card = card;

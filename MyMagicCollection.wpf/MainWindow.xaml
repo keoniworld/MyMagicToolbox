@@ -71,42 +71,52 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
 
                     <StackPanel Orientation="Horizontal" Grid.ColumnSpan="2">
                         <Button >Open</Button>
-                        <Button Margin="3,0,0,0">New</Button>
-                        <Button Margin="3,0,0,0">Export</Button>
-                        <Button Margin="3,0,0,0">Show</Button>
+                        <Button Margin="3,0,0,0" Click="OnNewBinderClick">New</Button>
+                        <Button Margin="3,0,0,0" IsEnabled="{Binding IsActiveBinder}">Export</Button>
+                        <Button Margin="3,0,0,0" IsEnabled="{Binding IsActiveBinder}">Show</Button>
                     </StackPanel>
 
-                    <Label Grid.Row="1">Name</Label>
-                    <TextBox Grid.Row="1" HorizontalAlignment="Stretch" Grid.Column="1"></TextBox>
+                    <Grid Grid.Row="1" IsEnabled="{Binding IsActiveBinder}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
 
-                    <Label Grid.Row="2">Total # Cards</Label>
-                    <TextBox IsReadOnly="True" Grid.Row="2" HorizontalAlignment="Stretch" Grid.Column="1"></TextBox>
 
-                    <Label Grid.Row="3">Bulk Value</Label>
-                    <TextBox IsReadOnly="True" Grid.Row="3" HorizontalAlignment="Stretch" Grid.Column="1"></TextBox>
 
-                    <Label Grid.Row="4">Non Bulk Value</Label>
-                    <TextBox IsReadOnly="True" Grid.Row="4" HorizontalAlignment="Stretch" Grid.Column="1"></TextBox>
+                        <Label Grid.Row="1">Name</Label>
+                        <TextBox Grid.Row="1" HorizontalAlignment="Stretch" Grid.Column="1"
+                                 Text="{Binding ActiveBinder.Name, Mode=OneWay}" IsReadOnly="True" />
 
-                    <Label Grid.Row="5">Total Value</Label>
-                    <TextBox IsReadOnly="True" Grid.Row="5" HorizontalAlignment="Stretch" Grid.Column="1"></TextBox>
+                        <Label Grid.Row="2">Total # Cards</Label>
+                        <TextBox IsReadOnly="True" Grid.Row="2" HorizontalAlignment="Stretch" Grid.Column="1"></TextBox>
+
+                        <Label Grid.Row="3">Bulk Value</Label>
+                        <TextBox IsReadOnly="True" Grid.Row="3" HorizontalAlignment="Stretch" Grid.Column="1"></TextBox>
+
+                        <Label Grid.Row="4">Non Bulk Value</Label>
+                        <TextBox IsReadOnly="True" Grid.Row="4" HorizontalAlignment="Stretch" Grid.Column="1"></TextBox>
+
+                        <Label Grid.Row="5">Total Value</Label>
+                        <TextBox IsReadOnly="True" Grid.Row="5" HorizontalAlignment="Stretch" Grid.Column="1"></TextBox>
+                    </Grid>
                 </Grid>
             </GroupBox>
 
             <GroupBox Header="Trade List" Grid.Row="1">
-                <Grid>
+                <Grid IsEnabled="{Binding IsActiveBinder}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />

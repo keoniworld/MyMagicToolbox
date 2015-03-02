@@ -27,7 +27,7 @@ namespace MyMagicCollection.Shared.FileFormats.MyMagicCollection
 			_config.RegisterClassMap(new MagicCollectionCsvMapper());
 		}
 
-		public void WriteFile(string fileName, MagicCollection collection)
+		public void WriteFile(string fileName, MagicBinder collection)
 		{
 			if (File.Exists(fileName))
 			{
@@ -50,14 +50,14 @@ namespace MyMagicCollection.Shared.FileFormats.MyMagicCollection
 						textWriter.WriteLine(_delimiter);
 
 						// Now write the cards
-						writer.WriteHeader<MagicCollectionCard>();
+						writer.WriteHeader<MagicBinderCard>();
 						writer.WriteRecords(collection.Cards);
 					}
 				}
 			}
 		}
 
-		public MagicCollection ReadFile(string fileName)
+		public MagicBinder ReadFile(string fileName)
 		{
 			var content = File.ReadAllText(fileName);
 			var delimiterPos = content.IndexOf(_delimiter, StringComparison.InvariantCultureIgnoreCase);
@@ -76,16 +76,16 @@ namespace MyMagicCollection.Shared.FileFormats.MyMagicCollection
 				header = content;
 			}
 
-			IList<MagicCollectionCard> collectionCards = new List<MagicCollectionCard>();
+			IList<MagicBinderCard> collectionCards = new List<MagicBinderCard>();
 			if (!string.IsNullOrWhiteSpace(cards))
 			{
 				using (var inputCsv = new CsvReader(new StringReader(cards)))
 				{
-					collectionCards = inputCsv.GetRecords<MagicCollectionCard>().ToList();
+					collectionCards = inputCsv.GetRecords<MagicBinderCard>().ToList();
 				}
 			}
 
-			var result = new MagicCollection(collectionCards);
+			var result = new MagicBinder(collectionCards);
 
 			using (var inputCsv = new CsvReader(new StringReader(header)))
 			{

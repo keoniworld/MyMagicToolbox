@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using Minimod.NotificationObject;
 using MyMagicCollection.Shared;
 using MyMagicCollection.Shared.Models;
+using MyMagicCollection.Shared.ViewModels;
 using MyMagicCollection.wpf.DataSource;
 using MyMagicCollection.wpf.Settings;
 using MyMagicCollection.wpf.ViewModels;
@@ -18,6 +20,8 @@ namespace MyMagicCollection.wpf
         private readonly SettingsData _settings;
         private string _statusBarText;
 
+        private MagicBinderViewModel _activeBinder;
+         
         private IMagicDataSource _currentDataSource;
 
         private IEnumerable<FoundMagicCardViewModel> _searchResult;
@@ -45,6 +49,11 @@ namespace MyMagicCollection.wpf
             _settings = provider.GetSettings<SettingsData>();
 
             _currentDataSource = new StaticMagicDataDataSource();
+
+            if (!string.IsNullOrEmpty(_settings.LoadedBinder))
+            {
+                LoadBinder(_settings.LoadedBinder);
+            }
         }
 
         public CardLookup CardLookup { get; private set; }
@@ -62,6 +71,13 @@ namespace MyMagicCollection.wpf
                 _statusBarText = value;
                 RaisePropertyChanged(() => StatusBarText);
             }
+        }
+
+        public bool IsActiveBinder { get { return _activeBinder != null; } }
+
+        public MagicBinderViewModel ActiveBinder
+        {
+            get { return _activeBinder; }
         }
 
         public IEnumerable<FoundMagicCardViewModel> CardCollection
@@ -117,6 +133,40 @@ namespace MyMagicCollection.wpf
             stopwatch.Stop();
             _notificationCenter.FireNotification(null, "Card search returned " + found.Count() + " and took " + stopwatch.Elapsed);
             CardCollection = found;
+        }
+
+        public void CreateAndSetNewBinder(string fileName)
+        {
+            var name = new FileInfo(fileName);
+            _activeBinder = new MagicBinderViewModel(name.Name.Substring(0, name.Name.Length - name.Extension.Length));
+            _activeBinder.WriteFile(fileName);
+            _settings.LoadedBinder = fileName;
+            SaveSettings();
+
+            RaisePropertyChanged(() => IsActiveBinder);
+            RaisePropertyChanged(() => ActiveBinder);
+
+            _notificationCenter.FireNotification(null, string.Format("Created binder '{0}'.", _activeBinder.Name));
+        }
+
+        public void LoadBinder(string fileName)
+        {
+            var fileInfo = new FileInfo(fileName);
+            if (!File.Exists(_settings.LoadedBinder))
+            {
+                _notificationCenter.FireNotification(null, string.Format("Binder file '{0}' does not exist.", fileInfo.Name));
+                return;
+            }
+
+            _activeBinder = new MagicBinderViewModel();
+            _activeBinder.ReadFile(fileName);
+            _settings.LoadedBinder = fileName;
+            SaveSettings();
+
+            RaisePropertyChanged(() => IsActiveBinder);
+            RaisePropertyChanged(() => ActiveBinder);
+
+            _notificationCenter.FireNotification(null, string.Format("Loaded binder '{0}'.", _activeBinder.Name));
         }
     }
 }

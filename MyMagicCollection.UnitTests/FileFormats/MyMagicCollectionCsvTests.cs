@@ -22,13 +22,13 @@ namespace MyMagicCollection.UnitTests
         public void TestMyMagicCollectionCsvWrite()
         {
             var cards = new[] {
-                new MagicCollectionCard()
+                new MagicBinderCard()
                 {
                     RowId="row1",
                     CardId = "card id 1",
                     Grade = MagicGrade.LightlyPlayed,
                 },
-                new MagicCollectionCard()
+                new MagicBinderCard()
                 {
                     RowId="row2",
                     CardId = "card id 2",
@@ -38,7 +38,7 @@ namespace MyMagicCollection.UnitTests
                 }
             }.ToList();
 
-            var collection = new MagicCollection(cards)
+            var collection = new MagicBinder(cards)
             {
                 Name = "My collection",
             };

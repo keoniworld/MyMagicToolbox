@@ -52,8 +52,8 @@
     <Compile Include="Minimods\Minimod.NotificationObject.Generated.cs" />
     <Compile Include="Models\CardLookup.cs" />
     <Compile Include="Models\MagicCardDefinition.cs" />
-    <Compile Include="Models\MagicCollection.cs" />
-    <Compile Include="Models\MagicCollectionCard.cs" />
+    <Compile Include="Models\MagicBinder.cs" />
+    <Compile Include="Models\MagicBinderCard.cs" />
     <Compile Include="Notification\INotificationCenter.cs" />
     <Compile Include="Notification\NotificationCenter.cs" />
     <Compile Include="Notification\NotificationCenterEventArgs.cs" />

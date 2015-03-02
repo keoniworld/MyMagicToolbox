@@ -7,16 +7,31 @@ namespace MyMagicCollection.Shared.ViewModels
 {
     public class MagicBinderViewModel
     {
-        private MagicCollection _magicCollection;
+        private MagicBinder _magicCollection;
+        private string _fileName;
 
         private IDictionary<string, MagicBinderCardViewModel> _sortedCards;
 
         public MagicBinderViewModel()
+            :this(null)
+        {
+        }
+
+        public MagicBinderViewModel(string name)
         {
             _sortedCards = new Dictionary<string, MagicBinderCardViewModel>();
+            if (!string.IsNullOrEmpty(name))
+            {
+                _magicCollection = new MagicBinder
+                {
+                    Name = name,
+                };
+            }
         }
 
         public IEnumerable<MagicBinderCardViewModel> Cards { get; private set; }
+
+        public string Name => _magicCollection.Name;
 
         public void ReadFile(string fileName)
         {
@@ -28,6 +43,12 @@ namespace MyMagicCollection.Shared.ViewModels
                 .Select(c => new MagicBinderCardViewModel(StaticMagicData.CardDefinitionsByCardId[c.CardId], c));
 
             _sortedCards = Cards.ToDictionary(c => c.RowId);
+            _fileName = fileName;
+        }
+
+        public void WriteFile()
+        {
+            WriteFile(_fileName);
         }
 
         public void WriteFile(string fileName)
@@ -39,6 +60,7 @@ namespace MyMagicCollection.Shared.ViewModels
 
             var loader = new MyMagicCollectionCsv();
             loader.WriteFile(fileName, _magicCollection);
+            _fileName = fileName;
         }
 
         // TODO: Modifikationsoperationen

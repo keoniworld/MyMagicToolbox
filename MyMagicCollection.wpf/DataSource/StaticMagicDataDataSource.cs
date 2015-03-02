@@ -24,8 +24,7 @@ namespace MyMagicCollection.wpf.DataSource
 
             // TODO: Andere optionen
 
-
-            return result.Select(c=>new FoundMagicCardViewModel(c)).ToList();
+            return result.Select(c => new FoundMagicCardViewModel(c)).OrderBy(c => c.NameEN).ToList();
         }
     }
 }

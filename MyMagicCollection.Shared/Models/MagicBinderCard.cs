@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace MyMagicCollection.Shared.Models
 {
-    public class MagicCollectionCard
+    public class MagicBinderCard
     {
-        public MagicCollectionCard()
+        public MagicBinderCard()
         {
             Language = MagicLanguage.English;
             RowId = Guid.NewGuid().ToString();

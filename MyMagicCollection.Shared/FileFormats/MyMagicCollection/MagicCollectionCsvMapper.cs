@@ -8,7 +8,7 @@ using MyMagicCollection.Shared.Models;
 
 namespace MyMagicCollection.Shared.FileFormats.MyMagicCollection
 {
-	public sealed class MagicCollectionCsvMapper : CsvClassMap<MagicCollection>
+	public sealed class MagicCollectionCsvMapper : CsvClassMap<MagicBinder>
 	{
 		public MagicCollectionCsvMapper()
 		{

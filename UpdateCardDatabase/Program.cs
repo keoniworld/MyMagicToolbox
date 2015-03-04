@@ -175,7 +175,10 @@ namespace UpdateCardDatabase
 
                     writer.WriteRecord<MagicCardDefinition>(card);
 
-                    var setName = inputCsv.GetField<string>("set");
+                    var setName = inputCsv.GetField<string>("set")
+                        .Replace("Magic: The Gathering—Conspiracy", "Conspiracy")
+                        .Replace("Magic: The Gathering-Commander", "Commander");
+
                     if (!string.IsNullOrWhiteSpace(setName) && !availableSets.ContainsKey(card.SetCode))
                     {
                         var definition = new MagicSetDefinition { Name = setName, Code = card.SetCode };

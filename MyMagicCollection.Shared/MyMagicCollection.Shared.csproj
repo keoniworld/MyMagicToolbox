@@ -44,8 +44,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CSV\MagicDatabaseLoader.cs" />
+    <Compile Include="DataSource\IMagicDataSource.cs" />
+    <Compile Include="DataSource\ActiveBinderDataSource.cs" />
+    <Compile Include="DataSource\MagicDataDataSourceBase.cs" />
+    <Compile Include="DataSource\StaticMagicDataDataSource.cs" />
+    <Compile Include="FileFormats\DeckBoxCsv\DeckBoxInventoryCsvReader.cs" />
     <Compile Include="FileFormats\MyMagicCollection\MagicCollectionCsvMapper.cs" />
     <Compile Include="FileFormats\MyMagicCollection\MyMagicCollectionCsv.cs" />
+    <Compile Include="Helper\MagicLanguagehelper.cs" />
+    <Compile Include="Helper\MagicGradeHelper.cs" />
     <Compile Include="Helper\EmbeddedResourceHelper.cs" />
     <Compile Include="Helper\PathHelper.cs" />
     <Compile Include="Minimods\Minimod.ExpressionExtensions.Generated.cs" />
@@ -57,6 +64,7 @@
     <Compile Include="Notification\INotificationCenter.cs" />
     <Compile Include="Notification\NotificationCenter.cs" />
     <Compile Include="Notification\NotificationCenterEventArgs.cs" />
+    <Compile Include="ViewModels\FoundMagicCardViewModel.cs" />
     <Compile Include="ViewModels\MagicBinderCardViewModel.cs" />
     <Compile Include="Models\MagicGrade.cs" />
     <Compile Include="Models\MagicLanguage.cs" />

@@ -4,19 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MyMagicCollection.Shared.Models;
-using MyMagicCollection.wpf.ViewModels;
+using MyMagicCollection.Shared.ViewModels;
 
-namespace MyMagicCollection.wpf.DataSource
+namespace MyMagicCollection.Shared.DataSource
 {
-    public class StaticMagicDataDataSource : IMagicDataSource
+    public abstract class MagicDataDataSourceBase : IMagicDataSource
     {
-        public StaticMagicDataDataSource()
-        {
-        }
+		public abstract IEnumerable<MagicCardDefinition> CardDefinitions { get; }
 
         public IEnumerable<FoundMagicCardViewModel> Lookup(CardLookup lookupOptions)
         {
-            var result = StaticMagicData.CardDefinitions;
+            var result = CardDefinitions;
 
             // TODO: Optimize this
             var name = lookupOptions.SearchTerm.ToLowerInvariant();

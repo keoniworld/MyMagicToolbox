@@ -22,6 +22,8 @@ namespace MyMagicCollection.Shared.ViewModels
 			_card = card;
         }
 
+		public MagicCardDefinition Definition => _definition;
+
 		public string CardId
 		{
 			get

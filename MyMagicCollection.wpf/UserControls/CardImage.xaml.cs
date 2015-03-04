@@ -8,6 +8,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using MyMagicCollection.Shared;
+using MyMagicCollection.Shared.Helper;
 using MyMagicCollection.Shared.Models;
 
 namespace MyMagicCollection.wpf.UserControls
@@ -24,7 +25,9 @@ namespace MyMagicCollection.wpf.UserControls
             DependencyProperty.Register("SelectedCard", typeof(MagicCardDefinition),
             typeof(CardImage), new FrameworkPropertyMetadata(OnImageChanged));
 
-        private INotificationCenter _notificationCenter;
+        private readonly INotificationCenter _notificationCenter;
+
+		private readonly BitmapImage _emptyImage;
 
         public CardImage(INotificationCenter notificationCenter)
         {
@@ -32,7 +35,14 @@ namespace MyMagicCollection.wpf.UserControls
 
             InitializeComponent();
             rootGrid.DataContext = this;
-        }
+
+			_emptyImage = new BitmapImage();
+			_emptyImage.BeginInit();
+			_emptyImage.StreamSource = GetType().Assembly.GetEmbeddedResourceStream("Empty.png");
+			_emptyImage.EndInit();
+			_emptyImage.Freeze();
+			imageControl.Source = _emptyImage;
+		}
 
         public CardImage()
             : this(NotificationCenter.Instance)
@@ -52,7 +62,7 @@ namespace MyMagicCollection.wpf.UserControls
             var instance = d as CardImage;
             if (instance != null)
             {
-                instance.imageControl.Source = null;
+                instance.imageControl.Source = instance._emptyImage;
 
                 // Trigger download and display
                 var card = instance.SelectedCard;
@@ -64,7 +74,7 @@ namespace MyMagicCollection.wpf.UserControls
                     {
                         if (string.IsNullOrWhiteSpace(cardFileName))
                         {
-                            instance.imageControl.Source = null;
+                            instance.imageControl.Source = instance._emptyImage;
                         }
                         else
                         {

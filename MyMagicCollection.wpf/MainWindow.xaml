@@ -5,9 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MyMagicCollection.wpf"
         xmlns:userControl="clr-namespace:MyMagicCollection.wpf.UserControls"
+        xmlns:converter="clr-namespace:MyMagicCollection.wpf.Converter"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="800">
+        Title="MainWindow" Height="600" Width="800"
+        MinWidth="640" MinHeight="480">
 
+	<Window.Resources>
+		<converter:EnumMatchToBooleanConverter x:Key="EnumMatchToBooleanConverter" />
+	</Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -41,32 +46,93 @@
                 <TextBox HorizontalAlignment="Stretch" Text="{Binding CardLookup.SearchTerm, Mode=TwoWay,Delay=500}" />
                 <Button Grid.Column="1" Click="OnSearchButtonClick">Search!</Button>
 
+			
                 <!-- TODO: Search options -->
             </Grid>
         </GroupBox>
+		
+		<GroupBox Header="Lookup Source" Grid.Column="2">
+				<StackPanel Grid.Row="1">
+					<RadioButton GroupName="DataProviderSource" IsChecked="{Binding LookupSource, Mode=TwoWay, Converter={StaticResource EnumMatchToBooleanConverter}, ConverterParameter=CardDatabase}">All Cards</RadioButton>
+					<RadioButton GroupName="DataProviderSource" IsEnabled="{Binding IsActiveBinder}" 
+								 IsChecked="{Binding LookupSource, Mode=TwoWay, Converter={StaticResource EnumMatchToBooleanConverter}, ConverterParameter=ActiveBinder}">Active Binder</RadioButton>
+				</StackPanel>
+		</GroupBox>
 
         <!-- Card Details -->
-        <GroupBox Header="Selected card" Grid.Row="1">
-            <userControl:CardImage
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <GroupBox Header="Selected card" Grid.Row="0">
+
+                <userControl:CardImage
                 VerticalAlignment="Top"
                 HorizontalAlignment="Stretch"
 
                 SelectedCard="{Binding SelectedCard.Definition}" />
-        </GroupBox>
+            </GroupBox>
+            <GroupBox Grid.Row="1" Header="Binder">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Grid.Row="0" HorizontalAlignment="Right"
+                            Orientation="Horizontal">
+                        
+                        <Button Margin="3,0,0,0">Delete</Button>
+                    </StackPanel>
+
+					<!-- TODO: Use selected card from collection, not all -->
+                    <DataGrid Grid.Row="1"
+                        ItemsSource="{Binding SelectedCardsInBinder}"
+                        SelectedItem="{Binding SelectedCardInBinder, Mode=TwoWay}" />
+                </Grid>
+            </GroupBox>
+        </Grid>
 
         <!-- Result Grid -->
-        <DataGrid Grid.Row="1" Grid.Column="1"
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <DataGrid Grid.Row="0"
                   ItemsSource="{Binding CardCollection}"
                   SelectedItem="{Binding SelectedCard, Mode=TwoWay}" />
 
+            <Grid  Grid.Row="1">
+                <StackPanel Orientation="Horizontal">
+                <ComboBox ItemsSource="{Binding AvailableLanguages}" SelectedItem="{Binding SelectedLanguage, Mode=TwoWay}" />
+                <ComboBox Margin="3,0,0,0" ItemsSource="{Binding AvailableGrades}" SelectedItem="{Binding SelectedGrade, Mode=TwoWay}" />
+                    <CheckBox VerticalAlignment="Center" IsChecked="{Binding SelectedCardIsFoil}">Foil?</CheckBox>
+                <Button Margin="3,0,0,0">Add all</Button>
+                <Button Margin="3,0,0,0">Remove all</Button>
+                    </StackPanel>
+                <Button HorizontalAlignment="Right" IsEnabled="{Binding CanAddSelected}" Click="OnAddSelectedCardToBinder">Add Selected</Button>
+            </Grid>
+        </Grid>
         <!-- Binder summary -->
         <Grid Grid.Column="2" Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
-            <GroupBox Header="Binder">
+            <GroupBox Header="Import" Grid.Row="0">
+                <StackPanel>
+                    <Button Click="OnImportDeckbox">Import Deckbox</Button>
+                </StackPanel>
+            </GroupBox>
+            
+            <GroupBox Header="Binder" Grid.Row="1">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
@@ -77,7 +143,7 @@
                         <Button >Open</Button>
                         <Button Margin="3,0,0,0" Click="OnNewBinderClick">New</Button>
                         <Button Margin="3,0,0,0" IsEnabled="{Binding IsActiveBinder}">Export</Button>
-                        <Button Margin="3,0,0,0" IsEnabled="{Binding IsActiveBinder}">Show</Button>
+                        <Button Margin="3,0,0,0" IsEnabled="{Binding IsActiveBinder}" Click="OnShowCollectionCards">Show</Button>
                     </StackPanel>
 
                     <Grid Grid.Row="1" IsEnabled="{Binding IsActiveBinder}">
@@ -93,8 +159,6 @@
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-
-
 
                         <Label Grid.Row="1">Name</Label>
                         <TextBox Grid.Row="1" HorizontalAlignment="Stretch" Grid.Column="1"
@@ -115,7 +179,7 @@
                 </Grid>
             </GroupBox>
 
-            <GroupBox Header="Trade List" Grid.Row="1">
+            <GroupBox Header="Trade List" Grid.Row="2">
                 <Grid IsEnabled="{Binding IsActiveBinder}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />

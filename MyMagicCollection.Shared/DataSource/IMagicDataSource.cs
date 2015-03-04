@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using MyMagicCollection.Shared.Models;
-using MyMagicCollection.wpf.ViewModels;
+using MyMagicCollection.Shared.ViewModels;
 
-namespace MyMagicCollection.wpf.DataSource
+namespace MyMagicCollection.Shared.DataSource
 {
     public interface IMagicDataSource
     {

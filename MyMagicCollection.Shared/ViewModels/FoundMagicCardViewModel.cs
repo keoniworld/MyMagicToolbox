@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MyMagicCollection.Shared.Models;
 
-namespace MyMagicCollection.wpf.ViewModels
+namespace MyMagicCollection.Shared.ViewModels
 {
     /// <summary>
     /// This view model is a wrapper for all possible search result type.
@@ -25,7 +25,17 @@ namespace MyMagicCollection.wpf.ViewModels
             }
         }
 
-        public string NameEN => _definition.NameEN;
+		public FoundMagicCardViewModel(MagicBinderCardViewModel card)
+		{
+			_definition = card.Definition;
+			MagicSetDefinition set;
+			if (StaticMagicData.SetDefinitionsBySetCode.TryGetValue(_definition.SetCode, out set))
+			{
+				SetName = set.Name;
+			}
+		}
+
+		public string NameEN => _definition.NameEN;
 
         public string NameDE => _definition.NameDE;
 

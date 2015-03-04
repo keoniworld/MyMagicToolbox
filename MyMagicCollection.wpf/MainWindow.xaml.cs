@@ -60,5 +60,35 @@ namespace MyMagicCollection.wpf
                 _viewModel.CreateAndSetNewBinder(dialog.FileName);
             }
         }
+
+        private void OnAddSelectedCardToBinder(object sender, RoutedEventArgs e)
+        {
+            _viewModel.AddSelectedCardToBinder();
+        }
+
+        private void OnShowCollectionCards(object sender, RoutedEventArgs e)
+        {
+            _viewModel.ShowCollectionCards();
+        }
+
+        private void OnImportDeckbox(object sender, RoutedEventArgs e)
+        {
+            var dialog = new OpenFileDialog()
+            {
+                Multiselect = false,
+                AddExtension = true,
+                CheckPathExists = true,
+                CheckFileExists = true,
+                Title = "Import card list",
+                Filter = "Deckbox.org CSV *.csv|*.csv",
+                DefaultExt = ".csv",
+                InitialDirectory = PathHelper.UserDataFolder,
+            };
+
+            if (dialog.ShowDialog(this) == true)
+            {
+                _viewModel.ImportCardList(dialog.FileName);
+            }
+        }
     }
 }

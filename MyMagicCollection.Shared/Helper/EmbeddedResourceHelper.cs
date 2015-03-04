@@ -13,7 +13,18 @@ namespace MyMagicCollection.Shared.Helper
 				.FirstOrDefault(n => n.ToLowerInvariant().Contains(resourceName));
 		}
 
-		public static string LoadEmbeddedResourceTextFile(this Assembly assembly, string resourceName)
+		public static Stream GetEmbeddedResourceStream(this Assembly assembly, string resourceName)
+		{
+			var fullName = assembly.FindEmbeddedResource(resourceName);
+			if (string.IsNullOrWhiteSpace(fullName))
+			{
+				return null;
+			}
+
+			return assembly.GetManifestResourceStream(fullName);
+        }
+
+        public static string LoadEmbeddedResourceTextFile(this Assembly assembly, string resourceName)
 		{
 			var fullName = assembly.FindEmbeddedResource(resourceName);
 			if (string.IsNullOrWhiteSpace(fullName))

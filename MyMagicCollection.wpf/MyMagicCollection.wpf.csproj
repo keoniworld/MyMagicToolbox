@@ -59,14 +59,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="DataSource\IMagicDataSource.cs" />
-    <Compile Include="DataSource\StaticMagicDataDataSource.cs" />
+    <Compile Include="Converter\EnumMatchToBooleanConverter.cs" />
+    <Compile Include="LookupSource.cs" />
     <Compile Include="Settings\LocalAppDataStorage.cs" />
     <Compile Include="Settings\SettingsData.cs" />
     <Compile Include="UserControls\CardImage.xaml.cs">
       <DependentUpon>CardImage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\FoundMagicCardViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -119,7 +118,12 @@
       <Name>MyMagicCollection.Shared</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="UserControls\Empty.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ViewModels\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

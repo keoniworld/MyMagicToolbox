@@ -12,6 +12,7 @@ using MyMagicCollection.Shared.FileFormats.DeckBoxCsv;
 using MyMagicCollection.Shared.Models;
 using MyMagicCollection.Shared.ViewModels;
 using MyMagicCollection.wpf.Settings;
+using NLog;
 using SettingsProviderNet;
 
 namespace MyMagicCollection.wpf
@@ -38,8 +39,11 @@ namespace MyMagicCollection.wpf
 
         private LookupSource _lookupSource;
 
+        private Logger _logger = LogManager.GetCurrentClassLogger();
+
         public MainViewModel(INotificationCenter notificationCenter)
         {
+            _logger.Log(LogLevel.Info, "============================= NEW APP START ============================= ");
             _notificationCenter = notificationCenter;
             CardLookup = new CardLookup();
 
@@ -51,6 +55,7 @@ namespace MyMagicCollection.wpf
 
             notificationCenter.NotificationFired += (sender, e) =>
               {
+                  _logger.Log(LogLevel.Info, e.Message);
                   StatusBarText = e.Message;
               };
 
@@ -213,11 +218,16 @@ namespace MyMagicCollection.wpf
         {
             var info = new FileInfo(fileName);
             _notificationCenter.FireNotification(null, string.Format("Loading '{0}'...", info.Name));
-
+            var watch = Stopwatch.StartNew();
             var reader = new DeckBoxInventoryCsvReader(_notificationCenter);
-            var found = reader.ReadCsvFile(fileName);
+            var found = reader.ReadCsvFile(fileName)
+                .AsParallel()
+                .Select(c => new FoundMagicCardViewModel(c))
+                .ToList();
 
-            CardCollection = found.Select(c => new FoundMagicCardViewModel(c));
+            watch.Stop();
+            _notificationCenter.FireNotification(null, string.Format("Loaded '{0}' in {1}", info.Name, watch.Elapsed));
+            CardCollection = found;
             // TODO: Analyse file formats later
         }
 

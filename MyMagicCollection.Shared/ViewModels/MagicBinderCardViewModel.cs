@@ -66,7 +66,36 @@ namespace MyMagicCollection.Shared.ViewModels
 			}
 		}
 
-		public string CardNameEN => _definition.NameEN;
+
+        public MagicLanguage? Language
+        {
+            get
+            {
+                return _card.Language;
+            }
+
+            set
+            {
+                _card.Language = value;
+                RaisePropertyChanged(() => Language);
+            }
+        }
+
+        public MagicGrade? Grade
+        {
+            get
+            {
+                return _card.Grade;
+            }
+
+            set
+            {
+                _card.Grade = value;
+                RaisePropertyChanged(() => Grade);
+            }
+        }
+
+        public string CardNameEN => _definition.NameEN;
 		public string CardNameDE => _definition.NameDE;
 
         public string RowId => _card.RowId;

@@ -29,7 +29,11 @@ namespace MyMagicCollection.Shared.FileFormats.DeckBoxCsv
         {
             var result = new List<MagicBinderCardViewModel>();
 
+            var groupedCards = StaticMagicData.CardDefinitions.GroupBy(d => d.SetCode).ToList();
+
             MagicSetDefinition set = null;
+            MagicCardDefinition definition = null;
+            string lastSetCodeName;
             using (var inputCsv = new CsvReader(new StringReader(content)))
             {
                 while (inputCsv.Read())
@@ -38,8 +42,12 @@ namespace MyMagicCollection.Shared.FileFormats.DeckBoxCsv
                     {
                         Quantity = inputCsv.GetField<int>("Count"),
                         QuantityTrade = inputCsv.GetField<int>("Tradelist Count"),
+                        Grade = inputCsv.GetField<string>("Condition").ToMagicGrade(),
+                        IsFoil = inputCsv.GetField<string>("Foil") == "foil",
+                        Language = inputCsv.GetField<string>("Language").ToMagicLanguage()
                     };
 
+                    var cardNumber = inputCsv.GetField<int?>("Card Number");
                     var cardName = inputCsv.GetField<string>("Name");
                     var setName = inputCsv.GetField<string>("Edition");
                     if (set == null || !set.Name.Equals(setName, StringComparison.InvariantCultureIgnoreCase))
@@ -53,20 +61,14 @@ namespace MyMagicCollection.Shared.FileFormats.DeckBoxCsv
                         }
                     }
 
-                    
-                    var definition = StaticMagicData.CardDefinitions.Where(c => c.SetCode == set.Code && c.NameEN.Equals(cardName, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
-                    if (definition == null)
+                    var setCodeName = StaticMagicData.MakeNameSetCode(set.Code, cardName, cardNumber);
+                    lastSetCodeName = setCodeName;
+
+                    if (!StaticMagicData.CardDefinitionsByNameSetCode.TryGetValue(setCodeName, out definition))
                     {
                         _notificationCenter.FireNotification("CSV", string.Format("Cannot find card {0} ({1})", cardName, setName));
                         continue;
                     }
-
-                    var condition = inputCsv.GetField<string>("Condition");
-                    var foil = inputCsv.GetField<string>("Foil");
-
-                    card.Language = inputCsv.GetField<string>("Language").ToMagicLanguage();
-                    card.IsFoil = foil == "foil";
-                    card.Grade = condition.ToMagicGrade();
 
                     result.Add(new MagicBinderCardViewModel(definition, card));
                 }

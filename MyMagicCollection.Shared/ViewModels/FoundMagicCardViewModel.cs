@@ -14,6 +14,8 @@ namespace MyMagicCollection.Shared.ViewModels
     {
         private readonly MagicCardDefinition _definition;
 
+        private readonly MagicBinderCardViewModel _viewModel;
+
         public FoundMagicCardViewModel(MagicCardDefinition definition)
         {
             _definition = definition;
@@ -25,25 +27,34 @@ namespace MyMagicCollection.Shared.ViewModels
             }
         }
 
-		public FoundMagicCardViewModel(MagicBinderCardViewModel card)
-		{
-			_definition = card.Definition;
-			MagicSetDefinition set;
-			if (StaticMagicData.SetDefinitionsBySetCode.TryGetValue(_definition.SetCode, out set))
-			{
-				SetName = set.Name;
-			}
-		}
+        public FoundMagicCardViewModel(MagicBinderCardViewModel card)
+        {
+            _definition = card.Definition;
+            MagicSetDefinition set;
+            if (StaticMagicData.SetDefinitionsBySetCode.TryGetValue(_definition.SetCode, out set))
+            {
+                SetName = set.Name;
+            }
 
-		public string NameEN => _definition.NameEN;
+            _viewModel = card;
+        }
+
+        public string NameEN => _definition.NameEN;
 
         public string NameDE => _definition.NameDE;
 
         public string SetCode => _definition.SetCode;
 
+        public int? Quantity => _viewModel?.Quantity;
+
+        public int? QuantityTrade => _viewModel?.QuantityTrade;
+
         // TODO: Das wieder raus?
         public MagicCardDefinition Definition => _definition;
 
         public string SetName { get; private set; }
+
+        public MagicLanguage? Language => _viewModel?.Language;
+        public MagicGrade? Grade => _viewModel?.Grade;
     }
 }

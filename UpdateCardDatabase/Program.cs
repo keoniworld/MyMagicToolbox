@@ -140,6 +140,8 @@ namespace UpdateCardDatabase
             var setWriter = new CsvWriter(new StreamWriter(exportSetFileName), config);
             setWriter.WriteHeader<MagicSetDefinition>();
 
+            var uniqueList = new Dictionary<string, string>();
+
             foreach (var inputCsvName in inputFiles)
             {
                 Console.WriteLine("Reading file " + new FileInfo(inputCsvName).Name);
@@ -173,7 +175,9 @@ namespace UpdateCardDatabase
                     card.RulesTextDE = inputCsv.GetField<string>("ability_DE");
                     // .Replace("£", Environment.NewLine);
 
-                    writer.WriteRecord<MagicCardDefinition>(card);
+
+
+                  
 
                     var setName = inputCsv.GetField<string>("set")
                         .Replace("Magic: The Gathering—Conspiracy", "Conspiracy")
@@ -185,6 +189,19 @@ namespace UpdateCardDatabase
                         availableSets.Add(card.SetCode, definition);
                         setWriter.WriteRecord(definition);
                     }
+
+                    var unique = StaticMagicData.MakeNameSetCode(card.SetCode, card.NameEN, card.NumberInSet);
+                    if (uniqueList.ContainsKey(unique))
+                    {
+                        // Ignore variants of 
+                        continue;
+                    }
+
+                    uniqueList.Add(unique, unique);
+
+                    writer.WriteRecord<MagicCardDefinition>(card);
+
+
 
                     Console.WriteLine(count + " Reading " + card.NameEN + "(" + card.SetCode + ")...");
 

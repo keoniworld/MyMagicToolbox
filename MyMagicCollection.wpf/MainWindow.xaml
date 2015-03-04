@@ -10,9 +10,9 @@
         Title="MainWindow" Height="600" Width="800"
         MinWidth="640" MinHeight="480">
 
-	<Window.Resources>
-		<converter:EnumMatchToBooleanConverter x:Key="EnumMatchToBooleanConverter" />
-	</Window.Resources>
+    <Window.Resources>
+        <converter:EnumMatchToBooleanConverter x:Key="EnumMatchToBooleanConverter" />
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -46,18 +46,18 @@
                 <TextBox HorizontalAlignment="Stretch" Text="{Binding CardLookup.SearchTerm, Mode=TwoWay,Delay=500}" />
                 <Button Grid.Column="1" Click="OnSearchButtonClick">Search!</Button>
 
-			
+
                 <!-- TODO: Search options -->
             </Grid>
         </GroupBox>
-		
-		<GroupBox Header="Lookup Source" Grid.Column="2">
-				<StackPanel Grid.Row="1">
-					<RadioButton GroupName="DataProviderSource" IsChecked="{Binding LookupSource, Mode=TwoWay, Converter={StaticResource EnumMatchToBooleanConverter}, ConverterParameter=CardDatabase}">All Cards</RadioButton>
-					<RadioButton GroupName="DataProviderSource" IsEnabled="{Binding IsActiveBinder}" 
+
+        <GroupBox Header="Lookup Source" Grid.Column="2">
+            <StackPanel Grid.Row="1">
+                <RadioButton GroupName="DataProviderSource" IsChecked="{Binding LookupSource, Mode=TwoWay, Converter={StaticResource EnumMatchToBooleanConverter}, ConverterParameter=CardDatabase}">All Cards</RadioButton>
+                <RadioButton GroupName="DataProviderSource" IsEnabled="{Binding IsActiveBinder}" 
 								 IsChecked="{Binding LookupSource, Mode=TwoWay, Converter={StaticResource EnumMatchToBooleanConverter}, ConverterParameter=ActiveBinder}">Active Binder</RadioButton>
-				</StackPanel>
-		</GroupBox>
+            </StackPanel>
+        </GroupBox>
 
         <!-- Card Details -->
         <Grid Grid.Row="1">
@@ -84,11 +84,11 @@
 
                     <StackPanel Grid.Row="0" HorizontalAlignment="Right"
                             Orientation="Horizontal">
-                        
+
                         <Button Margin="3,0,0,0">Delete</Button>
                     </StackPanel>
 
-					<!-- TODO: Use selected card from collection, not all -->
+                    <!-- TODO: Use selected card from collection, not all -->
                     <DataGrid Grid.Row="1"
                         ItemsSource="{Binding SelectedCardsInBinder}"
                         SelectedItem="{Binding SelectedCardInBinder, Mode=TwoWay}" />
@@ -105,16 +105,26 @@
 
             <DataGrid Grid.Row="0"
                   ItemsSource="{Binding CardCollection}"
-                  SelectedItem="{Binding SelectedCard, Mode=TwoWay}" />
+                  SelectedItem="{Binding SelectedCard, Mode=TwoWay}" 
+                      AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn SortMemberPath="Quantity" Header="Quantity" Binding="{Binding Quantity}" />
+                    <DataGridTextColumn SortMemberPath="QuantityTrade" Header="Trade" Binding="{Binding QuantityTrade}" />
+                    <DataGridTextColumn SortMemberPath="NameEN" Header="Name" Binding="{Binding NameEN}" />
+                    <DataGridTextColumn SortMemberPath="SetCode" Header="Set" Binding="{Binding SetCode}" />
+                    <DataGridTextColumn SortMemberPath="Grade" Header="Grade" Binding="{Binding Grade}" />
+                    <DataGridTextColumn SortMemberPath="Language" Header="Language" Binding="{Binding Language}" />
+                </DataGrid.Columns>
+            </DataGrid>
 
             <Grid  Grid.Row="1">
                 <StackPanel Orientation="Horizontal">
-                <ComboBox ItemsSource="{Binding AvailableLanguages}" SelectedItem="{Binding SelectedLanguage, Mode=TwoWay}" />
-                <ComboBox Margin="3,0,0,0" ItemsSource="{Binding AvailableGrades}" SelectedItem="{Binding SelectedGrade, Mode=TwoWay}" />
+                    <ComboBox ItemsSource="{Binding AvailableLanguages}" SelectedItem="{Binding SelectedLanguage, Mode=TwoWay}" />
+                    <ComboBox Margin="3,0,0,0" ItemsSource="{Binding AvailableGrades}" SelectedItem="{Binding SelectedGrade, Mode=TwoWay}" />
                     <CheckBox VerticalAlignment="Center" IsChecked="{Binding SelectedCardIsFoil}">Foil?</CheckBox>
-                <Button Margin="3,0,0,0">Add all</Button>
-                <Button Margin="3,0,0,0">Remove all</Button>
-                    </StackPanel>
+                    <Button Margin="3,0,0,0">Add all</Button>
+                    <Button Margin="3,0,0,0">Remove all</Button>
+                </StackPanel>
                 <Button HorizontalAlignment="Right" IsEnabled="{Binding CanAddSelected}" Click="OnAddSelectedCardToBinder">Add Selected</Button>
             </Grid>
         </Grid>
@@ -131,7 +141,7 @@
                     <Button Click="OnImportDeckbox">Import Deckbox</Button>
                 </StackPanel>
             </GroupBox>
-            
+
             <GroupBox Header="Binder" Grid.Row="1">
                 <Grid>
                     <Grid.RowDefinitions>

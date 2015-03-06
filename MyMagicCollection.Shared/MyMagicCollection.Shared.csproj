@@ -49,6 +49,7 @@
     <Compile Include="DataSource\MagicDataDataSourceBase.cs" />
     <Compile Include="DataSource\StaticMagicDataDataSource.cs" />
     <Compile Include="FileFormats\DeckBoxCsv\DeckBoxInventoryCsvReader.cs" />
+    <Compile Include="FileFormats\Dec\DecReader.cs" />
     <Compile Include="FileFormats\MyMagicCollection\MagicCollectionCsvMapper.cs" />
     <Compile Include="FileFormats\MyMagicCollection\MyMagicCollectionCsv.cs" />
     <Compile Include="Helper\MagicLanguagehelper.cs" />
@@ -58,9 +59,11 @@
     <Compile Include="Minimods\Minimod.ExpressionExtensions.Generated.cs" />
     <Compile Include="Minimods\Minimod.NotificationObject.Generated.cs" />
     <Compile Include="Models\CardLookup.cs" />
+    <Compile Include="Models\MagicDeckCard.cs" />
     <Compile Include="Models\MagicCardDefinition.cs" />
     <Compile Include="Models\MagicBinder.cs" />
     <Compile Include="Models\MagicBinderCard.cs" />
+    <Compile Include="Models\MagicDeckLocation.cs" />
     <Compile Include="Notification\INotificationCenter.cs" />
     <Compile Include="Notification\NotificationCenter.cs" />
     <Compile Include="Notification\NotificationCenterEventArgs.cs" />

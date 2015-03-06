@@ -6,231 +6,277 @@
         xmlns:local="clr-namespace:MyMagicCollection.wpf"
         xmlns:userControl="clr-namespace:MyMagicCollection.wpf.UserControls"
         xmlns:converter="clr-namespace:MyMagicCollection.wpf.Converter"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="800"
         MinWidth="640" MinHeight="480">
 
-    <Window.Resources>
-        <converter:EnumMatchToBooleanConverter x:Key="EnumMatchToBooleanConverter" />
-    </Window.Resources>
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
+	<Window.Resources>
+		<converter:EnumMatchToBooleanConverter x:Key="EnumMatchToBooleanConverter" />
+	</Window.Resources>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="*" />
+			<RowDefinition Height="Auto" />
+		</Grid.RowDefinitions>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" MaxWidth="360" />
-            <ColumnDefinition Width="2*" />
-            <ColumnDefinition Width="*" MaxWidth="360" />
-        </Grid.ColumnDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*" MaxWidth="360" />
+			<ColumnDefinition Width="2*" />
+			<ColumnDefinition Width="*" MaxWidth="360" />
+		</Grid.ColumnDefinitions>
 
-        <!-- Database Information -->
-        <StackPanel Orientation="Horizontal">
-            <TextBlock Text="{Binding DatabaseSummary}" />
-        </StackPanel>
+		<!-- Database Information -->
+		<StackPanel Orientation="Horizontal">
+			<TextBlock Text="{Binding DatabaseSummary}" />
+		</StackPanel>
 
-        <!-- Search Panel -->
-        <GroupBox Header="Card Lookup" Grid.Row="0" Grid.Column="1">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
+		<!-- Search Panel -->
+		<GroupBox Header="Card Lookup" Grid.Row="0" Grid.Column="1">
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*" />
+					<ColumnDefinition Width="Auto" />
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+				</Grid.RowDefinitions>
 
-                <TextBox HorizontalAlignment="Stretch" Text="{Binding CardLookup.SearchTerm, Mode=TwoWay,Delay=500}" />
-                <Button Grid.Column="1" Click="OnSearchButtonClick">Search!</Button>
+				<TextBox HorizontalAlignment="Stretch" Text="{Binding CardLookup.SearchTerm, Mode=TwoWay,Delay=500}" />
+				<Button Grid.Column="1" Click="OnSearchButtonClick">Search!</Button>
 
 
-                <!-- TODO: Search options -->
-            </Grid>
-        </GroupBox>
+				<!-- TODO: Search options -->
+			</Grid>
+		</GroupBox>
 
-        <GroupBox Header="Lookup Source" Grid.Column="2">
-            <StackPanel Grid.Row="1">
-                <RadioButton GroupName="DataProviderSource" IsChecked="{Binding LookupSource, Mode=TwoWay, Converter={StaticResource EnumMatchToBooleanConverter}, ConverterParameter=CardDatabase}">All Cards</RadioButton>
-                <RadioButton GroupName="DataProviderSource" IsEnabled="{Binding IsActiveBinder}" 
+		<GroupBox Header="Lookup Source" Grid.Column="2">
+			<StackPanel Grid.Row="1">
+				<RadioButton GroupName="DataProviderSource" IsChecked="{Binding LookupSource, Mode=TwoWay, Converter={StaticResource EnumMatchToBooleanConverter}, ConverterParameter=CardDatabase}">All Cards</RadioButton>
+				<RadioButton GroupName="DataProviderSource" IsEnabled="{Binding IsActiveBinder}" 
 								 IsChecked="{Binding LookupSource, Mode=TwoWay, Converter={StaticResource EnumMatchToBooleanConverter}, ConverterParameter=ActiveBinder}">Active Binder</RadioButton>
-            </StackPanel>
-        </GroupBox>
+			</StackPanel>
+		</GroupBox>
 
-        <!-- Card Details -->
-        <Grid Grid.Row="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
+		<!-- Card Details -->
+		<Grid Grid.Row="1">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="Auto" />
+			</Grid.RowDefinitions>
 
-            <GroupBox Header="Selected card" Grid.Row="0">
+			<GroupBox Header="Selected card" Grid.Row="0">
 
-                <userControl:CardImage
+				<userControl:CardImage
                 VerticalAlignment="Top"
                 HorizontalAlignment="Stretch"
 
                 SelectedCard="{Binding SelectedCard.Definition}" />
-            </GroupBox>
-            <GroupBox Grid.Row="1" Header="Binder">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
+			</GroupBox>
+			<GroupBox Grid.Row="1" Header="Binder">
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+					</Grid.RowDefinitions>
 
-                    <StackPanel Grid.Row="0" HorizontalAlignment="Right"
+					<StackPanel Grid.Row="0" HorizontalAlignment="Right"
                             Orientation="Horizontal">
 
-                        <Button Margin="3,0,0,0">Delete</Button>
-                    </StackPanel>
+						<Button Margin="3,0,0,0">Delete</Button>
+					</StackPanel>
 
-                    <!-- TODO: Use selected card from collection, not all -->
-                    <DataGrid Grid.Row="1"
+					<!-- TODO: Use selected card from collection, not all -->
+					<DataGrid Grid.Row="1"
+							  AutoGenerateColumns="False"
                         ItemsSource="{Binding SelectedCardsInBinder}"
-                        SelectedItem="{Binding SelectedCardInBinder, Mode=TwoWay}" />
-                </Grid>
-            </GroupBox>
-        </Grid>
+                        SelectedItem="{Binding SelectedCardInBinder, Mode=TwoWay}" >
+						<DataGrid.Columns>
+							<DataGridTemplateColumn Header="Quantity">
+								<DataGridTemplateColumn.CellTemplate>
+									<DataTemplate>
+										<xctk:IntegerUpDown Value="{Binding Quantity, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+																		Minimum="0"/>
+									</DataTemplate>
+								</DataGridTemplateColumn.CellTemplate>
+							</DataGridTemplateColumn>
+							<DataGridTemplateColumn Header="Trade">
+								<DataGridTemplateColumn.CellTemplate>
+									<DataTemplate>
+										<xctk:IntegerUpDown Value="{Binding QuantityTrade, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+																		Minimum="0"/>
+									</DataTemplate>
+								</DataGridTemplateColumn.CellTemplate>
+							</DataGridTemplateColumn>
+							
+							<DataGridTemplateColumn Header="Grade">
+								<DataGridTemplateColumn.CellTemplate>
+									<DataTemplate>
+										<TextBlock Text="{Binding Grade}" />
+									</DataTemplate>
+								</DataGridTemplateColumn.CellTemplate>
+							</DataGridTemplateColumn>
+							
+							<DataGridTemplateColumn Header="Language">
+								<DataGridTemplateColumn.CellTemplate>
+									<DataTemplate>
+										<TextBlock Text="{Binding Language}" />
+									</DataTemplate>
+								</DataGridTemplateColumn.CellTemplate>
+							</DataGridTemplateColumn>
+							
+								<DataGridTemplateColumn Header="Foil">
+								<DataGridTemplateColumn.CellTemplate>
+									<DataTemplate>
+										<CheckBox IsChecked="{Binding IsFoil, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+									</DataTemplate>
+								</DataGridTemplateColumn.CellTemplate>
+							</DataGridTemplateColumn>
 
-        <!-- Result Grid -->
-        <Grid Grid.Row="1" Grid.Column="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
+						</DataGrid.Columns>
+					</DataGrid>
+				</Grid>
+			</GroupBox>
+		</Grid>
 
-            <DataGrid Grid.Row="0"
+		<!-- Result Grid -->
+		<Grid Grid.Row="1" Grid.Column="1">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="*" />
+				<RowDefinition Height="Auto" />
+			</Grid.RowDefinitions>
+
+			<DataGrid Grid.Row="0"
                   ItemsSource="{Binding CardCollection}"
                   SelectedItem="{Binding SelectedCard, Mode=TwoWay}" 
                       AutoGenerateColumns="False">
-                <DataGrid.Columns>
-                    <DataGridTextColumn SortMemberPath="Quantity" Header="Quantity" Binding="{Binding Quantity}" />
-                    <DataGridTextColumn SortMemberPath="QuantityTrade" Header="Trade" Binding="{Binding QuantityTrade}" />
-                    <DataGridTextColumn SortMemberPath="NameEN" Header="Name" Binding="{Binding NameEN}" />
-                    <DataGridTextColumn SortMemberPath="SetCode" Header="Set" Binding="{Binding SetCode}" />
-                    <DataGridTextColumn SortMemberPath="Grade" Header="Grade" Binding="{Binding Grade}" />
-                    <DataGridTextColumn SortMemberPath="Language" Header="Language" Binding="{Binding Language}" />
-                </DataGrid.Columns>
-            </DataGrid>
+				<DataGrid.Columns>
+					<DataGridTextColumn SortMemberPath="Quantity" Header="Quantity" Binding="{Binding Quantity}" />
+					<DataGridTextColumn SortMemberPath="QuantityTrade" Header="Trade" Binding="{Binding QuantityTrade}" />
+					<DataGridTextColumn SortMemberPath="NameEN" Header="Name" Binding="{Binding NameEN}" />
+					<DataGridTextColumn SortMemberPath="SetCode" Header="Set" Binding="{Binding SetCode}" />
+					<DataGridTextColumn SortMemberPath="Grade" Header="Grade" Binding="{Binding Grade}" />
+					<DataGridTextColumn SortMemberPath="Language" Header="Language" Binding="{Binding Language}" />
+				</DataGrid.Columns>
+			</DataGrid>
 
-            <Grid  Grid.Row="1">
-                <StackPanel Orientation="Horizontal">
-                    <ComboBox ItemsSource="{Binding AvailableLanguages}" SelectedItem="{Binding SelectedLanguage, Mode=TwoWay}" />
-                    <ComboBox Margin="3,0,0,0" ItemsSource="{Binding AvailableGrades}" SelectedItem="{Binding SelectedGrade, Mode=TwoWay}" />
-                    <CheckBox VerticalAlignment="Center" IsChecked="{Binding SelectedCardIsFoil}">Foil?</CheckBox>
-                    <Button Margin="3,0,0,0">Add all</Button>
-                    <Button Margin="3,0,0,0">Remove all</Button>
-                </StackPanel>
-                <Button HorizontalAlignment="Right" IsEnabled="{Binding CanAddSelected}" Click="OnAddSelectedCardToBinder">Add Selected</Button>
-            </Grid>
-        </Grid>
-        <!-- Binder summary -->
-        <Grid Grid.Column="2" Grid.Row="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
+			<Grid  Grid.Row="1">
+				<StackPanel Orientation="Horizontal">
+					<ComboBox ItemsSource="{Binding AvailableLanguages}" SelectedItem="{Binding SelectedLanguage, Mode=TwoWay}" />
+					<ComboBox Margin="3,0,0,0" ItemsSource="{Binding AvailableGrades}" SelectedItem="{Binding SelectedGrade, Mode=TwoWay}" />
+					<CheckBox VerticalAlignment="Center" IsChecked="{Binding SelectedCardIsFoil}">Foil?</CheckBox>
+					<Button Margin="3,0,0,0">Add all</Button>
+					<Button Margin="3,0,0,0">Remove all</Button>
+				</StackPanel>
+				<Button HorizontalAlignment="Right" IsEnabled="{Binding CanAddSelected}" Click="OnAddSelectedCardToBinder">Add Selected</Button>
+			</Grid>
+		</Grid>
+		<!-- Binder summary -->
+		<Grid Grid.Column="2" Grid.Row="1">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="Auto" />
+			</Grid.RowDefinitions>
 
-            <GroupBox Header="Import" Grid.Row="0">
-                <StackPanel>
-                    <Button Click="OnImportDeckbox">Import Deckbox</Button>
-                </StackPanel>
-            </GroupBox>
+			<GroupBox Header="Import" Grid.Row="0">
+				<StackPanel>
+					<Button Click="OnImportDeckbox">Import Deckbox</Button>
+				</StackPanel>
+			</GroupBox>
 
-            <GroupBox Header="Binder" Grid.Row="1">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
+			<GroupBox Header="Binder" Grid.Row="1">
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+					</Grid.RowDefinitions>
 
-                    <StackPanel Orientation="Horizontal" Grid.ColumnSpan="2">
-                        <Button >Open</Button>
-                        <Button Margin="3,0,0,0" Click="OnNewBinderClick">New</Button>
-                        <Button Margin="3,0,0,0" IsEnabled="{Binding IsActiveBinder}">Export</Button>
-                        <Button Margin="3,0,0,0" IsEnabled="{Binding IsActiveBinder}" Click="OnShowCollectionCards">Show</Button>
-                    </StackPanel>
+					<StackPanel Orientation="Horizontal" Grid.ColumnSpan="2">
+						<Button >Open</Button>
+						<Button Margin="3,0,0,0" Click="OnNewBinderClick">New</Button>
+						<Button Margin="3,0,0,0" IsEnabled="{Binding IsActiveBinder}">Export</Button>
+						<Button Margin="3,0,0,0" IsEnabled="{Binding IsActiveBinder}" Click="OnShowCollectionCards">Show</Button>
+					</StackPanel>
 
-                    <Grid Grid.Row="1" IsEnabled="{Binding IsActiveBinder}">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
+					<Grid Grid.Row="1" IsEnabled="{Binding IsActiveBinder}">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition Width="*" />
+						</Grid.ColumnDefinitions>
 
-                        <Label Grid.Row="1">Name</Label>
-                        <TextBox Grid.Row="1" HorizontalAlignment="Stretch" Grid.Column="1"
+						<Label Grid.Row="1">Name</Label>
+						<TextBox Grid.Row="1" HorizontalAlignment="Stretch" Grid.Column="1"
                                  Text="{Binding ActiveBinder.Name, Mode=OneWay}" IsReadOnly="True" />
 
-                        <Label Grid.Row="2">Total # Cards</Label>
-                        <TextBox IsReadOnly="True" Grid.Row="2" HorizontalAlignment="Stretch" Grid.Column="1"></TextBox>
+						<Label Grid.Row="2">Total # Cards</Label>
+						<TextBox IsReadOnly="True" Grid.Row="2" HorizontalAlignment="Stretch" Grid.Column="1"></TextBox>
 
-                        <Label Grid.Row="3">Bulk Value</Label>
-                        <TextBox IsReadOnly="True" Grid.Row="3" HorizontalAlignment="Stretch" Grid.Column="1"></TextBox>
+						<Label Grid.Row="3">Bulk Value</Label>
+						<TextBox IsReadOnly="True" Grid.Row="3" HorizontalAlignment="Stretch" Grid.Column="1"></TextBox>
 
-                        <Label Grid.Row="4">Non Bulk Value</Label>
-                        <TextBox IsReadOnly="True" Grid.Row="4" HorizontalAlignment="Stretch" Grid.Column="1"></TextBox>
+						<Label Grid.Row="4">Non Bulk Value</Label>
+						<TextBox IsReadOnly="True" Grid.Row="4" HorizontalAlignment="Stretch" Grid.Column="1"></TextBox>
 
-                        <Label Grid.Row="5">Total Value</Label>
-                        <TextBox IsReadOnly="True" Grid.Row="5" HorizontalAlignment="Stretch" Grid.Column="1"></TextBox>
-                    </Grid>
-                </Grid>
-            </GroupBox>
+						<Label Grid.Row="5">Total Value</Label>
+						<TextBox IsReadOnly="True" Grid.Row="5" HorizontalAlignment="Stretch" Grid.Column="1"></TextBox>
+					</Grid>
+				</Grid>
+			</GroupBox>
 
-            <GroupBox Header="Trade List" Grid.Row="2">
-                <Grid IsEnabled="{Binding IsActiveBinder}">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
+			<GroupBox Header="Trade List" Grid.Row="2">
+				<Grid IsEnabled="{Binding IsActiveBinder}">
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+					</Grid.RowDefinitions>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="*" />
+					</Grid.ColumnDefinitions>
 
-                    <StackPanel Orientation="Horizontal" Grid.ColumnSpan="2">
-                        <Button >Export</Button>
-                        <Button Margin="3,0,0,0">Show</Button>
-                    </StackPanel>
+					<StackPanel Orientation="Horizontal" Grid.ColumnSpan="2">
+						<Button >Export</Button>
+						<Button Margin="3,0,0,0">Show</Button>
+					</StackPanel>
 
-                    <Label Grid.Row="1">Name</Label>
-                    <TextBox Grid.Row="1" HorizontalAlignment="Stretch" Grid.Column="1"></TextBox>
+					<Label Grid.Row="1">Name</Label>
+					<TextBox Grid.Row="1" HorizontalAlignment="Stretch" Grid.Column="1"></TextBox>
 
-                    <Label Grid.Row="2">Total # Cards</Label>
-                    <TextBox IsReadOnly="True" Grid.Row="2" HorizontalAlignment="Stretch" Grid.Column="1"></TextBox>
+					<Label Grid.Row="2">Total # Cards</Label>
+					<TextBox IsReadOnly="True" Grid.Row="2" HorizontalAlignment="Stretch" Grid.Column="1"></TextBox>
 
-                    <Label Grid.Row="3">Bulk Value</Label>
-                    <TextBox IsReadOnly="True" Grid.Row="3" HorizontalAlignment="Stretch" Grid.Column="1"></TextBox>
+					<Label Grid.Row="3">Bulk Value</Label>
+					<TextBox IsReadOnly="True" Grid.Row="3" HorizontalAlignment="Stretch" Grid.Column="1"></TextBox>
 
-                    <Label Grid.Row="4">Non Bulk Value</Label>
-                    <TextBox IsReadOnly="True" Grid.Row="4" HorizontalAlignment="Stretch" Grid.Column="1"></TextBox>
+					<Label Grid.Row="4">Non Bulk Value</Label>
+					<TextBox IsReadOnly="True" Grid.Row="4" HorizontalAlignment="Stretch" Grid.Column="1"></TextBox>
 
-                    <Label Grid.Row="5">Total Value</Label>
-                    <TextBox IsReadOnly="True" Grid.Row="5" HorizontalAlignment="Stretch" Grid.Column="1"></TextBox>
-                </Grid>
-            </GroupBox>
-        </Grid>
+					<Label Grid.Row="5">Total Value</Label>
+					<TextBox IsReadOnly="True" Grid.Row="5" HorizontalAlignment="Stretch" Grid.Column="1"></TextBox>
+				</Grid>
+			</GroupBox>
+		</Grid>
 
-        <StatusBar Grid.Row="2" Grid.ColumnSpan="3">
-            <StatusBarItem>
-                <TextBlock Text="{Binding StatusBarText}" />
-            </StatusBarItem>
-        </StatusBar>
-    </Grid>
+		<StatusBar Grid.Row="2" Grid.ColumnSpan="3">
+			<StatusBarItem>
+				<TextBlock Text="{Binding StatusBarText}" />
+			</StatusBarItem>
+		</StatusBar>
+	</Grid>
 </Window>

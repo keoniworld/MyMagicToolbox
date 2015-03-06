@@ -1,7 +1,11 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using MyMagicCollection.Shared;
+using MyMagicCollection.Shared.Models;
+using MyMagicCollection.Shared.ViewModels;
 
 namespace MagicFileFormats.Dec
 {
@@ -34,13 +38,23 @@ namespace MagicFileFormats.Dec
    )
 )", regexOptions);
 
-        public IEnumerable<DeckCard> ReadFile(string fileName)
+        private readonly INotificationCenter _notificationCenter;
+
+        public DecReader(INotificationCenter notificationCenter)
         {
-            var foundCards = new List<DeckCard>();
+            _notificationCenter = notificationCenter;
+        }
+
+        public IEnumerable<MagicDeckCard> ReadFile(string fileName)
+        {
+            var file = new FileInfo(fileName);
+            var stopwatch = Stopwatch.StartNew();
+
+            var foundCards = new List<MagicDeckCard>();
             var content = File.ReadAllLines(fileName);
             foreach (var line in content)
             {
-                var card = new DeckCard();
+                var card = new MagicDeckCard();
 
                 var match = mvidRegex.Match(line);
                 if (match.Success)
@@ -55,7 +69,8 @@ namespace MagicFileFormats.Dec
                     card.Quantity = int.Parse(match.Groups["quantity"].Value);
 
                     var location = match.Groups["location"];
-                    card.Location = location.Success ? location.Value : "Deck";
+                    var locationText = location.Success ? location.Value : "Deck";
+                    card.Location = locationText.ToLowerInvariant() == "deck" ? MagicDeckLocation.Mainboard : MagicDeckLocation.Sideboard;
                     foundCards.Add(card);
                 }
             }
@@ -71,6 +86,9 @@ namespace MagicFileFormats.Dec
                     result.Add(card);
                 }
             }
+
+            stopwatch.Stop();
+            _notificationCenter.FireNotification(null, string.Format("Loading dec {0} took {1}", file, stopwatch.Elapsed));
 
             return result;
         }

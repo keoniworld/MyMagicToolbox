@@ -66,6 +66,19 @@ namespace MyMagicCollection.Shared.ViewModels
 			}
 		}
 
+		public bool IsFoil
+		{
+			get
+			{
+				return _card.IsFoil;
+			}
+
+			set
+			{
+				_card.IsFoil = value;
+				RaisePropertyChanged(() => IsFoil);
+			}
+		}
 
         public MagicLanguage? Language
         {

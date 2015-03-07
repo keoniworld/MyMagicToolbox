@@ -11,7 +11,7 @@ using MyMagicCollection.Shared.ViewModels;
 
 namespace MyMagicCollection.Shared.FileFormats.DeckBoxCsv
 {
-    public class DeckBoxInventoryCsvReader
+    public class DeckBoxInventoryCsvReader : IReadCards
     {
         private INotificationCenter _notificationCenter;
 
@@ -20,12 +20,12 @@ namespace MyMagicCollection.Shared.FileFormats.DeckBoxCsv
             _notificationCenter = notificationCenter;
         }
 
-        public IEnumerable<MagicBinderCardViewModel> ReadCsvFile(string fileName)
+        public IEnumerable<MagicBinderCardViewModel> ReadFile(string fileName)
         {
-            return ReadCsvFileContent(File.ReadAllText(fileName));
+            return ReadFileContent(File.ReadAllText(fileName));
         }
 
-        public IEnumerable<MagicBinderCardViewModel> ReadCsvFileContent(string content)
+        public IEnumerable<MagicBinderCardViewModel> ReadFileContent(string content)
         {
             var result = new List<MagicBinderCardViewModel>();
 

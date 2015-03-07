@@ -1,10 +1,10 @@
 ﻿using System.IO;
 using System.Linq;
-using MagicFileFormats.Dec;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using MyMagicCollection.Shared;
 using MyMagicCollection.Shared.Models;
+using yMagicCollection.Shared.FileFormats.Dec;
 
 namespace MagicFileFormats.UnitTests
 {
@@ -51,7 +51,7 @@ namespace MagicFileFormats.UnitTests
             var notification = new Mock<INotificationCenter>();
             var fullName = Path.Combine(TestContext.DeploymentDirectory, fileName);
             var target = new DecReader(notification.Object);
-            var result = target.ReadFile(fullName);
+            var result = target.ReadFileContentDec(fullName);
 
             Assert.AreEqual(expectedNumberOfRows, result.Count(), "Wrong number of rows");
 

@@ -44,5 +44,33 @@ namespace MyMagicCollection.Shared.Helper
                     return null;
             }
         }
+
+        public static string ToCsv(this MagicGrade instance)
+        {
+            switch (instance)
+            {
+                case MagicGrade.Mint:
+                    return "Mint";
+
+                default:
+                case MagicGrade.NearMint:
+                    return "Near Mint";
+
+                case MagicGrade.Excellent:
+                    return "Excellent";
+
+                case MagicGrade.Good:
+                    return "Good";
+
+                case MagicGrade.LightlyPlayed:
+                    return "Lightly Played";
+
+                case MagicGrade.Played:
+                    return "Played";
+
+                case MagicGrade.Poor:
+                    return "Poor";
+            }
+        }
     }
 }

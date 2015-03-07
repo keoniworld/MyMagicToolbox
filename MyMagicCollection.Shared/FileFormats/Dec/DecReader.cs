@@ -1,15 +1,17 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using MyMagicCollection.Shared;
+using MyMagicCollection.Shared.FileFormats;
 using MyMagicCollection.Shared.Models;
 using MyMagicCollection.Shared.ViewModels;
 
-namespace MagicFileFormats.Dec
+namespace yMagicCollection.Shared.FileFormats.Dec
 {
-    public class DecReader
+    public class DecReader : IReadCards
     {
         private const RegexOptions regexOptions = RegexOptions.CultureInvariant | RegexOptions.IgnoreCase | RegexOptions.IgnorePatternWhitespace;
 
@@ -45,14 +47,15 @@ namespace MagicFileFormats.Dec
             _notificationCenter = notificationCenter;
         }
 
-        public IEnumerable<MagicDeckCard> ReadFile(string fileName)
+        public IEnumerable<MagicBinderCardViewModel> ReadFile(string fileName)
         {
-            var file = new FileInfo(fileName);
-            var stopwatch = Stopwatch.StartNew();
+            return ReadFileContent(File.ReadAllText(fileName));
+        }
 
+        public IEnumerable<MagicDeckCard> ReadFileContentDec(string content)
+        {
             var foundCards = new List<MagicDeckCard>();
-            var content = File.ReadAllLines(fileName);
-            foreach (var line in content)
+            foreach (var line in content.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries))
             {
                 var card = new MagicDeckCard();
 
@@ -87,10 +90,43 @@ namespace MagicFileFormats.Dec
                 }
             }
 
-            stopwatch.Stop();
-            _notificationCenter.FireNotification(null, string.Format("Loading dec {0} took {1}", file, stopwatch.Elapsed));
-
             return result;
+        }
+
+        public IEnumerable<MagicBinderCardViewModel> ReadFileContent(string content)
+        {
+            var stopwatch = Stopwatch.StartNew();            
+            var result = ReadFileContentDec(content);
+
+            var finalList = new List<MagicBinderCardViewModel>();
+            foreach (var card in result)
+            {
+                var binderCard = new MagicBinderCard
+                {
+                    CardId = card.CardId,
+                    Quantity = card.Quantity,
+                };
+
+                MagicCardDefinition definition;
+                if (string.IsNullOrWhiteSpace(binderCard.CardId))
+                {
+                    definition = StaticMagicData.CardDefinitions
+                        .First(c => c.NameEN == card.Name);
+
+                    binderCard.CardId = definition.CardId;
+                }
+                else
+                {
+                    definition = StaticMagicData.CardDefinitionsByCardId[binderCard.CardId];
+                }
+
+                finalList.Add(new MagicBinderCardViewModel(definition, binderCard));
+            }
+
+            stopwatch.Stop();
+            // _notificationCenter.FireNotification(null, string.Format("Loading dec {0} took {1}", file, stopwatch.Elapsed));
+
+            return finalList;
         }
     }
 }

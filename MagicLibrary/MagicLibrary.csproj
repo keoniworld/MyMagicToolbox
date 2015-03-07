@@ -89,7 +89,6 @@
     <Compile Include="Database\SettingsItem.cs" />
     <Compile Include="Database\UserDatabase.cs" />
     <Compile Include="Database\UserDatabaseController.cs" />
-    <Compile Include="FileFormats\CSV\DeckBoxCsvWriter.cs" />
     <Compile Include="FileFormats\DeckCard.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="IApplicationSettings.cs" />
@@ -127,6 +126,7 @@
     <None Include="Price\MKM\productrequestresult.xml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="FileFormats\CSV\" />
     <Folder Include="FileFormats\Dec\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

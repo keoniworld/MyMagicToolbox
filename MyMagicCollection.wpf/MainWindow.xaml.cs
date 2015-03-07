@@ -73,21 +73,66 @@ namespace MyMagicCollection.wpf
 
         private void OnImportDeckbox(object sender, RoutedEventArgs e)
         {
-            var dialog = new OpenFileDialog()
+            try
             {
-                Multiselect = false,
-                AddExtension = true,
-                CheckPathExists = true,
-                CheckFileExists = true,
-                Title = "Import card list",
-                Filter = "Deckbox.org CSV *.csv|*.csv",
-                DefaultExt = ".csv",
-                InitialDirectory = PathHelper.UserDataFolder,
-            };
+                var dialog = new OpenFileDialog()
+                {
+                    Multiselect = false,
+                    AddExtension = true,
+                    CheckPathExists = true,
+                    CheckFileExists = true,
+                    Title = "Import card list",
+                    Filter = "All supported files|*.csv;*.dec|Deckbox.org CSV (*.csv)|*.csv|Deck lists (*.dec)|*.dec",
+                    DefaultExt = ".csv",
+                    InitialDirectory = PathHelper.UserDataFolder,
+                };
 
-            if (dialog.ShowDialog(this) == true)
+                if (dialog.ShowDialog(this) == true)
+                {
+                    _viewModel.ImportCards(dialog.FileName);
+                }
+            }
+            catch (Exception error)
             {
-                _viewModel.ImportCardList(dialog.FileName);
+                MessageBox.Show(
+                    error.Message,
+                    "Importing cards failed",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+            }
+        }
+
+        private void OnImportAllFromCurrentList(object sender, RoutedEventArgs e)
+        {
+            _viewModel.AddCurrentDisplayedList();
+        }
+
+        private void OnExportDisplayedList(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var dialog = new SaveFileDialog()
+                {                    
+                    AddExtension = true,
+                    CheckPathExists = true,
+                    CheckFileExists = false,
+                    Title = "Export card list",
+                    Filter = "All supported files|*.csv|Deckbox.org CSV (*.csv)|*.csv",
+                    InitialDirectory = PathHelper.UserDataFolder,
+                };
+
+                if (dialog.ShowDialog(this) == true)
+                {
+                    _viewModel.ExportDisplayedCardsList(dialog.FileName);
+                }
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(
+                    error.Message,
+                    "Exporting cards failed",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
             }
         }
     }

@@ -48,8 +48,11 @@
     <Compile Include="DataSource\ActiveBinderDataSource.cs" />
     <Compile Include="DataSource\MagicDataDataSourceBase.cs" />
     <Compile Include="DataSource\StaticMagicDataDataSource.cs" />
+    <Compile Include="FileFormats\DeckBoxCsv\DeckBoxCsvWriter.cs" />
     <Compile Include="FileFormats\DeckBoxCsv\DeckBoxInventoryCsvReader.cs" />
     <Compile Include="FileFormats\Dec\DecReader.cs" />
+    <Compile Include="FileFormats\DetectFileFormat.cs" />
+    <Compile Include="FileFormats\IReadCards.cs" />
     <Compile Include="FileFormats\MyMagicCollection\MagicCollectionCsvMapper.cs" />
     <Compile Include="FileFormats\MyMagicCollection\MyMagicCollectionCsv.cs" />
     <Compile Include="Helper\MagicLanguagehelper.cs" />

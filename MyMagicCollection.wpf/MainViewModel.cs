@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Minimod.NotificationObject;
 using MyMagicCollection.Shared;
 using MyMagicCollection.Shared.DataSource;
+using MyMagicCollection.Shared.FileFormats;
 using MyMagicCollection.Shared.FileFormats.DeckBoxCsv;
 using MyMagicCollection.Shared.Helper;
 using MyMagicCollection.Shared.Models;
@@ -23,6 +24,7 @@ namespace MyMagicCollection.wpf
     {
         private readonly INotificationCenter _notificationCenter;
         private readonly SettingsData _settings;
+        private readonly Logger _logger = LogManager.GetCurrentClassLogger();
         private string _statusBarText;
 
         private MagicBinderViewModel _activeBinder;
@@ -40,8 +42,6 @@ namespace MyMagicCollection.wpf
         private IEnumerable<MagicBinderCardViewModel> _selectedCardsInBinder;
 
         private LookupSource _lookupSource;
-
-        private readonly Logger _logger = LogManager.GetCurrentClassLogger();
 
         public MainViewModel(INotificationCenter notificationCenter)
         {
@@ -73,14 +73,14 @@ namespace MyMagicCollection.wpf
             }
 
             // TODO: Better logic for this
-            Task.Factory.StartNew(() =>
-            {
-                var downloader = new SymbolDownload();
-                downloader.Download(PathHelper.SymbolCacheFolder);
+            ////Task.Factory.StartNew(() =>
+            ////{
+            ////    var downloader = new SymbolDownload();
+            ////    downloader.Download(PathHelper.SymbolCacheFolder);
 
-                var setDownload = new SetDownload(_notificationCenter);
-                setDownload.Download(PathHelper.SetCacheFolder, StaticMagicData.SetDefinitions);
-            });
+            ////    var setDownload = new SetDownload(_notificationCenter);
+            ////    setDownload.Download(PathHelper.SetCacheFolder, StaticMagicData.SetDefinitions);
+            ////});
         }
 
         public IEnumerable<MagicLanguage> AvailableLanguages { get; } = (IEnumerable<MagicLanguage>)Enum.GetValues(typeof(MagicLanguage));
@@ -226,13 +226,17 @@ namespace MyMagicCollection.wpf
             }
         }
 
-        public void ImportCardList(string fileName)
+        public void ImportCards(string fileName)
         {
             var info = new FileInfo(fileName);
             _notificationCenter.FireNotification(null, string.Format("Loading '{0}'...", info.Name));
             var watch = Stopwatch.StartNew();
-            var reader = new DeckBoxInventoryCsvReader(_notificationCenter);
-            var found = reader.ReadCsvFile(fileName)
+
+            var content = File.ReadAllText(fileName);
+
+            var detect = new DetectFileFormat(_notificationCenter);
+            var reader = detect.Detect(fileName, content);
+            var found = reader.ReadFileContent(content)
                 .AsParallel()
                 .Select(c => new FoundMagicCardViewModel(c))
                 .ToList();
@@ -240,7 +244,24 @@ namespace MyMagicCollection.wpf
             watch.Stop();
             _notificationCenter.FireNotification(null, string.Format("Loaded '{0}' in {1}", info.Name, watch.Elapsed));
             CardCollection = found;
-            // TODO: Analyse file formats later
+        }
+
+        public void ExportDisplayedCardsList(string fileName)
+        {
+            if (_searchResult == null || !_searchResult.Any())
+            {
+                return;
+            }
+
+            var info = new FileInfo(fileName);
+            _notificationCenter.FireNotification(null, string.Format("Exporting '{0}'...", info.Name));
+            var watch = Stopwatch.StartNew();
+
+            var writer = new DeckBoxCsvWriter();
+            writer.Write(fileName, _searchResult, SelectedCardIsFoil, SelectedLanguage, SelectedGrade);
+
+            watch.Stop();
+            _notificationCenter.FireNotification(null, string.Format("Exported '{0}' in {1}", info.Name, watch.Elapsed));
         }
 
         public void AddSelectedCardToBinder()
@@ -254,6 +275,21 @@ namespace MyMagicCollection.wpf
             _activeBinder.WriteFile();
 
             _notificationCenter.FireNotification(null, string.Format("Added card '{0}' to binder.", _selectedCard.NameEN));
+
+            RaisePropertyChanged(() => CardsInBinder);
+            UpdateSelectedCardFromBinder();
+        }
+
+        public void AddCurrentDisplayedList()
+        {
+            if (_activeBinder == null || _searchResult == null || !_searchResult.Any())
+            {
+                return;
+            }
+
+            _activeBinder.AddCards(_searchResult, SelectedGrade, SelectedLanguage, SelectedCardIsFoil);
+            _activeBinder.WriteFile();
+            _notificationCenter.FireNotification(null, "Added cards to binder.");
 
             RaisePropertyChanged(() => CardsInBinder);
             UpdateSelectedCardFromBinder();

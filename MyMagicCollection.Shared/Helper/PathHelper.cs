@@ -11,7 +11,9 @@ namespace MyMagicCollection.Shared
 			ExeFolder = new FileInfo(Assembly.GetEntryAssembly().Location).Directory.FullName;
 			UserDataFolder = Path.Combine(ExeFolder, "App_Data");
 			ImageCacheFolder = Path.Combine(UserDataFolder, "ImageCache");
-		}
+			SymbolCacheFolder = Path.Combine(ImageCacheFolder, "Symbols");
+			SetCacheFolder = Path.Combine(ImageCacheFolder, "Sets");
+        }
 
 		public static string MakeAbsolutePath(this FileSystemInfo folder, string fileName)
 		{
@@ -54,5 +56,9 @@ namespace MyMagicCollection.Shared
 		public static string UserDataFolder { get; private set; }
 
 		public static string ImageCacheFolder { get; private set; }
+
+		public static string SymbolCacheFolder { get; private set; }
+
+		public static string SetCacheFolder { get; private set; }
 	}
 }

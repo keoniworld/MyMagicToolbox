@@ -111,7 +111,16 @@
 									</DataTemplate>
 								</DataGridTemplateColumn.CellTemplate>
 							</DataGridTemplateColumn>
-							
+
+							<DataGridTemplateColumn Header="Set">
+								<DataGridTemplateColumn.CellTemplate>
+									<DataTemplate>
+										<TextBlock Text="{Binding SetCode, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
+									</DataTemplate>
+								</DataGridTemplateColumn.CellTemplate>
+							</DataGridTemplateColumn>
+
+
 							<DataGridTemplateColumn Header="Grade">
 								<DataGridTemplateColumn.CellTemplate>
 									<DataTemplate>
@@ -119,7 +128,7 @@
 									</DataTemplate>
 								</DataGridTemplateColumn.CellTemplate>
 							</DataGridTemplateColumn>
-							
+
 							<DataGridTemplateColumn Header="Language">
 								<DataGridTemplateColumn.CellTemplate>
 									<DataTemplate>
@@ -127,8 +136,8 @@
 									</DataTemplate>
 								</DataGridTemplateColumn.CellTemplate>
 							</DataGridTemplateColumn>
-							
-								<DataGridTemplateColumn Header="Foil">
+
+							<DataGridTemplateColumn Header="Foil">
 								<DataGridTemplateColumn.CellTemplate>
 									<DataTemplate>
 										<CheckBox IsChecked="{Binding IsFoil, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />

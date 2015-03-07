@@ -92,6 +92,118 @@ namespace UpdateCardDatabase
             return null;
         }
 
+        public static string PatchSetCode(string setCode)
+        {
+            ////switch (setCode)
+            ////{
+            ////    case "FNM":
+            ////        return "FNMP";
+
+            ////    case "JCG":
+            ////        return "JR";
+            ////}
+
+            return setCode;
+        }
+
+        public static string PatchSetCodeMagicCardsInfo(string setCode)
+        {
+            var patch = new Dictionary<string, string>()
+            {
+                { "15A", "15ANN" },
+                { "AL", "AI" },
+                { "ANT", "AT" },
+                { "ARS", "ARCS" },
+                { "ARE", "ARENA" },
+                { "CC", "UQC" },
+                { "CHA", "CP" },
+                { "CST", "CSTD" },
+                { "CRS", "CMA" },
+                { "DIS", "DI" },
+                { "ADVD", "DD3" },
+                { "AEVG", "DD3" },
+                { "AGVL", "DD3" },
+                { "AJVC", "DD3" },
+                { "AVB", "DDH" },
+                { "EVT", "DDF" },
+                { "HVM", "DDL" },
+                { "IVG", "DDJ" },
+                { "JVV", "DDM" },
+                { "KVD", "DDG" },
+                { "SVT", "DDK" },
+                { "SVC", "DDN" },
+                { "VVK", "DDI" },
+                { "EUR", "EURO" },
+                { "FD", "5DN" },
+                { "FNM", "FNMP" },
+                { "ANH", "V14" },
+                { "DRG", "FVD" },
+                { "EXL", "FVE" },
+                { "LEG", "FVL" },
+                { "RLM", "V12" },
+                { "RLC", "FVR" },
+                { "TWE", "V13" },
+                { "GUR", "GURU" },
+                { "JCG", "JR" },
+                { "LGM", "DCILM" },
+                { "A", "AL" },
+                { "B", "BE" },
+                { "LRW", "LW" },
+                { "GDC", "MGDC" },
+                { "REW", "MPRP" },
+                { "GLP", "MLP" },
+                { "CNSC", "CNS" },
+                { "ME", "MED" },
+                { "MI", "MR" },
+                { "MOR", "MT" },
+                { "PLC", "PC" },
+                { "PCP", "PCHP" },
+                { "PT", "PO" },
+                { "P2", "PO2" },
+                { "P3", "P3K" },
+                { "FAL", "FD2" },
+                { "GRV", "PD3" },
+                { "SLI", "PDS" },
+                { "PRE", "PTC" },
+                { "PY", "PR" },
+                { "RLS", "REP" },
+                { "R", "RV" },
+                { "S2", "ST2K" },
+                { "SS", "SUS" },
+                { "TE", "TP" },
+                { "TSP", "TS" },
+                { "TSB", "TSTS" },
+                { "TO", "TR" },
+                { "2HG", "THGT" },
+                { "UNH", "UH" },
+                { "U", "UN" },
+                { "WCQ", "WMCQ" },
+                { "GTW", "GRC" },
+            };
+
+            string found;
+            if (patch.TryGetValue(setCode, out found))
+            {
+                return found;
+            }
+
+            return setCode;
+        }
+
+        public static string PatchSetName(string setCode)
+        {
+            switch (setCode)
+            {
+                case "Magic: The Gathering—Conspiracy":
+                    return "Conspiracy";
+
+                case "Magic: The Gathering-Commander":
+                    return "Commander";
+            }
+
+            return setCode;
+        }
+
         private static void Main(string[] args)
         {
             var provider = new CardDatabaseFolderProvider();
@@ -156,7 +268,7 @@ namespace UpdateCardDatabase
                     card.Id = count;
                     card.NameDE = inputCsv.GetField<string>("name_DE");
                     card.NameEN = inputCsv.GetField<string>("name");
-                    card.SetCode = inputCsv.GetField<string>("set_code");
+                    card.SetCode = PatchSetCode(inputCsv.GetField<string>("set_code"));
                     card.CardId = inputCsv.GetField<string>("id");
                     card.CardType = inputCsv.GetField<string>("type");
                     card.NumberInSet = SafeGetInt(inputCsv, "number_int");
@@ -175,33 +287,29 @@ namespace UpdateCardDatabase
                     card.RulesTextDE = inputCsv.GetField<string>("ability_DE");
                     // .Replace("£", Environment.NewLine);
 
-
-
-                  
-
-                    var setName = inputCsv.GetField<string>("set")
-                        .Replace("Magic: The Gathering—Conspiracy", "Conspiracy")
-                        .Replace("Magic: The Gathering-Commander", "Commander");
-
+                    var setName = PatchSetName(inputCsv.GetField<string>("set"));
                     if (!string.IsNullOrWhiteSpace(setName) && !availableSets.ContainsKey(card.SetCode))
                     {
-                        var definition = new MagicSetDefinition { Name = setName, Code = card.SetCode };
+                        var definition = new MagicSetDefinition
+                        {
+                            Name = setName,
+                            Code = card.SetCode,
+                            CodeMagicCardsInfo = PatchSetCodeMagicCardsInfo(card.SetCode),
+                        };
+
                         availableSets.Add(card.SetCode, definition);
-                        setWriter.WriteRecord(definition);
                     }
 
                     var unique = StaticMagicData.MakeNameSetCode(card.SetCode, card.NameEN, card.NumberInSet);
                     if (uniqueList.ContainsKey(unique))
                     {
-                        // Ignore variants of 
+                        // Ignore variants of
                         continue;
                     }
 
                     uniqueList.Add(unique, unique);
 
                     writer.WriteRecord<MagicCardDefinition>(card);
-
-
 
                     Console.WriteLine(count + " Reading " + card.NameEN + "(" + card.SetCode + ")...");
 
@@ -212,6 +320,12 @@ namespace UpdateCardDatabase
                     // connection.Query(insertStatement, card);
 
                     // if (count % 100==0) break;
+                }
+
+                // Write Sets
+                foreach (var set in availableSets.OrderBy(s => s.Key))
+                {
+                    setWriter.WriteRecord(set.Value);
                 }
 
                 inputCsv.Dispose();

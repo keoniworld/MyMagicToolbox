@@ -56,6 +56,8 @@
     <Compile Include="Helper\MagicGradeHelper.cs" />
     <Compile Include="Helper\EmbeddedResourceHelper.cs" />
     <Compile Include="Helper\PathHelper.cs" />
+    <Compile Include="Helper\SetDownload.cs" />
+    <Compile Include="Helper\SymbolDownload.cs" />
     <Compile Include="Minimods\Minimod.ExpressionExtensions.Generated.cs" />
     <Compile Include="Minimods\Minimod.NotificationObject.Generated.cs" />
     <Compile Include="Models\CardLookup.cs" />

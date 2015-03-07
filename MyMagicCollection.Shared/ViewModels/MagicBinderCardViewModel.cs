@@ -111,6 +111,6 @@ namespace MyMagicCollection.Shared.ViewModels
         public string CardNameEN => _definition.NameEN;
 		public string CardNameDE => _definition.NameDE;
 
-        public string RowId => _card.RowId;
+		public string RowId => _card.RowId;
     }
 }

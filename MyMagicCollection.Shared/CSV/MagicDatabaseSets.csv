@@ -1,173 +1,173 @@
-Code,Name
-ARB,Alara Reborn
-AL,Alliances
-AQ,Antiquities
-AP,Apocalypse
-AN,Arabian Nights
-ARC,Archenemy
-AVR,Avacyn Restored
-BR,Battle Royale Box Set
-BD,Beatdown Box Set
-BOK,Betrayers of Kamigawa
-BNG,Born of the Gods
-CHK,Champions of Kamigawa
-CH,Chronicles
-6E,Classic Sixth Edition
-CS,Coldsnap
-C13,Commander 2013 Edition
-C14,Commander 2014
-CRS,Commander's Arsenal
-CFX,Conflux
-DKA,Dark Ascension
-DS,Darksteel
-DIS,Dissension
-DGM,Dragon's Maze
-ADVD,"Duel Decks Anthology, Divine vs. Demonic"
-AEVD,"Duel Decks Anthology, Elves vs. Dragons"
-AGVL,"Duel Decks Anthology, Garruk vs. Liliana"
-AJVC,"Duel Decks Anthology, Jace vs. Chandra"
-AVB,Duel Decks: Ajani vs. Nicol Bolas
-DVD,Duel Decks: Divine vs. Demonic
-EVT,Duel Decks: Elspeth vs. Tezzeret
-EVG,Duel Decks: Elves vs. Goblins
-GVL,Duel Decks: Garruk vs. Liliana
-HVM,Duel Decks: Heroes vs. Monsters
-IVG,Duel Decks: Izzet vs. Golgari
-JVC,Duel Decks: Jace vs. Chandra
-JVV,Duel Decks: Jace vs. Vraska
-KVD,Duel Decks: Knights vs. Dragons
-PVC,Duel Decks: Phyrexia vs. the Coalition
-SVT,Duel Decks: Sorin vs. Tibalt
-SVC,Duel Decks: Speed vs. Cunning
-VVK,Duel Decks: Venser vs. Koth
-8E,Eighth Edition
-EVE,Eventide
-EX,Exodus
-FE,Fallen Empires
-FRF,Fate Reforged
-FD,Fifth Dawn
-5E,Fifth Edition
-4E,Fourth Edition
-ANH,From the Vault: Annihilation (2014)
-DRG,From the Vault: Dragons
-EXL,From the Vault: Exiled
-LEG,From the Vault: Legends
-RLM,From the Vault: Realms
-RLC,From the Vault: Relics
-TWE,From the Vault: Twenty
-FUT,Future Sight
-GTC,Gatecrash
-GP,Guildpact
-HL,Homelands
-IA,Ice Age
-ISD,Innistrad
-IN,Invasion
-JOU,Journey into Nyx
-JU,Judgment
-KTK,Khans of Tarkir
-LG,Legends
-LE,Legions
-A,Limited Edition Alpha
-B,Limited Edition Beta
-LRW,Lorwyn
-M10,Magic 2010
-M11,Magic 2011
-M12,Magic 2012
-M13,Magic 2013
-M14,Magic 2014 Core Set
-M15,Magic 2015 Core Set
-CMD,Commander
-CNS,Conspiracy
-ME,Masters Edition
-ME2,Masters Edition II
-ME3,Masters Edition III
-ME4,Masters Edition IV
-MM,Mercadian Masques
-MI,Mirage
-MR,Mirrodin
-MBS,Mirrodin Besieged
-MD1,Modern Event Deck 2014
-MMA,Modern Masters
-MOR,Morningtide
-NE,Nemesis
-NPH,New Phyrexia
-9E,Ninth Edition
-OD,Odyssey
-ON,Onslaught
-PLC,Planar Chaos
-PCH,Planechase
-PC2,Planechase 2012 Edition
-PS,Planeshift
-PT,Portal
-P2,Portal Second Age
-P3,Portal Three Kingdoms
-FAL,Premium Deck Series: Fire and Lightning
-GRV,Premium Deck Series: Graveborn
-SLI,Premium Deck Series: Slivers
-PY,Prophecy
-RAV,Ravnica: City of Guilds
-RTR,Return to Ravnica
-R,Revised Edition
-ROE,Rise of the Eldrazi
-SOK,Saviors of Kamigawa
-SOM,Scars of Mirrodin
-SC,Scourge
-7E,Seventh Edition
-SHM,Shadowmoor
-ALA,Shards of Alara
-ST,Starter 1999
-S2,Starter 2000
-SH,Stronghold
-TE,Tempest
-10E,Tenth Edition
-DK,The Dark
-THS,Theros
-TSP,Time Spiral
-TSB,"Time Spiral ""Timeshifted"""
-TO,Torment
-UG,Unglued
-UNH,Unhinged
-U,Unlimited Edition
-UD,Urza's Destiny
-UL,Urza's Legacy
-US,Urza's Saga
-VMA,Vintage Masters
-VI,Visions
-WL,Weatherlight
-WWK,Worldwake
-ZEN,Zendikar
-ARS,"Archenemy ""Schemes"""
-PCP,"Planechase ""Planes"""
-PP2,"Planechase 2012 Edition ""Planes"" and ""Phenomena"""
-CNSC,"Magic: The Gathering—Conspiracy ""Conspiracies"""
-15A,15th Anniversary
-GPX,Grand Prix
-PRO,Pro Tour
-GDC,Magic Game Day Cards
-WRL,Worlds
-WCQ,World Magic Cup Qualifiers
-PRE,Prerelease Events
-RLS,Release Events
-GLP,Magic: The Gathering Launch Parties
-SUM,Summer of Magic
-GTW,WPN/Gateway
-CHA,Champs
-2HG,Two-Headed Giant Tournament
-ARE,Arena League
-FNM,Friday Night Magic
-REW,Magic Player Rewards
-SS,Super Series
-HHO,Happy Holidays
-JCG,Judge Gift Program
-EUR,European Land Program
-GUR,Guru
-APAC,Asia Pacific Land Program
-CC,Celebration Cards
-MBP,Media Inserts
-LGM,Legend Membership
-CST,Coldsnap Theme Decks
-ANT,Anthologies
-DPA,Duels of the Planeswalkers
-8EB,Eighth Edition Box Set
-9EB,Ninth Edition Box Set
-DM,Deckmasters
+Code,Name,CodeMagicCardsInfo
+10E,Tenth Edition,10E
+15A,15th Anniversary,15ANN
+2HG,Two-Headed Giant Tournament,THGT
+4E,Fourth Edition,4E
+5E,Fifth Edition,5E
+6E,Classic Sixth Edition,6E
+7E,Seventh Edition,7E
+8E,Eighth Edition,8E
+8EB,Eighth Edition Box Set,8EB
+9E,Ninth Edition,9E
+9EB,Ninth Edition Box Set,9EB
+A,Limited Edition Alpha,AL
+ADVD,"Duel Decks Anthology, Divine vs. Demonic",DD3
+AEVD,"Duel Decks Anthology, Elves vs. Dragons",AEVD
+AGVL,"Duel Decks Anthology, Garruk vs. Liliana",DD3
+AJVC,"Duel Decks Anthology, Jace vs. Chandra",DD3
+AL,Alliances,AI
+ALA,Shards of Alara,ALA
+AN,Arabian Nights,AN
+ANH,From the Vault: Annihilation (2014),V14
+ANT,Anthologies,AT
+AP,Apocalypse,AP
+APAC,Asia Pacific Land Program,APAC
+AQ,Antiquities,AQ
+ARB,Alara Reborn,ARB
+ARC,Archenemy,ARC
+ARE,Arena League,ARENA
+ARS,"Archenemy ""Schemes""",ARCS
+AVB,Duel Decks: Ajani vs. Nicol Bolas,DDH
+AVR,Avacyn Restored,AVR
+B,Limited Edition Beta,BE
+BD,Beatdown Box Set,BD
+BNG,Born of the Gods,BNG
+BOK,Betrayers of Kamigawa,BOK
+BR,Battle Royale Box Set,BR
+C13,Commander 2013 Edition,C13
+C14,Commander 2014,C14
+CC,Celebration Cards,UQC
+CFX,Conflux,CFX
+CH,Chronicles,CH
+CHA,Champs,CP
+CHK,Champions of Kamigawa,CHK
+CMD,Commander,CMD
+CNS,Conspiracy,CNS
+CNSC,"Magic: The Gathering—Conspiracy ""Conspiracies""",CNS
+CRS,Commander's Arsenal,CMA
+CS,Coldsnap,CS
+CST,Coldsnap Theme Decks,CSTD
+DGM,Dragon's Maze,DGM
+DIS,Dissension,DI
+DK,The Dark,DK
+DKA,Dark Ascension,DKA
+DM,Deckmasters,DM
+DPA,Duels of the Planeswalkers,DPA
+DRG,From the Vault: Dragons,FVD
+DS,Darksteel,DS
+DVD,Duel Decks: Divine vs. Demonic,DVD
+EUR,European Land Program,EURO
+EVE,Eventide,EVE
+EVG,Duel Decks: Elves vs. Goblins,EVG
+EVT,Duel Decks: Elspeth vs. Tezzeret,DDF
+EX,Exodus,EX
+EXL,From the Vault: Exiled,FVE
+FAL,Premium Deck Series: Fire and Lightning,FD2
+FD,Fifth Dawn,5DN
+FE,Fallen Empires,FE
+FNM,Friday Night Magic,FNMP
+FRF,Fate Reforged,FRF
+FUT,Future Sight,FUT
+GDC,Magic Game Day Cards,MGDC
+GLP,Magic: The Gathering Launch Parties,MLP
+GP,Guildpact,GP
+GPX,Grand Prix,GPX
+GRV,Premium Deck Series: Graveborn,PD3
+GTC,Gatecrash,GTC
+GTW,WPN/Gateway,GRC
+GUR,Guru,GURU
+GVL,Duel Decks: Garruk vs. Liliana,GVL
+HHO,Happy Holidays,HHO
+HL,Homelands,HL
+HVM,Duel Decks: Heroes vs. Monsters,DDL
+IA,Ice Age,IA
+IN,Invasion,IN
+ISD,Innistrad,ISD
+IVG,Duel Decks: Izzet vs. Golgari,DDJ
+JCG,Judge Gift Program,JR
+JOU,Journey into Nyx,JOU
+JU,Judgment,JU
+JVC,Duel Decks: Jace vs. Chandra,JVC
+JVV,Duel Decks: Jace vs. Vraska,DDM
+KTK,Khans of Tarkir,KTK
+KVD,Duel Decks: Knights vs. Dragons,DDG
+LE,Legions,LE
+LEG,From the Vault: Legends,FVL
+LG,Legends,LG
+LGM,Legend Membership,DCILM
+LRW,Lorwyn,LW
+M10,Magic 2010,M10
+M11,Magic 2011,M11
+M12,Magic 2012,M12
+M13,Magic 2013,M13
+M14,Magic 2014 Core Set,M14
+M15,Magic 2015 Core Set,M15
+MBP,Media Inserts,MBP
+MBS,Mirrodin Besieged,MBS
+MD1,Modern Event Deck 2014,MD1
+ME,Masters Edition,MED
+ME2,Masters Edition II,ME2
+ME3,Masters Edition III,ME3
+ME4,Masters Edition IV,ME4
+MI,Mirage,MR
+MM,Mercadian Masques,MM
+MMA,Modern Masters,MMA
+MOR,Morningtide,MT
+MR,Mirrodin,MR
+NE,Nemesis,NE
+NPH,New Phyrexia,NPH
+OD,Odyssey,OD
+ON,Onslaught,ON
+P2,Portal Second Age,PO2
+P3,Portal Three Kingdoms,P3K
+PC2,Planechase 2012 Edition,PC2
+PCH,Planechase,PCH
+PCP,"Planechase ""Planes""",PCHP
+PLC,Planar Chaos,PC
+PP2,"Planechase 2012 Edition ""Planes"" and ""Phenomena""",PP2
+PRE,Prerelease Events,PTC
+PRO,Pro Tour,PRO
+PS,Planeshift,PS
+PT,Portal,PO
+PVC,Duel Decks: Phyrexia vs. the Coalition,PVC
+PY,Prophecy,PR
+R,Revised Edition,RV
+RAV,Ravnica: City of Guilds,RAV
+REW,Magic Player Rewards,MPRP
+RLC,From the Vault: Relics,FVR
+RLM,From the Vault: Realms,V12
+RLS,Release Events,REP
+ROE,Rise of the Eldrazi,ROE
+RTR,Return to Ravnica,RTR
+S2,Starter 2000,ST2K
+SC,Scourge,SC
+SH,Stronghold,SH
+SHM,Shadowmoor,SHM
+SLI,Premium Deck Series: Slivers,PDS
+SOK,Saviors of Kamigawa,SOK
+SOM,Scars of Mirrodin,SOM
+SS,Super Series,SUS
+ST,Starter 1999,ST
+SUM,Summer of Magic,SUM
+SVC,Duel Decks: Speed vs. Cunning,DDN
+SVT,Duel Decks: Sorin vs. Tibalt,DDK
+TE,Tempest,TP
+THS,Theros,THS
+TO,Torment,TR
+TSB,"Time Spiral ""Timeshifted""",TSTS
+TSP,Time Spiral,TS
+TWE,From the Vault: Twenty,V13
+U,Unlimited Edition,UN
+UD,Urza's Destiny,UD
+UG,Unglued,UG
+UL,Urza's Legacy,UL
+UNH,Unhinged,UH
+US,Urza's Saga,US
+VI,Visions,VI
+VMA,Vintage Masters,VMA
+VVK,Duel Decks: Venser vs. Koth,DDI
+WCQ,World Magic Cup Qualifiers,WMCQ
+WL,Weatherlight,WL
+WRL,Worlds,WRL
+WWK,Worldwake,WWK
+ZEN,Zendikar,ZEN

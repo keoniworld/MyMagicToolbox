@@ -12,35 +12,42 @@ namespace MyMagicCollection.Shared.Models
     {
         static StaticMagicData()
         {
-            var stopWatch = Stopwatch.StartNew();
-
-            var loader = new MagicDatabaseLoader();
-            CardDefinitions = loader.LoadCardDatabase();
-            SetDefinitions = loader.LoadSetDatabase();
-
-            var duplicateValues = CardDefinitions.GroupBy(c => MakeNameSetCode(c.SetCode, c.NameEN, c.NumberInSet)).Where(x => x.Count() > 1)
-                .ToArray();
-
-
-            var dict = new Dictionary<string, MagicCardDefinition>();
-            foreach (var def in CardDefinitions)
+            try
             {
-                var unique = MakeNameSetCode(def.SetCode, def.NameEN, def.NumberInSet);
-                if (!dict.ContainsKey(unique))
+                var stopWatch = Stopwatch.StartNew();
+
+                var loader = new MagicDatabaseLoader();
+                CardDefinitions = loader.LoadCardDatabase();
+                SetDefinitions = loader.LoadSetDatabase();
+
+                var duplicateValues = CardDefinitions.GroupBy(c => MakeNameSetCode(c.SetCode, c.NameEN, c.NumberInSet)).Where(x => x.Count() > 1)
+                    .ToArray();
+
+
+                var dict = new Dictionary<string, MagicCardDefinition>();
+                foreach (var def in CardDefinitions)
                 {
-                    dict.Add(unique, def);
+                    var unique = MakeNameSetCode(def.SetCode, def.NameEN, def.NumberInSet);
+                    if (!dict.ContainsKey(unique))
+                    {
+                        dict.Add(unique, def);
+                    }
                 }
+
+                // CardDefinitionsByNameSetCode = CardDefinitions.ToDictionary(c => MakeNameSetCode(c.SetCode, c.NameEN, c.NumberInSet));
+                CardDefinitionsByNameSetCode = dict;
+                CardDefinitionsByCardId = CardDefinitions.ToDictionary(c => c.CardId);
+
+                SetDefinitionsBySetCode = SetDefinitions.ToDictionary(c => c.Code);
+                SetDefinitionsBySetName = SetDefinitions.ToDictionary(c => c.Name);
+
+                stopWatch.Stop();
+                Debug.WriteLine("Loading static MTG data took " + stopWatch.Elapsed);
             }
-
-            // CardDefinitionsByNameSetCode = CardDefinitions.ToDictionary(c => MakeNameSetCode(c.SetCode, c.NameEN, c.NumberInSet));
-            CardDefinitionsByNameSetCode = dict;
-            CardDefinitionsByCardId = CardDefinitions.ToDictionary(c => c.CardId);
-
-            SetDefinitionsBySetCode = SetDefinitions.ToDictionary(c => c.Code);
-            SetDefinitionsBySetName = SetDefinitions.ToDictionary(c => c.Name);
-
-            stopWatch.Stop();
-            Debug.WriteLine("Loading static MTG data took " + stopWatch.Elapsed);
+            catch
+            {
+                // ignore this
+            }
         }
 
         public static string MakeNameSetCode(string setCode, string name, int? cardNumber)

@@ -5,10 +5,12 @@ using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using Minimod.NotificationObject;
 using MyMagicCollection.Shared;
 using MyMagicCollection.Shared.DataSource;
 using MyMagicCollection.Shared.FileFormats.DeckBoxCsv;
+using MyMagicCollection.Shared.Helper;
 using MyMagicCollection.Shared.Models;
 using MyMagicCollection.Shared.ViewModels;
 using MyMagicCollection.wpf.Settings;
@@ -39,7 +41,7 @@ namespace MyMagicCollection.wpf
 
         private LookupSource _lookupSource;
 
-        private Logger _logger = LogManager.GetCurrentClassLogger();
+        private readonly Logger _logger = LogManager.GetCurrentClassLogger();
 
         public MainViewModel(INotificationCenter notificationCenter)
         {
@@ -69,6 +71,16 @@ namespace MyMagicCollection.wpf
             {
                 LoadBinder(new DirectoryInfo(PathHelper.UserDataFolder).MakeAbsolutePath(_settings.LoadedBinder));
             }
+
+            // TODO: Better logic for this
+            Task.Factory.StartNew(() =>
+            {
+                var downloader = new SymbolDownload();
+                downloader.Download(PathHelper.SymbolCacheFolder);
+
+                var setDownload = new SetDownload(_notificationCenter);
+                setDownload.Download(PathHelper.SetCacheFolder, StaticMagicData.SetDefinitions);
+            });
         }
 
         public IEnumerable<MagicLanguage> AvailableLanguages { get; } = (IEnumerable<MagicLanguage>)Enum.GetValues(typeof(MagicLanguage));

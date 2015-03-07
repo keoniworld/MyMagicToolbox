@@ -94,10 +94,11 @@ namespace MyMagicCollection.wpf.UserControls
                 return null;
             }
 
+            var setCode = StaticMagicData.SetDefinitionsBySetCode[card.SetCode].CodeMagicCardsInfo;
             return string.Format(
                CultureInfo.InvariantCulture,
                "{2}{0}{2}{1}.jpg",
-               card.SetCode.ToLowerInvariant(),
+               setCode.ToLowerInvariant(),
                card.NumberInSet,
                delimiter);
         }

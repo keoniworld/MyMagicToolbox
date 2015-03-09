@@ -199,6 +199,15 @@ namespace UpdateCardDatabase
 
                 case "Magic: The Gathering-Commander":
                     return "Commander";
+
+                case "Magic 2014 Core Set":
+                    return "Magic 2014";
+
+                case "Magic 2015 Core Set":
+                    return "Magic 2015";
+
+                case "Classic Sixth Edition":
+                    return "Sixth Edition";
             }
 
             return setCode;

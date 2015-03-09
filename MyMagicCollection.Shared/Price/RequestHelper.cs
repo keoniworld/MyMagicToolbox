@@ -6,10 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
-using MagicLibrary;
 using MyMagicCollection.Shared.Models;
 
-namespace PriceLibrary
+namespace MyMagicCollection.Shared.Price
 {
     public class RequestHelper
     {

@@ -8,6 +8,7 @@ using CsvHelper;
 using MyMagicCollection.Shared.Helper;
 using MyMagicCollection.Shared.Models;
 using MyMagicCollection.Shared.ViewModels;
+using NLog;
 
 namespace MyMagicCollection.Shared.FileFormats.DeckBoxCsv
 {
@@ -56,7 +57,7 @@ namespace MyMagicCollection.Shared.FileFormats.DeckBoxCsv
                         {
                             // TODO: Handle error
 
-                            _notificationCenter.FireNotification("CSV", string.Format("Cannot find set for card {0} ({1})", cardName, setName));
+                            _notificationCenter.FireNotification(LogLevel.Error, string.Format("Cannot find set for card {0} ({1})", cardName, setName));
                             continue;
                         }
                     }
@@ -66,7 +67,7 @@ namespace MyMagicCollection.Shared.FileFormats.DeckBoxCsv
 
                     if (!StaticMagicData.CardDefinitionsByNameSetCode.TryGetValue(setCodeName, out definition))
                     {
-                        _notificationCenter.FireNotification("CSV", string.Format("Cannot find card {0} ({1})", cardName, setName));
+                        _notificationCenter.FireNotification(LogLevel.Error, string.Format("Cannot find card {0} ({1})", cardName, setName));
                         continue;
                     }
 

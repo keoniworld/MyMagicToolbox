@@ -1,4 +1,5 @@
 ﻿using System;
+using NLog;
 
 namespace MyMagicCollection.Shared
 {
@@ -19,7 +20,7 @@ namespace MyMagicCollection.Shared
         /// </summary>
         /// <param name="context">The context.</param>
         /// <param name="message">The message.</param>
-        public void FireNotification(string context, string message)
+        public void FireNotification(LogLevel logLevel, string message)
         {
             var eventToFire = NotificationFired;
             if (eventToFire != null)
@@ -27,7 +28,7 @@ namespace MyMagicCollection.Shared
                 eventToFire(this, new NotificationCenterEventArgs()
                 {
                     TimeStampUtc = DateTime.UtcNow,
-                    Context = context,
+                    LogLevel = logLevel ?? LogLevel.Info,
                     Message = message
                 });
             }

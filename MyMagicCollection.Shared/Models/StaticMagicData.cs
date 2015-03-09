@@ -17,12 +17,11 @@ namespace MyMagicCollection.Shared.Models
                 var stopWatch = Stopwatch.StartNew();
 
                 var loader = new MagicDatabaseLoader();
-                CardDefinitions = loader.LoadCardDatabase();
-                SetDefinitions = loader.LoadSetDatabase();
+                CardDefinitions = loader.LoadCardDatabase().ToList();
+                SetDefinitions = loader.LoadSetDatabase().ToList();
 
-                var duplicateValues = CardDefinitions.GroupBy(c => MakeNameSetCode(c.SetCode, c.NameEN, c.NumberInSet)).Where(x => x.Count() > 1)
-                    .ToArray();
-
+                ////var duplicateValues = CardDefinitions.GroupBy(c => MakeNameSetCode(c.SetCode, c.NameEN, c.NumberInSet)).Where(x => x.Count() > 1)
+                ////    .ToArray();
 
                 var dict = new Dictionary<string, MagicCardDefinition>();
                 foreach (var def in CardDefinitions)
@@ -51,7 +50,7 @@ namespace MyMagicCollection.Shared.Models
 
         public static string MakeNameSetCode(string setCode, string name, int? cardNumber)
         {
-            return setCode + name + (cardNumber.HasValue ? cardNumber.Value.ToString() : "");
+            return setCode + name + (cardNumber?.ToString() ?? "");
         }
 
         public static IEnumerable<MagicCardDefinition> CardDefinitions { get; private set; }

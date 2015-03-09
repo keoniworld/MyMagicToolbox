@@ -135,5 +135,28 @@ namespace MyMagicCollection.wpf
                     MessageBoxImage.Error);
             }
         }
+
+        private void OnOpenBinder(object sender, RoutedEventArgs e)
+        {
+            var dialog = new OpenFileDialog()
+            {
+                AddExtension = true,
+                CheckPathExists = true,
+                Title = "Open binder",
+                Filter = "Binder Files *.mmcbinder|*.mmcbinder",
+                DefaultExt = ".mmcbinder",
+                InitialDirectory = PathHelper.UserDataFolder,
+            };
+
+            if (dialog.ShowDialog(this) == true)
+            {
+                _viewModel.OpenBinder(dialog.FileName);
+            }
+        }
+
+        private void OnPriceCollecttion(object sender, RoutedEventArgs e)
+        {
+            _viewModel.PriceActiveBinder();
+        }
     }
 }

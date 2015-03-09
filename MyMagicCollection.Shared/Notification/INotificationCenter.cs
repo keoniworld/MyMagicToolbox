@@ -1,4 +1,5 @@
 ﻿using System;
+using NLog;
 
 namespace MyMagicCollection.Shared
 {
@@ -12,8 +13,7 @@ namespace MyMagicCollection.Shared
         /// <summary>
         /// Fires the notification.
         /// </summary>
-        /// <param name="context">The context.</param>
         /// <param name="message">The message.</param>
-        void FireNotification(string context, string message);
+        void FireNotification(LogLevel logLevel, string message);
     }
 }

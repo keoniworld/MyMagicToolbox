@@ -10,6 +10,7 @@ using System.Windows.Media.Imaging;
 using MyMagicCollection.Shared;
 using MyMagicCollection.Shared.Helper;
 using MyMagicCollection.Shared.Models;
+using NLog;
 
 namespace MyMagicCollection.wpf.UserControls
 {
@@ -19,15 +20,13 @@ namespace MyMagicCollection.wpf.UserControls
 
     public partial class CardImage : UserControl
     {
-        public const string NotificationContext = "CardImageControl";
-
         public static readonly DependencyProperty SelectedCardProperty =
             DependencyProperty.Register("SelectedCard", typeof(MagicCardDefinition),
             typeof(CardImage), new FrameworkPropertyMetadata(OnImageChanged));
 
         private readonly INotificationCenter _notificationCenter;
 
-		private readonly BitmapImage _emptyImage;
+        private readonly BitmapImage _emptyImage;
 
         public CardImage(INotificationCenter notificationCenter)
         {
@@ -36,13 +35,13 @@ namespace MyMagicCollection.wpf.UserControls
             InitializeComponent();
             rootGrid.DataContext = this;
 
-			_emptyImage = new BitmapImage();
-			_emptyImage.BeginInit();
-			_emptyImage.StreamSource = GetType().Assembly.GetEmbeddedResourceStream("Empty.png");
-			_emptyImage.EndInit();
-			_emptyImage.Freeze();
-			imageControl.Source = _emptyImage;
-		}
+            _emptyImage = new BitmapImage();
+            _emptyImage.BeginInit();
+            _emptyImage.StreamSource = GetType().Assembly.GetEmbeddedResourceStream("Empty.png");
+            _emptyImage.EndInit();
+            _emptyImage.Freeze();
+            imageControl.Source = _emptyImage;
+        }
 
         public CardImage()
             : this(NotificationCenter.Instance)
@@ -139,13 +138,13 @@ namespace MyMagicCollection.wpf.UserControls
 
                 stopwatch.Stop();
                 _notificationCenter.FireNotification(
-                    NotificationContext,
+                    LogLevel.Debug,
                     string.Format("Downloaded image for '{0}[{1}]' in {2}", card.NameEN, card.SetCode, stopwatch.Elapsed));
             }
             catch (Exception error)
             {
                 _notificationCenter.FireNotification(
-                    NotificationContext,
+                    LogLevel.Debug,
                     string.Format("Error downloading image for '{0}[{1}]': {2}", card.NameEN, card.SetCode, error.Message));
 
                 return null;

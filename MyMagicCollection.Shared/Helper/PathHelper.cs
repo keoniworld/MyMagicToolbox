@@ -60,5 +60,5 @@ namespace MyMagicCollection.Shared
 		public static string SymbolCacheFolder { get; private set; }
 
 		public static string SetCacheFolder { get; private set; }
-	}
+    }
 }

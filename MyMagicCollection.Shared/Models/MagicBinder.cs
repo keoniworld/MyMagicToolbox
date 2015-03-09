@@ -16,6 +16,11 @@ namespace MyMagicCollection.Shared.Models
 
 		public string Name { get; set; }
 
-		public IList<MagicBinderCard> Cards { get; private set; }
+        public decimal PriceNonBulk { get; set; }
+        public decimal PriceBulk { get; set; }
+
+        public decimal PriceTotal { get; set; }
+
+        public IList<MagicBinderCard> Cards { get; private set; }
 	}
 }

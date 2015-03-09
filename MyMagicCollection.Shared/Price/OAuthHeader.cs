@@ -5,7 +5,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PriceLibrary
+namespace MyMagicCollection.Shared.Price
 {
     /// <summary>
     /// Class encapsulates tokens and secret to create OAuth signatures and return Authorization headers for web requests.

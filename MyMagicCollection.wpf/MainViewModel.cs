@@ -43,6 +43,8 @@ namespace MyMagicCollection.wpf
 
         private LookupSource _lookupSource;
 
+        private LogLevel _maxLevel = LogLevel.Debug;
+
         public MainViewModel(INotificationCenter notificationCenter)
         {
             _logger.Log(LogLevel.Info, "============================= NEW APP START ============================= ");
@@ -57,13 +59,18 @@ namespace MyMagicCollection.wpf
 
             notificationCenter.NotificationFired += (sender, e) =>
               {
-                  _logger.Log(LogLevel.Info, e.Message);
-                  StatusBarText = e.Message;
+                  _logger.Log(e.LogLevel, e.Message);
+
+                  if (e.LogLevel > _maxLevel)
+                  {
+                      StatusBarText = e.Message;
+                  }
               };
 
             // Load the settings
             var provider = new SettingsProvider(new LocalAppDataStorage("AppSettings"));
             _settings = provider.GetSettings<SettingsData>();
+            _maxLevel = LogLevel.FromString(_settings.LogLevel);
 
             _currentDataSource = new StaticMagicDataDataSource();
 
@@ -196,6 +203,11 @@ namespace MyMagicCollection.wpf
                 CanAddSelected = value != null;
                 RaisePropertyChanged(() => SelectedCard);
 
+                if (_selectedCard != null)
+                {
+                    _selectedCard.UpdatePriceData(true);
+                }
+
                 UpdateSelectedCardFromBinder();
             }
         }
@@ -326,7 +338,7 @@ namespace MyMagicCollection.wpf
         public void CreateAndSetNewBinder(string fileName)
         {
             var name = new FileInfo(fileName);
-            _activeBinder = new MagicBinderViewModel(name.Name.Substring(0, name.Name.Length - name.Extension.Length));
+            _activeBinder = new MagicBinderViewModel(name.Name.Substring(0, name.Name.Length - name.Extension.Length), _notificationCenter);
             _activeBinder.WriteFile(fileName);
             _settings.LoadedBinder = name.GetRelativePathFrom(new DirectoryInfo(PathHelper.UserDataFolder));
             SaveSettings();
@@ -338,6 +350,32 @@ namespace MyMagicCollection.wpf
             _notificationCenter.FireNotification(null, string.Format("Created binder '{0}'.", _activeBinder.Name));
         }
 
+        public void OpenBinder(string fileName)
+        {
+            try
+            {
+                var name = new FileInfo(fileName);
+                _activeBinder = new MagicBinderViewModel(name.Name.Substring(0, name.Name.Length - name.Extension.Length), _notificationCenter);
+                _activeBinder.ReadFile(fileName);
+
+                _settings.LoadedBinder = name.GetRelativePathFrom(new DirectoryInfo(PathHelper.UserDataFolder));
+                SaveSettings();             
+
+                _notificationCenter.FireNotification(LogLevel.Info, string.Format("Opened binder '{0}'.", _activeBinder.Name));
+            }
+            catch (Exception error)
+            {
+                _activeBinder = null;
+                _notificationCenter.FireNotification(LogLevel.Error, string.Format("Error opening binder '{0}': {1}", _activeBinder.Name, error.Message));
+            }
+            finally
+            {
+                RaisePropertyChanged(() => CardsInBinder);
+                RaisePropertyChanged(() => IsActiveBinder);
+                RaisePropertyChanged(() => ActiveBinder);
+            }
+        }
+
         public void LoadBinder(string fileName)
         {
             var fileInfo = new FileInfo(fileName);
@@ -347,7 +385,7 @@ namespace MyMagicCollection.wpf
                 return;
             }
 
-            _activeBinder = new MagicBinderViewModel();
+            _activeBinder = new MagicBinderViewModel(_notificationCenter);
             _activeBinder.ReadFile(fileName);
             _settings.LoadedBinder = fileInfo.GetRelativePathFrom(new DirectoryInfo(PathHelper.UserDataFolder));
             SaveSettings();
@@ -391,6 +429,16 @@ namespace MyMagicCollection.wpf
             }
 
             RaisePropertyChanged(() => SelectedCardsInBinder);
+        }
+
+        public void PriceActiveBinder()
+        {
+            if (_activeBinder == null)
+            {
+                return;
+            }
+
+            _activeBinder.PriceBinder();
         }
     }
 }

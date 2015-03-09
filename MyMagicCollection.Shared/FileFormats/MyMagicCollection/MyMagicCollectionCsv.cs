@@ -40,6 +40,8 @@ namespace MyMagicCollection.Shared.FileFormats.MyMagicCollection
                 // Write header first:
                 var writer = new CsvWriter(textWriter, _config);
                 {
+                    writer.Configuration.CultureInfo = CultureInfo.InvariantCulture;
+
                     writer.WriteField<string>("Name");
                     writer.NextRecord();
 
@@ -60,38 +62,50 @@ namespace MyMagicCollection.Shared.FileFormats.MyMagicCollection
 
         public MagicBinder ReadFile(string fileName)
         {
-            var content = File.ReadAllText(fileName);
-            var delimiterPos = content.IndexOf(_delimiter, StringComparison.InvariantCultureIgnoreCase);
-            string header = "";
-            string cards = "";
+            MagicBinder result = null;
+            try
+            {
+                var content = File.ReadAllText(fileName);
+                var delimiterPos = content.IndexOf(_delimiter, StringComparison.InvariantCultureIgnoreCase);
+                string header = "";
+                string cards = "";
 
-            if (delimiterPos >= 0)
-            {
-                // delimiter found -> split text
-                header = content.Substring(0, delimiterPos).Trim('\r', '\n');
-                cards = content.Substring(delimiterPos + _delimiter.Length, content.Length - _delimiter.Length - delimiterPos).Trim('\r', '\n');
-            }
-            else
-            {
-                // no delimiter -> take all
-                header = content;
-            }
-
-            IList<MagicBinderCard> collectionCards = new List<MagicBinderCard>();
-            if (!string.IsNullOrWhiteSpace(cards))
-            {
-                using (var inputCsv = new CsvReader(new StringReader(cards)))
+                if (delimiterPos >= 0)
                 {
-                    collectionCards = inputCsv.GetRecords<MagicBinderCard>().ToList();
+                    // delimiter found -> split text
+                    header = content.Substring(0, delimiterPos).Trim('\r', '\n');
+                    cards = content.Substring(delimiterPos + _delimiter.Length, content.Length - _delimiter.Length - delimiterPos).Trim('\r', '\n');
+                }
+                else
+                {
+                    // no delimiter -> take all
+                    header = content;
+                }
+
+                IList<MagicBinderCard> collectionCards = new List<MagicBinderCard>();
+                if (!string.IsNullOrWhiteSpace(cards))
+                {
+                    using (var inputCsv = new CsvReader(new StringReader(cards)))
+                    {
+                        inputCsv.Configuration.CultureInfo = CultureInfo.InvariantCulture;
+                        collectionCards = inputCsv.GetRecords<MagicBinderCard>().ToList();
+                    }
+                }
+
+                result = new MagicBinder(collectionCards);
+
+                using (var inputCsv = new CsvReader(new StringReader(header)))
+                {
+                    inputCsv.Configuration.CultureInfo = CultureInfo.InvariantCulture;
+
+                    inputCsv.Read();
+                    result.Name = inputCsv.GetField<string>("Name");
                 }
             }
-
-            var result = new MagicBinder(collectionCards);
-
-            using (var inputCsv = new CsvReader(new StringReader(header)))
+            catch (Exception error)
             {
-                inputCsv.Read();
-                result.Name = inputCsv.GetField<string>("Name");
+                // TODO: Log error
+                result = new MagicBinder();
             }
 
             return result;

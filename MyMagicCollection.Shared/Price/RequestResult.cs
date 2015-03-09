@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace PriceLibrary
+namespace MyMagicCollection.Shared.Price
 {
     public class RequestResult : IDisposable
     {

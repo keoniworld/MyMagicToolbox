@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using Minimod.NotificationObject;
 using MyMagicCollection.Shared.FileFormats.MyMagicCollection;
 using MyMagicCollection.Shared.Models;
 
 namespace MyMagicCollection.Shared.ViewModels
 {
-    public class MagicBinderViewModel
+    public class MagicBinderViewModel : NotificationObject
     {
         private MagicBinder _magicCollection;
         private string _fileName;
@@ -52,6 +53,8 @@ namespace MyMagicCollection.Shared.ViewModels
 
             _sortedCards = Cards.ToDictionary(c => c.RowId);
             _fileName = fileName;
+
+            CalculateTotals();
         }
 
         public void WriteFile()
@@ -76,7 +79,8 @@ namespace MyMagicCollection.Shared.ViewModels
             int quantity,
             MagicGrade grade,
             MagicLanguage language,
-            bool isFoil)
+            bool isFoil,
+            bool updateTotals)
         {
             var binderCard = new MagicBinderCard()
             {
@@ -93,6 +97,11 @@ namespace MyMagicCollection.Shared.ViewModels
             _magicCollection.Cards.Add(binderCard);
 
             viewModel.PropertyChanged += Card_PropertyChanged;
+
+            if (updateTotals)
+            {
+                CalculateTotals();
+            }
         }
 
         public void AddCards(
@@ -108,13 +117,34 @@ namespace MyMagicCollection.Shared.ViewModels
                     card.Quantity.HasValue ? card.Quantity.Value : 0,
                     grade,
                     language,
-                    isFoil);
+                    isFoil,
+                    false);
             }
+
+            CalculateTotals();
         }
+
+        public int TotalNumberOfCards { get; private set; }
+        public int TotalNumberOfTradeCards { get; private set; }
 
         private void Card_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
+            CalculateTotals();
             WriteFile();
+        }
+
+        private void CalculateTotals()
+        {
+            TotalNumberOfCards = 0;
+            TotalNumberOfTradeCards = 0;
+            foreach (var card in _cards)
+            {
+                TotalNumberOfCards += card.Quantity;
+                TotalNumberOfTradeCards += card.QuantityTrade;
+            }
+            
+            RaisePropertyChanged(() => TotalNumberOfCards);
+            RaisePropertyChanged(() => TotalNumberOfTradeCards);
         }
 
         // TODO: Modifikationsoperationen

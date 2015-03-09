@@ -271,7 +271,7 @@ namespace MyMagicCollection.wpf
                 return;
             }
 
-            _activeBinder.AddCard(_selectedCard.Definition, 1, SelectedGrade, SelectedLanguage, SelectedCardIsFoil);
+            _activeBinder.AddCard(_selectedCard.Definition, 1, SelectedGrade, SelectedLanguage, SelectedCardIsFoil, true);
             _activeBinder.WriteFile();
 
             _notificationCenter.FireNotification(null, string.Format("Added card '{0}' to binder.", _selectedCard.NameEN));

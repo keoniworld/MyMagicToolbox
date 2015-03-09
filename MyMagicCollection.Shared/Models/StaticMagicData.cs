@@ -34,7 +34,6 @@ namespace MyMagicCollection.Shared.Models
                     }
                 }
 
-                // CardDefinitionsByNameSetCode = CardDefinitions.ToDictionary(c => MakeNameSetCode(c.SetCode, c.NameEN, c.NumberInSet));
                 CardDefinitionsByNameSetCode = dict;
                 CardDefinitionsByCardId = CardDefinitions.ToDictionary(c => c.CardId);
 

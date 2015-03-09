@@ -64,6 +64,7 @@
     <Compile Include="Minimods\Minimod.ExpressionExtensions.Generated.cs" />
     <Compile Include="Minimods\Minimod.NotificationObject.Generated.cs" />
     <Compile Include="Models\CardLookup.cs" />
+    <Compile Include="Models\MagicCardPrice.cs" />
     <Compile Include="Models\MagicDeckCard.cs" />
     <Compile Include="Models\MagicCardDefinition.cs" />
     <Compile Include="Models\MagicBinder.cs" />

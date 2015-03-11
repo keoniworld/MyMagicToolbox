@@ -94,14 +94,39 @@ namespace UpdateCardDatabase
 
         public static string PatchSetCode(string setCode)
         {
-            ////switch (setCode)
-            ////{
-            ////    case "FNM":
-            ////        return "FNMP";
+            var patch = new Dictionary<string, string>()
+            {
+                { "A", "LEA" },
+                { "B", "LEB" },
+                { "U", "2ED" },
+                { "R", "3ED" },
+                { "4E", "4ED" },
+                { "5E", "5ED" },
+                { "6E", "6ED" },
+                { "7E", "7ED" },
+                { "8E", "8ED" },
+                { "9E", "9ED" },
+                { "LG", "LEG" },
 
-            ////    case "JCG":
-            ////        return "JR";
-            ////}
+                { "CFX", "CON" },
+                { "ADVD", "DDC" },
+                { "AGVL", "DDD" },
+                { "AJVC", "DD2" },
+                { "AVB", "DDH" },
+                { "ANH", "V14" },                
+                { "CS", "CSP" },
+                { "DRG", "DRP" },
+                { "DS", "DST" },
+                { "GP", "GPT" },
+                { "HL", "HML" },
+                { "AEVD", "DD3" },
+            };
+
+            string found;
+            if (patch.TryGetValue(setCode, out found))
+            {
+                return found;
+            }
 
             return setCode;
         }
@@ -110,6 +135,13 @@ namespace UpdateCardDatabase
         {
             var patch = new Dictionary<string, string>()
             {
+                { "4ED", "4E" },
+                { "5ED", "5E" },
+                { "6ED", "6E" },
+                { "7ED", "7E" },
+                { "8ED", "8E" },
+                { "9ED", "9E" },
+
                 { "15A", "15ANN" },
                 { "AL", "AI" },
                 { "ANT", "AT" },
@@ -179,6 +211,7 @@ namespace UpdateCardDatabase
                 { "U", "UN" },
                 { "WCQ", "WMCQ" },
                 { "GTW", "GRC" },
+                { "GPT", "GP" },                
             };
 
             string found;
@@ -208,6 +241,9 @@ namespace UpdateCardDatabase
 
                 case "Classic Sixth Edition":
                     return "Sixth Edition";
+
+                case "Prerelease Events":
+                    return "Prerelease Promos";
             }
 
             return setCode;

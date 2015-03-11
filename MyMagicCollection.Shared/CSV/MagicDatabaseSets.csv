@@ -1,24 +1,20 @@
 Code,Name,CodeMagicCardsInfo
 10E,Tenth Edition,10E
 15A,15th Anniversary,15ANN
+2ED,Unlimited Edition,2ED
 2HG,Two-Headed Giant Tournament,THGT
-4E,Fourth Edition,4E
-5E,Fifth Edition,5E
-6E,Sixth Edition,6E
-7E,Seventh Edition,7E
-8E,Eighth Edition,8E
+3ED,Revised Edition,3ED
+4ED,Fourth Edition,4E
+5ED,Fifth Edition,5E
+6ED,Sixth Edition,6E
+7ED,Seventh Edition,7E
 8EB,Eighth Edition Box Set,8EB
-9E,Ninth Edition,9E
+8ED,Eighth Edition,8E
 9EB,Ninth Edition Box Set,9EB
-A,Limited Edition Alpha,AL
-ADVD,"Duel Decks Anthology, Divine vs. Demonic",DD3
-AEVD,"Duel Decks Anthology, Elves vs. Dragons",AEVD
-AGVL,"Duel Decks Anthology, Garruk vs. Liliana",DD3
-AJVC,"Duel Decks Anthology, Jace vs. Chandra",DD3
+9ED,Ninth Edition,9E
 AL,Alliances,AI
 ALA,Shards of Alara,ALA
 AN,Arabian Nights,AN
-ANH,From the Vault: Annihilation (2014),V14
 ANT,Anthologies,AT
 AP,Apocalypse,AP
 APAC,Asia Pacific Land Program,APAC
@@ -27,9 +23,7 @@ ARB,Alara Reborn,ARB
 ARC,Archenemy,ARC
 ARE,Arena League,ARENA
 ARS,"Archenemy ""Schemes""",ARCS
-AVB,Duel Decks: Ajani vs. Nicol Bolas,DDH
 AVR,Avacyn Restored,AVR
-B,Limited Edition Beta,BE
 BD,Beatdown Box Set,BD
 BNG,Born of the Gods,BNG
 BOK,Betrayers of Kamigawa,BOK
@@ -37,24 +31,29 @@ BR,Battle Royale Box Set,BR
 C13,Commander 2013 Edition,C13
 C14,Commander 2014,C14
 CC,Celebration Cards,UQC
-CFX,Conflux,CFX
 CH,Chronicles,CH
 CHA,Champs,CP
 CHK,Champions of Kamigawa,CHK
 CMD,Commander,CMD
 CNS,Conspiracy,CNS
 CNSC,"Magic: The Gathering—Conspiracy ""Conspiracies""",CNS
+CON,Conflux,CON
 CRS,Commander's Arsenal,CMA
-CS,Coldsnap,CS
+CSP,Coldsnap,CSP
 CST,Coldsnap Theme Decks,CSTD
+DD2,"Duel Decks Anthology, Jace vs. Chandra",DD2
+DD3,"Duel Decks Anthology, Elves vs. Dragons",DD3
+DDC,"Duel Decks Anthology, Divine vs. Demonic",DDC
+DDD,"Duel Decks Anthology, Garruk vs. Liliana",DDD
+DDH,Duel Decks: Ajani vs. Nicol Bolas,DDH
 DGM,Dragon's Maze,DGM
 DIS,Dissension,DI
 DK,The Dark,DK
 DKA,Dark Ascension,DKA
 DM,Deckmasters,DM
 DPA,Duels of the Planeswalkers,DPA
-DRG,From the Vault: Dragons,FVD
-DS,Darksteel,DS
+DRP,From the Vault: Dragons,DRP
+DST,Darksteel,DST
 DVD,Duel Decks: Divine vs. Demonic,DVD
 EUR,European Land Program,EURO
 EVE,Eventide,EVE
@@ -70,7 +69,7 @@ FRF,Fate Reforged,FRF
 FUT,Future Sight,FUT
 GDC,Magic Game Day Cards,MGDC
 GLP,Magic: The Gathering Launch Parties,MLP
-GP,Guildpact,GP
+GPT,Guildpact,GP
 GPX,Grand Prix,GPX
 GRV,Premium Deck Series: Graveborn,PD3
 GTC,Gatecrash,GTC
@@ -78,7 +77,7 @@ GTW,WPN/Gateway,GRC
 GUR,Guru,GURU
 GVL,Duel Decks: Garruk vs. Liliana,GVL
 HHO,Happy Holidays,HHO
-HL,Homelands,HL
+HML,Homelands,HML
 HVM,Duel Decks: Heroes vs. Monsters,DDL
 IA,Ice Age,IA
 IN,Invasion,IN
@@ -92,8 +91,9 @@ JVV,Duel Decks: Jace vs. Vraska,DDM
 KTK,Khans of Tarkir,KTK
 KVD,Duel Decks: Knights vs. Dragons,DDG
 LE,Legions,LE
+LEA,Limited Edition Alpha,LEA
+LEB,Limited Edition Beta,LEB
 LEG,From the Vault: Legends,FVL
-LG,Legends,LG
 LGM,Legend Membership,DCILM
 LRW,Lorwyn,LW
 M10,Magic 2010,M10
@@ -125,13 +125,12 @@ PCH,Planechase,PCH
 PCP,"Planechase ""Planes""",PCHP
 PLC,Planar Chaos,PC
 PP2,"Planechase 2012 Edition ""Planes"" and ""Phenomena""",PP2
-PRE,Prerelease Events,PTC
+PRE,Prerelease Promos,PTC
 PRO,Pro Tour,PRO
 PS,Planeshift,PS
 PT,Portal,PO
 PVC,Duel Decks: Phyrexia vs. the Coalition,PVC
 PY,Prophecy,PR
-R,Revised Edition,RV
 RAV,Ravnica: City of Guilds,RAV
 REW,Magic Player Rewards,MPRP
 RLC,From the Vault: Relics,FVR
@@ -157,12 +156,12 @@ TO,Torment,TR
 TSB,"Time Spiral ""Timeshifted""",TSTS
 TSP,Time Spiral,TS
 TWE,From the Vault: Twenty,V13
-U,Unlimited Edition,UN
 UD,Urza's Destiny,UD
 UG,Unglued,UG
 UL,Urza's Legacy,UL
 UNH,Unhinged,UH
 US,Urza's Saga,US
+V14,From the Vault: Annihilation (2014),V14
 VI,Visions,VI
 VMA,Vintage Masters,VMA
 VVK,Duel Decks: Venser vs. Koth,DDI

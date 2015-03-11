@@ -14,6 +14,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Win32;
 using MyMagicCollection.Shared;
+using MyMagicCollection.Shared.Helper;
+using MyMagicCollection.Shared.Models;
 
 namespace MyMagicCollection.wpf
 {
@@ -157,6 +159,23 @@ namespace MyMagicCollection.wpf
         private void OnPriceCollecttion(object sender, RoutedEventArgs e)
         {
             _viewModel.PriceActiveBinder();
+        }
+
+		private void Button_Click(object sender, RoutedEventArgs e)
+		{
+			_viewModel.PriceSearchResult();
+		}
+
+        private void OnDownloadMissingImages(object sender, RoutedEventArgs e)
+        {
+            Task.Factory.StartNew(() =>
+            {
+                var downloader = new SymbolDownload();
+                downloader.Download(PathHelper.SymbolCacheFolder);
+
+                var setDownload = new SetDownload(NotificationCenter.Instance);
+                setDownload.Download(PathHelper.SetCacheFolder, StaticMagicData.SetDefinitions);
+            });
         }
     }
 }

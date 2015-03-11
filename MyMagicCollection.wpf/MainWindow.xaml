@@ -28,9 +28,12 @@
         </Grid.ColumnDefinitions>
 
         <!-- Database Information -->
-        <StackPanel Orientation="Horizontal">
-            <TextBlock Text="{Binding DatabaseSummary}" />
-        </StackPanel>
+        <GroupBox Header="Misc">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding DatabaseSummary}" />
+                <Button VerticalAlignment="Top" Click="OnDownloadMissingImages">Download missing images</Button>
+            </StackPanel>
+        </GroupBox>
 
         <!-- Search Panel -->
         <GroupBox Header="Card Lookup" Grid.Row="0" Grid.Column="1">
@@ -47,6 +50,12 @@
                 <TextBox HorizontalAlignment="Stretch" Text="{Binding CardLookup.SearchTerm, Mode=TwoWay,Delay=500}" />
                 <Button Grid.Column="1" Click="OnSearchButtonClick">Search!</Button>
 
+                <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.ColumnSpan="2">
+                    <CheckBox  VerticalAlignment="Center"  IsChecked="{Binding CardLookup.SearchGerman, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">German</CheckBox>
+
+                    <CheckBox  Margin="3,0,0,0" VerticalAlignment="Center"  IsChecked="{Binding CardLookup.SearchRules, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">Rules Text</CheckBox>
+                    <ComboBox Margin="3,0,0,0" ItemsSource="{Binding CardLookup.AvailableSearchSets}" SelectedItem="{Binding CardLookup.SearchSet, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
                 <!-- TODO: Search options -->
             </Grid>
         </GroupBox>
@@ -70,10 +79,9 @@
             <GroupBox Header="Selected card" Grid.Row="0">
 
                 <userControl:CardImage
-                VerticalAlignment="Top"
-                HorizontalAlignment="Stretch"
-
-                SelectedCard="{Binding SelectedCard.Definition}" />
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Stretch"
+                    SelectedCard="{Binding SelectedCard.Definition}" />
             </GroupBox>
             <GroupBox Grid.Row="1" Header="Binder">
                 <Grid>
@@ -144,12 +152,18 @@
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
-                            
+
                             <DataGridTemplateColumn Header="Price">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="{Binding Price, Mode=OneWay}"
-                                                   />
+                                        <TextBlock Text="{Binding Price, Mode=OneWay}">
+                                            <TextBlock.ToolTip>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Label>Last Updated on</Label>
+                                                    <TextBlock Text="{Binding CardPrice.UpdateUtc}" VerticalAlignment="Center"/>
+                                                </StackPanel>
+                                            </TextBlock.ToolTip>
+										</TextBlock>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
@@ -174,10 +188,34 @@
                     <DataGridTextColumn SortMemberPath="Quantity" Header="Quantity" Binding="{Binding Quantity}" />
                     <DataGridTextColumn SortMemberPath="QuantityTrade" Header="Trade" Binding="{Binding QuantityTrade}" />
                     <DataGridTextColumn SortMemberPath="NameEN" Header="Name" Binding="{Binding NameEN}" />
-                    <DataGridTextColumn SortMemberPath="SetCode" Header="Set" Binding="{Binding SetCode}" />
+                    <!--<DataGridTextColumn SortMemberPath="SetCode" Header="Set" Binding="{Binding SetCode}"  />-->
+
+                    <DataGridTemplateColumn Header="Set" SortMemberPath="SetCode">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <userControl:SetImage SelectedCard="{Binding Definition}" />
+                                <!--<TextBlock Text="{Binding SetCode, Mode=OneWay}" ToolTip="{Binding SetName, Mode=OneWay}"/>-->
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
                     <DataGridTextColumn SortMemberPath="Grade" Header="Grade" Binding="{Binding Grade}" />
                     <DataGridTextColumn SortMemberPath="Language" Header="Language" Binding="{Binding Language}" />
-                    <DataGridTextColumn SortMemberPath="Price" Header="Language" Binding="{Binding Price}" />
+
+                    <DataGridTemplateColumn Header="Price" SortMemberPath="Price">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Price, Mode=OneWay}" >
+                                    <TextBlock.ToolTip>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Label>Last Updated on</Label>
+                                            <TextBlock Text="{Binding PriceUpdateUtc}" VerticalAlignment="Center"/>
+                                        </StackPanel>
+                                    </TextBlock.ToolTip>
+								</TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
 
@@ -202,9 +240,10 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
-            <GroupBox Header="Import" Grid.Row="0">
+            <GroupBox Header="Import / List Options" Grid.Row="0">
                 <StackPanel>
                     <Button Click="OnImportDeckbox">Import Cards</Button>
+                    <Button Margin="0,3,0,0" Click="Button_Click">Price Search Result</Button>
                 </StackPanel>
             </GroupBox>
 
@@ -301,6 +340,7 @@
                     <TextBox IsReadOnly="True" Grid.Row="5" HorizontalAlignment="Stretch" Grid.Column="1"></TextBox>
                 </Grid>
             </GroupBox>
+
         </Grid>
 
         <StatusBar Grid.Row="2" Grid.ColumnSpan="3">

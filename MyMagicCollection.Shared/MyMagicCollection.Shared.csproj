@@ -78,6 +78,7 @@
     <Compile Include="Models\MagicBinder.cs" />
     <Compile Include="Models\MagicBinderCard.cs" />
     <Compile Include="Models\MagicDeckLocation.cs" />
+    <Compile Include="Models\MagicRarityExtension.cs" />
     <Compile Include="Models\StaticPriceDatabase.cs" />
     <Compile Include="Notification\INotificationCenter.cs" />
     <Compile Include="Notification\NotificationCenter.cs" />

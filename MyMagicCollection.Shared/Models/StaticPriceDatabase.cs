@@ -76,7 +76,7 @@ namespace MyMagicCollection.Shared.Models
             {
                 lock (_sync)
                 {
-                    if (price.UpdateUtc.HasValue && price.UpdateUtc.Value.Date.AddDays(-1) >= DateTime.UtcNow.Date)
+                    if (price.UpdateUtc.HasValue && price.UpdateUtc.Value.Date >= DateTime.UtcNow.Date)
                     {
                         return;
                     }

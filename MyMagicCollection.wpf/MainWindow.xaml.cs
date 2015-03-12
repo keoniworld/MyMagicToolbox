@@ -114,7 +114,7 @@ namespace MyMagicCollection.wpf
             try
             {
                 var dialog = new SaveFileDialog()
-                {                    
+                {
                     AddExtension = true,
                     CheckPathExists = true,
                     CheckFileExists = false,
@@ -161,10 +161,10 @@ namespace MyMagicCollection.wpf
             _viewModel.PriceActiveBinder();
         }
 
-		private void Button_Click(object sender, RoutedEventArgs e)
-		{
-			_viewModel.PriceSearchResult();
-		}
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            _viewModel.PriceSearchResult();
+        }
 
         private void OnDownloadMissingImages(object sender, RoutedEventArgs e)
         {
@@ -175,6 +175,20 @@ namespace MyMagicCollection.wpf
 
                 var setDownload = new SetDownload(NotificationCenter.Instance);
                 setDownload.Download(PathHelper.SetCacheFolder, StaticMagicData.SetDefinitions);
+            });
+        }
+
+        private void OnDownloadCardImages(object sender, RoutedEventArgs e)
+        {
+            Task.Factory.StartNew(() =>
+            {                
+                var download = new CardImageDownload(NotificationCenter.Instance);
+
+                var definitions = StaticMagicData.CardDefinitions.ToList();
+                foreach (var card in definitions)
+                {
+                    download.DownloadImage(card);
+                }
             });
         }
     }

@@ -1,16 +1,12 @@
 Code,Name,CodeMagicCardsInfo
 10E,Tenth Edition,10E
-15A,15th Anniversary,15ANN
 2ED,Unlimited Edition,2ED
-2HG,Two-Headed Giant Tournament,THGT
 3ED,Revised Edition,3ED
 4ED,Fourth Edition,4E
 5ED,Fifth Edition,5E
 6ED,Sixth Edition,6E
 7ED,Seventh Edition,7E
-8EB,Eighth Edition Box Set,8EB
 8ED,Eighth Edition,8E
-9EB,Ninth Edition Box Set,9EB
 9ED,Ninth Edition,9E
 AL,Alliances,AI
 ALA,Shards of Alara,ALA
@@ -32,11 +28,9 @@ C13,Commander 2013 Edition,C13
 C14,Commander 2014,C14
 CC,Celebration Cards,UQC
 CH,Chronicles,CH
-CHA,Champs,CP
 CHK,Champions of Kamigawa,CHK
 CMD,Commander,CMD
 CNS,Conspiracy,CNS
-CNSC,"Magic: The Gathering—Conspiracy ""Conspiracies""",CNS
 CON,Conflux,CON
 CRS,Commander's Arsenal,CMA
 CSP,Coldsnap,CSP
@@ -61,7 +55,6 @@ EVG,Duel Decks: Elves vs. Goblins,EVG
 EVT,Duel Decks: Elspeth vs. Tezzeret,DDF
 EX,Exodus,EX
 EXL,From the Vault: Exiled,FVE
-FAL,Premium Deck Series: Fire and Lightning,FD2
 FD,Fifth Dawn,5DN
 FE,Fallen Empires,FE
 FNM,Friday Night Magic,FNMP
@@ -126,7 +119,6 @@ PCP,"Planechase ""Planes""",PCHP
 PLC,Planar Chaos,PC
 PP2,"Planechase 2012 Edition ""Planes"" and ""Phenomena""",PP2
 PRE,Prerelease Promos,PTC
-PRO,Pro Tour,PRO
 PS,Planeshift,PS
 PT,Portal,PO
 PVC,Duel Decks: Phyrexia vs. the Coalition,PVC
@@ -165,8 +157,6 @@ V14,From the Vault: Annihilation (2014),V14
 VI,Visions,VI
 VMA,Vintage Masters,VMA
 VVK,Duel Decks: Venser vs. Koth,DDI
-WCQ,World Magic Cup Qualifiers,WMCQ
 WL,Weatherlight,WL
-WRL,Worlds,WRL
 WWK,Worldwake,WWK
 ZEN,Zendikar,ZEN

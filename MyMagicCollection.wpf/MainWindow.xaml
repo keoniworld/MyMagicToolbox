@@ -29,9 +29,14 @@
 
         <!-- Database Information -->
         <GroupBox Header="Misc">
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Vertical">
                 <TextBlock Text="{Binding DatabaseSummary}" />
-                <Button VerticalAlignment="Top" Click="OnDownloadMissingImages">Download missing images</Button>
+                <StackPanel Orientation="Horizontal">
+                <Button VerticalAlignment="Top" Click="OnDownloadMissingImages"
+                        ToolTip="Downloads all missing set symbols">Download Set Images</Button>
+                    <Button VerticalAlignment="Top" Margin="3,0,0,0" Click="OnDownloadCardImages"
+                            ToolTip="Downloads all missing card data from all sets.">Download Card Images</Button>
+                    </StackPanel>
             </StackPanel>
         </GroupBox>
 
@@ -124,7 +129,8 @@
                             <DataGridTemplateColumn Header="Set">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="{Binding SetCode, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
+                                        <userControl:SetImage SelectedCard="{Binding Definition}" MaxHeight="14"/>
+                                        <!--<TextBlock Text="{Binding SetCode, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />-->
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
@@ -193,7 +199,7 @@
                     <DataGridTemplateColumn Header="Set" SortMemberPath="SetCode">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <userControl:SetImage SelectedCard="{Binding Definition}" />
+                                <userControl:SetImage SelectedCard="{Binding Definition}" MaxHeight="14"/>
                                 <!--<TextBlock Text="{Binding SetCode, Mode=OneWay}" ToolTip="{Binding SetName, Mode=OneWay}"/>-->
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>

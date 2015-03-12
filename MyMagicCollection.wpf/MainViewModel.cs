@@ -62,7 +62,7 @@ namespace MyMagicCollection.wpf
 			  {
 				  _logger.Log(e.LogLevel, e.Message);
 
-				  if (e.LogLevel > _maxLevel)
+				  if (e.LogLevel >= _maxLevel)
 				  {
 					  StatusBarText = e.Message;
 				  }

@@ -63,6 +63,7 @@
     <Compile Include="FileFormats\IReadCards.cs" />
     <Compile Include="FileFormats\MyMagicCollection\MagicCollectionCsvMapper.cs" />
     <Compile Include="FileFormats\MyMagicCollection\MyMagicCollectionCsv.cs" />
+    <Compile Include="Helper\CardImageDownload.cs" />
     <Compile Include="Helper\MagicLanguagehelper.cs" />
     <Compile Include="Helper\MagicGradeHelper.cs" />
     <Compile Include="Helper\EmbeddedResourceHelper.cs" />

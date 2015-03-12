@@ -223,6 +223,27 @@ namespace UpdateCardDatabase
             return setCode;
         }
 
+        public static bool IsSetIncluded(string setCode)
+        {
+            switch (setCode)
+            {
+                case "15A":
+                case "CNSC":
+                case "CHA":
+                case "8EB":
+                case "9EB":
+                case "2HG":
+                case "FAL":
+                case "PRO":
+                case "WRL":
+                case "WCQ":
+                    return false;
+
+                default:
+                    return true;
+            }
+        }
+
         public static string PatchSetName(string setCode)
         {
             switch (setCode)
@@ -325,6 +346,11 @@ namespace UpdateCardDatabase
                     card.LegalityCommander = ComputeLegality(inputCsv.GetField<string>("legality_Commander"));
                     card.LegalityFrenchCommander = ComputeLegality(inputCsv.GetField<string>("legality_French_Commander"));
                     card.Rarity = ComputeRarity(inputCsv.GetField<string>("rarity"));
+
+                    if (!IsSetIncluded(card.SetCode))
+                    {
+                        continue;
+                    }
 
                     card.RulesText = inputCsv.GetField<string>("ability");
                     // .Replace("£", Environment.NewLine);

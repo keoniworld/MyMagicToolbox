@@ -1,6 +1,6 @@
 ﻿namespace MyMagicCollection.Shared.Models
 {
-    public class MagicCardDefinition
+    public class MagicCardDefinition : IMagicCardDefinition
     {
         public int Id { get; set; }
 

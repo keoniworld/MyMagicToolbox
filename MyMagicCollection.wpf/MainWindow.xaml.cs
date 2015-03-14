@@ -31,6 +31,9 @@ namespace MyMagicCollection.wpf
             InitializeComponent();
 
             DataContext = _viewModel;
+
+            var version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            Title = "My Magic Toolbox - " + version;
         }
 
         private void OnSearchButtonClick(object sender, RoutedEventArgs e)

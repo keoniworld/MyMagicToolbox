@@ -8,7 +8,6 @@ using CsvHelper;
 using CsvHelper.Configuration;
 using Dapper;
 using MagicDatabase;
-using MagicLibrary;
 using MyMagicCollection.Shared.Models;
 
 namespace UpdateCardDatabase
@@ -113,14 +112,29 @@ namespace UpdateCardDatabase
                 { "AGVL", "DDD" },
                 { "AJVC", "DD2" },
                 { "AVB", "DDH" },
-                { "ANH", "V14" },                
+                { "ANH", "V14" },
                 { "CS", "CSP" },
                 { "DRG", "DRP" },
                 { "DS", "DST" },
                 { "GP", "GPT" },
                 { "HL", "HML" },
                 { "AEVD", "DD3" },
-            };
+
+                { "ANT", "ATH" },
+                { "CRS", "CM1" },
+                { "TO", "TOR" },
+                { "UD", "UDS" },
+                { "UL", "ULG" },
+                { "US", "USG" },
+                { "PT", "POR" },
+                { "ON", "ONS" },
+                { "MR", "MRD" },
+                { "DPA", "DRP" },
+                { "FD", "5DN" },
+                { "HVM", "DDL" },
+                { "TWE", "V13" },
+                { "VVK", "DDI" },
+           };
 
             string found;
             if (patch.TryGetValue(setCode, out found))
@@ -141,16 +155,18 @@ namespace UpdateCardDatabase
                 { "7ED", "7E" },
                 { "8ED", "8E" },
                 { "9ED", "9E" },
+                { "ONS", "ON" },
+                { "MRD", "MR" },
 
                 { "15A", "15ANN" },
                 { "AL", "AI" },
-                { "ANT", "AT" },
+                { "ATH", "AT" },
                 { "ARS", "ARCS" },
                 { "ARE", "ARENA" },
                 { "CC", "UQC" },
                 { "CHA", "CP" },
                 { "CST", "CSTD" },
-                { "CRS", "CMA" },
+                { "CM1", "CMA" },
                 { "DIS", "DI" },
                 { "ADVD", "DD3" },
                 { "AEVG", "DD3" },
@@ -158,7 +174,6 @@ namespace UpdateCardDatabase
                 { "AJVC", "DD3" },
                 { "AVB", "DDH" },
                 { "EVT", "DDF" },
-                { "HVM", "DDL" },
                 { "IVG", "DDJ" },
                 { "JVV", "DDM" },
                 { "KVD", "DDG" },
@@ -166,7 +181,6 @@ namespace UpdateCardDatabase
                 { "SVC", "DDN" },
                 { "VVK", "DDI" },
                 { "EUR", "EURO" },
-                { "FD", "5DN" },
                 { "FNM", "FNMP" },
                 { "ANH", "V14" },
                 { "DRG", "FVD" },
@@ -190,7 +204,7 @@ namespace UpdateCardDatabase
                 { "MOR", "MT" },
                 { "PLC", "PC" },
                 { "PCP", "PCHP" },
-                { "PT", "PO" },
+                { "POR", "PO" },
                 { "P2", "PO2" },
                 { "P3", "P3K" },
                 { "FAL", "FD2" },
@@ -205,13 +219,17 @@ namespace UpdateCardDatabase
                 { "TE", "TP" },
                 { "TSP", "TS" },
                 { "TSB", "TSTS" },
-                { "TO", "TR" },
+                { "TOR", "TR" },
                 { "2HG", "THGT" },
                 { "UNH", "UH" },
                 { "U", "UN" },
                 { "WCQ", "WMCQ" },
                 { "GTW", "GRC" },
-                { "GPT", "GP" },                
+                { "GPT", "GP" },
+                { "UDS", "UD" },
+                { "ULG", "UL" },
+                { "USG", "US" },
+                { "DRP", "DPA" },
             };
 
             string found;
@@ -237,6 +255,24 @@ namespace UpdateCardDatabase
                 case "PRO":
                 case "WRL":
                 case "WCQ":
+                case "ST":
+                case "S2":
+                case "SS":
+                case "SLI":
+                case "APAC":
+                case "ARE":
+                case "ARS":
+                case "CC":
+                case "CST":
+                case "EUR":
+                case "MBP":
+                case "LGM":
+                case "ME":
+                case "GUR":
+                case "HHO":
+                case "ATH":
+                case "DPA":
+                    // case "TSB":
                     return false;
 
                 default:
@@ -265,6 +301,9 @@ namespace UpdateCardDatabase
 
                 case "Prerelease Events":
                     return "Prerelease Promos";
+
+                case "From the Vault: Annihilation (2014)":
+                    return "From the Vault: Annihilation";
             }
 
             return setCode;
@@ -273,11 +312,6 @@ namespace UpdateCardDatabase
         private static void Main(string[] args)
         {
             var provider = new CardDatabaseFolderProvider();
-
-            var database = new CardDatabase(provider);
-
-            var connection = database.SimpleDbConnection();
-            connection.Open();
 
             var exportFileName = Path.Combine(provider.ExeFolder, "CSV", "MagicDatabase.csv");
             if (File.Exists(exportFileName))
@@ -291,15 +325,8 @@ namespace UpdateCardDatabase
                 File.Delete(exportSetFileName);
             }
 
-            connection.Query("delete from MagicCard");
             int count = 0;
             var inputFiles = Directory.EnumerateFiles(provider.ExeFolder, "*.csv", SearchOption.AllDirectories).ToList();
-
-            var propertyList = typeof(MagicCardDefinition).GetPropertyNames(null);
-            var insertStatement = string.Format(
-                "INSERT INTO MagicCard ({0}) VALUES ({1});",
-                string.Join(", ", propertyList),
-                string.Join(", ", propertyList.Select(p => "@" + p)));
 
             var textWriter = new StreamWriter(exportFileName);
 
@@ -403,10 +430,6 @@ namespace UpdateCardDatabase
                 writer.Dispose();
                 setWriter.Dispose();
             }
-
-            Console.WriteLine("Cleaning database...");
-            connection.Query("VACUUM");
-            connection.Dispose();
         }
     }
 }

@@ -8,8 +8,13 @@ using MyMagicCollection.Shared.ViewModels;
 
 namespace MyMagicCollection.Shared.DataSource
 {
-	public class StaticMagicDataDataSource : MagicDataDataSourceBase
-	{
-		public override IEnumerable<MagicCardDefinition> CardDefinitions => StaticMagicData.CardDefinitions;
-	}
+    public class StaticMagicDataDataSource : MagicDataDataSourceBase
+    {
+        public override IEnumerable<IMagicCardDefinition> CardDefinitions => StaticMagicData.CardDefinitions;
+
+        protected override IEnumerable<FoundMagicCardViewModel> MapResult(IEnumerable<IMagicCardDefinition> result)
+        {
+            return result.Select(c => new FoundMagicCardViewModel(c)).OrderBy(c => c.NameEN).ToList();
+        }
+    }
 }

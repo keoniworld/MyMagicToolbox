@@ -19,6 +19,7 @@ namespace MyMagicCollection.Shared.Helper
         private readonly Dictionary<string, string> _setPatch = new Dictionary<string, string>()
             {
                 { "2ED", "2U" },
+                { "TSB", "TSP" },
             };
 
         public SetDownload(INotificationCenter notificationCenter)
@@ -208,7 +209,7 @@ namespace MyMagicCollection.Shared.Helper
                                     {
                                         _notificationCenter.FireNotification(
                                             null,
-                                            "Downloading set image for " + setDefinition.Code + "(" + setDefinition.Name + ") failed for rarity " + rarity + " and size " + size);
+                                            "Downloading set image for " + setDefinition.Code + "(" + setDefinition.Name + ") failed for rarity " + rarity + " and size " + size + ": " + source);
                                     }
                                 }
                             }

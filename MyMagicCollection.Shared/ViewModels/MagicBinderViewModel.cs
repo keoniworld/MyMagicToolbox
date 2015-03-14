@@ -96,7 +96,19 @@ namespace MyMagicCollection.Shared.ViewModels
             if (_magicCollection != null)
             {
                 _cards = new ObservableCollection<MagicBinderCardViewModel>(_magicCollection.Cards
-                    .Select(c => new MagicBinderCardViewModel(StaticMagicData.CardDefinitionsByCardId[c.CardId], c)));
+                    .Select(c =>
+                        {
+                            MagicCardDefinition definition;
+                            if (StaticMagicData.CardDefinitionsByCardId.TryGetValue(c.CardId, out definition))
+                            {
+                                return new MagicBinderCardViewModel(definition, c);
+                            }
+                            else
+                            {
+                                return null;
+                            }
+                            
+                        }).Where(c => c != null));
             }
             else
             {
@@ -134,7 +146,7 @@ namespace MyMagicCollection.Shared.ViewModels
         }
 
         public void AddCard(
-            MagicCardDefinition cardDefinition,
+            IMagicCardDefinition cardDefinition,
             int quantity,
             MagicGrade grade,
             MagicLanguage language,
@@ -217,39 +229,41 @@ namespace MyMagicCollection.Shared.ViewModels
 
         private void CalculateTotals()
         {
+            var stopwatch = Stopwatch.StartNew();
             TotalNumberOfCards = 0;
             TotalNumberOfTradeCards = 0;
 
-            PriceNonBulk = 0;
-            PriceBulk = 0;
-            PriceTotal = 0;
+            var priceNonBulk = 0m;
+            var priceBulk = 0m;
+            var totalNumberOfCards = 0;
+            var totalNumberOfTradeCards = 0;
 
             foreach (var card in _cards)
             {
-                TotalNumberOfCards += card.Quantity;
-                TotalNumberOfTradeCards += card.QuantityTrade;
+                totalNumberOfCards += card.Quantity;
+                totalNumberOfTradeCards += card.QuantityTrade;
 
                 if (card.Price.HasValue)
                 {
                     if (card.Price.Value < 0.49m)
                     {
-                        PriceBulk += card.Quantity * card.Price.Value;
+                        priceBulk += card.Quantity * card.Price.Value;
                     }
                     else
                     {
-                        PriceNonBulk += card.Quantity * card.Price.Value;
+                        priceNonBulk += card.Quantity * card.Price.Value;
                     }
                 }
             }
+            stopwatch.Stop();
+            _notificationCenter.FireNotification(LogLevel.Debug, "CalculateTotals took " + stopwatch.Elapsed);
 
-            PriceTotal = PriceBulk + PriceNonBulk;
+            PriceBulk = priceBulk;
+            PriceNonBulk = priceNonBulk;
+            PriceTotal = priceBulk + priceNonBulk;
 
-            RaisePropertyChanged(() => PriceTotal);
-            RaisePropertyChanged(() => PriceBulk);
-            RaisePropertyChanged(() => PriceNonBulk);
-
-            RaisePropertyChanged(() => TotalNumberOfCards);
-            RaisePropertyChanged(() => TotalNumberOfTradeCards);
+            TotalNumberOfCards = totalNumberOfCards;
+            TotalNumberOfTradeCards = totalNumberOfTradeCards;
         }
 
         // TODO: Modifikationsoperationen

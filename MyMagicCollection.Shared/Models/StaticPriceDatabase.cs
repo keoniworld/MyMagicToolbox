@@ -41,36 +41,34 @@ namespace MyMagicCollection.Shared.Models
             }
         }
 
-        public static MagicCardPrice FindPrice(MagicCardDefinition definition, bool autoUpdate, bool saveDatabase)
+        public static MagicCardPrice FindPrice(IMagicCardDefinition definition, bool autoUpdate, bool saveDatabase)
         {
             MagicCardPrice price = null;
-            lock (_sync)
+
+            if (!PriceCache.TryGetValue(definition.CardId, out price))
             {
-                if (!PriceCache.TryGetValue(definition.CardId, out price))
+                price = new MagicCardPrice
                 {
-                    price = new MagicCardPrice
-                    {
-                        CardId = definition.CardId,
-                    };
+                    CardId = definition.CardId,
+                };
 
-                    PriceCache.TryAdd(definition.CardId, price);
-                }
+                PriceCache.TryAdd(definition.CardId, price);
+            }
 
-                if (autoUpdate)
-                {
-                    Task.Factory.StartNew(() => UpdatePrice(definition, price, saveDatabase));
-                }
+            if (autoUpdate)
+            {
+                Task.Factory.StartNew(() => UpdatePrice(definition, price, saveDatabase));
+            }
 
-                if (!autoUpdate && saveDatabase)
-                {
-                    Write();
-                }
+            if (!autoUpdate && saveDatabase)
+            {
+                Write();
             }
 
             return price;
         }
 
-        public static void UpdatePrice(MagicCardDefinition definition, MagicCardPrice price, bool autoWrite)
+        public static void UpdatePrice(IMagicCardDefinition definition, MagicCardPrice price, bool autoWrite)
         {
             try
             {

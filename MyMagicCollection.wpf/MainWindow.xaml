@@ -32,11 +32,11 @@
             <StackPanel Orientation="Vertical">
                 <TextBlock Text="{Binding DatabaseSummary}" />
                 <StackPanel Orientation="Horizontal">
-                <Button VerticalAlignment="Top" Click="OnDownloadMissingImages"
+                    <Button VerticalAlignment="Top" Click="OnDownloadMissingImages"
                         ToolTip="Downloads all missing set symbols">Download Set Images</Button>
                     <Button VerticalAlignment="Top" Margin="3,0,0,0" Click="OnDownloadCardImages"
                             ToolTip="Downloads all missing card data from all sets.">Download Card Images</Button>
-                    </StackPanel>
+                </StackPanel>
             </StackPanel>
         </GroupBox>
 
@@ -99,10 +99,8 @@
                             Orientation="Horizontal">
 
                         <Button HorizontalAlignment="Right" IsEnabled="{Binding CanAddSelected}" Click="OnAddSelectedCardToBinder">Add Selected</Button>
-                        <Button Margin="3,0,0,0">Delete</Button>
                     </StackPanel>
-
-                    <!-- TODO: Use selected card from collection, not all -->
+                    
                     <DataGrid Grid.Row="1"
 							  AutoGenerateColumns="False"
                         ItemsSource="{Binding SelectedCardsInBinder}"
@@ -126,11 +124,30 @@
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
 
+                            <DataGridTemplateColumn Header="Want">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <xctk:IntegerUpDown Value="{Binding QuantityWanted, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+																		Minimum="0" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
                             <DataGridTemplateColumn Header="Set">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <userControl:SetImage SelectedCard="{Binding Definition}" MaxHeight="14"/>
-                                        <!--<TextBlock Text="{Binding SetCode, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />-->
+                                        <ComboBox ItemsSource="{Binding Reprints}" SelectedItem="{Binding Definition, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
+                                            <ComboBox.ItemTemplate>
+                                                <DataTemplate>
+                                                    <userControl:SetImage SelectedCard="{Binding}" MaxHeight="14"/>
+                                                </DataTemplate>
+                                            </ComboBox.ItemTemplate>
+                                        </ComboBox>
+
+                                        <!---->
+                                        <!--<TextBlock Text="{Binding SetCode, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
+                                        
+                                        -->
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
@@ -138,7 +155,9 @@
                             <DataGridTemplateColumn Header="Grade">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="{Binding Grade}" />
+                                        <ComboBox SelectedItem="{Binding Grade, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                                  ItemsSource="{x:Static local:MainViewModel.AvailableGrades}"
+                                                  />
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
@@ -146,7 +165,8 @@
                             <DataGridTemplateColumn Header="Language">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="{Binding Language}" />
+                                        <ComboBox SelectedItem="{Binding Language,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                                  ItemsSource="{x:Static local:MainViewModel.AvailableLanguages}" />
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
@@ -162,7 +182,7 @@
                             <DataGridTemplateColumn Header="Price">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="{Binding Price, Mode=OneWay}">
+                                        <TextBlock Text="{Binding Price, Mode=OneWay, StringFormat={}{0:F2}}">
                                             <TextBlock.ToolTip>
                                                 <StackPanel Orientation="Horizontal">
                                                     <Label>Last Updated on</Label>
@@ -180,64 +200,72 @@
         </Grid>
 
         <!-- Result Grid -->
-        <Grid Grid.Row="1" Grid.Column="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
+        <TabControl Grid.Row="1" Grid.Column="1">
+            <TabItem Header="Search Result">
+                <Grid >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
 
-            <DataGrid Grid.Row="0"
+                    <DataGrid Grid.Row="0"
                   ItemsSource="{Binding CardCollection}"
                   SelectedItem="{Binding SelectedCard, Mode=TwoWay}"
                       AutoGenerateColumns="False">
-                <DataGrid.Columns>
-                    <DataGridTextColumn SortMemberPath="Quantity" Header="Quantity" Binding="{Binding Quantity}" />
-                    <DataGridTextColumn SortMemberPath="QuantityTrade" Header="Trade" Binding="{Binding QuantityTrade}" />
-                    <DataGridTextColumn SortMemberPath="NameEN" Header="Name" Binding="{Binding NameEN}" />
-                    <!--<DataGridTextColumn SortMemberPath="SetCode" Header="Set" Binding="{Binding SetCode}"  />-->
+                        <DataGrid.Columns>
+                            <DataGridTextColumn SortMemberPath="Quantity" Header="Quantity" Binding="{Binding Quantity, Mode=OneWay}" />
+                            <DataGridTextColumn SortMemberPath="QuantityTrade" Header="Trade" Binding="{Binding QuantityTrade, Mode=OneWay}" />
+                            <DataGridTextColumn SortMemberPath="NameEN" Header="Name" Binding="{Binding NameEN, Mode=OneWay}" />
+                            <!--<DataGridTextColumn SortMemberPath="SetCode" Header="Set" Binding="{Binding SetCode}"  />-->
 
-                    <DataGridTemplateColumn Header="Set" SortMemberPath="SetCode">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <userControl:SetImage SelectedCard="{Binding Definition}" MaxHeight="14"/>
-                                <!--<TextBlock Text="{Binding SetCode, Mode=OneWay}" ToolTip="{Binding SetName, Mode=OneWay}"/>-->
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="Set" SortMemberPath="SetCode">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <userControl:SetImage SelectedCard="{Binding Definition}" MaxHeight="14"/>
+                                        <!--<TextBlock Text="{Binding SetCode, Mode=OneWay}" ToolTip="{Binding SetName, Mode=OneWay}"/>-->
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
 
-                    <DataGridTextColumn SortMemberPath="Grade" Header="Grade" Binding="{Binding Grade}" />
-                    <DataGridTextColumn SortMemberPath="Language" Header="Language" Binding="{Binding Language}" />
+                            <DataGridTextColumn SortMemberPath="Grade" Header="Grade" Binding="{Binding Grade, Mode=OneWay}" />
+                            <DataGridTextColumn SortMemberPath="Language" Header="Language" Binding="{Binding Language, Mode=OneWay}" />
 
-                    <DataGridTemplateColumn Header="Price" SortMemberPath="Price">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Price, Mode=OneWay}" >
-                                    <TextBlock.ToolTip>
-                                        <StackPanel Orientation="Horizontal">
-                                            <Label>Last Updated on</Label>
-                                            <TextBlock Text="{Binding PriceUpdateUtc}" VerticalAlignment="Center"/>
-                                        </StackPanel>
-                                    </TextBlock.ToolTip>
+                            <DataGridTemplateColumn Header="Price" SortMemberPath="Price">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Price, Mode=OneWay, StringFormat={}{0:F2}}" >
+                                            <TextBlock.ToolTip>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Label>Last Updated on</Label>
+                                                    <TextBlock Text="{Binding PriceUpdateUtc}" VerticalAlignment="Center"/>
+                                                </StackPanel>
+                                            </TextBlock.ToolTip>
 								</TextBlock>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                </DataGrid.Columns>
-            </DataGrid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
 
-            <Grid  Grid.Row="1">
-                <StackPanel Orientation="Horizontal">
-                    <ComboBox ItemsSource="{Binding AvailableLanguages}" SelectedItem="{Binding SelectedLanguage, Mode=TwoWay}" />
-                    <ComboBox Margin="3,0,0,0" ItemsSource="{Binding AvailableGrades}" SelectedItem="{Binding SelectedGrade, Mode=TwoWay}" />
-                    <CheckBox VerticalAlignment="Center" IsChecked="{Binding SelectedCardIsFoil}">Foil?</CheckBox>
-                    <Button Margin="3,0,0,0" Click="OnImportAllFromCurrentList">Add all</Button>
-                    <Button Margin="3,0,0,0">Remove all</Button>
-                </StackPanel>
-                <Button Margin="3,0,0,0" HorizontalAlignment="Right"
+                    <Grid  Grid.Row="1">
+                        <StackPanel Orientation="Horizontal">
+                            <ComboBox ItemsSource="{Binding AvailableLanguages}" SelectedItem="{Binding SelectedLanguage, Mode=TwoWay}" />
+                            <ComboBox Margin="3,0,0,0" ItemsSource="{Binding AvailableGrades}" SelectedItem="{Binding SelectedGrade, Mode=TwoWay}" />
+                            <CheckBox VerticalAlignment="Center" IsChecked="{Binding SelectedCardIsFoil}">Foil?</CheckBox>
+                            <Button Margin="3,0,0,0" Click="OnImportAllFromCurrentList">Add all</Button>
+                            <Button Margin="3,0,0,0">Remove all</Button>
+                        </StackPanel>
+                        <Button Margin="3,0,0,0" HorizontalAlignment="Right"
         ToolTip="Exports the displayed card list." Click="OnExportDisplayedList"
         >Export</Button>
-            </Grid>
-        </Grid>
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Binder Statistics">
+                <userControl:BinderStatisticsControl  Binder="{Binding ActiveBinder, Mode=OneWay}"/>
+            </TabItem>
+        </TabControl>
+
         <!-- Binder summary -->
         <Grid Grid.Column="2" Grid.Row="1">
             <Grid.RowDefinitions>

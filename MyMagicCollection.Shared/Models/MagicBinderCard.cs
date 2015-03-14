@@ -19,6 +19,7 @@ namespace MyMagicCollection.Shared.Models
         public int Quantity { get; set; }
 
         public int QuantityTrade { get; set; }
+
         public int QuantityWanted { get; set; }
 
         public bool IsFoil { get; set; }

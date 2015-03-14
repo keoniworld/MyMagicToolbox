@@ -9,13 +9,21 @@ using MyMagicCollection.Shared.ViewModels;
 namespace MyMagicCollection.Shared.DataSource
 {
     public class ActiveBinderDataSource : MagicDataDataSourceBase
-	{
-		private readonly MagicBinderViewModel _activeBinder;
+    {
+        private readonly MagicBinderViewModel _activeBinder;
+
         public ActiveBinderDataSource(MagicBinderViewModel activeBinder)
         {
-			_activeBinder = activeBinder;
+            _activeBinder = activeBinder;
         }
 
-		public override IEnumerable<MagicCardDefinition> CardDefinitions => _activeBinder.Cards.Select(c=>c.Definition).ToList();
+        public override IEnumerable<IMagicCardDefinition> CardDefinitions => _activeBinder.Cards.ToList();
+
+        protected override IEnumerable<FoundMagicCardViewModel> MapResult(IEnumerable<IMagicCardDefinition> result)
+        {
+            // var ordered = _activeBinder.Cards.ToDictionary(c => c.CardId);
+
+            return result.Select(c => new FoundMagicCardViewModel((MagicBinderCardViewModel)c)).OrderBy(c => c.NameEN).ToList();
+        }
     }
 }

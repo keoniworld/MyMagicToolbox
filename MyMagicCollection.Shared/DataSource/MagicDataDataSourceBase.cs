@@ -11,10 +11,10 @@ namespace MyMagicCollection.Shared.DataSource
 {
 	public abstract class MagicDataDataSourceBase : IMagicDataSource
 	{
-		public abstract IEnumerable<MagicCardDefinition> CardDefinitions { get; }
+		public abstract IEnumerable<IMagicCardDefinition> CardDefinitions { get; }
 
 		public static bool IsNameMatch(
-			MagicCardDefinition definition,
+			IMagicCardDefinition definition,
 			CardLookup lookup)
 		{
 			if (definition.NameEN.ToLowerInvariant().Contains(lookup.SearchTerm))
@@ -36,7 +36,9 @@ namespace MyMagicCollection.Shared.DataSource
 			return false;
 		}
 
-		public IEnumerable<FoundMagicCardViewModel> Lookup(CardLookup lookupOptions)
+        protected abstract IEnumerable<FoundMagicCardViewModel> MapResult(IEnumerable<IMagicCardDefinition> result);
+
+        public IEnumerable<FoundMagicCardViewModel> Lookup(CardLookup lookupOptions)
 		{
 			var result = CardDefinitions;
 
@@ -61,7 +63,7 @@ namespace MyMagicCollection.Shared.DataSource
 				result = result.DistinctBy(c => c.NameEN);
 			}
 
-			return result.Select(c => new FoundMagicCardViewModel(c)).OrderBy(c => c.NameEN).ToList();
+			return MapResult(result).ToList();
 		}
 	}
 }

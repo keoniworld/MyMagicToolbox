@@ -18,13 +18,21 @@ namespace MyMagicCollection.Shared.Price
         }
 
         public void PerformRequest(
-            MagicCardDefinition card,
+            IMagicCardDefinition card,
             MagicCardPrice cardPrice)
         {
             try
             {
                 var foundSet = false;
                 var setDefinition = StaticMagicData.SetDefinitionsBySetCode[card.SetCode];
+
+                var setName = setDefinition.Name;
+                switch (setName)
+                {
+                    case "Time Spiral \"Timeshifted\"":
+                        setName = "Time Spiral";
+                        break;
+                }
 
                 var helper = new RequestHelper();
                 var result = helper.MakeRequest(RequestHelper.CreateGetProductsUrl(card.NameEN, MagicLanguage.English, true, null));
@@ -33,7 +41,7 @@ namespace MyMagicCollection.Shared.Price
                 foreach (var productNode in productNodes)
                 {
                     var expansion = productNode.Element("expansion");
-                    if (expansion == null || !expansion.Value.Equals(setDefinition.Name, StringComparison.InvariantCultureIgnoreCase))
+                    if (expansion == null || !expansion.Value.Equals(setName, StringComparison.InvariantCultureIgnoreCase))
                     {
                         continue;
                     }

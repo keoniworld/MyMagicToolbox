@@ -77,8 +77,6 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="MagicDatabase\ApplicationSettingsTests.cs" />
-    <Compile Include="MagicDatabase\UserDatabaseTests.cs" />
     <Compile Include="ReadDec.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -93,10 +91,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MagicLibrary\MagicLibrary.csproj">
-      <Project>{43c3af0c-505b-4c22-b6d8-3c41f909749a}</Project>
-      <Name>MagicLibrary</Name>
-    </ProjectReference>
     <ProjectReference Include="..\MyMagicCollection.Shared\MyMagicCollection.Shared.csproj">
       <Project>{1f52765d-dc89-4f1d-a155-fda2c7133e2a}</Project>
       <Name>MyMagicCollection.Shared</Name>

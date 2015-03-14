@@ -43,9 +43,11 @@ namespace MyMagicCollection.Shared.FileFormats.MyMagicCollection
                     writer.Configuration.CultureInfo = CultureInfo.InvariantCulture;
 
                     writer.WriteField<string>("Name");
+                    writer.WriteField<string>("Version");
                     writer.NextRecord();
 
                     writer.WriteField<string>(collection.Name);
+                    writer.WriteField<int>(collection.Version);
                     writer.NextRecord();
 
                     if (collection.Cards != null && collection.Cards.Any())
@@ -92,7 +94,7 @@ namespace MyMagicCollection.Shared.FileFormats.MyMagicCollection
                     }
                 }
 
-                result = new MagicBinder(collectionCards);
+                result = new MagicBinder(collectionCards.Where(c => c.Quantity > 0 || c.QuantityTrade > 0 || c.QuantityWanted > 0).ToList());
 
                 using (var inputCsv = new CsvReader(new StringReader(header)))
                 {
@@ -100,6 +102,7 @@ namespace MyMagicCollection.Shared.FileFormats.MyMagicCollection
 
                     inputCsv.Read();
                     result.Name = inputCsv.GetField<string>("Name");
+                    result.Version = inputCsv.GetField<int>("Version");
                 }
             }
             catch (Exception error)

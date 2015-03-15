@@ -43,7 +43,7 @@ namespace MyMagicCollection.Shared.DataSource
 			var result = CardDefinitions;
 
 			// AND set
-			if (lookupOptions.SearchSet != null && lookupOptions.SearchSet != CardLookup.AllSetsSearchSetName)
+			if (lookupOptions.SearchSet != null && !lookupOptions.SetSource.IsAllSearchSet)
 			{
 				var setDefinition = StaticMagicData.SetDefinitionsBySetName[lookupOptions.SearchSet];
 				result = result.Where(c => c.SetCode == setDefinition.Code);

@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Minimod.NotificationObject;
 using MyMagicCollection.Shared.Models;
+using MyMagicCollection.Shared.VieModels;
 
 namespace MyMagicCollection.Shared.ViewModels
 {
-    public class MagicBinderCardViewModel : NotificationObject, IMagicCardDefinition
+    public class MagicBinderCardViewModel : NotificationObject, IMagicCardDefinition, IMagicBinderCardViewModel
     {
         private readonly MagicBinderCard _card;
         private readonly MagicCardPrice _price;

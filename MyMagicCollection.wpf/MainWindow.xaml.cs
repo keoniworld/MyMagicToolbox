@@ -116,19 +116,10 @@ namespace MyMagicCollection.wpf
         {
             try
             {
-                var dialog = new SaveFileDialog()
+                var fileName = DisplayExportFileDialog("Export card list");
+                if (!string.IsNullOrWhiteSpace(fileName))
                 {
-                    AddExtension = true,
-                    CheckPathExists = true,
-                    CheckFileExists = false,
-                    Title = "Export card list",
-                    Filter = "All supported files|*.csv|Deckbox.org CSV (*.csv)|*.csv",
-                    InitialDirectory = PathHelper.UserDataFolder,
-                };
-
-                if (dialog.ShowDialog(this) == true)
-                {
-                    _viewModel.ExportDisplayedCardsList(dialog.FileName);
+                    _viewModel.ExportDisplayedCardsList(fileName);
                 }
             }
             catch (Exception error)
@@ -139,6 +130,26 @@ namespace MyMagicCollection.wpf
                     MessageBoxButton.OK,
                     MessageBoxImage.Error);
             }
+        }
+
+        private string DisplayExportFileDialog(string title)
+        {
+            var dialog = new SaveFileDialog()
+            {
+                AddExtension = true,
+                CheckPathExists = true,
+                CheckFileExists = false,
+                Title = title,
+                Filter = "All supported files|*.csv|Deckbox.org CSV (*.csv)|*.csv",
+                InitialDirectory = PathHelper.UserDataFolder,
+            };
+
+            if (dialog.ShowDialog(this) == true)
+            {
+                return dialog.FileName;
+            }
+
+            return null;
         }
 
         private void OnOpenBinder(object sender, RoutedEventArgs e)
@@ -164,7 +175,7 @@ namespace MyMagicCollection.wpf
             _viewModel.PriceActiveBinder();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void OnPriceSearchResult(object sender, RoutedEventArgs e)
         {
             _viewModel.PriceSearchResult();
         }
@@ -184,7 +195,7 @@ namespace MyMagicCollection.wpf
         private void OnDownloadCardImages(object sender, RoutedEventArgs e)
         {
             Task.Factory.StartNew(() =>
-            {                
+            {
                 var download = new CardImageDownload(NotificationCenter.Instance);
 
                 var definitions = StaticMagicData.CardDefinitions.ToList();
@@ -193,6 +204,76 @@ namespace MyMagicCollection.wpf
                     download.DownloadImage(card);
                 }
             });
+        }
+
+        private void OnExportCollection(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var fileName = DisplayExportFileDialog("Export Collection");
+                if (!string.IsNullOrWhiteSpace(fileName))
+                {
+                    _viewModel.ExportActiveBinder(fileName);
+                }
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(
+                    error.Message,
+                    "Exporting cards failed",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+            }
+        }
+
+        private void OnExportTrade(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var fileName = DisplayExportFileDialog("Export Trade List");
+                if (!string.IsNullOrWhiteSpace(fileName))
+                {
+                    _viewModel.ExportActiveBinderTrade(fileName);
+                }
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(
+                    error.Message,
+                    "Exporting cards failed",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+            }
+        }
+
+        private void OnExportWants(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var fileName = DisplayExportFileDialog("Export Wants List");
+                if (!string.IsNullOrWhiteSpace(fileName))
+                {
+                    _viewModel.ExportActiveBinderWants(fileName);
+                }
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(
+                    error.Message,
+                    "Exporting cards failed",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+            }
+        }
+
+        private void OnShowTradeCards(object sender, RoutedEventArgs e)
+        {
+            _viewModel.ShowTradeBinderCards();
+        }
+
+        private void OnShowWantCards(object sender, RoutedEventArgs e)
+        {
+            _viewModel.ShowWantBinderCards();
         }
     }
 }

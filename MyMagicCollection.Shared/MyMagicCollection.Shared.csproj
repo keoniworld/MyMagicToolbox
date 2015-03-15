@@ -73,6 +73,11 @@
     <Compile Include="Minimods\Minimod.ExpressionExtensions.Generated.cs" />
     <Compile Include="Minimods\Minimod.NotificationObject.Generated.cs" />
     <Compile Include="Models\CardLookup.cs" />
+    <Compile Include="Models\CardLookupSetSourceActiveBinder.cs" />
+    <Compile Include="Models\CardLookupSetSourceAllSets.cs" />
+    <Compile Include="Models\ICardLookupSetSource.cs" />
+    <Compile Include="ViewModels\IMagicBinderCardViewModel.cs" />
+    <Compile Include="Models\IMagicBinderCard.cs" />
     <Compile Include="Models\IMagicCardDefinition.cs" />
     <Compile Include="Models\MagicCardPrice.cs" />
     <Compile Include="Models\MagicDeckCard.cs" />

@@ -7,101 +7,123 @@ using Minimod.NotificationObject;
 
 namespace MyMagicCollection.Shared.Models
 {
-	/// <summary>
-	/// This is the model which can be bound to the UI to enter search details.
-	/// </summary>
-	public class CardLookup : NotificationObject
-	{
-		public const string AllSetsSearchSetName = "All Sets";
-		private string _searchTerm;
-		private bool _searchGerman;
+    /// <summary>
+    /// This is the model which can be bound to the UI to enter search details.
+    /// </summary>
+    public class CardLookup : NotificationObject
+    {
+        private string _searchTerm;
+        private bool _searchGerman;
 
-		private string _searchSet;
-		private bool _displayDistinct;
+        private bool _displayDistinct;
 
-		private bool _searchRules;
+        private bool _searchRules;
 
-		public CardLookup()
-		{
-			SearchGerman = true;
-			DisplayDistinct = true;
+        private ICardLookupSetSource _setSource;
 
-			var allSets = StaticMagicData.SetDefinitions.Select(s => s.Name).OrderBy(s => s).ToList();
-			allSets.Insert(0, AllSetsSearchSetName);
-			AvailableSearchSets = allSets;
-			_searchSet = AllSetsSearchSetName;
-		}
+        public CardLookup()
+        {
+            SearchGerman = true;
+            DisplayDistinct = true;
 
-		public IEnumerable<string> AvailableSearchSets { get; private set; }
+            _setSource = new CardLookupSetSourceAllSets();
+        }
 
-		public string SearchTerm
-		{
-			get
-			{
-				return _searchTerm;
-			}
+        public IEnumerable<string> AvailableSearchSets
+        {
+            get
+            {
+                return _setSource.AvailableSearchSets;
+            }
+        }
 
-			set
-			{
-				_searchTerm = value;
-				RaisePropertyChanged(() => SearchTerm);
-			}
-		}
+        public string SearchTerm
+        {
+            get
+            {
+                return _searchTerm;
+            }
 
-		public bool SearchGerman
-		{
-			get
-			{
-				return _searchGerman;
-			}
+            set
+            {
+                _searchTerm = value;
+                RaisePropertyChanged(() => SearchTerm);
+            }
+        }
 
-			set
-			{
-				_searchGerman = value;
-				RaisePropertyChanged(() => SearchGerman);
-			}
-		}
+        public ICardLookupSetSource SetSource
+        {
+            get
+            {
+                return _setSource;
+            }
 
-		public bool DisplayDistinct
-		{
-			get
-			{
-				return _displayDistinct;
-			}
+            set
+            {
+                var selected = SearchSet;
+                _setSource = value;
+                SearchSet = selected;
 
-			set
-			{
-				_displayDistinct = value;
-				RaisePropertyChanged(() => DisplayDistinct);
-			}
-		}
+                RaisePropertyChanged(() => SetSource);
+                RaisePropertyChanged(() => AvailableSearchSets);
+                RaisePropertyChanged(() => SearchSet);
+            }
+        }
 
-		public bool SearchRules
-		{
-			get
-			{
-				return _searchRules;
-			}
+        public bool SearchGerman
+        {
+            get
+            {
+                return _searchGerman;
+            }
 
-			set
-			{
-				_searchRules = value;
-				RaisePropertyChanged(() => SearchRules);
-			}
-		}
+            set
+            {
+                _searchGerman = value;
+                RaisePropertyChanged(() => SearchGerman);
+            }
+        }
 
-		public string SearchSet
-		{
-			get
-			{
-				return _searchSet;
-			}
+        public bool DisplayDistinct
+        {
+            get
+            {
+                return _displayDistinct;
+            }
 
-			set
-			{
-				_searchSet = value;
-				RaisePropertyChanged(() => SearchSet);
-			}
-		}
-	}
+            set
+            {
+                _displayDistinct = value;
+                RaisePropertyChanged(() => DisplayDistinct);
+            }
+        }
+
+        public bool SearchRules
+        {
+            get
+            {
+                return _searchRules;
+            }
+
+            set
+            {
+                _searchRules = value;
+                RaisePropertyChanged(() => SearchRules);
+            }
+        }
+
+        public string SearchSet
+        {
+            get
+            {
+                return _setSource.SearchSet;
+            }
+
+            set
+            {
+                _setSource.SearchSet = value;
+                RaisePropertyChanged(() => SearchSet);
+            }
+        }
+    }
 }

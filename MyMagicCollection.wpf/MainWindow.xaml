@@ -59,7 +59,7 @@
                     <CheckBox  VerticalAlignment="Center"  IsChecked="{Binding CardLookup.SearchGerman, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">German</CheckBox>
 
                     <CheckBox  Margin="3,0,0,0" VerticalAlignment="Center"  IsChecked="{Binding CardLookup.SearchRules, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">Rules Text</CheckBox>
-                    <ComboBox Margin="3,0,0,0" ItemsSource="{Binding CardLookup.AvailableSearchSets}" SelectedItem="{Binding CardLookup.SearchSet, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                    <ComboBox Margin="3,0,0,0" ItemsSource="{Binding CardLookup.AvailableSearchSets}" SelectedItem="{Binding CardLookup.SearchSet, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
                 </StackPanel>
                 <!-- TODO: Search options -->
             </Grid>
@@ -100,7 +100,7 @@
 
                         <Button HorizontalAlignment="Right" IsEnabled="{Binding CanAddSelected}" Click="OnAddSelectedCardToBinder">Add Selected</Button>
                     </StackPanel>
-                    
+
                     <DataGrid Grid.Row="1"
 							  AutoGenerateColumns="False"
                         ItemsSource="{Binding SelectedCardsInBinder}"
@@ -139,14 +139,14 @@
                                         <ComboBox ItemsSource="{Binding Reprints}" SelectedItem="{Binding Definition, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
                                             <ComboBox.ItemTemplate>
                                                 <DataTemplate>
-                                                    <userControl:SetImage SelectedCard="{Binding}" MaxHeight="14"/>
+                                                    <userControl:SetImage SelectedCard="{Binding}" MaxHeight="14" />
                                                 </DataTemplate>
                                             </ComboBox.ItemTemplate>
                                         </ComboBox>
 
                                         <!---->
                                         <!--<TextBlock Text="{Binding SetCode, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
-                                        
+
                                         -->
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
@@ -156,8 +156,7 @@
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <ComboBox SelectedItem="{Binding Grade, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                                                  ItemsSource="{x:Static local:MainViewModel.AvailableGrades}"
-                                                  />
+                                                  ItemsSource="{x:Static local:MainViewModel.AvailableGrades}" />
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
@@ -186,7 +185,7 @@
                                             <TextBlock.ToolTip>
                                                 <StackPanel Orientation="Horizontal">
                                                     <Label>Last Updated on</Label>
-                                                    <TextBlock Text="{Binding CardPrice.UpdateUtc}" VerticalAlignment="Center"/>
+                                                    <TextBlock Text="{Binding CardPrice.UpdateUtc}" VerticalAlignment="Center" />
                                                 </StackPanel>
                                             </TextBlock.ToolTip>
 										</TextBlock>
@@ -202,7 +201,7 @@
         <!-- Result Grid -->
         <TabControl Grid.Row="1" Grid.Column="1">
             <TabItem Header="Search Result">
-                <Grid >
+                <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
                         <RowDefinition Height="Auto" />
@@ -221,8 +220,8 @@
                             <DataGridTemplateColumn Header="Set" SortMemberPath="SetCode">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <userControl:SetImage SelectedCard="{Binding Definition}" MaxHeight="14"/>
-                                        <!--<TextBlock Text="{Binding SetCode, Mode=OneWay}" ToolTip="{Binding SetName, Mode=OneWay}"/>-->
+                                        <userControl:SetImage SelectedCard="{Binding Definition}" MaxHeight="14" />
+                                        <!--<TextBlock Text="{Binding SetCode, Mode=OneWay}" ToolTip="{Binding SetName, Mode=OneWay}" />-->
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
@@ -233,11 +232,11 @@
                             <DataGridTemplateColumn Header="Price" SortMemberPath="Price">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="{Binding Price, Mode=OneWay, StringFormat={}{0:F2}}" >
+                                        <TextBlock Text="{Binding Price, Mode=OneWay, StringFormat={}{0:F2}}">
                                             <TextBlock.ToolTip>
                                                 <StackPanel Orientation="Horizontal">
                                                     <Label>Last Updated on</Label>
-                                                    <TextBlock Text="{Binding PriceUpdateUtc}" VerticalAlignment="Center"/>
+                                                    <TextBlock Text="{Binding PriceUpdateUtc}" VerticalAlignment="Center" />
                                                 </StackPanel>
                                             </TextBlock.ToolTip>
 								</TextBlock>
@@ -262,7 +261,7 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Binder Statistics">
-                <userControl:BinderStatisticsControl  Binder="{Binding ActiveBinder, Mode=OneWay}"/>
+                <userControl:BinderStatisticsControl  Binder="{Binding ActiveBinder, Mode=OneWay}" />
             </TabItem>
         </TabControl>
 
@@ -277,7 +276,7 @@
             <GroupBox Header="Import / List Options" Grid.Row="0">
                 <StackPanel>
                     <Button Click="OnImportDeckbox">Import Cards</Button>
-                    <Button Margin="0,3,0,0" Click="Button_Click">Price Search Result</Button>
+                    <Button Margin="0,3,0,0" Click="OnPriceSearchResult">Price Search Result</Button>
                 </StackPanel>
             </GroupBox>
 
@@ -291,7 +290,7 @@
                     <StackPanel Orientation="Horizontal" Grid.ColumnSpan="2">
                         <Button Click="OnOpenBinder" >Open</Button>
                         <Button Margin="3,0,0,0" Click="OnNewBinderClick">New</Button>
-                        <Button Margin="3,0,0,0" IsEnabled="{Binding IsActiveBinder}">Export</Button>
+                        <Button Margin="3,0,0,0" IsEnabled="{Binding IsActiveBinder}" Click="OnExportCollection">Export</Button>
                         <Button Margin="3,0,0,0" IsEnabled="{Binding IsActiveBinder}" Click="OnShowCollectionCards">Show</Button>
                     </StackPanel>
 
@@ -312,69 +311,88 @@
 
                         <Label Grid.Row="1">Name</Label>
                         <TextBox Grid.Row="1" HorizontalAlignment="Stretch" Grid.Column="1"
-                                 Text="{Binding ActiveBinder.Name, Mode=OneWay}" IsReadOnly="True" />
+                                 Text="{Binding ActiveBinder.Name, Mode=OneWay}" IsReadOnly="True" VerticalContentAlignment="Center"/>
 
-                        <Label Grid.Row="2">Total # Cards</Label>
+                        <Label Grid.Row="2"># Cards</Label>
                         <TextBox IsReadOnly="True" Grid.Row="2" HorizontalAlignment="Stretch" Grid.Column="1"
-                                 Text="{Binding ActiveBinder.TotalNumberOfCards, Mode=OneWay}" />
+                                 Text="{Binding ActiveBinder.TotalNumberOfCards, Mode=OneWay}" VerticalContentAlignment="Center"/>
 
                         <Label Grid.Row="3">Bulk Value</Label>
-                        <TextBox IsReadOnly="True" Grid.Row="3" HorizontalAlignment="Stretch" Grid.Column="1" 
-                                 Text="{Binding ActiveBinder.PriceBulk}"
-                                 />
+                        <TextBox IsReadOnly="True" Grid.Row="3" HorizontalAlignment="Stretch" Grid.Column="1"
+                                 Text="{Binding ActiveBinder.PriceBulk}" VerticalContentAlignment="Center"/>
 
                         <Label Grid.Row="4">Non Bulk Value</Label>
-                        <TextBox IsReadOnly="True" Grid.Row="4" HorizontalAlignment="Stretch" Grid.Column="1" 
-                                 Text="{Binding ActiveBinder.PriceNonBulk}" />
+                        <TextBox IsReadOnly="True" Grid.Row="4" HorizontalAlignment="Stretch" Grid.Column="1"
+                                 Text="{Binding ActiveBinder.PriceNonBulk}" VerticalContentAlignment="Center"/>
 
                         <Label Grid.Row="5">Total Value</Label>
-                        <TextBox IsReadOnly="True" Grid.Row="5" HorizontalAlignment="Stretch" Grid.Column="1" 
-                                 Text="{Binding ActiveBinder.PriceTotal}"
-                                 />
+                        <TextBox IsReadOnly="True" Grid.Row="5" HorizontalAlignment="Stretch" Grid.Column="1"
+                                 Text="{Binding ActiveBinder.PriceTotal}" VerticalContentAlignment="Center"/>
 
                         <Button Grid.Row="6" Grid.ColumnSpan="2" HorizontalAlignment="Left" Click="OnPriceCollecttion">Price Collection</Button>
                     </Grid>
                 </Grid>
             </GroupBox>
 
-            <GroupBox Header="Trade List" Grid.Row="2">
-                <Grid IsEnabled="{Binding IsActiveBinder}">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
+            <StackPanel Grid.Row="2">
+                <GroupBox Header="Trades" Grid.Row="2">
+                    <Grid IsEnabled="{Binding IsActiveBinder}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
 
-                    <StackPanel Orientation="Horizontal" Grid.ColumnSpan="2">
-                        <Button >Export</Button>
-                        <Button Margin="3,0,0,0">Show</Button>
-                    </StackPanel>
+                        <StackPanel Orientation="Horizontal" Grid.ColumnSpan="2">
+                            <Button Click="OnExportTrade">Export Trade</Button>
+                            <Button Margin="3,0,0,0" Click="OnShowTradeCards">Show</Button>
+                        </StackPanel>
 
-                    <!--<Label Grid.Row="1">Name</Label>
+                        <!--<Label Grid.Row="1">Name</Label>
                     <TextBox Grid.Row="1" HorizontalAlignment="Stretch" Grid.Column="1"></TextBox>-->
 
-                    <Label Grid.Row="2">Total # Cards</Label>
-                    <TextBox IsReadOnly="True" Grid.Row="2" HorizontalAlignment="Stretch" Grid.Column="1"
-                             Text="{Binding ActiveBinder.TotalNumberOfTradeCards, Mode=OneWay}" />
+                        <Label Grid.Row="2"># Cards</Label>
+                        <TextBox IsReadOnly="True" Grid.Row="2" HorizontalAlignment="Stretch" Grid.Column="1"
+                             Text="{Binding ActiveBinder.TotalNumberOfTradeCards, Mode=OneWay}" 
+                                 VerticalContentAlignment="Center"/>
+                    </Grid>
+                </GroupBox>
+                <GroupBox Header="Wants">
+                    <Grid IsEnabled="{Binding IsActiveBinder}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
 
-                    <Label Grid.Row="3">Bulk Value</Label>
-                    <TextBox IsReadOnly="True" Grid.Row="3" HorizontalAlignment="Stretch" Grid.Column="1"></TextBox>
+                        <StackPanel Orientation="Horizontal" Grid.ColumnSpan="2">
+                            <Button Click="OnExportWants">Export Wants</Button>
+                            <Button Margin="3,0,0,0" Click="OnShowWantCards">Show</Button>
+                        </StackPanel>
 
-                    <Label Grid.Row="4">Non Bulk Value</Label>
-                    <TextBox IsReadOnly="True" Grid.Row="4" HorizontalAlignment="Stretch" Grid.Column="1"></TextBox>
+                        <!--<Label Grid.Row="1">Name</Label>
+                    <TextBox Grid.Row="1" HorizontalAlignment="Stretch" Grid.Column="1"></TextBox>-->
 
-                    <Label Grid.Row="5">Total Value</Label>
-                    <TextBox IsReadOnly="True" Grid.Row="5" HorizontalAlignment="Stretch" Grid.Column="1"></TextBox>
-                </Grid>
-            </GroupBox>
-
+                        <Label Grid.Row="2"># Cards</Label>
+                        <TextBox IsReadOnly="True" Grid.Row="2" HorizontalAlignment="Stretch" Grid.Column="1"
+                             Text="{Binding ActiveBinder.TotalNumberOfWantCards, Mode=OneWay}" VerticalContentAlignment="Center" />
+                    </Grid>
+                </GroupBox>
+            </StackPanel>
         </Grid>
 
         <StatusBar Grid.Row="2" Grid.ColumnSpan="3">

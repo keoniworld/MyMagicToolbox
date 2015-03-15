@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using CsvHelper;
 using MyMagicCollection.Shared.Helper;
 using MyMagicCollection.Shared.Models;
+using MyMagicCollection.Shared.VieModels;
 using MyMagicCollection.Shared.ViewModels;
 
 namespace MyMagicCollection.Shared.FileFormats.DeckBoxCsv
@@ -14,11 +15,12 @@ namespace MyMagicCollection.Shared.FileFormats.DeckBoxCsv
     public class DeckBoxCsvWriter
     {
         public void Write(
-            string fileName, 
-            IEnumerable<FoundMagicCardViewModel> cards, 
-            bool isFoil, 
+            string fileName,
+            IEnumerable<IMagicBinderCardViewModel> cards,
+            bool isFoil,
             MagicLanguage language,
-            MagicGrade grade)
+            MagicGrade grade,
+            Func<IMagicBinderCardViewModel, int> quantitySelector)
         {
             var outputCsv = new CsvWriter(File.CreateText(fileName));
 
@@ -30,7 +32,7 @@ namespace MyMagicCollection.Shared.FileFormats.DeckBoxCsv
             outputCsv.WriteField("Condition");
             outputCsv.NextRecord();
 
-            string lastSetCode="";
+            string lastSetCode = "";
             MagicSetDefinition definition = null;
             foreach (var card in cards)
             {
@@ -40,16 +42,32 @@ namespace MyMagicCollection.Shared.FileFormats.DeckBoxCsv
                     definition = StaticMagicData.SetDefinitionsBySetCode[lastSetCode];
                 }
 
-                outputCsv.WriteField(card.Quantity);
+                outputCsv.WriteField(quantitySelector(card));
                 outputCsv.WriteField(card.NameEN, true);
                 outputCsv.WriteField(definition.Name.Replace("Magic: The Gathering�Conspiracy", "Conspiracy"), true);
                 outputCsv.WriteField(isFoil ? "foil" : null);
-                outputCsv.WriteField(language.ToString());
-                outputCsv.WriteField(grade.ToCsv());
+                outputCsv.WriteField(card.Language.HasValue ? card.Language.Value.ToString() : language.ToString());
+                outputCsv.WriteField(card.Grade.HasValue ? card.Grade.Value.ToCsv() : grade.ToCsv());
                 outputCsv.NextRecord();
             }
 
             outputCsv.Dispose();
+        }
+
+        public void Write(
+           string fileName,
+           IEnumerable<IMagicBinderCardViewModel> cards,
+           bool isFoil,
+           MagicLanguage language,
+           MagicGrade grade)
+        {
+            Write(
+                fileName,
+                cards,
+                isFoil,
+                language,
+                grade,
+                new Func<IMagicBinderCardViewModel, int>((card) => card.Quantity));
         }
     }
 }

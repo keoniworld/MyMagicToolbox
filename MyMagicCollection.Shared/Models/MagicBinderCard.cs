@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MyMagicCollection.Shared.Models
 {
-    public class MagicBinderCard
+    public class MagicBinderCard : IMagicBinderCard
     {
         public MagicBinderCard()
         {

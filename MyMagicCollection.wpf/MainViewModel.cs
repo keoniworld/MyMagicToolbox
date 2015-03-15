@@ -14,6 +14,7 @@ using MyMagicCollection.Shared.FileFormats;
 using MyMagicCollection.Shared.FileFormats.DeckBoxCsv;
 using MyMagicCollection.Shared.Helper;
 using MyMagicCollection.Shared.Models;
+using MyMagicCollection.Shared.VieModels;
 using MyMagicCollection.Shared.ViewModels;
 using MyMagicCollection.wpf.Settings;
 using NLog;
@@ -243,16 +244,33 @@ namespace MyMagicCollection.wpf
                 {
                     case LookupSource.ActiveBinder:
                         _currentDataSource = new ActiveBinderDataSource(_activeBinder);
+                        CardLookup.SetSource = new CardLookupSetSourceActiveBinder(_activeBinder);
                         break;
 
                     case LookupSource.CardDatabase:
                     default:
                         _currentDataSource = new StaticMagicDataDataSource();
+                        CardLookup.SetSource = new CardLookupSetSourceAllSets();
                         break;
                 }
 
                 RaisePropertyChanged(() => LookupSource);
             }
+        }
+
+        public void ExportActiveBinder(string fileName)
+        {
+            InternalExport(fileName, _activeBinder.Cards, new Func<IMagicBinderCardViewModel, int>((card) => card.Quantity));
+        }
+
+        public void ExportActiveBinderTrade(string fileName)
+        {
+            InternalExport(fileName, _activeBinder.Cards.Where(c => c.QuantityTrade > 0), new Func<IMagicBinderCardViewModel, int>((card) => card.QuantityTrade));
+        }
+
+        public void ExportActiveBinderWants(string fileName)
+        {
+            InternalExport(fileName, _activeBinder.Cards.Where(c => c.QuantityWanted > 0), new Func<IMagicBinderCardViewModel, int>((card) => card.QuantityWanted));
         }
 
         public void ImportCards(string fileName)
@@ -277,20 +295,7 @@ namespace MyMagicCollection.wpf
 
         public void ExportDisplayedCardsList(string fileName)
         {
-            if (_searchResult == null || !_searchResult.Any())
-            {
-                return;
-            }
-
-            var info = new FileInfo(fileName);
-            _notificationCenter.FireNotification(null, string.Format("Exporting '{0}'...", info.Name));
-            var watch = Stopwatch.StartNew();
-
-            var writer = new DeckBoxCsvWriter();
-            writer.Write(fileName, _searchResult, SelectedCardIsFoil, SelectedLanguage, SelectedGrade);
-
-            watch.Stop();
-            _notificationCenter.FireNotification(null, string.Format("Exported '{0}' in {1}", info.Name, watch.Elapsed));
+            InternalExport(fileName, _searchResult, new Func<IMagicBinderCardViewModel, int>((card) => card.Quantity));
         }
 
         public void AddSelectedCardToBinder()
@@ -432,6 +437,42 @@ namespace MyMagicCollection.wpf
             CardCollection = cards;
         }
 
+        public void ShowTradeBinderCards()
+        {
+            if (_activeBinder == null)
+            {
+                return;
+            }
+
+            var stopwatch = Stopwatch.StartNew();
+            _notificationCenter.FireNotification(null, "Collecting trade cards from binder...");
+
+            var cards = _activeBinder.Cards.Where(c => c.QuantityTrade > 0).Select(c => new FoundMagicCardViewModel(c)).ToList();
+
+            stopwatch.Stop();
+            _notificationCenter.FireNotification(null, "Trade card collection took " + stopwatch.Elapsed);
+
+            CardCollection = cards;
+        }
+
+        public void ShowWantBinderCards()
+        {
+            if (_activeBinder == null)
+            {
+                return;
+            }
+
+            var stopwatch = Stopwatch.StartNew();
+            _notificationCenter.FireNotification(null, "Collecting want cards from binder...");
+
+            var cards = _activeBinder.Cards.Where(c => c.QuantityWanted > 0).Select(c => new FoundMagicCardViewModel(c)).ToList();
+
+            stopwatch.Stop();
+            _notificationCenter.FireNotification(null, "Want card collection took " + stopwatch.Elapsed);
+
+            CardCollection = cards;
+        }
+
         public void PriceActiveBinder()
         {
             if (_activeBinder == null)
@@ -472,6 +513,27 @@ namespace MyMagicCollection.wpf
                     LogLevel.Info,
                     string.Format("Price lookup for {0} cards took {1}", searchResult.Count(), stopwatch.Elapsed));
             });
+        }
+
+        private void InternalExport(
+                                                                                                            string fileName,
+            IEnumerable<IMagicBinderCardViewModel> cardsToExport,
+            Func<IMagicBinderCardViewModel, int> quantitySelector)
+        {
+            if (cardsToExport == null || !cardsToExport.Any())
+            {
+                return;
+            }
+
+            var info = new FileInfo(fileName);
+            _notificationCenter.FireNotification(null, string.Format("Exporting '{0}'...", info.Name));
+            var watch = Stopwatch.StartNew();
+
+            var writer = new DeckBoxCsvWriter();
+            writer.Write(fileName, cardsToExport, SelectedCardIsFoil, SelectedLanguage, SelectedGrade, quantitySelector);
+
+            watch.Stop();
+            _notificationCenter.FireNotification(null, string.Format("Exported '{0}' in {1}", info.Name, watch.Elapsed));
         }
 
         private void UpdateSelectedCardFromBinder()

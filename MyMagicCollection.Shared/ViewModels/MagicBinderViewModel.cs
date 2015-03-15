@@ -88,6 +88,8 @@ namespace MyMagicCollection.Shared.ViewModels
 
         public int TotalNumberOfTradeCards { get; private set; }
 
+        public int TotalNumberOfWantCards { get; private set; }
+
         public void ReadFile(string fileName)
         {
             var loader = new MyMagicCollectionCsv();
@@ -107,7 +109,6 @@ namespace MyMagicCollection.Shared.ViewModels
                             {
                                 return null;
                             }
-                            
                         }).Where(c => c != null));
             }
             else
@@ -185,7 +186,7 @@ namespace MyMagicCollection.Shared.ViewModels
             {
                 AddCard(
                     card.Definition,
-                    card.Quantity.HasValue ? card.Quantity.Value : 0,
+                    card.Quantity,
                     card.Grade.HasValue ? card.Grade.Value : grade,
                     card.Language.HasValue ? card.Language.Value : language,
                     isFoil,
@@ -232,16 +233,19 @@ namespace MyMagicCollection.Shared.ViewModels
             var stopwatch = Stopwatch.StartNew();
             TotalNumberOfCards = 0;
             TotalNumberOfTradeCards = 0;
+            TotalNumberOfWantCards = 0;
 
             var priceNonBulk = 0m;
             var priceBulk = 0m;
             var totalNumberOfCards = 0;
             var totalNumberOfTradeCards = 0;
+            var totalNumberOfWantCards = 0;
 
             foreach (var card in _cards)
             {
                 totalNumberOfCards += card.Quantity;
                 totalNumberOfTradeCards += card.QuantityTrade;
+                totalNumberOfWantCards += card.QuantityWanted;
 
                 if (card.Price.HasValue)
                 {
@@ -264,8 +268,11 @@ namespace MyMagicCollection.Shared.ViewModels
 
             TotalNumberOfCards = totalNumberOfCards;
             TotalNumberOfTradeCards = totalNumberOfTradeCards;
-        }
+            TotalNumberOfWantCards = totalNumberOfWantCards;
 
-        // TODO: Modifikationsoperationen
+            RaisePropertyChanged(() => TotalNumberOfCards);
+            RaisePropertyChanged(() => TotalNumberOfTradeCards);
+            RaisePropertyChanged(() => TotalNumberOfWantCards);
+        }
     }
 }

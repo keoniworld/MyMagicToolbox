@@ -156,7 +156,7 @@ namespace UpdateCardDatabase
                 { "8ED", "8E" },
                 { "9ED", "9E" },
                 { "ONS", "ON" },
-                { "MRD", "MR" },
+                { "MRD", "MI" },
 
                 { "15A", "15ANN" },
                 { "AL", "AI" },

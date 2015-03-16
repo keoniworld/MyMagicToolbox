@@ -53,39 +53,44 @@ namespace MyMagicCollection.wpf.UserControls
             if (instance != null)
             {
                 // Trigger download and display
-                var card = instance.SelectedCard;
-
-                var definition = StaticMagicData.SetDefinitionsBySetCode[card.SetCode];
-                var filePart = SetDownload.MakeSetImageName(definition, card.Rarity.HasValue ? card.Rarity.Value : MagicRarity.Common);
-                var cardFileName = Path.Combine(PathHelper.SetCacheFolder, "small", filePart);
-
-                instance.imageToolTip.Content = definition.Name;
                 var imageLoaded = false;
-                if (File.Exists(cardFileName))
-                {
-                    try
-                    {
-                        var uri = new Uri(cardFileName);
-                        var bitmap = new BitmapImage(uri);
-                        bitmap.Freeze();
-                        instance.imageControl.Source = bitmap;
-                        instance.imageLabel.Text = "";
+                MagicSetDefinition definition = null;
 
-                        instance.imageControl.Visibility = Visibility.Visible;
-                        instance.imageLabel.Visibility = Visibility.Hidden;
-                        imageLoaded = true;
-                    }
-                    catch (Exception error)
+                var card = instance.SelectedCard;
+                if (card != null)
+                {
+                    definition = StaticMagicData.SetDefinitionsBySetCode[card.SetCode];
+                    var filePart = SetDownload.MakeSetImageName(definition, card.Rarity.HasValue ? card.Rarity.Value : MagicRarity.Common);
+                    var cardFileName = Path.Combine(PathHelper.SetCacheFolder, "small", filePart);
+
+                    instance.imageToolTip.Content = definition.Name;
+                    
+                    if (File.Exists(cardFileName))
                     {
-                        // TODO: error dump
-                        imageLoaded = false;
+                        try
+                        {
+                            var uri = new Uri(cardFileName);
+                            var bitmap = new BitmapImage(uri);
+                            bitmap.Freeze();
+                            instance.imageControl.Source = bitmap;
+                            instance.imageLabel.Text = "";
+
+                            instance.imageControl.Visibility = Visibility.Visible;
+                            instance.imageLabel.Visibility = Visibility.Hidden;
+                            imageLoaded = true;
+                        }
+                        catch (Exception error)
+                        {
+                            // TODO: error dump
+                            imageLoaded = false;
+                        }
                     }
                 }
-                
+
                 if (!imageLoaded)
                 {
                     instance.imageControl.Source = null;
-                    instance.imageLabel.Text = definition.Code;
+                    instance.imageLabel.Text = definition?.Code;
 
                     instance.imageControl.Visibility = Visibility.Hidden;
                     instance.imageLabel.Visibility = Visibility.Visible;

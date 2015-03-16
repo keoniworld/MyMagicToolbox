@@ -32,6 +32,10 @@ namespace MyMagicCollection.Shared.Price
                     case "Time Spiral \"Timeshifted\"":
                         setName = "Time Spiral";
                         break;
+
+                    case "Friday Night Magic":
+                        setName = "Friday Night Magic Promos";
+                        break;
                 }
 
                 var helper = new RequestHelper();

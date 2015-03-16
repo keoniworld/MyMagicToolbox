@@ -22,7 +22,7 @@
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" MaxWidth="360" />
+            <ColumnDefinition Width="Auto" MaxWidth="360" />
             <ColumnDefinition Width="2*" />
             <ColumnDefinition Width="*" MaxWidth="360" />
         </Grid.ColumnDefinitions>
@@ -77,14 +77,14 @@
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
             <GroupBox Header="Selected card" Grid.Row="0">
-
                 <userControl:CardImage
-                    VerticalAlignment="Top"
+                    Width="220"
+                    VerticalAlignment="Stretch"
                     HorizontalAlignment="Stretch"
                     SelectedCard="{Binding SelectedCard.Definition}" />
             </GroupBox>
@@ -92,7 +92,7 @@
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
 
                     <StackPanel Grid.Row="0" HorizontalAlignment="Right"
@@ -101,87 +101,63 @@
                         <Button HorizontalAlignment="Right" IsEnabled="{Binding CanAddSelected}" Click="OnAddSelectedCardToBinder">Add Selected</Button>
                     </StackPanel>
 
-                    <DataGrid Grid.Row="1"
+                    <!--<DataGrid Grid.Row="1"
 							  AutoGenerateColumns="False"
                         ItemsSource="{Binding SelectedCardsInBinder}"
-                        SelectedItem="{Binding SelectedCardInBinder, Mode=TwoWay}">
+                        SelectedItem="{Binding SelectedCardInBinder, Mode=TwoWay}"
+                              HeadersVisibility="None">
                         <DataGrid.Columns>
                             <DataGridTemplateColumn Header="Quantity">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <xctk:IntegerUpDown Value="{Binding Quantity, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                       <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="5" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock>Have:</TextBlock>
+                                    <xctk:IntegerUpDown Grid.Column="1"
+                                        Value="{Binding Quantity, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
 																		Minimum="0" />
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
-                            <DataGridTemplateColumn Header="Trade">
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <xctk:IntegerUpDown Value="{Binding QuantityTrade, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+
+                                    <TextBlock Grid.Row="1">Trade:</TextBlock>
+                                    <xctk:IntegerUpDown Grid.Column="1" Grid.Row="1"
+                                           Value="{Binding QuantityTrade, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
 																		Minimum="0"
                                                             Maximum="{Binding Quantity}" />
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
 
-                            <DataGridTemplateColumn Header="Want">
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <xctk:IntegerUpDown Value="{Binding QuantityWanted, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-																		Minimum="0" />
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
+                                    <TextBlock Grid.Row="2">Want:</TextBlock>
+                                    <xctk:IntegerUpDown Grid.Column="1" Grid.Row="2"
+                                           Value="{Binding QuantityWanted, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+																		Minimum="0"
+                                                            Maximum="{Binding Quantity}" />
 
-                            <DataGridTemplateColumn Header="Set">
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <ComboBox ItemsSource="{Binding Reprints}" SelectedItem="{Binding Definition, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
-                                            <ComboBox.ItemTemplate>
-                                                <DataTemplate>
-                                                    <userControl:SetImage SelectedCard="{Binding}" MaxHeight="14" />
-                                                </DataTemplate>
-                                            </ComboBox.ItemTemplate>
-                                        </ComboBox>
-
-                                        <!---->
-                                        <!--<TextBlock Text="{Binding SetCode, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
-
-                                        -->
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
-
-                            <DataGridTemplateColumn Header="Grade">
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <ComboBox SelectedItem="{Binding Grade, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                                                  ItemsSource="{x:Static local:MainViewModel.AvailableGrades}" />
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
-
-                            <DataGridTemplateColumn Header="Language">
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <ComboBox SelectedItem="{Binding Language,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                        <ComboBox Grid.Column="3"
+                                            SelectedItem="{Binding Language,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                                                   ItemsSource="{x:Static local:MainViewModel.AvailableLanguages}" />
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
 
-                            <DataGridTemplateColumn Header="Foil">
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <CheckBox IsChecked="{Binding IsFoil, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
+                                        <ComboBox Grid.Row="0" Grid.Column="4" Margin="3,0,0,0"
+                                            SelectedItem="{Binding Grade, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                                  ItemsSource="{x:Static local:MainViewModel.AvailableGrades}" />
 
-                            <DataGridTemplateColumn Header="Price">
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <TextBlock Text="{Binding Price, Mode=OneWay, StringFormat={}{0:F2}}">
+                                    <CheckBox Margin="3,0,0,0" Grid.Row="1" Grid.Column="4"
+                                        IsChecked="{Binding IsFoil, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                        Foil?
+                                    </CheckBox>
+
+                                    <StackPanel Grid.Row="1" Grid.Column="3" Orientation="Horizontal">
+                                        <TextBlock
+                                        Text="{Binding Price, Mode=OneWay, StringFormat={}{0:F2}}">
                                             <TextBlock.ToolTip>
                                                 <StackPanel Orientation="Horizontal">
                                                     <Label>Last Updated on</Label>
@@ -189,11 +165,101 @@
                                                 </StackPanel>
                                             </TextBlock.ToolTip>
 										</TextBlock>
+                                        <TextBlock Margin="2,0,0,0">€</TextBlock>
+                                    </StackPanel>
+
+                                     <ComboBox Grid.Row="2" Grid.Column="3"
+                                         ItemsSource="{Binding Reprints}" SelectedItem="{Binding Definition, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
+                                            <ComboBox.ItemTemplate>
+                                                <DataTemplate>
+                                                    <userControl:SetImage SelectedCard="{Binding}" MaxHeight="14" />
+                                                </DataTemplate>
+                                            </ComboBox.ItemTemplate>
+                                        </ComboBox>
+                                </Grid>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
                         </DataGrid.Columns>
-                    </DataGrid>
+                    </DataGrid>-->
+
+                    <ListView Grid.Row="1" ItemsSource="{Binding SelectedCardsInBinder}"
+                        SelectedItem="{Binding SelectedCardInBinder, Mode=TwoWay}"
+                              ScrollViewer.VerticalScrollBarVisibility="Auto"
+                              VerticalAlignment="Stretch"
+                              ScrollViewer.CanContentScroll="False">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="5" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock>Have:</TextBlock>
+                                    <xctk:IntegerUpDown Grid.Column="1"
+                                        Value="{Binding Quantity, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+																		Minimum="0" />
+
+                                    <TextBlock Grid.Row="1">Trade:</TextBlock>
+                                    <xctk:IntegerUpDown Grid.Column="1" Grid.Row="1"
+                                           Value="{Binding QuantityTrade, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+																		Minimum="0"
+                                                            Maximum="{Binding Quantity}" />
+
+                                    <TextBlock Grid.Row="2">Want:</TextBlock>
+                                    <xctk:IntegerUpDown Grid.Column="1" Grid.Row="2"
+                                           Value="{Binding QuantityWanted, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+																		Minimum="0"
+                                                            Maximum="{Binding Quantity}" />
+
+                                    <ComboBox Grid.Column="3"
+                                            SelectedItem="{Binding Language,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                                  ItemsSource="{x:Static local:MainViewModel.AvailableLanguages}" />
+
+                                    <ComboBox Grid.Row="0" Grid.Column="4" Margin="3,0,0,0"
+                                            SelectedItem="{Binding Grade, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                                  ItemsSource="{x:Static local:MainViewModel.AvailableGrades}" />
+
+                                    <CheckBox Margin="3,0,0,0" Grid.Row="1" Grid.Column="4"
+                                        IsChecked="{Binding IsFoil, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                        Foil?
+                                    </CheckBox>
+
+                                    <StackPanel Grid.Row="1" Grid.Column="3" Orientation="Horizontal">
+                                        <TextBlock
+                                        Text="{Binding Price, Mode=OneWay, StringFormat={}{0:F2}}">
+                                            <TextBlock.ToolTip>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Label>Last Updated on</Label>
+                                                    <TextBlock Text="{Binding CardPrice.UpdateUtc}" VerticalAlignment="Center" />
+                                                </StackPanel>
+                                            </TextBlock.ToolTip>
+										</TextBlock>
+                                        <TextBlock Margin="2,0,0,0">€</TextBlock>
+                                    </StackPanel>
+
+                                    <ComboBox Grid.Row="2" Grid.Column="3"
+                                         ItemsSource="{Binding Reprints}" SelectedItem="{Binding Definition, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
+                                        <ComboBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <userControl:SetImage SelectedCard="{Binding}" MaxHeight="14" />
+                                            </DataTemplate>
+                                        </ComboBox.ItemTemplate>
+                                    </ComboBox>
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
                 </Grid>
             </GroupBox>
         </Grid>
@@ -214,6 +280,7 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn SortMemberPath="Quantity" Header="Quantity" Binding="{Binding Quantity, Mode=OneWay}" />
                             <DataGridTextColumn SortMemberPath="QuantityTrade" Header="Trade" Binding="{Binding QuantityTrade, Mode=OneWay}" />
+                            <DataGridTextColumn SortMemberPath="QuantityWanted" Header="Want" Binding="{Binding QuantityWanted, Mode=OneWay}" />
                             <DataGridTextColumn SortMemberPath="NameEN" Header="Name" Binding="{Binding NameEN, Mode=OneWay}" />
                             <!--<DataGridTextColumn SortMemberPath="SetCode" Header="Set" Binding="{Binding SetCode}"  />-->
 
@@ -311,23 +378,23 @@
 
                         <Label Grid.Row="1">Name</Label>
                         <TextBox Grid.Row="1" HorizontalAlignment="Stretch" Grid.Column="1"
-                                 Text="{Binding ActiveBinder.Name, Mode=OneWay}" IsReadOnly="True" VerticalContentAlignment="Center"/>
+                                 Text="{Binding ActiveBinder.Name, Mode=OneWay}" IsReadOnly="True" VerticalContentAlignment="Center" />
 
                         <Label Grid.Row="2"># Cards</Label>
                         <TextBox IsReadOnly="True" Grid.Row="2" HorizontalAlignment="Stretch" Grid.Column="1"
-                                 Text="{Binding ActiveBinder.TotalNumberOfCards, Mode=OneWay}" VerticalContentAlignment="Center"/>
+                                 Text="{Binding ActiveBinder.TotalNumberOfCards, Mode=OneWay}" VerticalContentAlignment="Center" />
 
                         <Label Grid.Row="3">Bulk Value</Label>
                         <TextBox IsReadOnly="True" Grid.Row="3" HorizontalAlignment="Stretch" Grid.Column="1"
-                                 Text="{Binding ActiveBinder.PriceBulk}" VerticalContentAlignment="Center"/>
+                                 Text="{Binding ActiveBinder.PriceBulk}" VerticalContentAlignment="Center" />
 
                         <Label Grid.Row="4">Non Bulk Value</Label>
                         <TextBox IsReadOnly="True" Grid.Row="4" HorizontalAlignment="Stretch" Grid.Column="1"
-                                 Text="{Binding ActiveBinder.PriceNonBulk}" VerticalContentAlignment="Center"/>
+                                 Text="{Binding ActiveBinder.PriceNonBulk}" VerticalContentAlignment="Center" />
 
                         <Label Grid.Row="5">Total Value</Label>
                         <TextBox IsReadOnly="True" Grid.Row="5" HorizontalAlignment="Stretch" Grid.Column="1"
-                                 Text="{Binding ActiveBinder.PriceTotal}" VerticalContentAlignment="Center"/>
+                                 Text="{Binding ActiveBinder.PriceTotal}" VerticalContentAlignment="Center" />
 
                         <Button Grid.Row="6" Grid.ColumnSpan="2" HorizontalAlignment="Left" Click="OnPriceCollecttion">Price Collection</Button>
                     </Grid>
@@ -360,8 +427,8 @@
 
                         <Label Grid.Row="2"># Cards</Label>
                         <TextBox IsReadOnly="True" Grid.Row="2" HorizontalAlignment="Stretch" Grid.Column="1"
-                             Text="{Binding ActiveBinder.TotalNumberOfTradeCards, Mode=OneWay}" 
-                                 VerticalContentAlignment="Center"/>
+                             Text="{Binding ActiveBinder.TotalNumberOfTradeCards, Mode=OneWay}"
+                                 VerticalContentAlignment="Center" />
                     </Grid>
                 </GroupBox>
                 <GroupBox Header="Wants">

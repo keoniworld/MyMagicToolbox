@@ -110,6 +110,9 @@
     <Compile Include="UserControls\BinderStatisticsControl.xaml.cs">
       <DependentUpon>BinderStatisticsControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\ManaCostImage.xaml.cs">
+      <DependentUpon>ManaCostImage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\SetImage.xaml.cs">
       <DependentUpon>SetImage.xaml</DependentUpon>
     </Compile>
@@ -132,6 +135,10 @@
     <Page Include="UserControls\BinderStatisticsControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ManaCostImage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="UserControls\SetImage.xaml">
       <Generator>MSBuild:Compile</Generator>

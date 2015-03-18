@@ -50,7 +50,7 @@ namespace MyMagicCollection.Shared.DataSource
 			}
 
 			// AND Name
-			lookupOptions.SearchTerm = lookupOptions.SearchTerm?.ToLowerInvariant();
+			// lookupOptions.SearchTerm = lookupOptions.SearchTerm?.ToLowerInvariant();
 			if (!string.IsNullOrEmpty(lookupOptions.SearchTerm))
 			{
 				result = result.Where(c => IsNameMatch(c, lookupOptions));

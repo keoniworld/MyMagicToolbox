@@ -74,6 +74,10 @@ namespace MyMagicCollection.Shared.ViewModels
 
         public MagicRarity? Rarity => _definition?.Rarity;
 
+        public string ManaCost => _definition?.ManaCost;
+
+        public int? ConvertedManaCost => _definition?.ConvertedManaCost;
+
         public int Quantity
         {
             get

@@ -8,8 +8,11 @@
         xmlns:converter="clr-namespace:MyMagicCollection.wpf.Converter"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
+        
         Title="MainWindow" Height="600" Width="800"
-        MinWidth="640" MinHeight="480">
+        MinWidth="640" MinHeight="480"
+        WindowState="Maximized"
+        >
 
     <Window.Resources>
         <converter:EnumMatchToBooleanConverter x:Key="EnumMatchToBooleanConverter" />
@@ -46,20 +49,24 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
+
                 </Grid.RowDefinitions>
 
-                <TextBox HorizontalAlignment="Stretch" Text="{Binding CardLookup.SearchTerm, Mode=TwoWay,Delay=500}" />
-                <Button Grid.Column="1" Click="OnSearchButtonClick">Search!</Button>
+                <xctk:WatermarkTextBox Watermark="Enter Card Name" HorizontalAlignment="Stretch" Text="{Binding CardLookup.SearchTerm, Mode=TwoWay,Delay=500, UpdateSourceTrigger=PropertyChanged}" />
+                <Button Grid.Column="1" Margin="3,0,0,0" Click="OnSearchButtonClick" IsDefault="True">Search!</Button>
+                <CheckBox  Grid.Column="2" Margin="3,0,0,0" VerticalAlignment="Center" VerticalContentAlignment="Center"  IsChecked="{Binding CardLookup.SearchAsYouType, Mode=TwoWay,Delay=500, UpdateSourceTrigger=PropertyChanged}">Auto Search</CheckBox>
 
-                <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.ColumnSpan="2">
-                    <CheckBox  VerticalAlignment="Center"  IsChecked="{Binding CardLookup.SearchGerman, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">German</CheckBox>
+                <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.ColumnSpan="3">
+                    <CheckBox  VerticalAlignment="Center"  IsChecked="{Binding CardLookup.SearchGerman, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,Delay=500}">German</CheckBox>
 
-                    <CheckBox  Margin="3,0,0,0" VerticalAlignment="Center"  IsChecked="{Binding CardLookup.SearchRules, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">Rules Text</CheckBox>
-                    <ComboBox Margin="3,0,0,0" ItemsSource="{Binding CardLookup.AvailableSearchSets}" SelectedItem="{Binding CardLookup.SearchSet, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
+                    <CheckBox  Margin="3,0,0,0" VerticalAlignment="Center"  IsChecked="{Binding CardLookup.SearchRules, Mode=TwoWay,Delay=500, UpdateSourceTrigger=PropertyChanged}">Rules Text</CheckBox>
+                    <CheckBox  Margin="3,0,0,0" VerticalAlignment="Center"  IsChecked="{Binding CardLookup.SearchType, Mode=TwoWay,Delay=500, UpdateSourceTrigger=PropertyChanged}">Card Type</CheckBox>
+                    <ComboBox Margin="3,0,0,0" ItemsSource="{Binding CardLookup.AvailableSearchSets}" SelectedItem="{Binding CardLookup.SearchSet, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,Delay=500}" />
                 </StackPanel>
                 <!-- TODO: Search options -->
             </Grid>
@@ -289,6 +296,15 @@
                                     <DataTemplate>
                                         <userControl:SetImage SelectedCard="{Binding Definition}" MaxHeight="14" />
                                         <!--<TextBlock Text="{Binding SetCode, Mode=OneWay}" ToolTip="{Binding SetName, Mode=OneWay}" />-->
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Header="Mana" SortMemberPath="ConvertedManaCost">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <!--<userControl:SetImage SelectedCard="{Binding Definition}" MaxHeight="14" />-->
+                                        <userControl:ManaCostImage SelectedCard="{Binding Definition, Mode=OneWay}" />
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>

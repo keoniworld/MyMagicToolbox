@@ -33,6 +33,20 @@ namespace UpdateCardDatabase
             return false;
         }
 
+        public static int? ComputeConvertedManaCost(string input)
+        {
+            if (string.IsNullOrWhiteSpace(input))
+            {
+                return null;
+            }
+
+            return input
+                .Replace("//", "")
+                .Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)
+                .Select(s => (int)Math.Round(decimal.Parse(s, CultureInfo.InvariantCulture)))
+                .Min();
+        }
+
         public static MagicRarity? ComputeRarity(string input)
         {
             switch (input.ToLowerInvariant())
@@ -373,6 +387,8 @@ namespace UpdateCardDatabase
                     card.LegalityCommander = ComputeLegality(inputCsv.GetField<string>("legality_Commander"));
                     card.LegalityFrenchCommander = ComputeLegality(inputCsv.GetField<string>("legality_French_Commander"));
                     card.Rarity = ComputeRarity(inputCsv.GetField<string>("rarity"));
+                    card.ManaCost = inputCsv.GetField<string>("manacost");
+                    card.ConvertedManaCost = ComputeConvertedManaCost(inputCsv.GetField<string>("converted_manacost"));
 
                     if (!IsSetIncluded(card.SetCode))
                     {
@@ -407,7 +423,7 @@ namespace UpdateCardDatabase
 
                     uniqueList.Add(unique, unique);
 
-                    writer.WriteRecord<MagicCardDefinition>(card);
+                    writer.WriteRecord(card);
 
                     Console.WriteLine(count + " Reading " + card.NameEN + "(" + card.SetCode + ")...");
 

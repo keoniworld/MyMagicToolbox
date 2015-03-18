@@ -54,6 +54,13 @@ namespace MyMagicCollection.wpf
             _logger.Log(LogLevel.Info, "============================= NEW APP START ============================= ");
             _notificationCenter = notificationCenter;
             CardLookup = new CardLookup();
+            CardLookup.PropertyChanged += (sender, e) =>
+            {
+                if (CardLookup.SearchAsYouType)
+                {
+                    LookupCards();
+                }
+            };
 
             DatabaseSummary = string.Format(
                 CultureInfo.CurrentUICulture,

@@ -21,5 +21,9 @@ namespace MyMagicCollection.Shared.Models
         string RulesTextDE { get; }
 
         MagicRarity? Rarity { get; }
+
+        string ManaCost { get; }
+
+        int? ConvertedManaCost { get; }
     }
 }

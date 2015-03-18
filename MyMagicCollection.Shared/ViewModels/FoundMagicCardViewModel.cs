@@ -57,6 +57,10 @@ namespace MyMagicCollection.Shared.ViewModels
 
         public IMagicCardDefinition Definition => _viewModel?.Definition;
 
+        public string ManaCost => _viewModel?.Definition?.ManaCost;
+
+        public int? ConvertedManaCost => _viewModel?.Definition?.ConvertedManaCost;
+
         public string SetName { get; private set; }
 
         public MagicLanguage? Language => _viewModel?.Language;

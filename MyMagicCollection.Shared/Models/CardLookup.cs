@@ -21,11 +21,14 @@ namespace MyMagicCollection.Shared.Models
 
         private ICardLookupSetSource _setSource;
 
+        private bool _searchType;
+
         public CardLookup()
         {
             SearchGerman = true;
             DisplayDistinct = true;
 
+            _searchAsYouType = true;
             _setSource = new CardLookupSetSourceAllSets();
         }
 
@@ -46,8 +49,12 @@ namespace MyMagicCollection.Shared.Models
 
             set
             {
-                _searchTerm = value;
-                RaisePropertyChanged(() => SearchTerm);
+                var low = value?.ToLowerInvariant();
+                if (low != _searchTerm)
+                {
+                    _searchTerm = low;
+                    RaisePropertyChanged(() => SearchTerm);
+                }
             }
         }
 
@@ -84,6 +91,20 @@ namespace MyMagicCollection.Shared.Models
             }
         }
 
+        public bool SearchType
+        {
+            get
+            {
+                return _searchType;
+            }
+
+            set
+            {
+                _searchType = value;
+                RaisePropertyChanged(() => SearchType);
+            }
+        }
+
         public bool DisplayDistinct
         {
             get
@@ -112,6 +133,20 @@ namespace MyMagicCollection.Shared.Models
             }
         }
 
+        private bool _searchAsYouType;
+    public bool SearchAsYouType
+        {
+            get
+            {
+                return _searchAsYouType;
+            }
+
+            set
+            {
+                _searchAsYouType = value;
+                RaisePropertyChanged(() => SearchAsYouType);
+            }
+        }
         public string SearchSet
         {
             get

@@ -35,5 +35,10 @@
         public bool? LegalityFrenchCommander { get; set; }
 
         public MagicRarity? Rarity { get; set; }
+
+        public string ManaCost { get; set; }
+
+        public int? ConvertedManaCost { get; set; }
+
     }
 }

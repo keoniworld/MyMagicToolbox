@@ -421,15 +421,17 @@ namespace UpdateCardDatabase
                 }
 
                 // Write Sets
-                foreach (var set in availableSets.OrderBy(s => s.Key))
-                {
-                    setWriter.WriteRecord(set.Value);
-                }
 
                 inputCsv.Dispose();
-                writer.Dispose();
-                setWriter.Dispose();
             }
+
+            foreach (var set in availableSets.OrderBy(s => s.Key))
+            {
+                setWriter.WriteRecord(set.Value);
+            }
+
+            writer.Dispose();
+            setWriter.Dispose();
         }
     }
 }

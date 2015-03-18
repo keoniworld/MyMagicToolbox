@@ -108,12 +108,8 @@
     <Compile Include="ViewModels\MagicBinderViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="CSV\MagicDatabase.csv">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CSV\MagicDatabaseSets.csv">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
+    <EmbeddedResource Include="CSV\MagicDatabase.csv" />
+    <EmbeddedResource Include="CSV\MagicDatabaseSets.csv" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

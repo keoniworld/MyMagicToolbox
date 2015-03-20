@@ -47,7 +47,7 @@ namespace MyMagicCollection.Shared.FileFormats.MyMagicCollection
                     writer.NextRecord();
 
                     writer.WriteField<string>(collection.Name);
-                    writer.WriteField<int>(collection.Version);
+                    writer.WriteField(collection.Version);
                     writer.NextRecord();
 
                     if (collection.Cards != null && collection.Cards.Any())

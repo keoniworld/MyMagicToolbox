@@ -2,10 +2,12 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Minimod.NotificationObject;
 using MoreLinq;
+using MyMagicCollection.Shared.FileFormats.coll2;
 using MyMagicCollection.Shared.FileFormats.MyMagicCollection;
 using MyMagicCollection.Shared.Models;
 using MyMagicCollection.Shared.Price;
@@ -141,9 +143,13 @@ namespace MyMagicCollection.Shared.ViewModels
                 return;
             }
 
-            var loader = new MyMagicCollectionCsv();
-            loader.WriteFile(fileName, _magicCollection);
+            var collectionWriter = new MyMagicCollectionCsv();
+            collectionWriter.WriteFile(fileName, _magicCollection);
             _fileName = fileName;
+
+            // TODO: make this optional:
+            var colWriter = new Coll2Writer(_notificationCenter);
+            colWriter.Write(_fileName + ".coll2", _magicCollection.Cards);
         }
 
         public void AddCard(

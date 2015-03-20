@@ -56,6 +56,7 @@
     <Compile Include="DataSource\ActiveBinderDataSource.cs" />
     <Compile Include="DataSource\MagicDataDataSourceBase.cs" />
     <Compile Include="DataSource\StaticMagicDataDataSource.cs" />
+    <Compile Include="FileFormats\coll2\Coll2Writer.cs" />
     <Compile Include="FileFormats\DeckBoxCsv\DeckBoxCsvWriter.cs" />
     <Compile Include="FileFormats\DeckBoxCsv\DeckBoxInventoryCsvReader.cs" />
     <Compile Include="FileFormats\Dec\DecReader.cs" />

@@ -94,7 +94,7 @@ namespace MyMagicCollection.Shared.FileFormats.MyMagicCollection
                     }
                 }
 
-                result = new MagicBinder(collectionCards.Where(c => c.Quantity > 0 || c.QuantityTrade > 0 || c.QuantityWanted > 0).ToList());
+                result = new MagicBinder(Consolidate(collectionCards.Where(c => c.Quantity > 0 || c.QuantityTrade > 0 || c.QuantityWanted > 0)));
 
                 using (var inputCsv = new CsvReader(new StringReader(header)))
                 {
@@ -112,6 +112,30 @@ namespace MyMagicCollection.Shared.FileFormats.MyMagicCollection
             }
 
             return result;
+        }
+
+        public IList<MagicBinderCard> Consolidate(IEnumerable<MagicBinderCard> cards)
+        {
+            var result = new List<MagicBinderCard>();
+
+            var grouped = cards.GroupBy(c => MakeConsolidateString(c));
+            foreach (var group in grouped)
+            {
+                var first = group.First();
+                first.Quantity = group.Sum(c=>c.Quantity);
+                first.QuantityTrade = group.Sum(c => c.QuantityTrade);
+                first.QuantityWanted= group.Sum(c => c.QuantityWanted);
+
+                result.Add(first);
+            }
+
+            return result;
+
+        }
+
+        public string MakeConsolidateString(MagicBinderCard card)
+        {
+            return card.IsFoil.ToString() + card.CardId + card.Language;
         }
     }
 }

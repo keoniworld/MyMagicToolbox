@@ -244,6 +244,7 @@ namespace UpdateCardDatabase
                 { "ULG", "UL" },
                 { "USG", "US" },
                 { "DRP", "DPA" },
+                { "DST", "DS" },
             };
 
             string found;

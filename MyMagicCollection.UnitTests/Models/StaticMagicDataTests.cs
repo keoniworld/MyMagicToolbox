@@ -11,6 +11,7 @@ namespace MyMagicCollection.UnitTests.Models
         public void TestSetData()
         {
             InnerTestSetData("DTK", "Dragons of Tarkir", "DTK");
+            InnerTestSetData("DST", "Darksteel", "DS");
             /*
             Code,Name,CodeMagicCardsInfo
 10E,Tenth Edition,10E
@@ -57,7 +58,7 @@ DK,The Dark,DK
 DKA,Dark Ascension,DKA
 DM,Deckmasters,DM
 DRP,From the Vault: Dragons,DPA
-DST,Darksteel,DST
+
 DVD,Duel Decks: Divine vs. Demonic,DVD
 EVE,Eventide,EVE
 EVG,Duel Decks: Elves vs. Goblins,EVG

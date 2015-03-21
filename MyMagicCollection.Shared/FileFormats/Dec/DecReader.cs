@@ -95,7 +95,7 @@ namespace yMagicCollection.Shared.FileFormats.Dec
 
         public IEnumerable<MagicBinderCardViewModel> ReadFileContent(string content)
         {
-            var stopwatch = Stopwatch.StartNew();            
+            var stopwatch = Stopwatch.StartNew();
             var result = ReadFileContentDec(content);
 
             var finalList = new List<MagicBinderCardViewModel>();
@@ -105,6 +105,7 @@ namespace yMagicCollection.Shared.FileFormats.Dec
                 {
                     CardId = card.CardId,
                     Quantity = card.Quantity,
+                    Language = null,
                 };
 
                 MagicCardDefinition definition;

@@ -20,6 +20,7 @@ namespace MyMagicCollection.Shared.Helper
             {
                 { "2ED", "2U" },
                 { "TSB", "TSP" },
+                { "JU", "JUD" },
             };
 
         public SetDownload(INotificationCenter notificationCenter)

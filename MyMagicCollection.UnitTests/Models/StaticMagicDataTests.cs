@@ -12,6 +12,9 @@ namespace MyMagicCollection.UnitTests.Models
         {
             InnerTestSetData("DTK", "Dragons of Tarkir", "DTK");
             InnerTestSetData("DST", "Darksteel", "DS");
+            InnerTestSetData("CON", "Conflux", "CFX");
+            InnerTestSetData("CSP", "Coldsnap", "CS");
+
             /*
             Code,Name,CodeMagicCardsInfo
 10E,Tenth Edition,10E
@@ -44,7 +47,7 @@ CM1,Commander's Arsenal,CMA
 CMD,Commander,CMD
 CNS,Conspiracy,CNS
 CON,Conflux,CON
-CSP,Coldsnap,CSP
+
 DD2,"Duel Decks Anthology, Jace vs. Chandra",DD2
 DD3,"Duel Decks Anthology, Elves vs. Dragons",DD3
 DDC,"Duel Decks Anthology, Divine vs. Demonic",DDC

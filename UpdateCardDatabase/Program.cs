@@ -148,6 +148,10 @@ namespace UpdateCardDatabase
                 { "HVM", "DDL" },
                 { "TWE", "V13" },
                 { "VVK", "DDI" },
+                { "SH", "STH" },
+                { "PY", "PCY" },
+                { "SC", "SCG" },
+                { "JU", "JUD" },
            };
 
             string found;
@@ -171,6 +175,8 @@ namespace UpdateCardDatabase
                 { "9ED", "9E" },
                 { "ONS", "ON" },
                 { "MRD", "MI" },
+                { "PCY", "PY" },
+                { "JUD", "JU" },
 
                 { "15A", "15ANN" },
                 { "AL", "AI" },
@@ -245,6 +251,10 @@ namespace UpdateCardDatabase
                 { "USG", "US" },
                 { "DRP", "DPA" },
                 { "DST", "DS" },
+                { "CON", "CFX" },
+                { "CSP", "CS" },
+                { "STH", "SH" },
+                { "SCG", "SC" },
             };
 
             string found;

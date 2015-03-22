@@ -90,15 +90,7 @@ namespace MyMagicCollection.wpf
                 LoadBinder(new DirectoryInfo(PathHelper.UserDataFolder).MakeAbsolutePath(_settings.LoadedBinder));
             }
 
-            // TODO: Better logic for this
-            ////Task.Factory.StartNew(() =>
-            ////{
-            ////    var downloader = new SymbolDownload();
-            ////    downloader.Download(PathHelper.SymbolCacheFolder);
-
-            ////    var setDownload = new SetDownload(_notificationCenter);
-            ////    setDownload.Download(PathHelper.SetCacheFolder, StaticMagicData.SetDefinitions);
-            ////});
+            Task.Factory.StartNew(() => LookupCards());
         }
 
         public static IEnumerable<MagicLanguage> AvailableLanguages { get; } = (IEnumerable<MagicLanguage>)Enum.GetValues(typeof(MagicLanguage));

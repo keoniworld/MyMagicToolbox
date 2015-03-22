@@ -212,19 +212,19 @@
                                         <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
 
-                                    <TextBlock>Have:</TextBlock>
-                                    <xctk:IntegerUpDown Grid.Column="1"
+                                    <TextBlock VerticalAlignment="Center">Have:</TextBlock>
+                                    <xctk:IntegerUpDown Grid.Column="1" 
                                         Value="{Binding Quantity, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
 																		Minimum="0" />
 
-                                    <TextBlock Grid.Row="1">Trade:</TextBlock>
-                                    <xctk:IntegerUpDown Grid.Column="1" Grid.Row="1"
+                                    <TextBlock VerticalAlignment="Center" Grid.Row="1">Trade:</TextBlock>
+                                    <xctk:IntegerUpDown Grid.Column="1" Grid.Row="1" 
                                            Value="{Binding QuantityTrade, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
 																		Minimum="0"
                                                             Maximum="{Binding Quantity}" />
 
-                                    <TextBlock Grid.Row="2">Want:</TextBlock>
-                                    <xctk:IntegerUpDown Grid.Column="1" Grid.Row="2"
+                                    <TextBlock VerticalAlignment="Center" Grid.Row="2">Want:</TextBlock>
+                                    <xctk:IntegerUpDown Grid.Column="1" Grid.Row="2" 
                                            Value="{Binding QuantityWanted, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
 																		Minimum="0"
                                                             Maximum="{Binding Quantity}" />
@@ -237,7 +237,7 @@
                                             SelectedItem="{Binding Grade, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                                                   ItemsSource="{x:Static local:MainViewModel.AvailableGrades}" />
 
-                                    <CheckBox Margin="3,0,0,0" Grid.Row="1" Grid.Column="4"
+                                    <CheckBox Margin="3,0,0,0" Grid.Row="1" Grid.Column="4"  VerticalAlignment="Center"
                                         IsChecked="{Binding IsFoil, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                                         Foil?
                                     </CheckBox>

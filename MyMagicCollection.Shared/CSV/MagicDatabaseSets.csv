@@ -28,8 +28,8 @@ CHK,Champions of Kamigawa,CHK
 CM1,Commander's Arsenal,CMA
 CMD,Commander,CMD
 CNS,Conspiracy,CNS
-CON,Conflux,CON
-CSP,Coldsnap,CSP
+CON,Conflux,CFX
+CSP,Coldsnap,CS
 DD2,"Duel Decks Anthology, Jace vs. Chandra",DD2
 DD3,"Duel Decks Anthology, Elves vs. Dragons",DD3
 DDC,"Duel Decks Anthology, Divine vs. Demonic",DDC
@@ -70,7 +70,7 @@ ISD,Innistrad,ISD
 IVG,Duel Decks: Izzet vs. Golgari,DDJ
 JCG,Judge Gift Program,JR
 JOU,Journey into Nyx,JOU
-JU,Judgment,JU
+JUD,Judgment,JU
 JVC,Duel Decks: Jace vs. Chandra,JVC
 JVV,Duel Decks: Jace vs. Vraska,DDM
 KTK,Khans of Tarkir,KTK
@@ -105,13 +105,13 @@ P3,Portal Three Kingdoms,P3K
 PC2,Planechase 2012 Edition,PC2
 PCH,Planechase,PCH
 PCP,"Planechase ""Planes""",PCHP
+PCY,Prophecy,PY
 PLC,Planar Chaos,PC
 POR,Portal,PO
 PP2,"Planechase 2012 Edition ""Planes"" and ""Phenomena""",PP2
 PRE,Prerelease Promos,PTC
 PS,Planeshift,PS
 PVC,Duel Decks: Phyrexia vs. the Coalition,PVC
-PY,Prophecy,PR
 RAV,Ravnica: City of Guilds,RAV
 REW,Magic Player Rewards,MPRP
 RLC,From the Vault: Relics,FVR
@@ -119,11 +119,11 @@ RLM,From the Vault: Realms,V12
 RLS,Release Events,REP
 ROE,Rise of the Eldrazi,ROE
 RTR,Return to Ravnica,RTR
-SC,Scourge,SC
-SH,Stronghold,SH
+SCG,Scourge,SC
 SHM,Shadowmoor,SHM
 SOK,Saviors of Kamigawa,SOK
 SOM,Scars of Mirrodin,SOM
+STH,Stronghold,SH
 SUM,Summer of Magic,SUM
 SVC,Duel Decks: Speed vs. Cunning,DDN
 SVT,Duel Decks: Sorin vs. Tibalt,DDK

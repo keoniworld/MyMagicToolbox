@@ -45,6 +45,14 @@ namespace MyMagicCollection.Shared.Helper
 					try
 					{
 						var filePart = symbol.Replace("/", "");
+
+                        var patchedFilePart = filePart
+                            .Replace("WP", "PW")
+                            .Replace("UP", "PU")
+                            .Replace("BP", "PB")
+                            .Replace("RP", "PR")
+                            .Replace("GP", "GR");
+
 						var dest = Path.Combine(baseFolder, filePart + ".jpg");
 						if (File.Exists(dest))
 						{

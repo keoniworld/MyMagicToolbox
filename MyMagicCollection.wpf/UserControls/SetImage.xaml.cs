@@ -61,7 +61,7 @@ namespace MyMagicCollection.wpf.UserControls
                 {
                     definition = StaticMagicData.SetDefinitionsBySetCode[card.SetCode];
                     var filePart = SetDownload.MakeSetImageName(definition, card.Rarity.HasValue ? card.Rarity.Value : MagicRarity.Common);
-                    var cardFileName = Path.Combine(PathHelper.SetCacheFolder, "small", filePart);
+                    var cardFileName = Path.Combine(PathHelper.SetCacheFolder, "medium", filePart);
 
                     instance.imageToolTip.Content = definition.Name;
                     
@@ -69,9 +69,12 @@ namespace MyMagicCollection.wpf.UserControls
                     {
                         try
                         {
-                            var uri = new Uri(cardFileName);
-                            var bitmap = new BitmapImage(uri);
-                            bitmap.Freeze();
+                            //var uri = new Uri(cardFileName);
+                            //var bitmap = new BitmapImage(uri);
+                            //bitmap.Freeze();
+
+                            var bitmap = BitmapImageCache.GetImage(cardFileName);
+
                             instance.imageControl.Source = bitmap;
                             instance.imageLabel.Text = "";
 

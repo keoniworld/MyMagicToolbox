@@ -76,10 +76,10 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="CSV\AllSets_Original.csv" />
-    <None Include="CSV\AllSets.csv">
+    <None Include="CSV\set_AllSets.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="CSV\DragonsOfTakir.csv">
+    <None Include="CSV\set_DragonsOfTakir.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />

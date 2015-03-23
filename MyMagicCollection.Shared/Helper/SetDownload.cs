@@ -11,7 +11,8 @@ namespace MyMagicCollection.Shared.Helper
         private static readonly String urlFmt =
             "http://gatherer.wizards.com/Handlers/Image.ashx?type=symbol&set={1}&size={0}&rarity={2}";
 
-        private static readonly string[] sizes = { "small", "medium", "large" };
+        // private static readonly string[] sizes = { "small", "medium", "large" };
+        private static readonly string[] sizes = { "medium"};
         private static readonly MagicRarity[] _rarity = { MagicRarity.Mythic, MagicRarity.Common, MagicRarity.Rare, MagicRarity.Uncommon };
 
         private readonly INotificationCenter _notificationCenter;

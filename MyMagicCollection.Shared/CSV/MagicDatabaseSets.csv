@@ -30,25 +30,28 @@ CMD,Commander,CMD
 CNS,Conspiracy,CNS
 CON,Conflux,CFX
 CSP,Coldsnap,CS
-DD2,"Duel Decks Anthology, Jace vs. Chandra",DD2
-DD3,"Duel Decks Anthology, Elves vs. Dragons",DD3
-DDC,"Duel Decks Anthology, Divine vs. Demonic",DDC
-DDD,"Duel Decks Anthology, Garruk vs. Liliana",DDD
+DD2,Duel Decks: Jace vs. Chandra,DD2
+DDD,Duel Decks: Garruk vs. Liliana,GVL
+DDE,Duel Decks: Phyrexia vs. the Coalition,PVC
+DDF,Duel Decks: Elspeth vs. Tezzeret,DDF
+DDG,Duel Decks: Knights vs. Dragons,DDG
 DDH,Duel Decks: Ajani vs. Nicol Bolas,DDH
 DDI,Duel Decks: Venser vs. Koth,DDI
+DDJ,Duel Decks: Izzet vs. Golgari,DDJ
+DDK,Duel Decks: Sorin vs. Tibalt,DDK
 DDL,Duel Decks: Heroes vs. Monsters,DDL
+DDM,Duel Decks: Jace vs. Vraska,DDM
+DDN,Duel Decks: Speed vs. Cunning,DDN
 DGM,Dragon's Maze,DGM
 DIS,Dissension,DI
 DK,The Dark,DK
 DKA,Dark Ascension,DKA
-DM,Deckmasters,DM
+DKM,Deckmasters,DM
 DRP,From the Vault: Dragons,DPA
 DST,Darksteel,DS
 DTK,Dragons of Tarkir,DTK
-DVD,Duel Decks: Divine vs. Demonic,DVD
 EVE,Eventide,EVE
 EVG,Duel Decks: Elves vs. Goblins,EVG
-EVT,Duel Decks: Elspeth vs. Tezzeret,DDF
 EX,Exodus,EX
 EXL,From the Vault: Exiled,FVE
 FE,Fallen Empires,FE
@@ -58,23 +61,17 @@ FUT,Future Sight,FUT
 GDC,Magic Game Day Cards,MGDC
 GLP,Magic: The Gathering Launch Parties,MLP
 GPT,Guildpact,GP
-GPX,Grand Prix,GPX
-GRV,Premium Deck Series: Graveborn,PD3
 GTC,Gatecrash,GTC
 GTW,WPN/Gateway,GRC
-GVL,Duel Decks: Garruk vs. Liliana,GVL
 HML,Homelands,HML
+HOP,Planechase,PCH
 IA,Ice Age,IA
 IN,Invasion,IN
 ISD,Innistrad,ISD
-IVG,Duel Decks: Izzet vs. Golgari,DDJ
 JCG,Judge Gift Program,JR
 JOU,Journey into Nyx,JOU
 JUD,Judgment,JU
-JVC,Duel Decks: Jace vs. Chandra,JVC
-JVV,Duel Decks: Jace vs. Vraska,DDM
 KTK,Khans of Tarkir,KTK
-KVD,Duel Decks: Knights vs. Dragons,DDG
 LE,Legions,LE
 LEA,Limited Edition Alpha,LEA
 LEB,Limited Edition Beta,LEB
@@ -102,20 +99,17 @@ OD,Odyssey,OD
 ONS,Onslaught,ON
 P2,Portal Second Age,PO2
 P3,Portal Three Kingdoms,P3K
-PC2,Planechase 2012 Edition,PC2
-PCH,Planechase,PCH
+PC2,Planechase 2012,PC2
 PCP,"Planechase ""Planes""",PCHP
-PCY,Prophecy,PY
+PCY,Prophecy,PR
+PD3,Premium Deck Series: Graveborn,PD3
 PLC,Planar Chaos,PC
 POR,Portal,PO
 PP2,"Planechase 2012 Edition ""Planes"" and ""Phenomena""",PP2
 PRE,Prerelease Promos,PTC
 PS,Planeshift,PS
-PVC,Duel Decks: Phyrexia vs. the Coalition,PVC
 RAV,Ravnica: City of Guilds,RAV
 REW,Magic Player Rewards,MPRP
-RLC,From the Vault: Relics,FVR
-RLM,From the Vault: Realms,V12
 RLS,Release Events,REP
 ROE,Rise of the Eldrazi,ROE
 RTR,Return to Ravnica,RTR
@@ -124,9 +118,6 @@ SHM,Shadowmoor,SHM
 SOK,Saviors of Kamigawa,SOK
 SOM,Scars of Mirrodin,SOM
 STH,Stronghold,SH
-SUM,Summer of Magic,SUM
-SVC,Duel Decks: Speed vs. Cunning,DDN
-SVT,Duel Decks: Sorin vs. Tibalt,DDK
 TE,Tempest,TP
 THS,Theros,THS
 TOR,Torment,TR
@@ -137,6 +128,8 @@ UG,Unglued,UG
 ULG,Urza's Legacy,UL
 UNH,Unhinged,UH
 USG,Urza's Saga,US
+V10,From the Vault: Relics,FVR
+V12,From the Vault: Realms,V12
 V13,From the Vault: Twenty,V13
 V14,From the Vault: Annihilation,V14
 VI,Visions,VI

@@ -116,6 +116,1353 @@
   <ItemGroup>
     <None Include="Price\MKM\productrequestresult.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="APP_DATA\ImageCache\Symbols\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="APP_DATA\ImageCache\Sets\medium\POR_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="APP_DATA\ImageCache\Sets\medium\POR_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="APP_DATA\ImageCache\Sets\medium\POR_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="APP_DATA\ImageCache\Sets\medium\POR_M.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="APP_DATA\ImageCache\Sets\medium\V14_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\V14_M.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\V14_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\V14_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DRP_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DRP_M.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DRP_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DRP_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="APP_DATA\ImageCache\Sets\medium\EXL_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\EXL_M.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\EXL_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\EXL_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="APP_DATA\ImageCache\Sets\medium\10E_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\10E_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\10E_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\2ED_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\2ED_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\2ED_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\3ED_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\3ED_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\3ED_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\4ED_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\4ED_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\4ED_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\5DN_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\5DN_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\5DN_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\5ED_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\5ED_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\5ED_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\6ED_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\6ED_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\6ED_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\7ED_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\7ED_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\7ED_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\8ED_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\8ED_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\8ED_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\9ED_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\9ED_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\9ED_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\ALA_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\ALA_M.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\ALA_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\ALA_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\AL_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\AL_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\AL_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\AN_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\AN_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\AN_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\AP_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\AP_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\AP_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\AQ_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\AQ_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\AQ_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\ARB_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\ARB_M.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\ARB_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\ARB_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\ARC_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\ARC_M.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\ARC_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\ARC_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\AVR_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\AVR_M.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\AVR_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\AVR_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\BD_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\BD_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\BD_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\BNG_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\BNG_M.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\BNG_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\BNG_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\BOK_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\BOK_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\BOK_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\BR_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\BR_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\BR_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\C13_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\C13_M.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\C13_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\C13_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\C14_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\C14_M.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\C14_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\C14_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\CHK_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\CHK_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\CHK_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\CH_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\CH_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\CH_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\CM1_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\CM1_M.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\CM1_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\CM1_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\CMD_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\CMD_M.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\CMD_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\CMD_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\CNS_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\CNS_M.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\CNS_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\CNS_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\CON_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\CON_M.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\CON_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\CON_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\CSP_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\CSP_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\CSP_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DD2_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DD2_M.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DD2_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DD2_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DDD_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DDD_M.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DDD_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DDD_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DDE_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DDE_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DDE_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DDF_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DDF_M.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DDF_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DDF_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DDG_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DDG_M.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DDG_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DDG_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DDH_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DDH_M.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DDH_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DDH_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DDI_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DDI_M.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DDI_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DDI_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DDJ_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DDJ_M.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DDJ_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DDJ_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DDK_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DDK_M.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DDK_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DDK_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DDL_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DDL_M.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DDL_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DDL_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DDM_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DDM_M.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DDM_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DDM_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DDN_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DDN_M.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DDN_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DDN_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DGM_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DGM_M.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DGM_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DGM_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DIS_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DIS_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DIS_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DKA_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DKA_M.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DKA_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DKA_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DK_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DK_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DK_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DST_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DST_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DST_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DTK_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DTK_M.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DTK_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DTK_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\EVE_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\EVE_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\EVE_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\EVG_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\EVG_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\EVG_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\EX_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\EX_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\EX_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\FE_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\FE_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\FE_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\FRF_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\FRF_M.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\FRF_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\FRF_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\FUT_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\FUT_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\FUT_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\GPT_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\GPT_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\GPT_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\GTC_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\GTC_M.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\GTC_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\GTC_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\HML_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\HML_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\HML_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\HOP_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\HOP_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\HOP_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\IA_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\IA_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\IA_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\IN_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\IN_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\IN_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\ISD_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\ISD_M.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\ISD_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\ISD_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\JOU_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\JOU_M.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\JOU_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\JOU_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\JUD_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\JUD_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\JUD_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\KTK_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\KTK_M.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\KTK_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\KTK_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\LEA_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\LEA_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\LEA_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\LEB_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\LEB_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\LEB_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\LEG_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\LEG_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\LEG_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\LE_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\LE_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\LE_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\LRW_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\LRW_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\LRW_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\M10_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\M10_M.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\M10_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\M10_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\M11_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\M11_M.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\M11_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\M11_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\M12_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\M12_M.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\M12_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\M12_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\M13_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\M13_M.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\M13_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\M13_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\M14_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\M14_M.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\M14_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\M14_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\M15_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\M15_M.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\M15_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\M15_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\MBS_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\MBS_M.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\MBS_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\MBS_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\MD1_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\MD1_M.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\MD1_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\MD1_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\ME2_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\ME2_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\ME2_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\ME3_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\ME3_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\ME3_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\ME4_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\ME4_M.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\ME4_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\ME4_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\MI_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\MI_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\MI_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\MMA_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\MMA_M.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\MMA_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\MMA_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\MM_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\MM_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\MM_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\MOR_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\MOR_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\MOR_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\MRD_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\MRD_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\MRD_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\NE_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\NE_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\NE_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\NPH_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\NPH_M.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\NPH_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\NPH_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\OD_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\OD_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\OD_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\ONS_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\ONS_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\ONS_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\P2_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\P2_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\P2_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\P3_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\P3_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\P3_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\PC2_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\PC2_M.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\PC2_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\PC2_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\PCY_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\PCY_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\PCY_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\PD3_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\PD3_M.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\PD3_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\PD3_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\PLC_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\PLC_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\PLC_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\PS_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\PS_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\PS_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\RAV_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\RAV_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\RAV_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\ROE_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\ROE_M.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\ROE_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\ROE_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\RTR_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\RTR_M.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\RTR_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\RTR_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\SCG_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\SCG_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\SCG_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\SHM_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\SHM_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\SHM_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\SOK_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\SOK_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\SOK_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\SOM_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\SOM_M.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\SOM_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\SOM_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\STH_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\STH_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\STH_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\TE_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\TE_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\TE_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\THS_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\THS_M.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\THS_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\THS_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\TOR_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\TOR_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\TOR_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\TSB_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\TSB_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\TSB_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\TSP_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\TSP_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\TSP_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\UDS_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\UDS_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\UDS_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\UG_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\UG_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\UG_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\ULG_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\ULG_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\ULG_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\UNH_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\UNH_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\UNH_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\USG_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\USG_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\USG_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\VI_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\VI_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\VI_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\VMA_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\VMA_M.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\VMA_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\VMA_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\WL_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\WL_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\WL_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\WWK_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\WWK_M.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\WWK_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\WWK_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\ZEN_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\ZEN_M.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\ZEN_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\ZEN_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DKM_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DKM_M.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DKM_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\DKM_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\V10_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\V10_M.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\V10_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\V10_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\V12_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\V12_M.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\V12_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\V12_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="APP_DATA\ImageCache\Sets\medium\V13_C.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\V13_M.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\V13_R.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="APP_DATA\ImageCache\Sets\medium\V13_U.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

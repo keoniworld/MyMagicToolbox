@@ -120,11 +120,11 @@ namespace UpdateCardDatabase
                 { "8E", "8ED" },
                 { "9E", "9ED" },
                 { "LG", "LEG" },
+                { "PCH", "HOP" },
 
                 { "CFX", "CON" },
                 { "ADVD", "DDC" },
-                { "AGVL", "DDD" },
-                { "AJVC", "DD2" },
+                // { "AGVL", "DDD" },
                 { "AVB", "DDH" },
                 { "ANH", "V14" },
                 { "CS", "CSP" },
@@ -132,7 +132,8 @@ namespace UpdateCardDatabase
                 { "DS", "DST" },
                 { "GP", "GPT" },
                 { "HL", "HML" },
-                { "AEVD", "DD3" },
+                // { "AEVD", "DD3" },
+                { "SVC", "DDN" },
 
                 { "ANT", "ATH" },
                 { "CRS", "CM1" },
@@ -152,6 +153,19 @@ namespace UpdateCardDatabase
                 { "PY", "PCY" },
                 { "SC", "SCG" },
                 { "JU", "JUD" },
+                { "SVT", "DDK" },
+                { "RLM", "V12" },
+                { "PVC", "DDE" },
+                { "KVD", "DDG" },
+                { "JVV", "DDM" },
+                { "JVC", "DD2" },
+                { "GVL", "DDD" },
+                { "IVG", "DDJ" },
+                { "RLC", "V10" },
+                { "EVT", "DDF" },
+                { "DVD", "DDC" },
+                { "GRV", "PD3" },
+                { "DM", "DKM" },
            };
 
             string found;
@@ -175,8 +189,13 @@ namespace UpdateCardDatabase
                 { "9ED", "9E" },
                 { "ONS", "ON" },
                 { "MRD", "MI" },
-                { "PCY", "PY" },
                 { "JUD", "JU" },
+                { "DDE", "PVC" },
+                { "DDD", "GVL" },
+                { "HOP", "PCH" },
+                { "DDC", "DVD" },
+                { "DKM", "DM" },
+                { "PCY", "PR" },
 
                 { "15A", "15ANN" },
                 { "AL", "AI" },
@@ -188,17 +207,12 @@ namespace UpdateCardDatabase
                 { "CST", "CSTD" },
                 { "CM1", "CMA" },
                 { "DIS", "DI" },
-                { "ADVD", "DD3" },
-                { "AEVG", "DD3" },
-                { "AGVL", "DD3" },
-                { "AJVC", "DD3" },
+                //{ "ADVD", "DD3" },
+                //{ "AEVG", "DD3" },
+                //{ "AGVL", "DD3" },
+                //{ "AJVC", "DD3" },
                 { "AVB", "DDH" },
-                { "EVT", "DDF" },
-                { "IVG", "DDJ" },
-                { "JVV", "DDM" },
-                { "KVD", "DDG" },
-                { "SVT", "DDK" },
-                { "SVC", "DDN" },
+
                 { "VVK", "DDI" },
                 { "EUR", "EURO" },
                 { "FNM", "FNMP" },
@@ -206,8 +220,7 @@ namespace UpdateCardDatabase
                 { "DRG", "FVD" },
                 { "EXL", "FVE" },
                 { "LEG", "FVL" },
-                { "RLM", "V12" },
-                { "RLC", "FVR" },
+                { "V10", "FVR" },
                 { "TWE", "V13" },
                 { "GUR", "GURU" },
                 { "JCG", "JR" },
@@ -228,7 +241,7 @@ namespace UpdateCardDatabase
                 { "P2", "PO2" },
                 { "P3", "P3K" },
                 { "FAL", "FD2" },
-                { "GRV", "PD3" },
+
                 { "SLI", "PDS" },
                 { "PRE", "PTC" },
                 { "PY", "PR" },
@@ -297,6 +310,17 @@ namespace UpdateCardDatabase
                 case "HHO":
                 case "ATH":
                 case "DPA":
+                case "SUM":
+                case "GPX":
+
+                // Anthology Duel Decks
+                case "ADVD":
+                case "AEVD":
+                case "AEVG":
+                case "AGVL":
+                case "AJVC":
+                case "DDC":
+
                     // case "TSB":
                     return false;
 
@@ -329,6 +353,9 @@ namespace UpdateCardDatabase
 
                 case "From the Vault: Annihilation (2014)":
                     return "From the Vault: Annihilation";
+
+                case "Planechase 2012 Edition":
+                    return "Planechase 2012";
             }
 
             return setCode;
@@ -338,20 +365,22 @@ namespace UpdateCardDatabase
         {
             var provider = new CardDatabaseFolderProvider();
 
-            var exportFileName = Path.Combine(provider.ExeFolder, "CSV", "MagicDatabase.csv");
+            var relativeToSource = @"..\..\..\MyMagicCollection.Shared";
+
+            var exportFileName = Path.Combine(provider.ExeFolder, relativeToSource, "CSV", "MagicDatabase.csv");
             if (File.Exists(exportFileName))
             {
                 File.Delete(exportFileName);
             }
 
-            var exportSetFileName = Path.Combine(provider.ExeFolder, "CSV", "MagicDatabaseSets.csv");
+            var exportSetFileName = Path.Combine(provider.ExeFolder, relativeToSource, "CSV", "MagicDatabaseSets.csv");
             if (File.Exists(exportSetFileName))
             {
                 File.Delete(exportSetFileName);
             }
 
             int count = 0;
-            var inputFiles = Directory.EnumerateFiles(provider.ExeFolder, "*.csv", SearchOption.AllDirectories).ToList();
+            var inputFiles = Directory.EnumerateFiles(provider.ExeFolder, "set_*.csv", SearchOption.AllDirectories).ToList();
 
             var textWriter = new StreamWriter(exportFileName);
 

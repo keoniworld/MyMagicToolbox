@@ -50,7 +50,7 @@ namespace MyMagicCollection.wpf.UserControls
             set { SetValue(SelectedCardProperty, value); }
         }
 
-        public IEnumerable<string> Images { get; private set; }
+        public IEnumerable<BitmapImage> Images { get; private set; }
 
         public static void OnImageChanged(
             DependencyObject d,
@@ -71,7 +71,10 @@ namespace MyMagicCollection.wpf.UserControls
                     if (parts.Length > 0)
                     {
                         var basePath = Path.Combine(PathHelper.SymbolCacheFolder, "large");
-                        instance.Images = parts.Select(p => Path.Combine(basePath, p + ".jpg")).ToList();
+                        instance.Images = parts
+                            .Select(p => Path.Combine(basePath, p + ".jpg"))
+                            .Select(f => BitmapImageCache.GetImage(f))
+                            .ToList();
                     }
                 }
 

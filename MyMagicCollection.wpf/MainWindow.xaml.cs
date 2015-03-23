@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MahApps.Metro.Controls;
 using Microsoft.Win32;
 using MyMagicCollection.Shared;
 using MyMagicCollection.Shared.Helper;
@@ -23,7 +25,7 @@ namespace MyMagicCollection.wpf
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : MetroWindow
     {
         private MainViewModel _viewModel = new MainViewModel(NotificationCenter.Instance);
 
@@ -322,6 +324,21 @@ namespace MyMagicCollection.wpf
                 NotificationCenter.Instance.FireNotification(
                     LogLevel.Error,
                     "Error setting hot keys: " + err.Message);
+            }
+        }
+
+        private void OnShowLogFolder(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var folder = System.IO.Path.Combine(PathHelper.ExeFolder, "logs");
+                Process.Start(folder);
+            }
+            catch (Exception err)
+            {
+                NotificationCenter.Instance.FireNotification(
+                    LogLevel.Error,
+                    "Error showing log folder: " + err.Message);
             }
         }
     }

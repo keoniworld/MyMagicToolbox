@@ -103,11 +103,11 @@ namespace MyMagicCollection.Shared.ViewModels
                     break;
 
                 case "grade":
-                    RaisePropertyChanged(() => Grade);
-                    break;
-
                 case "language":
-                    RaisePropertyChanged(() => Language);
+                case "quantitytrade":
+                case "quantitywanted":
+                case "quantity":
+                    RaisePropertyChanged(e.PropertyName);
                     break;
 
                 case "definition":

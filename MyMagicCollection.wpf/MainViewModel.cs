@@ -550,5 +550,18 @@ namespace MyMagicCollection.wpf
 
             RaisePropertyChanged(() => SelectedCardsInBinder);
         }
+
+        public void AddAllFromSelectedItemToTradeList()
+        {
+            if (_activeBinder == null || _selectedCardsInBinder == null)
+            {
+                return;
+            }
+
+            foreach (var card in _selectedCardsInBinder)
+            {
+                card.QuantityTrade = card.Quantity;
+            }
+        }
     }
 }

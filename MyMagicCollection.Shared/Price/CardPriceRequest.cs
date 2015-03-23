@@ -177,7 +177,9 @@ namespace MyMagicCollection.Shared.Price
             }
             catch (Exception error)
             {
-                // _notificationCenter.FireNotification(LogLevel.Error, string.Format("Error downloading price data for '{0}({1})': {2}", card.NameEN, card.SetCode, error.Message));
+                _notificationCenter.FireNotification(
+                    LogLevel.Error, 
+                    string.Format("Error downloading price data: '{0}'", error.Message));
             }
         }
     }

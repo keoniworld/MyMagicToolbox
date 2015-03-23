@@ -16,6 +16,7 @@ using Microsoft.Win32;
 using MyMagicCollection.Shared;
 using MyMagicCollection.Shared.Helper;
 using MyMagicCollection.Shared.Models;
+using NLog;
 
 namespace MyMagicCollection.wpf
 {
@@ -29,6 +30,7 @@ namespace MyMagicCollection.wpf
         public MainWindow()
         {
             InitializeComponent();
+            AddHotKeys();
 
             DataContext = _viewModel;
 
@@ -44,7 +46,9 @@ namespace MyMagicCollection.wpf
             }
             catch (Exception error)
             {
-                // TOOD: Display error
+                NotificationCenter.Instance.FireNotification(
+                    LogLevel.Error,
+                    "Lookup cards failed: " + error.Message);
             }
         }
 
@@ -99,6 +103,10 @@ namespace MyMagicCollection.wpf
             }
             catch (Exception error)
             {
+                NotificationCenter.Instance.FireNotification(
+                    LogLevel.Error,
+                    "Exporting cards failed: " + error.Message);
+
                 MessageBox.Show(
                     error.Message,
                     "Importing cards failed",
@@ -124,6 +132,10 @@ namespace MyMagicCollection.wpf
             }
             catch (Exception error)
             {
+                NotificationCenter.Instance.FireNotification(
+                    LogLevel.Error,
+                    "Exporting cards failed: " + error.Message);
+
                 MessageBox.Show(
                     error.Message,
                     "Exporting cards failed",
@@ -218,6 +230,10 @@ namespace MyMagicCollection.wpf
             }
             catch (Exception error)
             {
+                NotificationCenter.Instance.FireNotification(
+                    LogLevel.Error,
+                    "Exporting cards failed: " + error.Message);
+
                 MessageBox.Show(
                     error.Message,
                     "Exporting cards failed",
@@ -238,6 +254,10 @@ namespace MyMagicCollection.wpf
             }
             catch (Exception error)
             {
+                NotificationCenter.Instance.FireNotification(
+                    LogLevel.Error,
+                    "Exporting cards failed: " + error.Message);
+
                 MessageBox.Show(
                     error.Message,
                     "Exporting cards failed",
@@ -258,6 +278,10 @@ namespace MyMagicCollection.wpf
             }
             catch (Exception error)
             {
+                NotificationCenter.Instance.FireNotification(
+                    LogLevel.Error,
+                    "Exporting cards failed: " + error.Message);
+
                 MessageBox.Show(
                     error.Message,
                     "Exporting cards failed",
@@ -274,6 +298,31 @@ namespace MyMagicCollection.wpf
         private void OnShowWantCards(object sender, RoutedEventArgs e)
         {
             _viewModel.ShowWantBinderCards();
+        }
+
+        private void OnAddAllOfCurrentToTradeList(object sender, ExecutedRoutedEventArgs e)
+        {
+            _viewModel.AddAllFromSelectedItemToTradeList();
+        }
+
+        private void AddHotKeys()
+        {
+            try
+            {
+                //RoutedCommand firstSettings = new RoutedCommand();
+                //firstSettings.InputGestures.Add(new KeyGesture(Key.A, ModifierKeys.Alt));
+                //CommandBindings.Add(new CommandBinding(firstSettings, My_first_event_handler));
+
+                RoutedCommand secondSettings = new RoutedCommand();
+                secondSettings.InputGestures.Add(new KeyGesture(Key.T, ModifierKeys.Control));
+                CommandBindings.Add(new CommandBinding(secondSettings, OnAddAllOfCurrentToTradeList));
+            }
+            catch (Exception err)
+            {
+                NotificationCenter.Instance.FireNotification(
+                    LogLevel.Error,
+                    "Error setting hot keys: " + err.Message);
+            }
         }
     }
 }

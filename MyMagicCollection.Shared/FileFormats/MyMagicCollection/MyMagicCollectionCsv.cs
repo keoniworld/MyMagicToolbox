@@ -7,6 +7,7 @@ using System.Text;
 using CsvHelper;
 using CsvHelper.Configuration;
 using MyMagicCollection.Shared.Models;
+using NLog;
 
 namespace MyMagicCollection.Shared.FileFormats.MyMagicCollection
 {
@@ -107,7 +108,10 @@ namespace MyMagicCollection.Shared.FileFormats.MyMagicCollection
             }
             catch (Exception error)
             {
-                // TODO: Log error
+                NotificationCenter.Instance.FireNotification(
+                    LogLevel.Error,
+                    nameof(MyMagicCollectionCsv) + "ReadFile() failed: " + error.Message);
+
                 result = new MagicBinder();
             }
 

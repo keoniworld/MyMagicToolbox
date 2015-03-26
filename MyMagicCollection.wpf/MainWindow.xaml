@@ -136,7 +136,15 @@
                     <StackPanel Grid.Row="0" HorizontalAlignment="Right"
                             Orientation="Horizontal">
 
-                        <Button HorizontalAlignment="Right" IsEnabled="{Binding CanAddSelected}" Click="OnAddSelectedCardToBinder">Add Selected</Button>
+                        <Button HorizontalAlignment="Right" IsEnabled="{Binding CanAddSelected}" 
+                                Click="OnAddSelectedCardToBinder" >
+                            <Button.ToolTip>
+                                <StackPanel>
+                                    <TextBlock>Adds the currently selected card to the inventory.</TextBlock>
+                                    <TextBlock>Use the [F2] key to add all selected cards to the trade list.</TextBlock>
+                                </StackPanel>
+                            </Button.ToolTip>
+                            Add Selected</Button>
                     </StackPanel>
 
                     <!--<DataGrid Grid.Row="1"

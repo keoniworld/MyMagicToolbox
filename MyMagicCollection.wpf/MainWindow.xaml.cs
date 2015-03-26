@@ -316,7 +316,7 @@ namespace MyMagicCollection.wpf
                 //CommandBindings.Add(new CommandBinding(firstSettings, My_first_event_handler));
 
                 RoutedCommand secondSettings = new RoutedCommand();
-                secondSettings.InputGestures.Add(new KeyGesture(Key.T, ModifierKeys.Control));
+                secondSettings.InputGestures.Add(new KeyGesture(Key.F2, ModifierKeys.None));
                 CommandBindings.Add(new CommandBinding(secondSettings, OnAddAllOfCurrentToTradeList));
             }
             catch (Exception err)

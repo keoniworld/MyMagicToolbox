@@ -61,6 +61,8 @@ namespace MyMagicCollection.Shared.ViewModels
             {
                 _card.CardId = value;
                 RaisePropertyChanged(() => CardId);
+
+                UpdatePrice();
             }
         }
 
@@ -131,6 +133,8 @@ namespace MyMagicCollection.Shared.ViewModels
             {
                 _card.IsFoil = value;
                 RaisePropertyChanged(() => IsFoil);
+
+                UpdatePrice();
             }
         }
 

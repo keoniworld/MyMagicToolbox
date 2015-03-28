@@ -341,5 +341,27 @@ namespace MyMagicCollection.wpf
                     "Error showing log folder: " + err.Message);
             }
         }
+
+        private void OnAddSelectedToTradeList(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+
+                _viewModel.AddSelectedToTradeList();
+                
+            }
+            catch (Exception error)
+            {
+                NotificationCenter.Instance.FireNotification(
+                    LogLevel.Error,
+                    "Add to trade list: " + error.Message);
+
+                MessageBox.Show(
+                    error.Message,
+                    "Add to trade list failed",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+            }
+        }
     }
 }

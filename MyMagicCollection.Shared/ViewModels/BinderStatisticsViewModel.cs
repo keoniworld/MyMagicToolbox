@@ -47,7 +47,7 @@ namespace MyMagicCollection.Shared.ViewModels
 			{
 				collection.Add(new BinderStatisticsPerSet(StaticMagicData.SetDefinitionsBySetCode[group.Key], group));
 			}
-			StatisticRows = collection;
+			StatisticRows = collection.OrderByDescending(i=>i.SetDefinition.ReleaseDateTime).ThenBy(i=>i.SetDefinition.Name).ToList();
         }
 	}
 }

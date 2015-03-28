@@ -371,6 +371,29 @@ namespace MyMagicCollection.wpf
             _notificationCenter.FireNotification(null, string.Format("Created binder '{0}'.", _activeBinder.Name));
         }
 
+        public void AddSelectedToTradeList()
+        {
+            if (_activeBinder == null || _searchResult == null || !_searchResult.Any() || _activeBinder.Cards == null)
+            {
+                return;
+            }
+
+            _notificationCenter.FireNotification(LogLevel.Info, string.Format("Started adding cards to trade list..."));
+            var timer = Stopwatch.StartNew();
+
+            foreach (var searchCard in _searchResult)
+            {
+                var foundCards = _activeBinder.Cards.Where(c => c.CardId == searchCard.CardId).ToList();
+                foreach (var found in foundCards)
+                {
+                    found.QuantityTrade = found.Quantity;
+                }
+            }
+
+            timer.Stop();
+            _notificationCenter.FireNotification(LogLevel.Info, string.Format("Added cards to trade list took '{0}'.", timer.Elapsed));
+        }
+
         public void OpenBinder(string fileName)
         {
             try
@@ -514,8 +537,21 @@ namespace MyMagicCollection.wpf
             });
         }
 
+        public void AddAllFromSelectedItemToTradeList()
+        {
+            if (_activeBinder == null || _selectedCardsInBinder == null)
+            {
+                return;
+            }
+
+            foreach (var card in _selectedCardsInBinder)
+            {
+                card.QuantityTrade = card.Quantity;
+            }
+        }
+
         private void InternalExport(
-                                                                                                            string fileName,
+                                                                                                                    string fileName,
             IEnumerable<IMagicBinderCardViewModel> cardsToExport,
             Func<IMagicBinderCardViewModel, int> quantitySelector)
         {
@@ -549,19 +585,6 @@ namespace MyMagicCollection.wpf
             }
 
             RaisePropertyChanged(() => SelectedCardsInBinder);
-        }
-
-        public void AddAllFromSelectedItemToTradeList()
-        {
-            if (_activeBinder == null || _selectedCardsInBinder == null)
-            {
-                return;
-            }
-
-            foreach (var card in _selectedCardsInBinder)
-            {
-                card.QuantityTrade = card.Quantity;
-            }
         }
     }
 }

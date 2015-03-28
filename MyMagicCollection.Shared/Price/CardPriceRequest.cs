@@ -36,6 +36,12 @@ namespace MyMagicCollection.Shared.Price
                     case "Friday Night Magic":
                         setName = "Friday Night Magic Promos";
                         break;
+                    case "Magic 2014 Core Set":
+                        setName = "Magic 2014";
+                        break;
+                    case "Magic 2015 Core Set":
+                        setName = "Magic 2015";
+                        break;
                 }
 
                 var helper = new RequestHelper();
@@ -178,7 +184,7 @@ namespace MyMagicCollection.Shared.Price
             catch (Exception error)
             {
                 _notificationCenter.FireNotification(
-                    LogLevel.Error, 
+                    LogLevel.Error,
                     string.Format("Error downloading price data: '{0}'", error.Message));
             }
         }

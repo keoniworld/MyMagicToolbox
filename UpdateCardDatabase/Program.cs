@@ -8,12 +8,15 @@ using CsvHelper;
 using CsvHelper.Configuration;
 using Dapper;
 using MagicDatabase;
+using MyMagicCollection.Shared.FileFormats.MyMagicCollection;
 using MyMagicCollection.Shared.Models;
 
 namespace UpdateCardDatabase
 {
     public class Program
     {
+        
+
         public static bool? ComputeLegality(string input)
         {
             if (string.IsNullOrWhiteSpace(input))
@@ -339,11 +342,11 @@ namespace UpdateCardDatabase
                 case "Magic: The Gathering-Commander":
                     return "Commander";
 
-                case "Magic 2014 Core Set":
-                    return "Magic 2014";
+                ////case "Magic 2014 Core Set":
+                ////    return "Magic 2014";
 
-                case "Magic 2015 Core Set":
-                    return "Magic 2015";
+                ////case "Magic 2015 Core Set":
+                ////    return "Magic 2015";
 
                 case "Classic Sixth Edition":
                     return "Sixth Edition";
@@ -394,10 +397,15 @@ namespace UpdateCardDatabase
             var availableSets = new Dictionary<string, MagicSetDefinition>();
 
             var writer = new CsvWriter(textWriter, config);
-            writer.WriteHeader(typeof(MagicCardDefinition));
+            writer.WriteHeader<MagicCardDefinition>();
 
             var setWriter = new CsvWriter(new StreamWriter(exportSetFileName), config);
-            setWriter.WriteHeader<MagicSetDefinition>();
+            setWriter.WriteField<string>("Code");
+            setWriter.WriteField<string>("Name");
+            setWriter.WriteField<string>("CodeMagicCardsInfo");
+            setWriter.WriteField<string>("ReleaseDate");
+            setWriter.WriteField<string>("Block");
+            setWriter.NextRecord();
 
             var uniqueList = new Dictionary<string, string>();
 
@@ -444,14 +452,22 @@ namespace UpdateCardDatabase
                     var setName = PatchSetName(inputCsv.GetField<string>("set"));
                     if (!string.IsNullOrWhiteSpace(setName) && !availableSets.ContainsKey(card.SetCode))
                     {
-                        var definition = new MagicSetDefinition
+                        MagicSetDefinition blockData;
+                        if (SetDefinitions.BlockDefinition.TryGetValue(card.SetCode, out blockData))
                         {
-                            Name = setName,
-                            Code = card.SetCode,
-                            CodeMagicCardsInfo = PatchSetCodeMagicCardsInfo(card.SetCode),
-                        };
+                            availableSets.Add(card.SetCode, blockData);
+                        }
+                        else
+                        {
+                            var definition = new MagicSetDefinition
+                            {
+                                Name = setName,
+                                Code = card.SetCode,
+                                CodeMagicCardsInfo = PatchSetCodeMagicCardsInfo(card.SetCode),
+                            };
 
-                        availableSets.Add(card.SetCode, definition);
+                            availableSets.Add(card.SetCode, definition);
+                        }
                     }
 
                     var unique = StaticMagicData.MakeNameSetCode(card.SetCode, card.NameEN, card.NumberInSet);
@@ -483,7 +499,13 @@ namespace UpdateCardDatabase
 
             foreach (var set in availableSets.OrderBy(s => s.Key))
             {
-                setWriter.WriteRecord(set.Value);
+                // setWriter.WriteRecord(set.Value);
+                setWriter.WriteField<string>(set.Value.Code);
+                setWriter.WriteField<string>(set.Value.Name);
+                setWriter.WriteField<string>(set.Value.CodeMagicCardsInfo);
+                setWriter.WriteField<string>(set.Value.ReleaseDate);
+                setWriter.WriteField<string>(set.Value.Block);
+                setWriter.NextRecord();
             }
 
             writer.Dispose();

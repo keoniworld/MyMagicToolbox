@@ -69,6 +69,8 @@ namespace MyMagicCollection.Shared.ViewModels
 
         public decimal? Price => _viewModel?.Price;
 
+        public MagicCardPrice CardPrice => _viewModel.CardPrice;
+
         public DateTime? PriceUpdateUtc => _viewModel?.CardPrice?.UpdateUtc;
 
         public void UpdatePriceData(bool writeDatabase)
@@ -99,6 +101,7 @@ namespace MyMagicCollection.Shared.ViewModels
             {
                 case "price":
                     RaisePropertyChanged(() => Price);
+                    RaisePropertyChanged(() => CardPrice);
                     RaisePropertyChanged(() => PriceUpdateUtc);
                     break;
 

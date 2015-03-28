@@ -10,10 +10,13 @@ namespace MyMagicCollection.UnitTests.Models
         [TestMethod]
         public void TestSetData()
         {
-            InnerTestSetData("DTK", "Dragons of Tarkir", "DTK");
-            InnerTestSetData("DST", "Darksteel", "DS");
-            InnerTestSetData("CON", "Conflux", "CFX");
-            InnerTestSetData("CSP", "Coldsnap", "CS");
+            InnerTestSetData("DTK", "Dragons of Tarkir", "DTK", "03/2015", "Khans of Tarkir");
+            InnerTestSetData("FRF", "Fate Reforged", "FRF", "01/2015", "Khans of Tarkir");
+            InnerTestSetData("KTK", "Khans of Tarkir", "KTK", "09/2014", "Khans of Tarkir");
+
+            ////InnerTestSetData("DST", "Darksteel", "DS");
+            ////InnerTestSetData("CON", "Conflux", "CFX");
+            ////InnerTestSetData("CSP", "Coldsnap", "CS");
 
             /*
             Code,Name,CodeMagicCardsInfo
@@ -310,11 +313,14 @@ ZEN,Zendikar,ZEN
             */
         }
 
-        public void InnerTestSetData(string setCode, string setName, string magicCardsCode)
+        public void InnerTestSetData(string setCode, string setName, string magicCardsCode, string releaseDate, string block)
         {
             var set = StaticMagicData.SetDefinitionsBySetCode[setCode];
+
             Assert.AreEqual(setName, set.Name, "Name");
             Assert.AreEqual(magicCardsCode, set.CodeMagicCardsInfo, "CodeMagicCardsInfo");
+            Assert.AreEqual(block, set.Block, "Block");
+            Assert.AreEqual(releaseDate, set.ReleaseDate, "ReleaseDate");
         }
     }
 }

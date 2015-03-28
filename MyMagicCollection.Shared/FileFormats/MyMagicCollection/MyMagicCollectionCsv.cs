@@ -88,7 +88,7 @@ namespace MyMagicCollection.Shared.FileFormats.MyMagicCollection
                 IList<MagicBinderCard> collectionCards = new List<MagicBinderCard>();
                 if (!string.IsNullOrWhiteSpace(cards))
                 {
-                    using (var inputCsv = new CsvReader(new StringReader(cards)))
+                    using (var inputCsv = new CsvReader(new StringReader(cards), _config))
                     {
                         inputCsv.Configuration.CultureInfo = CultureInfo.InvariantCulture;
                         collectionCards = inputCsv.GetRecords<MagicBinderCard>().ToList();

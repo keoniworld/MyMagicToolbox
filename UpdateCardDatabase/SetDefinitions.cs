@@ -1,48 +1,58 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CsvHelper;
+using CsvHelper.Configuration;
 using MyMagicCollection.Shared.Models;
 
 namespace UpdateCardDatabase
 {
     public static class SetDefinitions
     {
-        public static Dictionary<string, MagicSetDefinition> BlockDefinition = new Dictionary<string, MagicSetDefinition>()
+        private static string definitionCsv = @"
+DTK, DTK, DTK, Dragons of Tarkir, Khans of Tarkir, 03/2015, False,
+FRF, FRF, FRF, Fate Reforged, Khans of Tarkir, 01/2015, False,
+KTK, KTK, KTK, Khans of Tarkir, Khans of Tarkir, 09/2014, False,
+
+M15, M15, M15, Magic 2015 Core Set,,07/2014,False
+M14, M14, M14, Magic 2014 Core Set,,07/2013,False
+M13, M13, M13, Magic 2013,,07/2012,False
+";
+
+        static SetDefinitions()
         {
-            { "DTK",
-              new MagicSetDefinition
-              {
-                  Code = "DTK",
-                  CodeMagicCardsInfo = "DTK",
-                  Name = "Dragons of Tarkir",
-                  Block = "Khans of Tarkir",
-                  ReleaseDate = "03/2015",
-              }
-            },
+            var config = new CsvConfiguration()
+            {
+                Encoding = Encoding.UTF8,
+                HasHeaderRecord = false,
+                CultureInfo = CultureInfo.InvariantCulture,
+            };
 
-            { "FRF",
-              new MagicSetDefinition
-              {
-                  Code = "FRF",
-                  CodeMagicCardsInfo = "FRF",
-                  Name = "Fate Reforged",
-                  Block = "Khans of Tarkir",
-                  ReleaseDate = "01/2015",
-              }
-            },
+            BlockDefinition = new Dictionary<string, MagicSetDefinition>();
 
-              { "KTK",
-              new MagicSetDefinition
-              {
-                  Code = "KTK",
-                  CodeMagicCardsInfo = "KTK",
-                  Name = "Khans of Tarkir",
-                  Block = "Khans of Tarkir",
-                  ReleaseDate = "09/2014",
-              }
-            },
-        };
+            using (var inputCsv = new CsvReader(new StringReader(definitionCsv), config))
+            {
+                while (inputCsv.Read())
+                {
+                    var setDefinition = new MagicSetDefinition
+                    {
+                        Code = inputCsv.GetField<string>(1).Trim(),
+                        CodeMagicCardsInfo = inputCsv.GetField<string>(2).Trim(),
+                        Name = inputCsv.GetField<string>(3).Trim(),
+                        Block = inputCsv.GetField<string>(4).Trim(),
+                        ReleaseDate = inputCsv.GetField<string>(5).Trim(),
+                        IsPromoEdition = inputCsv.GetField<bool>(6),
+                    };
+
+                    BlockDefinition.Add(inputCsv.GetField<string>(0).Trim(), setDefinition);
+                }
+            }
+        }
+
+        public static Dictionary<string, MagicSetDefinition> BlockDefinition { get; private set; }
     }
 }

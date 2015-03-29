@@ -6,9 +6,7 @@ using System.Linq;
 using System.Text;
 using CsvHelper;
 using CsvHelper.Configuration;
-using Dapper;
-using MagicDatabase;
-using MyMagicCollection.Shared.FileFormats.MyMagicCollection;
+using MyMagicCollection.Shared;
 using MyMagicCollection.Shared.Models;
 
 namespace UpdateCardDatabase
@@ -366,24 +364,24 @@ namespace UpdateCardDatabase
 
         private static void Main(string[] args)
         {
-            var provider = new CardDatabaseFolderProvider();
+            var exeFolder = PathHelper.ExeFolder;
 
             var relativeToSource = @"..\..\..\MyMagicCollection.Shared";
 
-            var exportFileName = Path.Combine(provider.ExeFolder, relativeToSource, "CSV", "MagicDatabase.csv");
+            var exportFileName = Path.Combine(exeFolder, relativeToSource, "CSV", "MagicDatabase.csv");
             if (File.Exists(exportFileName))
             {
                 File.Delete(exportFileName);
             }
 
-            var exportSetFileName = Path.Combine(provider.ExeFolder, relativeToSource, "CSV", "MagicDatabaseSets.csv");
+            var exportSetFileName = Path.Combine(exeFolder, relativeToSource, "CSV", "MagicDatabaseSets.csv");
             if (File.Exists(exportSetFileName))
             {
                 File.Delete(exportSetFileName);
             }
 
             int count = 0;
-            var inputFiles = Directory.EnumerateFiles(provider.ExeFolder, "set_*.csv", SearchOption.AllDirectories).ToList();
+            var inputFiles = Directory.EnumerateFiles(exeFolder, "set_*.csv", SearchOption.AllDirectories).ToList();
 
             var textWriter = new StreamWriter(exportFileName);
 
@@ -405,6 +403,7 @@ namespace UpdateCardDatabase
             setWriter.WriteField<string>("CodeMagicCardsInfo");
             setWriter.WriteField<string>("ReleaseDate");
             setWriter.WriteField<string>("Block");
+            setWriter.WriteField<string>("IsPromoEdition");
             setWriter.NextRecord();
 
             var uniqueList = new Dictionary<string, string>();
@@ -505,6 +504,7 @@ namespace UpdateCardDatabase
                 setWriter.WriteField<string>(set.Value.CodeMagicCardsInfo);
                 setWriter.WriteField<string>(set.Value.ReleaseDate);
                 setWriter.WriteField<string>(set.Value.Block);
+                setWriter.WriteField<bool>(set.Value.IsPromoEdition);
                 setWriter.NextRecord();
             }
 

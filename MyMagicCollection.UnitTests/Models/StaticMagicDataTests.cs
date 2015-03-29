@@ -1,5 +1,7 @@
 ﻿using System;
+using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using MyMagicCollection.Shared;
 using MyMagicCollection.Shared.Models;
 
 namespace MyMagicCollection.UnitTests.Models
@@ -10,13 +12,18 @@ namespace MyMagicCollection.UnitTests.Models
         [TestMethod]
         public void TestSetData()
         {
-            InnerTestSetData("DTK", "Dragons of Tarkir", "DTK", "03/2015", "Khans of Tarkir");
-            InnerTestSetData("FRF", "Fate Reforged", "FRF", "01/2015", "Khans of Tarkir");
-            InnerTestSetData("KTK", "Khans of Tarkir", "KTK", "09/2014", "Khans of Tarkir");
+            // Khans Block
+            InnerTestSetData("DTK", "Dragons of Tarkir", "DTK", "03/2015", "Khans of Tarkir", false);
+            InnerTestSetData("FRF", "Fate Reforged", "FRF", "01/2015", "Khans of Tarkir", false);
+            InnerTestSetData("KTK", "Khans of Tarkir", "KTK", "09/2014", "Khans of Tarkir", false);
 
-            ////InnerTestSetData("DST", "Darksteel", "DS");
-            ////InnerTestSetData("CON", "Conflux", "CFX");
-            ////InnerTestSetData("CSP", "Coldsnap", "CS");
+            // Core Sets
+            InnerTestSetData("M15", "Magic 2015 Core Set", "M15", "07/2014", "", false);
+            InnerTestSetData("M14", "Magic 2014 Core Set", "M14", "07/2013", "", false);
+            InnerTestSetData("M13", "Magic 2013", "M13", "07/2012", "", false);
+
+
+
 
             /*
             Code,Name,CodeMagicCardsInfo
@@ -105,7 +112,7 @@ M11,Magic 2011,M11
 M12,Magic 2012,M12
 M13,Magic 2013,M13
 M14,Magic 2014,M14
-M15,Magic 2015,M15
+
 MBS,Mirrodin Besieged,MBS
 MD1,Modern Event Deck 2014,MD1
 ME2,Masters Edition II,ME2
@@ -313,7 +320,7 @@ ZEN,Zendikar,ZEN
             */
         }
 
-        public void InnerTestSetData(string setCode, string setName, string magicCardsCode, string releaseDate, string block)
+        public void InnerTestSetData(string setCode, string setName, string magicCardsCode, string releaseDate, string block, bool isPromo)
         {
             var set = StaticMagicData.SetDefinitionsBySetCode[setCode];
 
@@ -321,6 +328,14 @@ ZEN,Zendikar,ZEN
             Assert.AreEqual(magicCardsCode, set.CodeMagicCardsInfo, "CodeMagicCardsInfo");
             Assert.AreEqual(block, set.Block, "Block");
             Assert.AreEqual(releaseDate, set.ReleaseDate, "ReleaseDate");
+            Assert.AreEqual(isPromo, set.IsPromoEdition, "IsPromoEdition");
+
+            // Now look for the set image:
+            var basePath = Path.Combine(PathHelper.SetCacheFolder, "medium");
+            Assert.IsTrue(File.Exists(Path.Combine(basePath, setCode + "_C.jpg")), "Missing Set Symbol");
+            Assert.IsTrue(File.Exists(Path.Combine(basePath, setCode + "_U.jpg")), "Missing Set Symbol");
+            Assert.IsTrue(File.Exists(Path.Combine(basePath, setCode + "_M.jpg")), "Missing Set Symbol");
+            Assert.IsTrue(File.Exists(Path.Combine(basePath, setCode + "_R.jpg")), "Missing Set Symbol");
         }
     }
 }

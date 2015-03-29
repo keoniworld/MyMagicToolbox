@@ -20,6 +20,8 @@ namespace MyMagicCollection.Shared.Models
 
         public string CodeMagicCardsInfo { get; set; }
 
+        public bool IsPromoEdition { get; set; }
+
         public string ReleaseDate
         {
             get

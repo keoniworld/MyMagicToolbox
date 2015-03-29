@@ -8,7 +8,7 @@ namespace MyMagicCollection.Shared
 	{
 		static PathHelper()
 		{
-			ExeFolder = new FileInfo(Assembly.GetEntryAssembly().Location).Directory.FullName;
+			ExeFolder = new FileInfo(Assembly.GetExecutingAssembly().Location).Directory.FullName;
 			UserDataFolder = Path.Combine(ExeFolder, "App_Data");
 			ImageCacheFolder = Path.Combine(UserDataFolder, "ImageCache");
 			SymbolCacheFolder = Path.Combine(ImageCacheFolder, "Symbols");

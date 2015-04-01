@@ -13,8 +13,6 @@ namespace UpdateCardDatabase
 {
     public class Program
     {
-        
-
         public static bool? ComputeLegality(string input)
         {
             if (string.IsNullOrWhiteSpace(input))
@@ -362,6 +360,12 @@ namespace UpdateCardDatabase
             return setCode;
         }
 
+        public static MagicCardType GetCardType(string cardType)
+        {
+            // TODO: Implement this
+            return MagicCardType.Unknown;
+        }
+
         private static void Main(string[] args)
         {
             var exeFolder = PathHelper.ExeFolder;
@@ -408,6 +412,9 @@ namespace UpdateCardDatabase
 
             var uniqueList = new Dictionary<string, string>();
 
+            // Write Tokens:
+            writer.WriteRecords(TokenDefinitions.TockenDefinition);
+
             foreach (var inputCsvName in inputFiles)
             {
                 Console.WriteLine("Reading file " + new FileInfo(inputCsvName).Name);
@@ -419,12 +426,12 @@ namespace UpdateCardDatabase
                     count += 1;
 
                     var card = new MagicCardDefinition();
-                    card.Id = count;
                     card.NameDE = inputCsv.GetField<string>("name_DE");
                     card.NameEN = inputCsv.GetField<string>("name");
                     card.SetCode = PatchSetCode(inputCsv.GetField<string>("set_code"));
                     card.CardId = inputCsv.GetField<string>("id");
                     card.CardType = inputCsv.GetField<string>("type");
+                    card.MagicCardType = GetCardType(card.CardType);
                     card.NumberInSet = SafeGetInt(inputCsv, "number_int");
                     card.LegalityModern = ComputeLegality(inputCsv.GetField<string>("legality_Modern"));
                     card.LegalityStandard = ComputeLegality(inputCsv.GetField<string>("legality_Standard"));
@@ -481,32 +488,24 @@ namespace UpdateCardDatabase
                     writer.WriteRecord(card);
 
                     Console.WriteLine(count + " Reading " + card.NameEN + "(" + card.SetCode + ")...");
-
-                    ////var found = connection.Query<Card>(
-                    ////    "Select * from MagicCard where Id = @Id",
-                    ////    new { card.Id});
-
-                    // connection.Query(insertStatement, card);
-
-                    // if (count % 100==0) break;
                 }
 
-                // Write Sets
-
+                
                 inputCsv.Dispose();
-            }
+            }			
 
-            foreach (var set in availableSets.OrderBy(s => s.Key))
-            {
-                // setWriter.WriteRecord(set.Value);
-                setWriter.WriteField<string>(set.Value.Code);
-                setWriter.WriteField<string>(set.Value.Name);
-                setWriter.WriteField<string>(set.Value.CodeMagicCardsInfo);
-                setWriter.WriteField<string>(set.Value.ReleaseDate);
-                setWriter.WriteField<string>(set.Value.Block);
-                setWriter.WriteField<bool>(set.Value.IsPromoEdition);
-                setWriter.NextRecord();
-            }
+			// Write Sets
+			foreach (var set in availableSets.OrderBy(s => s.Key))
+			{
+				// setWriter.WriteRecord(set.Value);
+				setWriter.WriteField<string>(set.Value.Code);
+				setWriter.WriteField<string>(set.Value.Name);
+				setWriter.WriteField<string>(set.Value.CodeMagicCardsInfo);
+				setWriter.WriteField<string>(set.Value.ReleaseDate);
+				setWriter.WriteField<string>(set.Value.Block);
+				setWriter.WriteField<bool>(set.Value.IsPromoEdition);
+				setWriter.NextRecord();
+			}
 
             writer.Dispose();
             setWriter.Dispose();

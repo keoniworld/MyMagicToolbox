@@ -18,6 +18,10 @@ DTK, DTK, DTK, Dragons of Tarkir, Khans of Tarkir, 03/2015, False,
 FRF, FRF, FRF, Fate Reforged, Khans of Tarkir, 01/2015, False,
 KTK, KTK, KTK, Khans of Tarkir, Khans of Tarkir, 09/2014, False,
 
+JOU, JOU, JOU, Journey into Nyx, Theros, 05/2014, False,
+BNG, BNG, BNG, Born of the Gods, Theros, 02/2014, False,
+THS, THS, THS, Theros, Theros, 09/2013, False,
+
 M15, M15, M15, Magic 2015 Core Set,,07/2014,False
 M14, M14, M14, Magic 2014 Core Set,,07/2013,False
 M13, M13, M13, Magic 2013,,07/2012,False

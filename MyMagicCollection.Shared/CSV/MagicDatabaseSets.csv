@@ -18,7 +18,7 @@ ARB,Alara Reborn,ARB,,,False
 ARC,Archenemy,ARC,,,False
 AVR,Avacyn Restored,AVR,,,False
 BD,Beatdown Box Set,BD,,,False
-BNG,Born of the Gods,BNG,,,False
+BNG,Born of the Gods,BNG,02/2014,Theros,False
 BOK,Betrayers of Kamigawa,BOK,,,False
 BR,Battle Royale Box Set,BR,,,False
 C13,Commander 2013 Edition,C13,,,False
@@ -69,7 +69,7 @@ IA,Ice Age,IA,,,False
 IN,Invasion,IN,,,False
 ISD,Innistrad,ISD,,,False
 JCG,Judge Gift Program,JR,,,False
-JOU,Journey into Nyx,JOU,,,False
+JOU,Journey into Nyx,JOU,05/2014,Theros,False
 JUD,Judgment,JU,,,False
 KTK,Khans of Tarkir,KTK,09/2014,Khans of Tarkir,False
 LE,Legions,LE,,,False
@@ -119,7 +119,7 @@ SOK,Saviors of Kamigawa,SOK,,,False
 SOM,Scars of Mirrodin,SOM,,,False
 STH,Stronghold,SH,,,False
 TE,Tempest,TP,,,False
-THS,Theros,THS,,,False
+THS,Theros,THS,09/2013,Theros,False
 TOR,Torment,TR,,,False
 TSB,"Time Spiral ""Timeshifted""",TSTS,,,False
 TSP,Time Spiral,TS,,,False

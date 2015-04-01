@@ -28,6 +28,21 @@ namespace MyMagicCollection.Shared.Helper
 				return null;
 			}
 
+			if (card.MagicCardType == MagicCardType.Token)
+			{
+				var setName = StaticMagicData.SetDefinitionsBySetCode[card.SetCode].Name
+                    .ToLowerInvariant()
+                    .Replace(" core set", "")
+                    .Replace(" ", "-");
+
+				return string.Format(
+				   CultureInfo.InvariantCulture,
+				   "{2}{0}{2}{1}.jpg",
+				   setName,
+				   card.NameEN.ToLowerInvariant().Replace(" token", "").Replace(" ", "-"),
+				   delimiter);
+			}
+
 			var setCode = StaticMagicData.SetDefinitionsBySetCode[card.SetCode].CodeMagicCardsInfo;
 			return string.Format(
 			   CultureInfo.InvariantCulture,
@@ -69,7 +84,11 @@ namespace MyMagicCollection.Shared.Helper
 
 				using (var client = new WebClient())
 				{
-					client.DownloadFile(new Uri("http://magiccards.info/scans/en" + url), localStorage.FullName);
+					var rootUrl = card.MagicCardType != MagicCardType.Token
+						? "http://magiccards.info/scans/en"
+						: "http://magiccards.info/extras/token";
+
+					client.DownloadFile(new Uri(rootUrl + url), localStorage.FullName);
 				}
 
 				stopwatch.Stop();

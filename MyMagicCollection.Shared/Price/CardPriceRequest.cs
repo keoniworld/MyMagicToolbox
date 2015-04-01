@@ -44,8 +44,10 @@ namespace MyMagicCollection.Shared.Price
                         break;
                 }
 
+                var cardName = card.NameEN;
+
                 var helper = new RequestHelper();
-                var result = helper.MakeRequest(RequestHelper.CreateGetProductsUrl(card.NameEN, MagicLanguage.English, true, null));
+                var result = helper.MakeRequest(RequestHelper.CreateGetProductsUrl(cardName, MagicLanguage.English, card.MagicCardType != MagicCardType.Token, null));
 
                 var productNodes = result.Response.Root.Elements("product");
                 foreach (var productNode in productNodes)

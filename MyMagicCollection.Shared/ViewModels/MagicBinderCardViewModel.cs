@@ -152,6 +152,8 @@ namespace MyMagicCollection.Shared.ViewModels
             }
         }
 
+        public MagicCardType MagicCardType => _definition != null ? _definition.MagicCardType : MagicCardType.Unknown;
+
         public MagicGrade? Grade
         {
             get

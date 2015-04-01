@@ -2,8 +2,6 @@
 {
     public class MagicCardDefinition : IMagicCardDefinition
     {
-        public int Id { get; set; }
-
         public string CardId { get; set; }
 
         public string NameEN { get; set; }
@@ -40,5 +38,6 @@
 
         public int? ConvertedManaCost { get; set; }
 
+        public MagicCardType MagicCardType { get; set; }
     }
 }

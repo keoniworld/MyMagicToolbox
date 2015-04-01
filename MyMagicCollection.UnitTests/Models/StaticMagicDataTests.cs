@@ -17,6 +17,11 @@ namespace MyMagicCollection.UnitTests.Models
             InnerTestSetData("FRF", "Fate Reforged", "FRF", "01/2015", "Khans of Tarkir", false);
             InnerTestSetData("KTK", "Khans of Tarkir", "KTK", "09/2014", "Khans of Tarkir", false);
 
+            // Theros Block
+            InnerTestSetData("JOU", "Journey into Nyx", "JOU", "05/2014", "Theros", false);
+            InnerTestSetData("BNG", "Born of the Gods", "FRF", "02/2014", "Theros", false);
+            InnerTestSetData("THS", "Theros", "KTK", "09/2013", "Theros", false);
+
             // Core Sets
             InnerTestSetData("M15", "Magic 2015 Core Set", "M15", "07/2014", "", false);
             InnerTestSetData("M14", "Magic 2014 Core Set", "M14", "07/2013", "", false);

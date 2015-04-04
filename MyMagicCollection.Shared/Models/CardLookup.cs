@@ -7,158 +7,154 @@ using Minimod.NotificationObject;
 
 namespace MyMagicCollection.Shared.Models
 {
-    /// <summary>
-    /// This is the model which can be bound to the UI to enter search details.
-    /// </summary>
-    public class CardLookup : NotificationObject
-    {
-        private string _searchTerm;
-        private bool _searchGerman;
+	/// <summary>
+	/// This is the model which can be bound to the UI to enter search details.
+	/// </summary>
+	public class CardLookup : NotificationObject
+	{
+		private string _searchTerm;
+		private bool _searchGerman;
 
-        private bool _displayDistinct;
+		private bool _displayDistinct;
 
-        private bool _searchRules;
+		private bool _searchRules;
 
-        private ICardLookupSetSource _setSource;
+		private ICardLookupSetSource _setSource;
 
-        private bool _searchType;
+		private bool _searchType;
 
-        public CardLookup()
-        {
-            SearchGerman = true;
-            DisplayDistinct = true;
+		private bool _searchAsYouType;
 
-            _searchAsYouType = true;
-            _setSource = new CardLookupSetSourceAllSets();
-        }
+		public CardLookup()
+		{
+			SearchGerman = true;
+			DisplayDistinct = true;
 
-        public IEnumerable<string> AvailableSearchSets
-        {
-            get
-            {
-                return _setSource.AvailableSearchSets;
-            }
-        }
+			_searchAsYouType = true;
+			_setSource = new CardLookupSetSourceAllSets();
+		}
 
-        public string SearchTerm
-        {
-            get
-            {
-                return _searchTerm;
-            }
+		public IEnumerable<string> AvailableSearchSets => _setSource.AvailableSearchSets;
 
-            set
-            {
-                var low = value?.ToLowerInvariant();
-                if (low != _searchTerm)
-                {
-                    _searchTerm = low;
-                    RaisePropertyChanged(() => SearchTerm);
-                }
-            }
-        }
+		public string SearchTerm
+		{
+			get
+			{
+				return _searchTerm;
+			}
 
-        public ICardLookupSetSource SetSource
-        {
-            get
-            {
-                return _setSource;
-            }
+			set
+			{
+				var low = value?.ToLowerInvariant();
+				if (low != _searchTerm)
+				{
+					_searchTerm = low;
+					RaisePropertyChanged(() => SearchTerm);
+				}
+			}
+		}
 
-            set
-            {
-                var selected = SearchSet;
-                _setSource = value;
-                SearchSet = selected;
+		public ICardLookupSetSource SetSource
+		{
+			get
+			{
+				return _setSource;
+			}
 
-                RaisePropertyChanged(() => SetSource);
-                RaisePropertyChanged(() => AvailableSearchSets);
-                RaisePropertyChanged(() => SearchSet);
-            }
-        }
+			set
+			{
+				var selected = SearchSet;
+				_setSource = value;
+				SearchSet = selected;
 
-        public bool SearchGerman
-        {
-            get
-            {
-                return _searchGerman;
-            }
+				RaisePropertyChanged(() => SetSource);
+				RaisePropertyChanged(() => AvailableSearchSets);
+				RaisePropertyChanged(() => SearchSet);
+			}
+		}
 
-            set
-            {
-                _searchGerman = value;
-                RaisePropertyChanged(() => SearchGerman);
-            }
-        }
+		public bool SearchGerman
+		{
+			get
+			{
+				return _searchGerman;
+			}
 
-        public bool SearchType
-        {
-            get
-            {
-                return _searchType;
-            }
+			set
+			{
+				_searchGerman = value;
+				RaisePropertyChanged(() => SearchGerman);
+			}
+		}
 
-            set
-            {
-                _searchType = value;
-                RaisePropertyChanged(() => SearchType);
-            }
-        }
+		public bool SearchType
+		{
+			get
+			{
+				return _searchType;
+			}
 
-        public bool DisplayDistinct
-        {
-            get
-            {
-                return _displayDistinct;
-            }
+			set
+			{
+				_searchType = value;
+				RaisePropertyChanged(() => SearchType);
+			}
+		}
 
-            set
-            {
-                _displayDistinct = value;
-                RaisePropertyChanged(() => DisplayDistinct);
-            }
-        }
+		public bool DisplayDistinct
+		{
+			get
+			{
+				return _displayDistinct;
+			}
 
-        public bool SearchRules
-        {
-            get
-            {
-                return _searchRules;
-            }
+			set
+			{
+				_displayDistinct = value;
+				RaisePropertyChanged(() => DisplayDistinct);
+			}
+		}
 
-            set
-            {
-                _searchRules = value;
-                RaisePropertyChanged(() => SearchRules);
-            }
-        }
+		public bool SearchRules
+		{
+			get
+			{
+				return _searchRules;
+			}
 
-        private bool _searchAsYouType;
-    public bool SearchAsYouType
-        {
-            get
-            {
-                return _searchAsYouType;
-            }
+			set
+			{
+				_searchRules = value;
+				RaisePropertyChanged(() => SearchRules);
+			}
+		}
 
-            set
-            {
-                _searchAsYouType = value;
-                RaisePropertyChanged(() => SearchAsYouType);
-            }
-        }
-        public string SearchSet
-        {
-            get
-            {
-                return _setSource.SearchSet;
-            }
+		public bool SearchAsYouType
+		{
+			get
+			{
+				return _searchAsYouType;
+			}
 
-            set
-            {
-                _setSource.SearchSet = value;
-                RaisePropertyChanged(() => SearchSet);
-            }
-        }
-    }
+			set
+			{
+				_searchAsYouType = value;
+				RaisePropertyChanged(() => SearchAsYouType);
+			}
+		}
+
+		public string SearchSet
+		{
+			get
+			{
+				return _setSource.SearchSet;
+			}
+
+			set
+			{
+				_setSource.SearchSet = value;
+				RaisePropertyChanged(() => SearchSet);
+			}
+		}
+	}
 }

@@ -90,7 +90,10 @@ namespace MyMagicCollection.wpf
                 LoadBinder(new DirectoryInfo(PathHelper.UserDataFolder).MakeAbsolutePath(_settings.LoadedBinder));
             }
 
-            Task.Factory.StartNew(() => LookupCards());
+            Task.Factory.StartNew(() => {
+				LookupSource = LookupSource.ActiveBinder;
+                // LookupCards();
+			});
         }
 
         public static IEnumerable<MagicLanguage> AvailableLanguages { get; } = (IEnumerable<MagicLanguage>)Enum.GetValues(typeof(MagicLanguage));

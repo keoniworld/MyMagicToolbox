@@ -13,7 +13,7 @@ namespace UpdateCardDatabase
 {
 	public static class TokenDefinitions
 	{
-		private static string definitionCsv = @"
+		private const string definitionCsv = @"
 
 COMMENT,,, ----- Conspiracy -----
 CNS,1,Zombie Token,Zombiespielstein
@@ -59,19 +59,19 @@ M15,15,Emblem Garruk,
 			{
 				while (inputCsv.Read())
 				{
-                    var setCode = inputCsv.GetField<string>(0).Trim();
-                    if (setCode == "COMMENT")
-                    {
-                        continue;
-                    }
+					var setCode = inputCsv.GetField<string>(0).Trim();
+					if (setCode == "COMMENT")
+					{
+						continue;
+					}
 
-                    var cardDefinition = new MagicCardDefinition()
+					var cardDefinition = new MagicCardDefinition()
 					{
 						SetCode = setCode,
 						NumberInSet = inputCsv.GetField<int>(1),
 						NameEN = inputCsv.GetField<string>(2).Trim(),
 						NameDE = inputCsv.GetField<string>(3).Trim(),
-						
+
 						MagicCardType = MagicCardType.Token,
 					};
 

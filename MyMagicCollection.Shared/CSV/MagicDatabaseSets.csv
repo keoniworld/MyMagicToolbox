@@ -1,5 +1,5 @@
 Code,Name,CodeMagicCardsInfo,ReleaseDate,Block,IsPromoEdition
-10E,Tenth Edition,10E,,,False
+10ED,Tenth Edition,10E,07/2007,,False
 2ED,Unlimited Edition,2ED,,,False
 3ED,Revised Edition,3ED,,,False
 4ED,Fourth Edition,4E,,,False
@@ -21,13 +21,13 @@ BD,Beatdown Box Set,BD,,,False
 BNG,Born of the Gods,BNG,02/2014,Theros,False
 BOK,Betrayers of Kamigawa,BOK,,,False
 BR,Battle Royale Box Set,BR,,,False
-C13,Commander 2013 Edition,C13,,,False
-C14,Commander 2014,C14,,,False
+C13,Commander 201,C13,11/2013,,False
+C14,Commander 2014,C14,11/2014,,False
 CH,Chronicles,CH,,,False
 CHK,Champions of Kamigawa,CHK,,,False
 CM1,Commander's Arsenal,CMA,,,False
 CMD,Commander,CMD,,,False
-CNS,Conspiracy,CNS,,,False
+CNS,Conspiracy,CNS,06/2014,,False
 CON,Conflux,CFX,,,False
 CSP,Coldsnap,CS,,,False
 DD2,Duel Decks: Jace vs. Chandra,DD2,,,False
@@ -40,7 +40,7 @@ DDI,Duel Decks: Venser vs. Koth,DDI,,,False
 DDJ,Duel Decks: Izzet vs. Golgari,DDJ,,,False
 DDK,Duel Decks: Sorin vs. Tibalt,DDK,,,False
 DDL,Duel Decks: Heroes vs. Monsters,DDL,,,False
-DDM,Duel Decks: Jace vs. Vraska,DDM,,,False
+DDM,Duel Decks: Jace vs. Vraska,DDM,03/2014,,False
 DDN,Duel Decks: Speed vs. Cunning,DDN,,,False
 DGM,Dragon's Maze,DGM,,,False
 DIS,Dissension,DI,,,False
@@ -77,9 +77,9 @@ LEA,Limited Edition Alpha,LEA,,,False
 LEB,Limited Edition Beta,LEB,,,False
 LEG,From the Vault: Legends,FVL,,,False
 LRW,Lorwyn,LW,,,False
-M10,Magic 2010,M10,,,False
-M11,Magic 2011,M11,,,False
-M12,Magic 2012,M12,,,False
+M10,Magic 2010,M10,07/2009,,False
+M11,Magic 2011,M11,07/2010,,False
+M12,Magic 2012,M12,07/2011,,False
 M13,Magic 2013,M13,07/2012,,False
 M14,Magic 2014 Core Set,M14,07/2013,,False
 M15,Magic 2015 Core Set,M15,07/2014,,False

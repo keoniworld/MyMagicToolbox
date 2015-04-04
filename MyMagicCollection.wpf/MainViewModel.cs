@@ -90,10 +90,11 @@ namespace MyMagicCollection.wpf
                 LoadBinder(new DirectoryInfo(PathHelper.UserDataFolder).MakeAbsolutePath(_settings.LoadedBinder));
             }
 
-            Task.Factory.StartNew(() => {
-				LookupSource = LookupSource.ActiveBinder;
+            Task.Factory.StartNew(() =>
+            {
+                LookupSource = LookupSource.ActiveBinder;
                 // LookupCards();
-			});
+            });
         }
 
         public static IEnumerable<MagicLanguage> AvailableLanguages { get; } = (IEnumerable<MagicLanguage>)Enum.GetValues(typeof(MagicLanguage));
@@ -553,8 +554,21 @@ namespace MyMagicCollection.wpf
             }
         }
 
+        public void DisplayOwnedCardsFromSet(MagicSetDefinition setDefinition)
+        {
+            var old = CardLookup.SearchAsYouType;
+
+            CardLookup.SearchAsYouType = false;
+            LookupSource = LookupSource.ActiveBinder;
+            CardLookup.Reset();
+            CardLookup.SearchSet = setDefinition.Name;
+
+            CardLookup.SearchAsYouType = old;
+            LookupCards();
+        }
+
         private void InternalExport(
-                                                                                                                    string fileName,
+            string fileName,
             IEnumerable<IMagicBinderCardViewModel> cardsToExport,
             Func<IMagicBinderCardViewModel, int> quantitySelector)
         {

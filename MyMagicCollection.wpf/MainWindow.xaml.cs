@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -346,9 +347,7 @@ namespace MyMagicCollection.wpf
         {
             try
             {
-
                 _viewModel.AddSelectedToTradeList();
-                
             }
             catch (Exception error)
             {
@@ -359,6 +358,31 @@ namespace MyMagicCollection.wpf
                 MessageBox.Show(
                     error.Message,
                     "Add to trade list failed",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+            }
+        }
+
+        private void BinderStatisticsControl_DisplayDetails(object sender, UserControls.BinderStatisticsDisplayDetails e)
+        {
+            try
+            {
+                Task.Factory
+                    .StartNew(() =>
+                    {
+                        _viewModel.DisplayOwnedCardsFromSet(e.Details.SetDefinition);
+                    })
+                    .ContinueWith((task) => mainTabCtrl.SelectedItem = searchTab, TaskScheduler.FromCurrentSynchronizationContext());
+            }
+            catch (Exception error)
+            {
+                NotificationCenter.Instance.FireNotification(
+                    LogLevel.Error,
+                    "Display cards from set error: " + error.Message);
+
+                MessageBox.Show(
+                    error.Message,
+                    "Display cards from set failed",
                     MessageBoxButton.OK,
                     MessageBoxImage.Error);
             }

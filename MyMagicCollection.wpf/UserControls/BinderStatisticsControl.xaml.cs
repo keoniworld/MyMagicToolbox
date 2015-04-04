@@ -19,57 +19,71 @@ using MyMagicCollection.Shared.ViewModels;
 
 namespace MyMagicCollection.wpf.UserControls
 {
-	/// <summary>
-	/// Interaction logic for BinderStatisticsControl.xaml
-	/// </summary>
-	public partial class BinderStatisticsControl : UserControl
-	{
-		public static readonly DependencyProperty SelectedCardProperty =
-			DependencyProperty.Register("Binder", typeof(MagicBinderViewModel),
-			typeof(BinderStatisticsControl), new FrameworkPropertyMetadata(OnBinderChanged));
+    /// <summary>
+    /// Interaction logic for BinderStatisticsControl.xaml
+    /// </summary>
+    public partial class BinderStatisticsControl : UserControl
+    {
+        public static readonly DependencyProperty SelectedCardProperty =
+            DependencyProperty.Register("Binder", typeof(MagicBinderViewModel),
+            typeof(BinderStatisticsControl), new FrameworkPropertyMetadata(OnBinderChanged));
 
-		private readonly INotificationCenter _notificationCenter;
+        private readonly INotificationCenter _notificationCenter;
 
-		private BinderStatisticsViewModel _viewModel;
+        private BinderStatisticsViewModel _viewModel;
 
-		public BinderStatisticsControl(INotificationCenter notificationCenter)
-		{
-			InitializeComponent();			
-			_notificationCenter = notificationCenter;
-		}
+        public BinderStatisticsControl(INotificationCenter notificationCenter)
+        {
+            InitializeComponent();
+            _notificationCenter = notificationCenter;
+        }
 
-		public BinderStatisticsControl()
-			: this(NotificationCenter.Instance)
-		{
-		}
+        public BinderStatisticsControl()
+            : this(NotificationCenter.Instance)
+        {
+        }
 
-		public MagicBinderViewModel Binder
-		{
-			get { return (MagicBinderViewModel)GetValue(SelectedCardProperty); }
-			set { SetValue(SelectedCardProperty, value); }
-		}
+        public event EventHandler<BinderStatisticsDisplayDetails> DisplayDetails;
 
-		public static void OnBinderChanged(
-			DependencyObject d,
-			DependencyPropertyChangedEventArgs e)
-		{
-			var instance = d as BinderStatisticsControl;
-			if (instance != null)
-			{
-				instance._viewModel = instance.Binder != null 
-					? new BinderStatisticsViewModel(instance._notificationCenter, instance.Binder) 
-					: null;
+        public MagicBinderViewModel Binder
+        {
+            get { return (MagicBinderViewModel)GetValue(SelectedCardProperty); }
+            set { SetValue(SelectedCardProperty, value); }
+        }
 
-				instance.rootGrid.DataContext = instance._viewModel;
-			}
-		}
+        public static void OnBinderChanged(
+            DependencyObject d,
+            DependencyPropertyChangedEventArgs e)
+        {
+            var instance = d as BinderStatisticsControl;
+            if (instance != null)
+            {
+                instance._viewModel = instance.Binder != null
+                    ? new BinderStatisticsViewModel(instance._notificationCenter, instance.Binder)
+                    : null;
 
-		private void OnRefreshViewModel(object sender, RoutedEventArgs e)
-		{
-			if (_viewModel != null)
-			{
-				_viewModel.Recalculate();
-			}
-		}
-	}
+                instance.rootGrid.DataContext = instance._viewModel;
+            }
+        }
+
+        private void OnRefreshViewModel(object sender, RoutedEventArgs e)
+        {
+            if (_viewModel != null)
+            {
+                _viewModel.Recalculate();
+            }
+        }
+
+        private void DataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (_viewModel.SelectedStatisticRow != null)
+            {
+                var detailsEvent = DisplayDetails;
+                if (detailsEvent != null)
+                {
+                    detailsEvent(this, new BinderStatisticsDisplayDetails() { Details = _viewModel.SelectedStatisticRow });
+                }
+            }
+        }
+    }
 }

@@ -16,8 +16,10 @@ namespace MyMagicCollection.Shared.Models
             var allSets = binder.Cards
                 .Select(c => c.SetCode)
                 .Distinct()
-                .Select(s => StaticMagicData.SetDefinitionsBySetCode[s].Name)
-                .OrderBy(c => c)
+                .Select(s => StaticMagicData.SetDefinitionsBySetCode[s])
+                .OrderByDescending(s => s.ReleaseDateTime)
+                .ThenBy(s => s.Name)
+                .Select(s => s.Name)
                 .ToList();
 
             allSets.Insert(0, AllSetsSearchSetName);

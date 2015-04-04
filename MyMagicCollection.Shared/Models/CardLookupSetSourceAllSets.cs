@@ -12,7 +12,12 @@ namespace MyMagicCollection.Shared.Models
 
         public CardLookupSetSourceAllSets()
         {
-            var allSets = StaticMagicData.SetDefinitions.Select(s => s.Name).OrderBy(s => s).ToList();
+            var allSets = StaticMagicData.SetDefinitions
+                .OrderByDescending(s => s.ReleaseDateTime)
+                .ThenBy(s => s.Name)
+                .Select(s => s.Name)
+                .ToList();
+
             allSets.Insert(0, AllSetsSearchSetName);
             AvailableSearchSets = allSets;
             SearchSet = AllSetsSearchSetName;

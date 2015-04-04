@@ -103,6 +103,7 @@
     <Compile Include="UserControls\BinderStatisticsControl.xaml.cs">
       <DependentUpon>BinderStatisticsControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\BinderStatisticsDisplayDetails.cs" />
     <Compile Include="UserControls\BitmapImageCache.cs" />
     <Compile Include="UserControls\ManaCostImage.xaml.cs">
       <DependentUpon>ManaCostImage.xaml</DependentUpon>

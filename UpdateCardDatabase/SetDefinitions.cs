@@ -29,13 +29,13 @@ M12, M12, M12, Magic 2012,,07/2011,False
 M11, M11, M11, Magic 2011,,07/2010,False
 M10, M10, M10, Magic 2010,,07/2009,False
 
-10E, 10ED, 10E, Tenth Edition,,07/2007,False
-9E, 9ED, 9E, Ninth Edition,,07/2005,False
-8E, 8ED, 8E, Eight Edition,,07/2003,False
-7E, 7ED, 7E, Seventh Edition,,07/2001,False
-6E, 6ED, 6E, Sixth Edition,,07/1999,False
-5E, 5ED, 5E, Fifth Edition,,07/1997,False
-4E, 4ED, 4E, Fourth Edition,,07/1995,False
+10E, 10E, 10E, Tenth Edition,,07/2007,False
+9E, 9E, 9E, Ninth Edition,,07/2005,False
+8E, 8E, 8E, Eight Edition,,07/2003,False
+7E, 7E, 7E, Seventh Edition,,07/2001,False
+6E, 6E, 6E, Sixth Edition,,07/1999,False
+5E, 5E, 5E, Fifth Edition,,07/1997,False
+4E, 4E, 4E, Fourth Edition,,07/1995,False
 
 C14, C14, C14,Commander 2014,,11/2014,False
 C13, C13, C13,Commander 201,,11/2013,False

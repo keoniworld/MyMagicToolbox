@@ -7,154 +7,167 @@ using Minimod.NotificationObject;
 
 namespace MyMagicCollection.Shared.Models
 {
-	/// <summary>
-	/// This is the model which can be bound to the UI to enter search details.
-	/// </summary>
-	public class CardLookup : NotificationObject
-	{
-		private string _searchTerm;
-		private bool _searchGerman;
+    /// <summary>
+    /// This is the model which can be bound to the UI to enter search details.
+    /// </summary>
+    public class CardLookup : NotificationObject
+    {
+        private string _searchTerm;
+        private bool _searchGerman;
 
-		private bool _displayDistinct;
+        private bool _displayDistinct;
 
-		private bool _searchRules;
+        private bool _searchRules;
 
-		private ICardLookupSetSource _setSource;
+        private ICardLookupSetSource _setSource;
 
-		private bool _searchType;
+        private bool _searchType;
 
-		private bool _searchAsYouType;
+        private bool _searchAsYouType;
 
-		public CardLookup()
-		{
-			SearchGerman = true;
-			DisplayDistinct = true;
+        public CardLookup()
+        {
+            Reset();
 
-			_searchAsYouType = true;
-			_setSource = new CardLookupSetSourceAllSets();
-		}
+            _searchAsYouType = true;
+            _setSource = new CardLookupSetSourceAllSets();
+        }
 
-		public IEnumerable<string> AvailableSearchSets => _setSource.AvailableSearchSets;
+        public IEnumerable<string> AvailableSearchSets => _setSource.AvailableSearchSets;
 
-		public string SearchTerm
-		{
-			get
-			{
-				return _searchTerm;
-			}
+        public string SearchTerm
+        {
+            get
+            {
+                return _searchTerm;
+            }
 
-			set
-			{
-				var low = value?.ToLowerInvariant();
-				if (low != _searchTerm)
-				{
-					_searchTerm = low;
-					RaisePropertyChanged(() => SearchTerm);
-				}
-			}
-		}
+            set
+            {
+                var low = value?.ToLowerInvariant();
+                if (low != _searchTerm)
+                {
+                    _searchTerm = low;
+                    RaisePropertyChanged(() => SearchTerm);
+                }
+            }
+        }
 
-		public ICardLookupSetSource SetSource
-		{
-			get
-			{
-				return _setSource;
-			}
+        public ICardLookupSetSource SetSource
+        {
+            get
+            {
+                return _setSource;
+            }
 
-			set
-			{
-				var selected = SearchSet;
-				_setSource = value;
-				SearchSet = selected;
+            set
+            {
+                var selected = SearchSet;
+                _setSource = value;
+                SearchSet = selected;
 
-				RaisePropertyChanged(() => SetSource);
-				RaisePropertyChanged(() => AvailableSearchSets);
-				RaisePropertyChanged(() => SearchSet);
-			}
-		}
+                RaisePropertyChanged(() => SetSource);
+                RaisePropertyChanged(() => AvailableSearchSets);
+                RaisePropertyChanged(() => SearchSet);
+            }
+        }
 
-		public bool SearchGerman
-		{
-			get
-			{
-				return _searchGerman;
-			}
+        public bool SearchGerman
+        {
+            get
+            {
+                return _searchGerman;
+            }
 
-			set
-			{
-				_searchGerman = value;
-				RaisePropertyChanged(() => SearchGerman);
-			}
-		}
+            set
+            {
+                _searchGerman = value;
+                RaisePropertyChanged(() => SearchGerman);
+            }
+        }
 
-		public bool SearchType
-		{
-			get
-			{
-				return _searchType;
-			}
+        public bool SearchType
+        {
+            get
+            {
+                return _searchType;
+            }
 
-			set
-			{
-				_searchType = value;
-				RaisePropertyChanged(() => SearchType);
-			}
-		}
+            set
+            {
+                _searchType = value;
+                RaisePropertyChanged(() => SearchType);
+            }
+        }
 
-		public bool DisplayDistinct
-		{
-			get
-			{
-				return _displayDistinct;
-			}
+        public bool DisplayDistinct
+        {
+            get
+            {
+                return _displayDistinct;
+            }
 
-			set
-			{
-				_displayDistinct = value;
-				RaisePropertyChanged(() => DisplayDistinct);
-			}
-		}
+            set
+            {
+                _displayDistinct = value;
+                RaisePropertyChanged(() => DisplayDistinct);
+            }
+        }
 
-		public bool SearchRules
-		{
-			get
-			{
-				return _searchRules;
-			}
+        public bool SearchRules
+        {
+            get
+            {
+                return _searchRules;
+            }
 
-			set
-			{
-				_searchRules = value;
-				RaisePropertyChanged(() => SearchRules);
-			}
-		}
+            set
+            {
+                _searchRules = value;
+                RaisePropertyChanged(() => SearchRules);
+            }
+        }
 
-		public bool SearchAsYouType
-		{
-			get
-			{
-				return _searchAsYouType;
-			}
+        public bool SearchAsYouType
+        {
+            get
+            {
+                return _searchAsYouType;
+            }
 
-			set
-			{
-				_searchAsYouType = value;
-				RaisePropertyChanged(() => SearchAsYouType);
-			}
-		}
+            set
+            {
+                _searchAsYouType = value;
+                RaisePropertyChanged(() => SearchAsYouType);
+            }
+        }
 
-		public string SearchSet
-		{
-			get
-			{
-				return _setSource.SearchSet;
-			}
+        public string SearchSet
+        {
+            get
+            {
+                return _setSource.SearchSet;
+            }
 
-			set
-			{
-				_setSource.SearchSet = value;
-				RaisePropertyChanged(() => SearchSet);
-			}
-		}
-	}
+            set
+            {
+                _setSource.SearchSet = value;
+                RaisePropertyChanged(() => SearchSet);
+            }
+        }
+
+        public void Reset()
+        {
+            _searchRules = false;
+            _searchTerm = "";
+            _searchGerman = true;
+            _searchType = false;
+            _displayDistinct = true;
+
+            RaisePropertyChanged(() => SearchRules);
+            RaisePropertyChanged(() => SearchGerman);
+            RaisePropertyChanged(() => SearchType);
+            RaisePropertyChanged(() => DisplayDistinct);
+        }
+    }
 }

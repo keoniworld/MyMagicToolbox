@@ -248,8 +248,8 @@
 
         <!-- Result Grid -->
         <GroupBox Grid.Row="1" Grid.Column="1">
-            <TabControl>
-                <TabItem Header="Search Result" Controls:ControlsHelper.HeaderFontSize="20">
+            <TabControl x:Name="mainTabCtrl">
+                <TabItem Header="Search Result" Controls:ControlsHelper.HeaderFontSize="20" x:Name="searchTab">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*" />
@@ -359,7 +359,9 @@
                     </Grid>
                 </TabItem>
                 <TabItem Header="Binder Statistics" Controls:ControlsHelper.HeaderFontSize="20">
-                    <userControl:BinderStatisticsControl  Binder="{Binding ActiveBinder, Mode=OneWay}" />
+                    <userControl:BinderStatisticsControl  Binder="{Binding ActiveBinder, Mode=OneWay}" 
+                                                          DisplayDetails="BinderStatisticsControl_DisplayDetails"
+                                                          />
                 </TabItem>
             </TabControl>
         </GroupBox>

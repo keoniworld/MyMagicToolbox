@@ -6,98 +6,101 @@
              xmlns:local="clr-namespace:MyMagicCollection.wpf.UserControls"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
-	<Grid x:Name="rootGrid">
-		<Grid.RowDefinitions>
-			<RowDefinition Height="Auto" />
-			<RowDefinition Height="*" />
-		</Grid.RowDefinitions>
+    <Grid x:Name="rootGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
 
-		<StackPanel Orientation="Horizontal">
-			<Label>Detailed set statistics</Label>
-			<Button Margin="3,0,0,0" Click="OnRefreshViewModel">Refresh Statistics</Button>
-		</StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Label>Detailed set statistics</Label>
+            <Button Margin="3,0,0,0" Click="OnRefreshViewModel">Refresh Statistics</Button>
+        </StackPanel>
 
-		<DataGrid Grid.Row="1"
+        <DataGrid Grid.Row="1"
                   ItemsSource="{Binding StatisticRows}"
-                      AutoGenerateColumns="False">
-			<DataGrid.Columns>
+                      AutoGenerateColumns="False"
+                  SelectedItem="{Binding SelectedStatisticRow, Mode=TwoWay}"
+                  MouseDoubleClick="DataGrid_MouseDoubleClick"
+                  >
+            <DataGrid.Columns>
 
-				<DataGridTextColumn SortMemberPath="SetDefinition.Name" Header="Set" Binding="{Binding SetDefinition.Name, Mode=OneWay}" />
+                <DataGridTextColumn SortMemberPath="SetDefinition.Name" Header="Set" Binding="{Binding SetDefinition.Name, Mode=OneWay}" />
 
-				<!--<DataGridTemplateColumn Header="Set" SortMemberPath="SetCode">
+                <!--<DataGridTemplateColumn Header="Set" SortMemberPath="SetCode">
 								<DataGridTemplateColumn.CellTemplate>
 									<DataTemplate>
 										<local:SetImage SelectedCard="{Binding Definition}" MaxHeight="14" />
 										-->
-				<!--<TextBlock Text="{Binding SetCode, Mode=OneWay}" ToolTip="{Binding SetName, Mode=OneWay}" />-->
-				<!--
+                <!--<TextBlock Text="{Binding SetCode, Mode=OneWay}" ToolTip="{Binding SetName, Mode=OneWay}" />-->
+                <!--
 									</DataTemplate>
 								</DataGridTemplateColumn.CellTemplate>
 							</DataGridTemplateColumn>-->
 
-				<DataGridTemplateColumn Header="Cards" SortMemberPath="NumberOfCards">
-					<DataGridTemplateColumn.CellTemplate>
-						<DataTemplate>
-							<TextBlock Text="{Binding NumberOfCards, Mode=OneWay}" TextAlignment="Right">
-							</TextBlock>
-						</DataTemplate>
-					</DataGridTemplateColumn.CellTemplate>
-				</DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Cards" SortMemberPath="NumberOfCards">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding NumberOfCards, Mode=OneWay}" TextAlignment="Right">
+                            </TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
 
-				<DataGridTemplateColumn Header="Mythic" SortMemberPath="Mythic">
-					<DataGridTemplateColumn.CellTemplate>
-						<DataTemplate>
-							<StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-								<TextBlock Text="{Binding Mythic, Mode=OneWay}" />
-								<TextBlock Margin="3,0,0,0">(</TextBlock>
-								<TextBlock  Text="{Binding MythicValue, Mode=OneWay, StringFormat= {}{0:F2}}" />
-								<TextBlock>)</TextBlock>
-							</StackPanel>
+                <DataGridTemplateColumn Header="Mythic" SortMemberPath="Mythic">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <TextBlock Text="{Binding Mythic, Mode=OneWay}" />
+                                <TextBlock Margin="3,0,0,0">(</TextBlock>
+                                <TextBlock  Text="{Binding MythicValue, Mode=OneWay, StringFormat= {}{0:F2}}" />
+                                <TextBlock>)</TextBlock>
+                            </StackPanel>
 
-						</DataTemplate>
-					</DataGridTemplateColumn.CellTemplate>
-				</DataGridTemplateColumn>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
 
-				<DataGridTemplateColumn Header="Rare" SortMemberPath="Rare">
-					<DataGridTemplateColumn.CellTemplate>
-						<DataTemplate>
-							<StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-								<TextBlock Text="{Binding Rare, Mode=OneWay}" />
-								<TextBlock Margin="3,0,0,0">(</TextBlock>
-								<TextBlock  Text="{Binding RareValue, Mode=OneWay, StringFormat= {}{0:F2}}" />
-								<TextBlock>)</TextBlock>
-							</StackPanel>
+                <DataGridTemplateColumn Header="Rare" SortMemberPath="Rare">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <TextBlock Text="{Binding Rare, Mode=OneWay}" />
+                                <TextBlock Margin="3,0,0,0">(</TextBlock>
+                                <TextBlock  Text="{Binding RareValue, Mode=OneWay, StringFormat= {}{0:F2}}" />
+                                <TextBlock>)</TextBlock>
+                            </StackPanel>
 
-						</DataTemplate>
-					</DataGridTemplateColumn.CellTemplate>
-				</DataGridTemplateColumn>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
 
-				<DataGridTemplateColumn Header="Uncommon" SortMemberPath="Uncommon">
-					<DataGridTemplateColumn.CellTemplate>
-						<DataTemplate>
-							<StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-								<TextBlock Text="{Binding Uncommon, Mode=OneWay}" />
-								<TextBlock Margin="3,0,0,0">(</TextBlock>
-								<TextBlock  Text="{Binding UncommonValue, Mode=OneWay, StringFormat= {}{0:F2}}" />
-								<TextBlock>)</TextBlock>
-							</StackPanel>
-						</DataTemplate>
-					</DataGridTemplateColumn.CellTemplate>
-				</DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Uncommon" SortMemberPath="Uncommon">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <TextBlock Text="{Binding Uncommon, Mode=OneWay}" />
+                                <TextBlock Margin="3,0,0,0">(</TextBlock>
+                                <TextBlock  Text="{Binding UncommonValue, Mode=OneWay, StringFormat= {}{0:F2}}" />
+                                <TextBlock>)</TextBlock>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
 
-				<DataGridTemplateColumn Header="Common" SortMemberPath="Common">
-					<DataGridTemplateColumn.CellTemplate>
-						<DataTemplate>
-							<StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-								<TextBlock Text="{Binding Common, Mode=OneWay}" />
-								<TextBlock Margin="3,0,0,0">(</TextBlock>
-								<TextBlock  Text="{Binding CommonValue, Mode=OneWay, StringFormat= {}{0:F2}}" />
-								<TextBlock>)</TextBlock>
-							</StackPanel>
-						</DataTemplate>
-					</DataGridTemplateColumn.CellTemplate>
-				</DataGridTemplateColumn>
-			</DataGrid.Columns>
-		</DataGrid>
-	</Grid>
+                <DataGridTemplateColumn Header="Common" SortMemberPath="Common">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <TextBlock Text="{Binding Common, Mode=OneWay}" />
+                                <TextBlock Margin="3,0,0,0">(</TextBlock>
+                                <TextBlock  Text="{Binding CommonValue, Mode=OneWay, StringFormat= {}{0:F2}}" />
+                                <TextBlock>)</TextBlock>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
 </UserControl>

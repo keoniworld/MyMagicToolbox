@@ -72,10 +72,11 @@ JCG,Judge Gift Program,JR,,,False
 JOU,Journey into Nyx,JOU,05/2014,Theros,False
 JUD,Judgment,JU,,,False
 KTK,Khans of Tarkir,KTK,09/2014,Khans of Tarkir,False
-LE,Legions,LE,,,False
+LGN,Legions,LE,02/2003,,False
 LEA,Limited Edition Alpha,LEA,,,False
 LEB,Limited Edition Beta,LEB,,,False
-LEG,From the Vault: Legends,FVL,,,False
+V11,From the Vault: Legends,FVL,08/2011,,True
+LEG,Legends,LG,07/1994,,False
 LRW,Lorwyn,LW,,,False
 M10,Magic 2010,M10,07/2009,,False
 M11,Magic 2011,M11,07/2010,,False

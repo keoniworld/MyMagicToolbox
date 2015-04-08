@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using MyMagicCollection.Shared.Models;
+using NLog;
 
 namespace MyMagicCollection.Shared.Helper
 {
@@ -201,6 +202,9 @@ namespace MyMagicCollection.Shared.Helper
                             var source = string.Format(urlFmt, size, filePart, rarity.ToCode());
                             using (var client = new WebClient())
                             {
+                                _notificationCenter.FireNotification(LogLevel.Debug,
+                                    "Downloading set image for " + setDefinition.Code + "(" + setDefinition.Name + ")...");
+
                                 client.DownloadFile(new Uri(source), dest);
 
                                 file.Refresh();

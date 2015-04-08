@@ -9,61 +9,59 @@ using MyMagicCollection.Shared.ViewModels;
 
 namespace MyMagicCollection.Shared.DataSource
 {
-	public abstract class MagicDataDataSourceBase : IMagicDataSource
-	{
-		public abstract IEnumerable<IMagicCardDefinition> CardDefinitions { get; }
+    public abstract class MagicDataDataSourceBase : IMagicDataSource
+    {
+        public abstract IEnumerable<IMagicCardDefinition> CardDefinitions { get; }
 
-		public static bool IsNameMatch(
-			IMagicCardDefinition definition,
-			CardLookup lookup)
-		{
-			if (definition.NameEN.ToLowerInvariant().Contains(lookup.SearchTerm))
-			{
-				return true;
-			}
+        public static bool IsNameMatch(
+            IMagicCardDefinition definition,
+            CardLookup lookup)
+        {
+            if (definition.NameEN.IndexOf(lookup.SearchTerm, StringComparison.InvariantCultureIgnoreCase) >= 0)
+            {
+                return true;
+            }
 
-			if (lookup.SearchGerman && definition.NameDE.ToLowerInvariant().Contains(lookup.SearchTerm))
-			{
-				return true;
-			}
+            if (lookup.SearchGerman && definition.NameDE.IndexOf(lookup.SearchTerm, StringComparison.InvariantCultureIgnoreCase) >= 0)
+            {
+                return true;
+            }
 
-			if (lookup.SearchRules && definition.RulesText.ToLowerInvariant().Contains(lookup.SearchTerm))
-			{
-				return true;
-			}
+            if (lookup.SearchRules && definition.RulesText.IndexOf(lookup.SearchTerm, StringComparison.InvariantCultureIgnoreCase) >= 0)
+            {
+                return true;
+            }
 
-
-			return false;
-		}
-
-        protected abstract IEnumerable<FoundMagicCardViewModel> MapResult(IEnumerable<IMagicCardDefinition> result);
+            return false;
+        }
 
         public IEnumerable<FoundMagicCardViewModel> Lookup(CardLookup lookupOptions)
-		{
-			var result = CardDefinitions;
+        {
+            var result = CardDefinitions;
 
-			// AND set
-			if (lookupOptions.SearchSet != null && !lookupOptions.SetSource.IsAllSearchSet)
-			{
-				var setDefinition = StaticMagicData.SetDefinitionsBySetName[lookupOptions.SearchSet];
-				result = result.Where(c => c.SetCode == setDefinition.Code);
-			}
+            // AND set
+            if (lookupOptions.SearchSet != null && !lookupOptions.SetSource.IsAllSearchSet)
+            {
+                var setDefinition = StaticMagicData.SetDefinitionsBySetName[lookupOptions.SearchSet];
+                result = result.Where(c => c.SetCode == setDefinition.Code);
+            }
 
-			// AND Name
-			// lookupOptions.SearchTerm = lookupOptions.SearchTerm?.ToLowerInvariant();
-			if (!string.IsNullOrEmpty(lookupOptions.SearchTerm))
-			{
-				result = result.Where(c => IsNameMatch(c, lookupOptions));
-			}
+            // AND Name
+            if (!string.IsNullOrEmpty(lookupOptions.SearchTerm))
+            {
+                result = result.Where(c => IsNameMatch(c, lookupOptions));
+            }
 
-			// TODO: Andere optionen
+            // TODO: Andere optionen
 
-			if (lookupOptions.DisplayDistinct)
-			{
-				result = result.DistinctBy(c => c.NameEN);
-			}
+            if (lookupOptions.DisplayDistinct)
+            {
+                result = result.DistinctBy(c => c.NameEN);
+            }
 
-			return MapResult(result).ToList();
-		}
-	}
+            return MapResult(result).ToList();
+        }
+
+        protected abstract IEnumerable<FoundMagicCardViewModel> MapResult(IEnumerable<IMagicCardDefinition> result);
+    }
 }

@@ -54,7 +54,7 @@ namespace MyMagicCollection.wpf
             _logger.Log(LogLevel.Info, "============================= NEW APP START ============================= ");
             _notificationCenter = notificationCenter;
             CardLookup = new CardLookup();
-            CardLookup.PropertyChanged += (sender, e) =>
+            CardLookup.SearchWanted += (sender, e) =>
             {
                 if (CardLookup.SearchAsYouType)
                 {
@@ -242,22 +242,25 @@ namespace MyMagicCollection.wpf
 
             set
             {
-                _lookupSource = value;
-                switch (_lookupSource)
+                if (_lookupSource != value)
                 {
-                    case LookupSource.ActiveBinder:
-                        _currentDataSource = new ActiveBinderDataSource(_activeBinder);
-                        CardLookup.SetSource = new CardLookupSetSourceActiveBinder(_activeBinder);
-                        break;
+                    _lookupSource = value;
+                    switch (_lookupSource)
+                    {
+                        case LookupSource.ActiveBinder:
+                            _currentDataSource = new ActiveBinderDataSource(_activeBinder);
+                            CardLookup.SetSource = new CardLookupSetSourceActiveBinder(_activeBinder);
+                            break;
 
-                    case LookupSource.CardDatabase:
-                    default:
-                        _currentDataSource = new StaticMagicDataDataSource();
-                        CardLookup.SetSource = new CardLookupSetSourceAllSets();
-                        break;
+                        case LookupSource.CardDatabase:
+                        default:
+                            _currentDataSource = new StaticMagicDataDataSource();
+                            CardLookup.SetSource = new CardLookupSetSourceAllSets();
+                            break;
+                    }
+
+                    RaisePropertyChanged(() => LookupSource);
                 }
-
-                RaisePropertyChanged(() => LookupSource);
             }
         }
 
@@ -356,8 +359,13 @@ namespace MyMagicCollection.wpf
             var found = _currentDataSource.Lookup(CardLookup).ToList();
 
             stopwatch.Stop();
-            _notificationCenter.FireNotification(null, "Card search returned " + found.Count() + " and took " + stopwatch.Elapsed);
+
+            var searchTime = stopwatch.Elapsed;
+            stopwatch.Restart();            
             CardCollection = found;
+            stopwatch.Stop();
+
+            _notificationCenter.FireNotification(null, "Card search returned " + found.Count() + " and took " + searchTime + "(" + stopwatch.Elapsed + ")");
         }
 
         public void CreateAndSetNewBinder(string fileName)

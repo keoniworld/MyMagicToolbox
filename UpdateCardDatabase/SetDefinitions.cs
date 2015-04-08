@@ -22,6 +22,9 @@ JOU, JOU, JOU, Journey into Nyx, Theros, 05/2014, False,
 BNG, BNG, BNG, Born of the Gods, Theros, 02/2014, False,
 THS, THS, THS, Theros, Theros, 09/2013, False,
 
+LE, LGN, LE, Legions, , 02/2003, False
+LG, LEG, LG, Legends, , 07/1994, False
+
 M15, M15, M15, Magic 2015 Core Set,,07/2014,False
 M14, M14, M14, Magic 2014 Core Set,,07/2013,False
 M13, M13, M13, Magic 2013,,07/2012,False
@@ -41,6 +44,8 @@ C14, C14, C14,Commander 2014,,11/2014,False
 C13, C13, C13,Commander 201,,11/2013,False
 CNS, CNS, CNS,Conspiracy,,06/2014,False
 DDM,DDM,DDM,Duel Decks: Jace vs. Vraska,,03/2014,False
+
+LEG, V11, FVL, From the Vault: Legends,,08/2011,True
 ";
 
         static SetDefinitions()

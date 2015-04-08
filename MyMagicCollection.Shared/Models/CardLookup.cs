@@ -33,6 +33,8 @@ namespace MyMagicCollection.Shared.Models
             _setSource = new CardLookupSetSourceAllSets();
         }
 
+        public event EventHandler<EventArgs> SearchWanted;
+
         public IEnumerable<string> AvailableSearchSets => _setSource.AvailableSearchSets;
 
         public string SearchTerm
@@ -49,6 +51,7 @@ namespace MyMagicCollection.Shared.Models
                 {
                     _searchTerm = low;
                     RaisePropertyChanged(() => SearchTerm);
+                    RaiseSearchWanted();
                 }
             }
         }
@@ -62,13 +65,18 @@ namespace MyMagicCollection.Shared.Models
 
             set
             {
-                var selected = SearchSet;
-                _setSource = value;
-                SearchSet = selected;
+                if (value != _setSource)
+                {
+                    var selected = SearchSet;
+                    _setSource = value;
+                    _setSource.SearchSet = selected;
 
-                RaisePropertyChanged(() => SetSource);
-                RaisePropertyChanged(() => AvailableSearchSets);
-                RaisePropertyChanged(() => SearchSet);
+                    RaisePropertyChanged(() => SetSource);
+                    RaisePropertyChanged(() => AvailableSearchSets);
+                    RaisePropertyChanged(() => SearchSet);
+
+                    RaiseSearchWanted();
+                }
             }
         }
 
@@ -83,6 +91,7 @@ namespace MyMagicCollection.Shared.Models
             {
                 _searchGerman = value;
                 RaisePropertyChanged(() => SearchGerman);
+                RaiseSearchWanted();
             }
         }
 
@@ -97,6 +106,7 @@ namespace MyMagicCollection.Shared.Models
             {
                 _searchType = value;
                 RaisePropertyChanged(() => SearchType);
+                RaiseSearchWanted();
             }
         }
 
@@ -111,6 +121,7 @@ namespace MyMagicCollection.Shared.Models
             {
                 _displayDistinct = value;
                 RaisePropertyChanged(() => DisplayDistinct);
+                RaiseSearchWanted();
             }
         }
 
@@ -125,6 +136,7 @@ namespace MyMagicCollection.Shared.Models
             {
                 _searchRules = value;
                 RaisePropertyChanged(() => SearchRules);
+                RaiseSearchWanted();
             }
         }
 
@@ -139,6 +151,7 @@ namespace MyMagicCollection.Shared.Models
             {
                 _searchAsYouType = value;
                 RaisePropertyChanged(() => SearchAsYouType);
+                RaiseSearchWanted();
             }
         }
 
@@ -153,6 +166,7 @@ namespace MyMagicCollection.Shared.Models
             {
                 _setSource.SearchSet = value;
                 RaisePropertyChanged(() => SearchSet);
+                RaiseSearchWanted();
             }
         }
 
@@ -168,6 +182,17 @@ namespace MyMagicCollection.Shared.Models
             RaisePropertyChanged(() => SearchGerman);
             RaisePropertyChanged(() => SearchType);
             RaisePropertyChanged(() => DisplayDistinct);
+
+            RaiseSearchWanted();
+        }
+
+        private void RaiseSearchWanted()
+        {
+            var wanted = SearchWanted;
+            if (wanted != null && _searchAsYouType)
+            {
+                wanted(this, EventArgs.Empty);
+            }
         }
     }
 }

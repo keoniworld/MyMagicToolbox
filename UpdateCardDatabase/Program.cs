@@ -129,7 +129,7 @@ namespace UpdateCardDatabase
                 { "DRG", "DRP" },
                 { "DS", "DST" },
                 { "GP", "GPT" },
-                { "HL", "HML" },
+                
                 // { "AEVD", "DD3" },
                 { "SVC", "DDN" },
 

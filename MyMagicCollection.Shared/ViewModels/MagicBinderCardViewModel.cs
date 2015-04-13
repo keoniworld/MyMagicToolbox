@@ -12,7 +12,7 @@ namespace MyMagicCollection.Shared.ViewModels
     public class MagicBinderCardViewModel : NotificationObject, IMagicCardDefinition, IMagicBinderCardViewModel
     {
         private readonly MagicBinderCard _card;
-        private readonly MagicCardPrice _price;
+        private MagicCardPrice _price;
         private IMagicCardDefinition _definition;
         private decimal? _cardPrice;
 
@@ -45,6 +45,15 @@ namespace MyMagicCollection.Shared.ViewModels
             set
             {
                 _definition = value;
+                if (value != null)
+                {
+                    _card.CardId = value.CardId;
+                    _price.PropertyChanged -= OnPricePropertyChanged;
+                    _price = StaticPriceDatabase.FindPrice(_definition, true, true);
+                    _price.PropertyChanged += OnPricePropertyChanged;
+                    RaisePropertyChanged(() => CardPrice);
+                }
+
                 RaisePropertyChanged(() => Definition);
                 UpdatePrice();
             }

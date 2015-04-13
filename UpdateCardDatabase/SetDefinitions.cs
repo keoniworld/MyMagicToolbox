@@ -23,7 +23,9 @@ BNG, BNG, BNG, Born of the Gods, Theros, 02/2014, False,
 THS, THS, THS, Theros, Theros, 09/2013, False,
 
 LE, LGN, LE, Legions, , 02/2003, False
+HL, HML, HL, Homelands, , 10/1995, False
 LG, LEG, LG, Legends, , 07/1994, False
+
 
 M15, M15, M15, Magic 2015 Core Set,,07/2014,False
 M14, M14, M14, Magic 2014 Core Set,,07/2013,False

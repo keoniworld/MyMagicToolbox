@@ -226,7 +226,7 @@ namespace MyMagicCollection.wpf
 
                 if (_selectedCard != null)
                 {
-                    _selectedCard.UpdatePriceData(true);
+                    _selectedCard.UpdatePriceData(true, true);
                 }
 
                 UpdateSelectedCardFromBinder();
@@ -536,7 +536,7 @@ namespace MyMagicCollection.wpf
                 var stopwatch = Stopwatch.StartNew();
                 foreach (var card in searchResult)
                 {
-                    card.UpdatePriceData(false);
+                    card.UpdatePriceData(false, false);
                 }
 
                 StaticPriceDatabase.Write();
@@ -569,7 +569,7 @@ namespace MyMagicCollection.wpf
             CardLookup.SearchAsYouType = false;
             LookupSource = LookupSource.ActiveBinder;
             CardLookup.Reset();
-            CardLookup.SearchSet = setDefinition.Name;
+            CardLookup.SearchSet = setDefinition;
 
             CardLookup.SearchAsYouType = old;
             LookupCards();

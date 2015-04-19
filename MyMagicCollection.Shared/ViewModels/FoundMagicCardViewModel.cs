@@ -73,11 +73,11 @@ namespace MyMagicCollection.Shared.ViewModels
 
         public DateTime? PriceUpdateUtc => _viewModel?.CardPrice?.UpdateUtc;
 
-        public void UpdatePriceData(bool writeDatabase)
+        public void UpdatePriceData(bool writeDatabase, bool async)
         {
             if (_viewModel != null)
             {
-                _viewModel.UpdatePriceData(writeDatabase, true);
+                _viewModel.UpdatePriceData(writeDatabase, async);
             }
         }
 

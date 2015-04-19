@@ -42,7 +42,7 @@ namespace MyMagicCollection.Shared.DataSource
             // AND set
             if (lookupOptions.SearchSet != null && !lookupOptions.SetSource.IsAllSearchSet)
             {
-                var setDefinition = StaticMagicData.SetDefinitionsBySetName[lookupOptions.SearchSet];
+                var setDefinition = StaticMagicData.SetDefinitionsBySetName[lookupOptions.SearchSet.Name];
                 result = result.Where(c => c.SetCode == setDefinition.Code);
             }
 

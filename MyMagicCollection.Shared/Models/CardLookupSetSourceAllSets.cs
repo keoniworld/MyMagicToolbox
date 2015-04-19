@@ -10,28 +10,33 @@ namespace MyMagicCollection.Shared.Models
     {
         public const string AllSetsSearchSetName = "All Sets";
 
-        public CardLookupSetSourceAllSets()
+		private MagicSetDefinition _allSets = new MagicSetDefinition()
+		{
+			Name = AllSetsSearchSetName,
+		};
+
+		public CardLookupSetSourceAllSets()
         {
             var allSets = StaticMagicData.SetDefinitions
                 .OrderByDescending(s => s.ReleaseDateTime)
                 .ThenBy(s => s.Name)
-                .Select(s => s.Name)
+
                 .ToList();
 
-            allSets.Insert(0, AllSetsSearchSetName);
+            allSets.Insert(0, _allSets);
             AvailableSearchSets = allSets;
-            SearchSet = AllSetsSearchSetName;
+            SearchSet = _allSets;
         }
 
-        public IEnumerable<string> AvailableSearchSets { get; private set; }
+        public IEnumerable<MagicSetDefinition> AvailableSearchSets { get; private set; }
 
-        public string SearchSet { get; set; }
+        public MagicSetDefinition SearchSet { get; set; }
 
         public bool IsAllSearchSet
         {
             get
             {
-                return SearchSet == AllSetsSearchSetName;
+                return SearchSet.Name == AllSetsSearchSetName;
             }
         }
     }

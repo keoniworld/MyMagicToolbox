@@ -42,6 +42,40 @@ M15,12,Treefolk Warrior Token,
 M15,13,Land Mine Token,
 M15,14,Emblem Ajani,
 M15,15,Emblem Garruk,
+
+COMMENT,,, ----- Born of the Gods-----
+BNG,1,Bird Token,
+BNG,2,Cat Soldier Token,
+BNG,3,Soldier Token,
+BNG,4,Bird 2 Token,
+BNG,5,Kraken Token,
+BNG,6,Zombie Token,
+BNG,7,Elemental Token,
+BNG,8,Centaur Token,
+BNG,9,Wolf Token,
+BNG,10,Gold Token,
+BNG,11,Emblem Kiora the Crashing Wave,
+
+COMMENT,,, ----- Theros -----
+THS,1,Cleric Token,
+THS,2,Soldier 1 Token,
+THS,3,Soldier 2 Token,
+THS,4,Bird Token,
+THS,5,Elemental Token,
+THS,6,Harpy Token,
+THS,7,Soldier Token,
+THS,8,Boar Token,
+THS,9,Satyr Token,
+THS,10,Golem Token,
+THS,11,Elspeth Sun's Champion Emblem,
+
+COMMENT,,, ----- M15 -----
+WWK,1,Soldier Ally Token,
+WWK,2,Dragon Token,
+WWK,3,Ogre Token,
+WWK,4,Elephant Token,
+WWK,5,Plant Token,
+WWK,6,Construct Token,
 ";
 
 		static TokenDefinitions()

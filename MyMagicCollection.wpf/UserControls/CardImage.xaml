@@ -3,9 +3,63 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:userControl="clr-namespace:MyMagicCollection.wpf.UserControls"
+             xmlns:converter="clr-namespace:MyMagicCollection.wpf.Converter"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <converter:AdvancedBooleanToVisibilityConverter x:Key="ShowExtendedConverter" TrueValue="Visible" FalseValue="Collapsed" />
+    </UserControl.Resources>
+
     <Grid x:Name="rootGrid" >
-        <Image x:Name="imageControl" VerticalAlignment="Top"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <Border BorderBrush="DarkGray" BorderThickness="2">
+            <Image x:Name="imageControl" VerticalAlignment="Top" Width="220" />
+        </Border>
+
+        <Grid Grid.Column="1" Visibility="{Binding ShowDetails, Converter={StaticResource ShowExtendedConverter}}"
+              VerticalAlignment="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.ColumnSpan="2" Orientation="Horizontal">
+                <userControl:SetImage Height="14"  SelectedSet="{Binding SetDefinition, Mode=OneWay}" VerticalAlignment="Center"/>
+                <TextBlock Margin="3,0,0,0"  Text="{Binding SetDefinition.Name, Mode=OneWay}" VerticalAlignment="Center" FontWeight="Bold" FontSize="13.333"/>
+            </StackPanel>
+
+            <!-- Legality: -->
+            <TextBlock Grid.ColumnSpan="2" HorizontalAlignment="Center" FontWeight="Bold" FontSize="13.333" Grid.Row="1">Legality</TextBlock>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                
+                <TextBlock>Modern</TextBlock>
+                <CheckBox Grid.Column="1" IsChecked="{Binding SelectedCard.LegalityModern, Mode=OneWay}"/>
+
+                <TextBlock Grid.Row="2">Standard</TextBlock>
+                <CheckBox Grid.Row="2" Grid.Column="1" IsChecked="{Binding SelectedCard.LegalityStandard, Mode=OneWay}"/>
+
+            </Grid>
+        </Grid>
     </Grid>
 </UserControl>

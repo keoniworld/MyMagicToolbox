@@ -8,9 +8,9 @@ namespace MyMagicCollection.Shared.Models
 {
     public interface ICardLookupSetSource
     {
-        IEnumerable<string> AvailableSearchSets { get;  }
+        IEnumerable<MagicSetDefinition> AvailableSearchSets { get;  }
 
-        string SearchSet { get; set; }
+		MagicSetDefinition SearchSet { get; set; }
 
         bool IsAllSearchSet { get; }
     }

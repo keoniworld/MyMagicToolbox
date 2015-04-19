@@ -35,7 +35,7 @@ namespace MyMagicCollection.Shared.Models
 
         public event EventHandler<EventArgs> SearchWanted;
 
-        public IEnumerable<string> AvailableSearchSets => _setSource.AvailableSearchSets;
+        public IEnumerable<MagicSetDefinition> AvailableSearchSets => _setSource.AvailableSearchSets;
 
         public string SearchTerm
         {
@@ -69,7 +69,9 @@ namespace MyMagicCollection.Shared.Models
                 {
                     var selected = SearchSet;
                     _setSource = value;
-                    _setSource.SearchSet = selected;
+
+	                var found = _setSource.AvailableSearchSets.FirstOrDefault(s => s.Name == selected.Name);
+                    _setSource.SearchSet = found ?? _setSource.AvailableSearchSets.First();
 
                     RaisePropertyChanged(() => SetSource);
                     RaisePropertyChanged(() => AvailableSearchSets);
@@ -155,7 +157,7 @@ namespace MyMagicCollection.Shared.Models
             }
         }
 
-        public string SearchSet
+        public MagicSetDefinition SearchSet
         {
             get
             {

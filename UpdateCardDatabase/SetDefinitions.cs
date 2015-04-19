@@ -41,6 +41,7 @@ M10, M10, M10, Magic 2010,,07/2009,False
 6E, 6E, 6E, Sixth Edition,,07/1999,False
 5E, 5E, 5E, Fifth Edition,,07/1997,False
 4E, 4E, 4E, Fourth Edition,,07/1995,False
+R,3ED, RV, Revised,,04/1994,False
 
 C14, C14, C14,Commander 2014,,11/2014,False
 C13, C13, C13,Commander 201,,11/2013,False

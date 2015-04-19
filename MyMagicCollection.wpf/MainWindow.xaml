@@ -137,7 +137,7 @@
 
             <GroupBox Header="Selected card" Grid.Row="0">
                 <userControl:CardImage
-                    Width="220"
+                    ShowDetails="True"
                     VerticalAlignment="Stretch"
                     HorizontalAlignment="Stretch"
                     SelectedCard="{Binding SelectedCard.Definition}" />

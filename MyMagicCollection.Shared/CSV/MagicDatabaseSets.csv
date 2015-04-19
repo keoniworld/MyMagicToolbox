@@ -1,7 +1,6 @@
 Code,Name,CodeMagicCardsInfo,ReleaseDate,Block,IsPromoEdition
 10E,Tenth Edition,10E,07/2007,,False
 2ED,Unlimited Edition,2ED,,,False
-3ED,Revised Edition,3ED,,,False
 4ED,Fourth Edition,4E,,,False
 5DN,Fifth Dawn,5DN,,,False
 5ED,Fifth Edition,5E,,,False
@@ -109,6 +108,7 @@ POR,Portal,PO,,,False
 PP2,"Planechase 2012 Edition ""Planes"" and ""Phenomena""",PP2,,,False
 PRE,Prerelease Promos,PTC,,,False
 PS,Planeshift,PS,,,False
+3ED,Revised,RV,04/1994,,False
 RAV,Ravnica: City of Guilds,RAV,,,False
 REW,Magic Player Rewards,MPRP,,,False
 RLS,Release Events,REP,,,False

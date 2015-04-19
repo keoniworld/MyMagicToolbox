@@ -111,7 +111,7 @@ namespace UpdateCardDatabase
                 { "A", "LEA" },
                 { "B", "LEB" },
                 { "U", "2ED" },
-                { "R", "3ED" },
+                
                 { "4E", "4ED" },
                 { "5E", "5ED" },
                 { "6E", "6ED" },

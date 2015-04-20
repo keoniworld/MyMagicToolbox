@@ -69,13 +69,29 @@ THS,9,Satyr Token,
 THS,10,Golem Token,
 THS,11,Elspeth Sun's Champion Emblem,
 
-COMMENT,,, ----- M15 -----
+COMMENT,,, ----- Worldwake -----
 WWK,1,Soldier Ally Token,
 WWK,2,Dragon Token,
 WWK,3,Ogre Token,
 WWK,4,Elephant Token,
 WWK,5,Plant Token,
 WWK,6,Construct Token,
+
+COMMENT,,, ----- Return to Ravnica -----
+RTR,1,Bird Token,
+RTR,2,Knight Token,
+RTR,3,Soldier Token,
+RTR,4,Assassin Token,
+RTR,5,Dragon Token,
+RTR,6,Goblin Token,
+RTR,7,Centaur Token,
+RTR,8,Ooze Token,
+RTR,9,Rhino Token,
+RTR,10,Saproling Token,
+RTR,11,Wurm Token,
+RTR,12,Elemental Token,
+RTR,13,Centaur Token,
+
 ";
 
 		static TokenDefinitions()

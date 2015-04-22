@@ -24,6 +24,22 @@ namespace MyMagicCollection.Shared.Models
 
         private string _imagePath;
 
+        private string _cheapestSeller;
+        private string _cheapestSellerFoil;
+        private decimal? _cheapestPrice;
+        private decimal? _cheapestPriceFoil;
+
+        public event EventHandler<EventArgs> PriceChanged;
+        public void RaisePriceChanged()
+        {
+            var price = PriceChanged;
+            if (price != null)
+            {
+                price(this, EventArgs.Empty);
+
+            }
+        }
+
         public string CardId
         {
             get
@@ -127,5 +143,57 @@ namespace MyMagicCollection.Shared.Models
                 RaisePropertyChanged(() => ImagePath);
             }
         }
+
+        public string CheapestSeller
+        {
+            get
+            {
+                return _cheapestSeller;
+            }
+            set
+            {
+                _cheapestSeller = value;
+                RaisePropertyChanged(() => CheapestSeller);
+            }
+        }
+
+        public string CheapestSellerFoil
+        {
+            get
+            {
+                return _cheapestSellerFoil;
+            }
+            set
+            {
+                _cheapestSellerFoil = value;
+                RaisePropertyChanged(() => CheapestSellerFoil);
+            }
+        }
+
+        public decimal? CheapestPrice
+        {
+            get
+            {
+                return _cheapestPrice;
+            }
+            set
+            {
+                _cheapestPrice= value;
+                RaisePropertyChanged(() => CheapestPrice);
+            }
+        }
+        public decimal? CheapestPriceFoil
+        {
+            get
+            {
+                return _cheapestPriceFoil;
+            }
+            set
+            {
+                _cheapestPriceFoil = value;
+                RaisePropertyChanged(() => CheapestPriceFoil);
+            }
+        }
+
     }
 }

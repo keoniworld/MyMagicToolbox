@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Minimod.NotificationObject;
 using MoreLinq;
@@ -226,7 +227,7 @@ namespace MyMagicCollection.wpf
 
                 if (_selectedCard != null)
                 {
-                    _selectedCard.UpdatePriceData(true, true);
+                    _selectedCard.UpdatePriceData(true, true, "");
                 }
 
                 UpdateSelectedCardFromBinder();
@@ -361,7 +362,7 @@ namespace MyMagicCollection.wpf
             stopwatch.Stop();
 
             var searchTime = stopwatch.Elapsed;
-            stopwatch.Restart();            
+            stopwatch.Restart();
             CardCollection = found;
             stopwatch.Stop();
 
@@ -533,10 +534,19 @@ namespace MyMagicCollection.wpf
 
             Task.Factory.StartNew(() =>
             {
+                var count = searchResult.Count();
+                var index = 0;
                 var stopwatch = Stopwatch.StartNew();
                 foreach (var card in searchResult)
                 {
-                    card.UpdatePriceData(false, false);
+                    ++index;
+                    // Thread.Sleep(500);
+                    card.UpdatePriceData(false, false, " (card " + index + " of " + count + ")");
+
+                    if (index % 10 == 0)
+                    {
+                        StaticPriceDatabase.Write();
+                    }
                 }
 
                 StaticPriceDatabase.Write();

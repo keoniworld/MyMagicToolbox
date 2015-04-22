@@ -9,243 +9,254 @@ using MyMagicCollection.Shared.VieModels;
 
 namespace MyMagicCollection.Shared.ViewModels
 {
-	public class MagicBinderCardViewModel : NotificationObject, IMagicCardDefinition, IMagicBinderCardViewModel
-	{
-		private readonly MagicBinderCard _card;
-		private MagicCardPrice _price;
-		private IMagicCardDefinition _definition;
-		private decimal? _cardPrice;
+    public class MagicBinderCardViewModel : NotificationObject, IMagicCardDefinition, IMagicBinderCardViewModel
+    {
+        private readonly MagicBinderCard _card;
+        private MagicCardPrice _price;
+        private IMagicCardDefinition _definition;
+        private decimal? _cardPrice;
 
-		private IEnumerable<MagicCardDefinition> _reprints;
+        private IEnumerable<MagicCardDefinition> _reprints;
 
-		public MagicBinderCardViewModel(
-			IMagicCardDefinition definition,
-			MagicBinderCard card)
-		{
-			_definition = definition;
-			_card = card;
-			_price = StaticPriceDatabase.FindPrice(_definition, false, false);
-			_price.PropertyChanged += OnPricePropertyChanged;
+        public MagicBinderCardViewModel(
+            IMagicCardDefinition definition,
+            MagicBinderCard card)
+        {
+            _definition = definition;
+            _card = card;
+            _price = StaticPriceDatabase.FindPrice(_definition, false, false, "");
+            _price.PriceChanged += OnPricePriceChanged;
 
-			UpdatePrice();
-		}
+            UpdatePrice();
+        }
 
-		~MagicBinderCardViewModel()
-		{
-			_price.PropertyChanged -= OnPricePropertyChanged;
-		}
+        ~MagicBinderCardViewModel()
+        {
+            _price.PriceChanged -= OnPricePriceChanged;
+        }
 
-		public IMagicCardDefinition Definition
-		{
-			get
-			{
-				return _definition;
-			}
+        public event EventHandler<EventArgs> PriceChanged;
 
-			set
-			{
-				_definition = value;
-				if (value != null)
-				{
-					_card.CardId = value.CardId;
-					_price.PropertyChanged -= OnPricePropertyChanged;
-					_price = StaticPriceDatabase.FindPrice(_definition, true, true);
-					_price.PropertyChanged += OnPricePropertyChanged;
-					RaisePropertyChanged(() => CardPrice);
-				}
+        public IMagicCardDefinition Definition
+        {
+            get
+            {
+                return _definition;
+            }
 
-				RaisePropertyChanged(() => Definition);
-				UpdatePrice();
-			}
-		}
+            set
+            {
+                _definition = value;
+                if (value != null)
+                {
+                    _card.CardId = value.CardId;
+                    _price.PriceChanged-= OnPricePriceChanged;
+                    _price = StaticPriceDatabase.FindPrice(_definition, true, true, "");
+                    _price.PriceChanged += OnPricePriceChanged;
+                    RaisePropertyChanged(() => CardPrice);
+                }
 
-		public string CardId
-		{
-			get
-			{
-				return _card.CardId;
-			}
+                RaisePropertyChanged(() => Definition);
+                UpdatePrice();
+            }
+        }
 
-			set
-			{
-				_card.CardId = value;
-				RaisePropertyChanged(() => CardId);
+        public string CardId
+        {
+            get
+            {
+                return _card.CardId;
+            }
 
-				UpdatePrice();
-			}
-		}
+            set
+            {
+                _card.CardId = value;
+                RaisePropertyChanged(() => CardId);
 
-		public string NameEN => _definition?.NameEN;
+                UpdatePrice();
+            }
+        }
 
-		public string NameDE => _definition?.NameDE;
+        public string NameEN => _definition?.NameEN;
 
-		public string RulesText => _definition?.RulesText;
+        public string NameDE => _definition?.NameDE;
 
-		public string RulesTextDE => _definition?.RulesTextDE;
+        public string RulesText => _definition?.RulesText;
 
-		public MagicRarity? Rarity => _definition?.Rarity;
+        public string RulesTextDE => _definition?.RulesTextDE;
 
-		public string ManaCost => _definition?.ManaCost;
+        public MagicRarity? Rarity => _definition?.Rarity;
 
-		public int? ConvertedManaCost => _definition?.ConvertedManaCost;
+        public string ManaCost => _definition?.ManaCost;
 
-		public int Quantity
-		{
-			get
-			{
-				return _card.Quantity;
-			}
+        public int? ConvertedManaCost => _definition?.ConvertedManaCost;
 
-			set
-			{
-				_card.Quantity = value;
-				RaisePropertyChanged(() => Quantity);
-			}
-		}
+        public int Quantity
+        {
+            get
+            {
+                return _card.Quantity;
+            }
 
-		public int QuantityTrade
-		{
-			get
-			{
-				return _card.QuantityTrade;
-			}
+            set
+            {
+                _card.Quantity = value;
+                RaisePropertyChanged(() => Quantity);
+            }
+        }
 
-			set
-			{
-				_card.QuantityTrade = value;
-				RaisePropertyChanged(() => QuantityTrade);
-			}
-		}
+        public int QuantityTrade
+        {
+            get
+            {
+                return _card.QuantityTrade;
+            }
 
-		public int QuantityWanted
-		{
-			get
-			{
-				return _card.QuantityWanted;
-			}
+            set
+            {
+                _card.QuantityTrade = value;
+                RaisePropertyChanged(() => QuantityTrade);
+            }
+        }
 
-			set
-			{
-				_card.QuantityWanted = value;
-				RaisePropertyChanged(() => QuantityWanted);
-			}
-		}
+        public int QuantityWanted
+        {
+            get
+            {
+                return _card.QuantityWanted;
+            }
 
-		public bool IsFoil
-		{
-			get
-			{
-				return _card.IsFoil;
-			}
+            set
+            {
+                _card.QuantityWanted = value;
+                RaisePropertyChanged(() => QuantityWanted);
+            }
+        }
 
-			set
-			{
-				_card.IsFoil = value;
-				RaisePropertyChanged(() => IsFoil);
+        public bool IsFoil
+        {
+            get
+            {
+                return _card.IsFoil;
+            }
 
-				UpdatePrice();
-			}
-		}
+            set
+            {
+                _card.IsFoil = value;
+                RaisePropertyChanged(() => IsFoil);
 
-		public MagicLanguage? Language
-		{
-			get
-			{
-				return _card.Language;
-			}
+                UpdatePrice();
+            }
+        }
 
-			set
-			{
-				_card.Language = value;
-				RaisePropertyChanged(() => Language);
-			}
-		}
+        public MagicLanguage? Language
+        {
+            get
+            {
+                return _card.Language;
+            }
 
-		public MagicCardType MagicCardType => _definition != null ? _definition.MagicCardType : MagicCardType.Unknown;
+            set
+            {
+                _card.Language = value;
+                RaisePropertyChanged(() => Language);
+            }
+        }
 
-		public MagicGrade? Grade
-		{
-			get
-			{
-				return _card.Grade;
-			}
+        public MagicCardType MagicCardType => _definition != null ? _definition.MagicCardType : MagicCardType.Unknown;
 
-			set
-			{
-				_card.Grade = value;
-				RaisePropertyChanged(() => Grade);
-			}
-		}
+        public MagicGrade? Grade
+        {
+            get
+            {
+                return _card.Grade;
+            }
 
-		public decimal? Price
-		{
-			get
-			{
-				return _cardPrice;
-			}
+            set
+            {
+                _card.Grade = value;
+                RaisePropertyChanged(() => Grade);
+            }
+        }
 
-			set
-			{
-				_cardPrice = value;
-				RaisePropertyChanged(() => Price);
-			}
-		}
+        public decimal? Price
+        {
+            get
+            {
+                return _cardPrice;
+            }
 
-		public MagicCardPrice CardPrice => _price;
+            set
+            {
+                _cardPrice = value;
+                RaisePropertyChanged(() => Price);
+            }
+        }
 
-		public string CardNameEN => _definition.NameEN;
+        public MagicCardPrice CardPrice => _price;
 
-		public string CardNameDE => _definition.NameDE;
+        public string CardNameEN => _definition.NameEN;
 
-		public string RowId => _card.RowId;
+        public string CardNameDE => _definition.NameDE;
 
-		public IEnumerable<MagicCardDefinition> Reprints
-		{
-			get
-			{
-				if (_reprints == null)
-				{
-					_reprints = StaticMagicData.CardDefinitions
-						.Where(c => c.NameEN == _definition.NameEN)
-						.ToArray();
-				}
+        public string RowId => _card.RowId;
 
-				return _reprints;
-			}
-		}
+        public IEnumerable<MagicCardDefinition> Reprints
+        {
+            get
+            {
+                if (_reprints == null)
+                {
+                    _reprints = StaticMagicData.CardDefinitions
+                        .Where(c => c.NameEN == _definition.NameEN)
+                        .ToArray();
+                }
 
-		public string SetCode => _definition.SetCode;
+                return _reprints;
+            }
+        }
 
-		public void UpdatePriceData(bool writeDatabase, bool async)
-		{
-			var action = new Action(() =>
-									{
-										var update = !_price.UpdateUtc.HasValue || _price.UpdateUtc.Value.Date < DateTime.UtcNow.Date;
-										if (update)
-										{
-											StaticPriceDatabase.UpdatePrice(_definition, _price, writeDatabase);
-										}
-									});
+        public string SetCode => _definition.SetCode;
 
-			if (async)
-			{
-				Task.Factory.StartNew(action);
-			}
-			else
-			{
-				action();
-			}
-		}
+        public void UpdatePriceData(bool writeDatabase, bool async, string additionalLogText)
+        {
+            var action = new Action(() =>
+                                    {
+                                        var update = !_price.UpdateUtc.HasValue || _price.UpdateUtc.Value.Date < DateTime.UtcNow.Date;
+                                        if (update)
+                                        {
+                                            StaticPriceDatabase.UpdatePrice(_definition, _price, writeDatabase, additionalLogText);
+                                        }
+                                    });
 
-		private void OnPricePropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-		{
-			UpdatePrice();
-		}
+            if (async)
+            {
+                Task.Factory.StartNew(action);
+            }
+            else
+            {
+                action();
+            }
+        }
 
-		private void UpdatePrice()
-		{
-			Price = IsFoil ? _price.PriceFoilLow : _price.PriceLow;
-			RaisePropertyChanged(() => Price);
-		}
-	}
+        private void OnPricePriceChanged(object sender, EventArgs e)
+        {
+            UpdatePrice();
+        }
+
+        private void UpdatePrice()
+        {
+            Price = IsFoil
+                ? _price.CheapestPriceFoil.HasValue ? _price.CheapestPriceFoil.Value : _price.PriceFoilLow
+                : _price.CheapestPrice.HasValue ? _price.CheapestPrice.Value : _price.PriceLow;
+
+            RaisePropertyChanged(() => Price);
+
+            var price = PriceChanged;
+            if (price != null)
+            {
+                price(this, EventArgs.Empty);
+            }
+        }
+    }
 }

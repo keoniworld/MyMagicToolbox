@@ -237,30 +237,29 @@
 
                                     <StackPanel Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2"
                                                 Orientation="Horizontal" Margin="3,1,0,0" HorizontalAlignment="Right">
+                                        <StackPanel.ToolTip>
+                                            <ToolTip>
+                                                <userControl:CardPriceControl CardPrice="{Binding CardPrice, Mode=OneWay}" />
+                                            </ToolTip>
+                                        </StackPanel.ToolTip>
                                         <TextBlock  VerticalAlignment="Center"
-                                            Text="{Binding Price, Mode=OneWay, StringFormat={}{0:F2}}">
-                                            <TextBlock.ToolTip>
-                                                <StackPanel Orientation="Horizontal">
-                                                    <Label>Last Updated on</Label>
-                                                    <TextBlock Text="{Binding CardPrice.UpdateUtc}" VerticalAlignment="Center" />
-                                                </StackPanel>
-                                            </TextBlock.ToolTip>
+                                            Text="{Binding Price, Mode=OneWay, StringFormat={}{0:F2}}">                                           
 										</TextBlock>
                                         <TextBlock VerticalAlignment="Center" Margin="2,0,0,0">€ (</TextBlock>
 
                                         <TextBlock VerticalAlignment="Center" Margin="2,0,0,0"
                                                    Text="{Binding CardPrice.PriceLow, Mode=OneWay, StringFormat={}{0:F2}€}"
-                                                   ToolTip="Low Price" />
+                                                    />
                                         <TextBlock VerticalAlignment="Center" Margin="2,0,0,0">/</TextBlock>
 
                                         <TextBlock VerticalAlignment="Center" Margin="2,0,0,0"
                                                    Text="{Binding CardPrice.PriceAvg, Mode=OneWay, StringFormat={}{0:F2}€}"
-                                                   ToolTip="Average Price" />
+                                                   />
                                         <TextBlock VerticalAlignment="Center" Margin="2,0,0,0">/</TextBlock>
 
                                         <TextBlock VerticalAlignment="Center" Margin="2,0,0,0"
                                                    Text="{Binding CardPrice.PriceFoilLow, Mode=OneWay, StringFormat={}{0:F2}€)}"
-                                                   ToolTip="Foil Price" />
+                                                    />
                                     </StackPanel>
                                 </Grid>
                             </DataTemplate>
@@ -323,40 +322,7 @@
                                             <StackPanel Orientation="Horizontal">
                                                 <TextBlock Text="{Binding Price, Mode=OneWay, StringFormat={}{0:F2}}" HorizontalAlignment="Right">
                                                     <TextBlock.ToolTip>
-                                                        <StackPanel>
-                                                            <StackPanel Orientation="Horizontal">
-                                                                <Label>Last Updated on</Label>
-                                                                <TextBlock Text="{Binding PriceUpdateUtc}" VerticalAlignment="Center" />
-                                                            </StackPanel>
-                                                            <StackPanel Orientation="Vertical">
-                                                                <StackPanel Orientation="Horizontal">
-                                                                    <Label VerticalAlignment="Center" MinWidth="70">MKM Low:</Label>
-                                                                    <TextBlock VerticalAlignment="Center" Margin="2,0,0,0"
-                                                   Text="{Binding CardPrice.PriceLow, Mode=OneWay, StringFormat={}{0:F2}€}"
-                                                                               MinWidth="70" HorizontalAlignment="Right"
-                                                   ToolTip="Low Price" />
-
-                                                                </StackPanel>
-
-                                                                <StackPanel Orientation="Horizontal">
-                                                                    <Label VerticalAlignment="Center" MinWidth="70">MKM Avg:</Label>
-                                                                    <TextBlock VerticalAlignment="Center" Margin="2,0,0,0"
-                                                                   Text="{Binding CardPrice.PriceAvg, Mode=OneWay, StringFormat={}{0:F2}€}"
-                                                                               MinWidth="70" HorizontalAlignment="Right"
-                                                                   ToolTip="Average Price" />
-
-                                                                </StackPanel>
-
-                                                                <StackPanel Orientation="Horizontal">
-                                                                    <Label VerticalAlignment="Center" MinWidth="70">MKM Foil:</Label>
-                                                                    <TextBlock VerticalAlignment="Center" Margin="2,0,0,0"
-                                                   Text="{Binding CardPrice.PriceFoilLow, Mode=OneWay, StringFormat={}{0:F2}€}"
-                                                                               MinWidth="50" HorizontalAlignment="Right"
-                                                   ToolTip="Foil Price" />
-
-                                                                </StackPanel>
-                                                            </StackPanel>
-                                                        </StackPanel>
+                                                        <userControl:CardPriceControl CardPrice="{Binding CardPrice, Mode=OneWay}" />
                                                     </TextBlock.ToolTip>
 								</TextBlock>
                                                 <TextBlock VerticalAlignment="Center" Margin="2,0,0,0">€</TextBlock>
@@ -462,7 +428,8 @@
                         <TextBox IsReadOnly="True" Grid.Row="5" HorizontalAlignment="Stretch" Grid.Column="1"
                                  Text="{Binding ActiveBinder.PriceTotal}" VerticalContentAlignment="Center" />
 
-                        <Button Grid.Row="6" Grid.ColumnSpan="2" HorizontalAlignment="Left" Click="OnPriceCollecttion">Price Collection</Button>
+                        <Button Visibility="Collapsed"
+                            Grid.Row="6" Grid.ColumnSpan="2" HorizontalAlignment="Left" Click="OnPriceCollecttion">Price Collection</Button>
                     </Grid>
                 </Grid>
             </GroupBox>

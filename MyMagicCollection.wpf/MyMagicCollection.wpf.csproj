@@ -107,6 +107,9 @@
     </Compile>
     <Compile Include="UserControls\BinderStatisticsDisplayDetails.cs" />
     <Compile Include="UserControls\BitmapImageCache.cs" />
+    <Compile Include="UserControls\CardPriceControl.xaml.cs">
+      <DependentUpon>CardPriceControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ManaCostImage.xaml.cs">
       <DependentUpon>ManaCostImage.xaml</DependentUpon>
     </Compile>
@@ -133,6 +136,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="UserControls\BinderStatisticsControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\CardPriceControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

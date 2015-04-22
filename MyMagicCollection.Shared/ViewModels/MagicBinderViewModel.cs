@@ -122,13 +122,19 @@ namespace MyMagicCollection.Shared.ViewModels
 
             foreach (var card in _cards)
             {
-                card.PropertyChanged += Card_PropertyChanged;
+                card.PriceChanged += Card_PriceChanged;                
             }
 
             _sortedCards = Cards.ToDictionary(c => c.RowId);
             _fileName = fileName;
 
             CalculateTotals();
+        }
+
+        private void Card_PriceChanged(object sender, System.EventArgs e)
+        {
+            CalculateTotals();
+            WriteFile();
         }
 
         public void WriteFile()
@@ -174,7 +180,7 @@ namespace MyMagicCollection.Shared.ViewModels
             _cards.Add(viewModel);
             _magicCollection.Cards.Add(binderCard);
 
-            viewModel.PropertyChanged += Card_PropertyChanged;
+            viewModel.PriceChanged += Card_PriceChanged;
 
             if (updateTotals)
             {
@@ -222,17 +228,7 @@ namespace MyMagicCollection.Shared.ViewModels
             });
         }
 
-        private void Card_PropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-            var ignore = e.PropertyName == "Price";
-            if (ignore)
-            {
-                return;
-            }
-
-            CalculateTotals();
-            WriteFile();
-        }
+   
 
         private void CalculateTotals()
         {

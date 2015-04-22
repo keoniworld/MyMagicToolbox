@@ -78,6 +78,8 @@
     <Compile Include="Models\CardLookupSetSourceAllSets.cs" />
     <Compile Include="Models\ICardLookupSetSource.cs" />
     <Compile Include="Models\MagicCardType.cs" />
+    <Compile Include="Price\AnalyseMkmSellerRequestResult.cs" />
+    <Compile Include="Price\MkmSellerArticleData.cs" />
     <Compile Include="ViewModels\IMagicBinderCardViewModel.cs" />
     <Compile Include="Models\IMagicBinderCard.cs" />
     <Compile Include="Models\IMagicCardDefinition.cs" />
@@ -1486,6 +1488,7 @@
     <Content Include="APP_DATA\ImageCache\Sets\medium\V11_U.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Price\MKM\mkmArticleRequestResult.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CsvHelper;
 using MyMagicCollection.Shared.Price;
+using NLog;
 
 namespace MyMagicCollection.Shared.Models
 {
@@ -41,7 +42,11 @@ namespace MyMagicCollection.Shared.Models
             }
         }
 
-        public static MagicCardPrice FindPrice(IMagicCardDefinition definition, bool autoUpdate, bool saveDatabase)
+        public static MagicCardPrice FindPrice(
+            IMagicCardDefinition definition, 
+            bool autoUpdate, 
+            bool saveDatabase,
+            string additionalLogText)
         {
             MagicCardPrice price = null;
 
@@ -57,7 +62,7 @@ namespace MyMagicCollection.Shared.Models
 
             if (autoUpdate)
             {
-                Task.Factory.StartNew(() => UpdatePrice(definition, price, saveDatabase));
+                Task.Factory.StartNew(() => UpdatePrice(definition, price, saveDatabase, additionalLogText));
             }
 
             if (!autoUpdate && saveDatabase)
@@ -68,7 +73,7 @@ namespace MyMagicCollection.Shared.Models
             return price;
         }
 
-        public static void UpdatePrice(IMagicCardDefinition definition, MagicCardPrice price, bool autoWrite)
+        public static void UpdatePrice(IMagicCardDefinition definition, MagicCardPrice price, bool autoWrite, string additionalLogText)
         {
             try
             {
@@ -80,7 +85,7 @@ namespace MyMagicCollection.Shared.Models
                     }
 
                     var request = new CardPriceRequest(_notificationCenter);
-                    request.PerformRequest(definition, price);
+                    request.PerformRequest(definition, price, true, additionalLogText);
 
                     if (autoWrite)
                     {
@@ -91,8 +96,8 @@ namespace MyMagicCollection.Shared.Models
             catch (Exception error)
             {
                 _notificationCenter.FireNotification(
-                    null,
-                    string.Format("Error getting price for {0}({1}): {2}", definition.NameEN, definition.SetCode, error.Message));
+                    LogLevel.Error,
+                    string.Format("Error getting price for {0}({1}): {2} ", definition.NameEN, definition.SetCode, error.Message) + additionalLogText);
             }
         }
 

@@ -79,6 +79,7 @@
     <Compile Include="Models\ICardLookupSetSource.cs" />
     <Compile Include="Models\MagicCardType.cs" />
     <Compile Include="Price\AnalyseMkmSellerRequestResult.cs" />
+    <Compile Include="Price\MkmRequestCounter.cs" />
     <Compile Include="Price\MkmSellerArticleData.cs" />
     <Compile Include="ViewModels\IMagicBinderCardViewModel.cs" />
     <Compile Include="Models\IMagicBinderCard.cs" />

@@ -225,9 +225,11 @@ namespace MyMagicCollection.wpf
                 CanAddSelected = value != null;
                 RaisePropertyChanged(() => SelectedCard);
 
-                if (_selectedCard != null)
+                if (_selectedCard != null
+					&& !_selectedCard.CardPrice.IsPriceUpOfToday())
                 {
-                    _selectedCard.UpdatePriceData(true, true, "");
+					// Only fetch card price once a day
+                    _selectedCard.UpdatePriceData(true, true, "", true);
                 }
 
                 UpdateSelectedCardFromBinder();
@@ -526,7 +528,10 @@ namespace MyMagicCollection.wpf
                 return;
             }
 
-            searchResult = searchResult.DistinctBy(c => c.NameEN).ToList();
+            searchResult = searchResult
+				.DistinctBy(c => c.NameEN)
+				.Where(c=>!c.CardPrice.IsPriceUpToDate())
+				.ToList();
 
             _notificationCenter.FireNotification(
                 LogLevel.Info,
@@ -540,14 +545,21 @@ namespace MyMagicCollection.wpf
                 foreach (var card in searchResult)
                 {
                     ++index;
-                    // Thread.Sleep(500);
-                    card.UpdatePriceData(false, false, " (card " + index + " of " + count + ")");
+                    card.UpdatePriceData(false, false, " (card " + index + " of " + count + ")", false);
 
-                    if (index % 10 == 0)
+                    if (index % 30 == 0)
                     {
                         StaticPriceDatabase.Write();
-                    }
-                }
+
+						var seconds = 120;
+						_notificationCenter.FireNotification(
+							LogLevel.Debug,
+							string.Format("Waiting {0} seconds to avoid being locked out by MKM", seconds));
+
+						// Wait a bit between requests
+						Thread.Sleep(seconds * 1000);
+					}
+				}
 
                 StaticPriceDatabase.Write();
 

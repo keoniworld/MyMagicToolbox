@@ -12,6 +12,7 @@ using MyMagicCollection.Shared.FileFormats.MyMagicCollection;
 using MyMagicCollection.Shared.Models;
 using MyMagicCollection.Shared.Price;
 using NLog;
+using System.Globalization;
 
 namespace MyMagicCollection.Shared.ViewModels
 {
@@ -88,7 +89,9 @@ namespace MyMagicCollection.Shared.ViewModels
 
         public int TotalNumberOfCards { get; private set; }
 
-        public int TotalNumberOfTradeCards { get; private set; }
+		public string TotalNumberOfCardsSummary { get; private set; }
+
+		public int TotalNumberOfTradeCards { get; private set; }
 
         public int TotalNumberOfWantCards { get; private set; }
 
@@ -251,7 +254,7 @@ namespace MyMagicCollection.Shared.ViewModels
 
                 if (card.Price.HasValue)
                 {
-                    if (card.Price.Value < 0.49m)
+                    if (card.Price.Value <= 0.49m)
                     {
                         priceBulk += card.Quantity * card.Price.Value;
                     }
@@ -261,7 +264,14 @@ namespace MyMagicCollection.Shared.ViewModels
                     }
                 }
             }
-            stopwatch.Stop();
+
+			TotalNumberOfCardsSummary = string.Format(
+				CultureInfo.CurrentUICulture,
+				"{0} ({1} distict)",
+				totalNumberOfCards,
+				_cards.DistinctBy(c=>c.CardId).Count());
+
+			stopwatch.Stop();
             _notificationCenter.FireNotification(LogLevel.Debug, "CalculateTotals took " + stopwatch.Elapsed);
 
             PriceBulk = priceBulk;
@@ -275,6 +285,7 @@ namespace MyMagicCollection.Shared.ViewModels
             RaisePropertyChanged(() => TotalNumberOfCards);
             RaisePropertyChanged(() => TotalNumberOfTradeCards);
             RaisePropertyChanged(() => TotalNumberOfWantCards);
+            RaisePropertyChanged(() => TotalNumberOfCardsSummary);
         }
     }
 }

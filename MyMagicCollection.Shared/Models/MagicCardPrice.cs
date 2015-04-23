@@ -16,7 +16,9 @@ namespace MyMagicCollection.Shared.Models
 
         private decimal? _priceAvg;
 
-        private decimal? _priceFoilLow;
+		private decimal? _priceSell;
+
+		private decimal? _priceFoilLow;
 
         private DateTime? _updateUtc;
 
@@ -66,7 +68,21 @@ namespace MyMagicCollection.Shared.Models
             }
         }
 
-        public decimal? PriceLow
+
+		public decimal? PriceSell
+		{
+			get
+			{
+				return _priceSell;
+			}
+			set
+			{
+				_priceSell = value;
+				RaisePropertyChanged(() => PriceSell);
+			}
+		}
+
+		public decimal? PriceLow
         {
             get
             {
@@ -195,5 +211,20 @@ namespace MyMagicCollection.Shared.Models
             }
         }
 
-    }
+
+		public bool IsPriceUpToDate()
+		{
+			const int hoursSinceLastCall = 7 * 24;
+
+			return UpdateUtc.HasValue
+				&& UpdateUtc.Value.AddHours(hoursSinceLastCall) > DateTime.UtcNow;
+        }
+
+		public bool IsPriceUpOfToday()
+		{
+			return UpdateUtc.HasValue
+				&& UpdateUtc.Value.Date >= DateTime.UtcNow.Date;
+		}
+
+	}
 }

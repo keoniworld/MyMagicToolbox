@@ -91,11 +91,21 @@ namespace MyMagicCollection.Shared.Price
             }
             catch (Exception error)
             {
+				var seconds = 30;
+
+				var message = error.Message;
+				if (message.Contains("(429)"))
+				{
+					// Too many requests
+					message = message.Replace("(429)", "(429 - Too Many requests)");
+                    seconds = 0;
+                }
+
                 _notificationCenter.FireNotification(
                     LogLevel.Error,
-                    string.Format("Request '{0}' throwed error: {1}", url, error.Message) + _additionalLogText);
+                    string.Format("Request '{0}' throwed error: {1} (waiting {2} seconds now to avoid timeout)", url, error.Message, seconds) + _additionalLogText);
 
-                Thread.Sleep(10 * 1000);
+                Thread.Sleep(seconds * 1000);
 
                 throw;
             }

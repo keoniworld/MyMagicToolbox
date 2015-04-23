@@ -10,7 +10,12 @@ namespace MyMagicCollection.Shared.Price
 {
     public class RequestResult : IDisposable
     {
-        public XDocument Response { get; set; }
+		~RequestResult()
+		{
+			Dispose();
+		}
+
+		public XDocument Response { get; set; }
         public HttpWebResponse HttpResponse { get; set; }
 
         public void Dispose()
@@ -20,7 +25,7 @@ namespace MyMagicCollection.Shared.Price
                 HttpResponse.Dispose();
                 HttpResponse = null;
             }
-
+		
             Response = null;
         }
     }

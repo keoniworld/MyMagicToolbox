@@ -11,29 +11,11 @@ namespace MyMagicCollection.Shared.Price
 {
     public class CardPriceRequest
     {
+        private static MkmRequestCounter _requestCounter = new MkmRequestCounter();
+
         private static int _timeoutHelper = 0;
 
         private static object _timeoutSync = new object();
-
-        private static void WorkaroundTimeout(INotificationCenter notificationCenter, string additionalLogText)
-        {
-            lock (_timeoutSync)
-            {
-                _timeoutHelper += 1;
-                if (_timeoutHelper > 50)
-                {
-                    _timeoutHelper = 0;
-
-                    notificationCenter.FireNotification(
-                        LogLevel.Debug,
-                        "Waiting to get around MKM timeout " + additionalLogText);
-
-                    // Warte kurz zwischen den Requests, damit wir nicht von 
-                    // MKM einen Timeout bekommen
-                    Thread.Sleep(5 * 1000);
-                }
-            }
-        }
 
         private readonly INotificationCenter _notificationCenter;
 
@@ -75,11 +57,15 @@ namespace MyMagicCollection.Shared.Price
 
                 var cardName = card.NameEN;
 
+                if (!CheckRequestCount(false, true))
+                {
+                    return;
+                }
+
                 WorkaroundTimeout(_notificationCenter, additionalLogText);
                 var helper = new RequestHelper(_notificationCenter, additionalLogText);
                 using (var result = helper.MakeRequest(RequestHelper.CreateGetProductsUrl(cardName, MagicLanguage.English, card.MagicCardType != MagicCardType.Token, null)))
                 {
-
                     var productNodes = result.Response.Root.Elements("product");
                     foreach (var productNode in productNodes)
                     {
@@ -100,9 +86,17 @@ namespace MyMagicCollection.Shared.Price
                                 cardPrice.PriceAvg = decimal.Parse(priceGuide.Element("AVG").Value, CultureInfo.InvariantCulture);
                                 cardPrice.PriceFoilLow = decimal.Parse(priceGuide.Element("LOWFOIL").Value, CultureInfo.InvariantCulture);
                                 cardPrice.PriceTrend = decimal.Parse(priceGuide.Element("TREND").Value, CultureInfo.InvariantCulture);
+                                cardPrice.PriceSell = decimal.Parse(priceGuide.Element("SELL").Value, CultureInfo.InvariantCulture);
 
                                 cardPrice.ImagePath = productNode.Element("image").Value;
                                 cardPrice.WebSite = productNode.Element("website").Value;
+
+                                // Get lowest actual price from german vendor
+                                var mkmId = productNode.Element("idProduct");
+                                if (mkmId != null)
+                                {
+                                    RequestActualVendorPrice(mkmId.Value, card.NameEN, cardPrice, additionalLogText);
+                                }
                             }
                             finally
                             {
@@ -110,36 +104,35 @@ namespace MyMagicCollection.Shared.Price
                             }
                         }
 
-                        // Get lowest actual price from german vendor
-                        var mkmId = productNode.Element("idProduct");
-                        if (mkmId != null)
-                        {
-                            RequestActualVendorPrice(mkmId.Value, card.NameEN, cardPrice, additionalLogText);
-                        }
-
                         cardPrice.UpdateUtc = DateTime.UtcNow;
                         _notificationCenter.FireNotification(
-                            LogLevel.Debug, 
+                            LogLevel.Debug,
                             string.Format("Downloaded price data for '{0}({1})': {2}/{3}/{4}", card.NameEN, card.SetCode, cardPrice.PriceLow, cardPrice.PriceAvg, cardPrice.PriceTrend) + additionalLogText);
                     }
 
                     if (!foundSet)
                     {
                         _notificationCenter.FireNotification(
-                            LogLevel.Debug, 
+                            LogLevel.Debug,
                             string.Format("Cannot find price data for '{0}({1})'. Request: {2}", card.NameEN, setDefinition.Name, result.Response.Root) + additionalLogText);
                     }
 
                     if (notifyOfPriceUpdate)
                     {
                         cardPrice.RaisePriceChanged();
+                        _requestCounter.Save();
                     }
                 }
             }
             catch (Exception error)
             {
+                if (notifyOfPriceUpdate)
+                {
+                    _requestCounter.Save();
+                }
+
                 _notificationCenter.FireNotification(
-                    LogLevel.Error, 
+                    LogLevel.Error,
                     string.Format("Error downloading price data for '{0}({1})': {2}", card.NameEN, card.SetCode, error.Message) + additionalLogText);
             }
         }
@@ -159,6 +152,8 @@ namespace MyMagicCollection.Shared.Price
                         false,
                         "");
                 }
+
+                _requestCounter.Save();
 
                 ////    var grouped = viewModels.GroupBy(vm => vm.CardNameEN);
                 ////var helper = new RequestHelper();
@@ -252,6 +247,47 @@ namespace MyMagicCollection.Shared.Price
             }
         }
 
+        private static void WorkaroundTimeout(INotificationCenter notificationCenter, string additionalLogText)
+        {
+            ////lock (_timeoutSync)
+            ////{
+            ////    _timeoutHelper += 1;
+            ////    if (_timeoutHelper > 50)
+            ////    {
+            ////        _timeoutHelper = 0;
+
+            ////        notificationCenter.FireNotification(
+            ////            LogLevel.Debug,
+            ////            "Waiting to get around MKM timeout " + additionalLogText);
+
+            ////        // Warte kurz zwischen den Requests, damit wir nicht von
+            ////        // MKM einen Timeout bekommen
+            ////        Thread.Sleep(5 * 1000);
+            ////    }
+            ////}
+        }
+
+        private bool CheckRequestCount(
+            bool saveRequestCounterFile,
+            bool saveRequestCounterFileIfRequestFailed)
+        {
+            var result = _requestCounter.AddRequest();
+
+            if (saveRequestCounterFile || (!result && saveRequestCounterFileIfRequestFailed))
+            {
+                _requestCounter.Save();
+            }
+
+            if (!result)
+            {
+                _notificationCenter.FireNotification(
+                    LogLevel.Debug,
+                    "Already reached maximum requests for today for MKM. Skipping request.");
+            }
+
+            return result;
+        }
+
         private void RequestActualVendorPrice(
             string mkmId,
             string cardName,
@@ -270,14 +306,17 @@ namespace MyMagicCollection.Shared.Price
             var helper = new RequestHelper(_notificationCenter, additionalLogText);
             var startIndex = 1;
 
-            // Get a short wait time before the actual detailed request
-            // Thread.Sleep(1 * 1000);
-
             do
             {
                 _notificationCenter.FireNotification(
                    LogLevel.Debug,
                    string.Format("Requesting seller data for {0} ({2}) at index {1}... ", mkmId, startIndex, cardName) + additionalLogText);
+
+                if (!CheckRequestCount(false, true))
+                {
+                    maxLoops = 0;
+                    continue;
+                }
 
                 WorkaroundTimeout(_notificationCenter, additionalLogText);
                 var resultSpecialLogic = helper.MakeRequest(RequestHelper.CreateGetArticlesUrl(

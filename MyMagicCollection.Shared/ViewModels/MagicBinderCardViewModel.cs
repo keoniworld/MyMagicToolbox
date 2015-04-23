@@ -24,7 +24,7 @@ namespace MyMagicCollection.Shared.ViewModels
         {
             _definition = definition;
             _card = card;
-            _price = StaticPriceDatabase.FindPrice(_definition, false, false, "");
+            _price = StaticPriceDatabase.FindPrice(_definition, false, false, "", false);
             _price.PriceChanged += OnPricePriceChanged;
 
             UpdatePrice();
@@ -51,7 +51,7 @@ namespace MyMagicCollection.Shared.ViewModels
                 {
                     _card.CardId = value.CardId;
                     _price.PriceChanged-= OnPricePriceChanged;
-                    _price = StaticPriceDatabase.FindPrice(_definition, true, true, "");
+                    _price = StaticPriceDatabase.FindPrice(_definition, true, true, "", false);
                     _price.PriceChanged += OnPricePriceChanged;
                     RaisePropertyChanged(() => CardPrice);
                 }
@@ -218,14 +218,15 @@ namespace MyMagicCollection.Shared.ViewModels
 
         public string SetCode => _definition.SetCode;
 
-        public void UpdatePriceData(bool writeDatabase, bool async, string additionalLogText)
+        public void UpdatePriceData(bool writeDatabase, bool async, string additionalLogText, bool forcePriceUpdate)
         {
             var action = new Action(() =>
                                     {
-                                        var update = !_price.UpdateUtc.HasValue || _price.UpdateUtc.Value.Date < DateTime.UtcNow.Date;
-                                        if (update)
+                                        var update = !_price.IsPriceUpToDate();
+                                        if (forcePriceUpdate || update)
                                         {
-                                            StaticPriceDatabase.UpdatePrice(_definition, _price, writeDatabase, additionalLogText);
+                                            StaticPriceDatabase.UpdatePrice(_definition, _price, writeDatabase, additionalLogText, forcePriceUpdate);
+											UpdatePrice();
                                         }
                                     });
 

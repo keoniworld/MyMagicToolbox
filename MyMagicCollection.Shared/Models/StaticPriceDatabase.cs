@@ -46,7 +46,8 @@ namespace MyMagicCollection.Shared.Models
             IMagicCardDefinition definition, 
             bool autoUpdate, 
             bool saveDatabase,
-            string additionalLogText)
+            string additionalLogText,
+			bool forcePriceUpdate)
         {
             MagicCardPrice price = null;
 
@@ -62,7 +63,7 @@ namespace MyMagicCollection.Shared.Models
 
             if (autoUpdate)
             {
-                Task.Factory.StartNew(() => UpdatePrice(definition, price, saveDatabase, additionalLogText));
+                Task.Factory.StartNew(() => UpdatePrice(definition, price, saveDatabase, additionalLogText, forcePriceUpdate));
             }
 
             if (!autoUpdate && saveDatabase)
@@ -73,13 +74,18 @@ namespace MyMagicCollection.Shared.Models
             return price;
         }
 
-        public static void UpdatePrice(IMagicCardDefinition definition, MagicCardPrice price, bool autoWrite, string additionalLogText)
+        public static void UpdatePrice(
+			IMagicCardDefinition definition, 
+			MagicCardPrice price, 
+			bool autoWrite, 
+			string additionalLogText,
+			bool forcePriceUpdate)
         {
             try
             {
                 lock (_sync)
                 {
-                    if (price.UpdateUtc.HasValue && price.UpdateUtc.Value.Date >= DateTime.UtcNow.Date)
+                    if (!forcePriceUpdate && price.IsPriceUpToDate())
                     {
                         return;
                     }

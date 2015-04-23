@@ -414,7 +414,7 @@
 
                         <Label Grid.Row="2"># Cards</Label>
                         <TextBox IsReadOnly="True" Grid.Row="2" HorizontalAlignment="Stretch" Grid.Column="1"
-                                 Text="{Binding ActiveBinder.TotalNumberOfCards, Mode=OneWay}" VerticalContentAlignment="Center" />
+                                 Text="{Binding ActiveBinder.TotalNumberOfCardsSummary, Mode=OneWay}" VerticalContentAlignment="Center" />
 
                         <Label Grid.Row="3">Bulk Value</Label>
                         <TextBox IsReadOnly="True" Grid.Row="3" HorizontalAlignment="Stretch" Grid.Column="1"

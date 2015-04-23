@@ -49,6 +49,14 @@
         </StackPanel>
 
         <StackPanel Orientation="Horizontal">
+            <Label VerticalAlignment="Center" MinWidth="70">MKM Sell:</Label>
+            <TextBlock VerticalAlignment="Center" Margin="2,0,0,0"
+                                                                   Text="{Binding CardPrice.PriceSell, Mode=OneWay, StringFormat={}{0:F2}€}"
+                                                                               MinWidth="70" HorizontalAlignment="Right"
+                                                                   ToolTip="MKM Sell Price" />
+        </StackPanel>
+
+		<StackPanel Orientation="Horizontal">
             <Label VerticalAlignment="Center" MinWidth="70">MKM Foil:</Label>
             <TextBlock VerticalAlignment="Center" Margin="2,0,0,0"
                                                    Text="{Binding CardPrice.PriceFoilLow, Mode=OneWay, StringFormat={}{0:F2}€}"

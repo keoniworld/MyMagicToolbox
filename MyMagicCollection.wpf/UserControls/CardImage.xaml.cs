@@ -76,13 +76,29 @@ namespace MyMagicCollection.wpf.UserControls
             }
 
             private set
-            {
-                _setDefinition = value;
-                RaisePropertyChanges("SetDefinition");
-            }
+			{
+				_setDefinition = value;
+				RaisePropertyChanges("SetDefinition");
+			}
         }
 
-        public static void OnImageChanged(
+
+		private MagicCardPrice _cardPrice;
+        public MagicCardPrice CardPrice
+		{
+			get
+			{
+				return _cardPrice;
+			}
+
+			private set
+			{
+				_cardPrice = value;
+				RaisePropertyChanges("CardPrice");
+			}
+		}
+
+		public static void OnImageChanged(
             DependencyObject d,
             DependencyPropertyChangedEventArgs e)
         {
@@ -98,14 +114,26 @@ namespace MyMagicCollection.wpf.UserControls
                     ? StaticMagicData.SetDefinitionsBySetCode[card.SetCode]
                     : null;
 
+                MagicCardPrice cardPrice = null;
                 var cardFileName = string.Empty;
                 Task.Factory.StartNew(() =>
                 {
+                    cardPrice = StaticPriceDatabase.FindPrice(card, false, false, "CardImage control", false);
+
+                    if (cardPrice != null && string.IsNullOrWhiteSpace(cardPrice.ImagePath))
+                    {
+                        // Force first price cache update to get image URL
+                        StaticPriceDatabase.UpdatePrice(card, cardPrice, true, "CardImage control", false);
+                    }
+
                     var download = new CardImageDownload(instance._notificationCenter);
-                    cardFileName = download.DownloadImage(card);
+                    cardFileName = download.DownloadImage(card, cardPrice);
                 }).ContinueWith(task =>
                     {
-                        if (string.IsNullOrWhiteSpace(cardFileName))
+						// Lookup card price:
+						instance.CardPrice = cardPrice;
+
+						if (string.IsNullOrWhiteSpace(cardFileName))
                         {
                             instance.imageControl.Source = instance._emptyImage;
                         }

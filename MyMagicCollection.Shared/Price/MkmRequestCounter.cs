@@ -6,33 +6,59 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CsvHelper;
+using Minimod.NotificationObject;
 
 namespace MyMagicCollection.Shared.Price
 {
-    public class MkmRequestCounter
+    public class MkmRequestCounter : NotificationObject
     {
+        public DateTime _date;
         private string _storageFileName;
         private object _sync = new object();
         private bool _savedHighCount;
 
+        private int _count;
+
         public MkmRequestCounter()
         {
             _storageFileName = Path.Combine(PathHelper.UserDataFolder, "MKMRequestCounter.dat");
-            Day = DateTime.UtcNow.Date;
+            Date = DateTime.UtcNow.Date;
             Load();
         }
 
-        public int Count { get; set; }
+        public int Count
+        {
+            get
+            {
+                return _count;
+            }
+            private set
+            {
+                _count = value;
+                RaisePropertyChanged(() => Count);
+            }
+        }
 
-        public DateTime Day { get; set; }
+        public DateTime Date
+        {
+            get
+            {
+                return _date;
+            }
+            private set
+            {
+                _date = value;
+                RaisePropertyChanged(() => Count);
+            }
+        }
 
         public bool AddRequest()
         {
             lock (_sync)
             {
-                if (Day.Day != DateTime.UtcNow.Day)
+                if (Date.Date != DateTime.UtcNow.Date)
                 {
-                    Day = DateTime.UtcNow.Date;
+                    Date = DateTime.UtcNow.Date;
                     Count = 0;
                 }
 
@@ -66,7 +92,7 @@ namespace MyMagicCollection.Shared.Price
                     writer.NextRecord();
 
                     writer.WriteField<int>(Count);
-                    writer.WriteField<DateTime>(Day);
+                    writer.WriteField<DateTime>(Date);
                     writer.NextRecord();
                 }
             }
@@ -92,7 +118,7 @@ namespace MyMagicCollection.Shared.Price
                     if (inputCsv.Read())
                     {
                         Count = inputCsv.GetField<int>("Count");
-                        Day = inputCsv.GetField<DateTime>("Day");
+                        Date = inputCsv.GetField<DateTime>("Day");
                     }
                 }
             }

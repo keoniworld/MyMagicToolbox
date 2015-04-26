@@ -14,6 +14,8 @@ namespace MyMagicCollection.Shared.Models
 
         string NameDE { get; }
 
+        string NameMkm { get; }
+
         string SetCode { get; }
 
         string RulesText { get; }

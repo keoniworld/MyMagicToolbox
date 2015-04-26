@@ -496,9 +496,15 @@
         </Grid>
 
         <StatusBar Grid.Row="2" Grid.ColumnSpan="3">
-            <StatusBarItem>
+            <StatusBarItem HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch"> 
                 <TextBlock Text="{Binding StatusBarText}" MaxHeight="14" />
             </StatusBarItem>
+			<StatusBarItem HorizontalAlignment="Right"> 
+				<StackPanel Orientation="Horizontal">
+					<TextBlock>MKM Request Count:</TextBlock>
+					<TextBlock Margin="3,0,0,0" Text="{Binding MkmRequestCounter.Count, Mode=OneWay}" />
+				</StackPanel>
+			</StatusBarItem>
         </StatusBar>
     </Grid>
 </Controls:MetroWindow>

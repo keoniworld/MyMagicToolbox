@@ -81,6 +81,8 @@ namespace MyMagicCollection.Shared.ViewModels
 
         public string NameDE => _definition?.NameDE;
 
+        public string NameMkm => _definition?.NameMkm;
+
         public string RulesText => _definition?.RulesText;
 
         public string RulesTextDE => _definition?.RulesTextDE;

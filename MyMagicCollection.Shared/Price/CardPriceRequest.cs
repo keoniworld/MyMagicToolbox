@@ -11,7 +11,7 @@ namespace MyMagicCollection.Shared.Price
 {
     public class CardPriceRequest
     {
-        private static MkmRequestCounter _requestCounter = new MkmRequestCounter();
+        public static MkmRequestCounter RequestCounter { get; } = new MkmRequestCounter();
 
         private static int _timeoutHelper = 0;
 
@@ -57,6 +57,10 @@ namespace MyMagicCollection.Shared.Price
 
                 var cardName = card.NameEN;
 
+                var cardNameMkm = string.IsNullOrWhiteSpace(card.NameMkm)
+                    ? card.NameEN
+                    : card.NameMkm;
+
                 if (!CheckRequestCount(false, true))
                 {
                     return;
@@ -66,11 +70,34 @@ namespace MyMagicCollection.Shared.Price
                 var helper = new RequestHelper(_notificationCenter, additionalLogText);
                 using (var result = helper.MakeRequest(RequestHelper.CreateGetProductsUrl(cardName, MagicLanguage.English, card.MagicCardType != MagicCardType.Token, null)))
                 {
+                    var exactNameMatch = false;
                     var productNodes = result.Response.Root.Elements("product");
                     foreach (var productNode in productNodes)
                     {
                         var expansion = productNode.Element("expansion");
                         if (expansion == null || !expansion.Value.Equals(setName, StringComparison.InvariantCultureIgnoreCase))
+                        {
+                            continue;
+                        }
+
+                        // Lookup correct version:
+                        var nameNodes = productNode.Elements("name");
+                        foreach (var nameNode in nameNodes)
+                        {
+                            var idLanguage = nameNode.Element("idLanguage");
+                            if (idLanguage != null && idLanguage.Value == "1")
+                            {
+                                var exactProductName = nameNode.Element("productName");
+                                if (exactProductName != null && exactProductName.Value.Equals(cardNameMkm, StringComparison.InvariantCultureIgnoreCase))
+                                {
+                                    // Exact name matches.
+                                    exactNameMatch = true;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if (!exactNameMatch)
                         {
                             continue;
                         }
@@ -95,6 +122,7 @@ namespace MyMagicCollection.Shared.Price
                                 var mkmId = productNode.Element("idProduct");
                                 if (mkmId != null)
                                 {
+                                    cardPrice.MkmId = mkmId.Value;
                                     RequestActualVendorPrice(mkmId.Value, card.NameEN, cardPrice, additionalLogText);
                                 }
                             }
@@ -120,7 +148,7 @@ namespace MyMagicCollection.Shared.Price
                     if (notifyOfPriceUpdate)
                     {
                         cardPrice.RaisePriceChanged();
-                        _requestCounter.Save();
+                        RequestCounter.Save();
                     }
                 }
             }
@@ -128,7 +156,7 @@ namespace MyMagicCollection.Shared.Price
             {
                 if (notifyOfPriceUpdate)
                 {
-                    _requestCounter.Save();
+                    RequestCounter.Save();
                 }
 
                 _notificationCenter.FireNotification(
@@ -153,7 +181,7 @@ namespace MyMagicCollection.Shared.Price
                         "");
                 }
 
-                _requestCounter.Save();
+                RequestCounter.Save();
 
                 ////    var grouped = viewModels.GroupBy(vm => vm.CardNameEN);
                 ////var helper = new RequestHelper();
@@ -271,11 +299,11 @@ namespace MyMagicCollection.Shared.Price
             bool saveRequestCounterFile,
             bool saveRequestCounterFileIfRequestFailed)
         {
-            var result = _requestCounter.AddRequest();
+            var result = RequestCounter.AddRequest();
 
             if (saveRequestCounterFile || (!result && saveRequestCounterFileIfRequestFailed))
             {
-                _requestCounter.Save();
+                RequestCounter.Save();
             }
 
             if (!result)
@@ -301,7 +329,7 @@ namespace MyMagicCollection.Shared.Price
 
             List<MkmSellerArticleData> allSellerData = new List<MkmSellerArticleData>();
             var maxLoops = 1;
-            var maxExtraLoopsForMissingFoil = 2;
+            var maxExtraLoopsForMissingFoil = 1;
 
             var helper = new RequestHelper(_notificationCenter, additionalLogText);
             var startIndex = 1;

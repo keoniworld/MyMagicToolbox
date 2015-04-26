@@ -21,14 +21,24 @@ namespace MyMagicCollection.Shared.Helper
 			_notificationCenter = notificationCenter;
 		}
 
-		public string CreateCardIdPart(MagicCardDefinition card, char delimiter)
+		public string CreateCardIdPart(MagicCardDefinition card, char delimiter, bool useMkmName)
 		{
 			if (!card.NumberInSet.HasValue || string.IsNullOrWhiteSpace(card.SetCode))
 			{
 				return null;
 			}
 
-			if (card.MagicCardType == MagicCardType.Token)
+            var cardName = card.NameEN;
+            if (useMkmName && !string.IsNullOrWhiteSpace(card.NameMkm))
+            {
+                cardName = card.NameMkm
+                    .Replace("\\", "-")
+                    .Replace("(", "")
+                    .Replace(")", "")
+                    .Replace("/", "-");
+            }
+
+            if (card.MagicCardType == MagicCardType.Token)
 			{
 				var setName = StaticMagicData.SetDefinitionsBySetCode[card.SetCode].Name
                     .ToLowerInvariant()
@@ -39,7 +49,7 @@ namespace MyMagicCollection.Shared.Helper
 				   CultureInfo.InvariantCulture,
 				   "{2}{0}{2}{1}.jpg",
 				   setName,
-				   card.NameEN.ToLowerInvariant().Replace(" token", "").Replace(" ", "-"),
+                   cardName.ToLowerInvariant(),
 				   delimiter);
 			}
 
@@ -52,24 +62,29 @@ namespace MyMagicCollection.Shared.Helper
 			   delimiter);
 		}
 
-		public string DownloadImage(MagicCardDefinition card)
+		public string DownloadImage(MagicCardDefinition card, MagicCardPrice cardPrice)
 		{
 			if (card == null)
 			{
 				return null;
 			}
 
-			FileInfo localStorage = null;
+            if (cardPrice == null)
+            {
+                cardPrice = StaticPriceDatabase.FindPrice(card, false, false, "CardImage download", false);
+            }
+
+            FileInfo localStorage = null;
 			try
 			{
 				var cache = PathHelper.ImageCacheFolder;
-				localStorage = new FileInfo(Path.Combine(cache, CreateCardIdPart(card, '\\').TrimStart('\\')));
+				localStorage = new FileInfo(Path.Combine(cache, CreateCardIdPart(card, '\\', true).TrimStart('\\')));
 				if (localStorage.Exists)
 				{
 					return localStorage.FullName;
 				}
 
-				var url = CreateCardIdPart(card, '/');
+				var url = CreateCardIdPart(card, '/', false);
 				if (url == null)
 				{
 					return null;
@@ -88,7 +103,11 @@ namespace MyMagicCollection.Shared.Helper
 						? "http://magiccards.info/scans/en"
 						: "http://magiccards.info/extras/token";
 
-					client.DownloadFile(new Uri(rootUrl + url), localStorage.FullName);
+                    var fullUrl = !string.IsNullOrWhiteSpace(cardPrice.ImagePath)
+                        ? "http://www.magickartenmarkt.de/" + cardPrice.ImagePath
+                        : rootUrl + url;
+
+                    client.DownloadFile(new Uri(fullUrl), localStorage.FullName);
 				}
 
 				stopwatch.Stop();

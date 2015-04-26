@@ -43,10 +43,12 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
             <!-- Legality: -->
-            <TextBlock Grid.ColumnSpan="2" HorizontalAlignment="Center" FontWeight="Bold" FontSize="13.333" Grid.Row="1">Legality</TextBlock>
+            <TextBlock Grid.ColumnSpan="2" HorizontalAlignment="Center" FontWeight="Bold" FontSize="13.333" Grid.Row="1" Margin="0,5,0,0">Legality</TextBlock>
             <StackPanel Grid.Row="2" Margin="3,0,0,0">
 
                 <CheckBox IsEnabled="False" IsChecked="{Binding SelectedCard.LegalityVintage, Mode=OneWay}">Vintage</CheckBox>
@@ -55,8 +57,12 @@
                 <CheckBox IsEnabled="False" IsChecked="{Binding SelectedCard.LegalityStandard, Mode=OneWay}">Standard</CheckBox>
                 <CheckBox IsEnabled="False" IsChecked="{Binding SelectedCard.LegalityCommander, Mode=OneWay}">Commander</CheckBox>
                 <CheckBox IsEnabled="False" IsChecked="{Binding SelectedCard.LegalityFrenchCommander, Mode=OneWay}">French Cmd</CheckBox>
-                <CheckBox IsEnabled="False" IsChecked="{Binding SelectedCard.LegalityPapuer, Mode=OneWay}">Pauper</CheckBox>
+                <CheckBox IsEnabled="False" IsChecked="{Binding SelectedCard.LegalityPauper, Mode=OneWay}">Pauper</CheckBox>
             </StackPanel>
+			
+			<!-- Price: -->
+            <TextBlock Grid.ColumnSpan="2" HorizontalAlignment="Center" FontWeight="Bold" FontSize="13.333" Grid.Row="3">Price</TextBlock>
+            <userControl:CardPriceControl Grid.Row="4" Margin="3,0,0,0" ShowLastUpdateDate="False" CardPrice="{Binding CardPrice}" />
         </Grid>
     </Grid>
 </UserControl>

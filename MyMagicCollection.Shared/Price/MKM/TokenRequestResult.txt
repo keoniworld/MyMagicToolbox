@@ -1,0 +1,933 @@
+<response>
+  <product>
+    <idProduct>248070</idProduct>
+    <idMetaproduct>203519</idMetaproduct>
+    <idGame>1</idGame>
+    <countReprints>1</countReprints>
+    <name>
+      <idLanguage>1</idLanguage>
+      <languageName>English</languageName>
+      <productName>Bear/Bird Token</productName>
+    </name>
+    <name>
+      <idLanguage>2</idLanguage>
+      <languageName>French</languageName>
+      <productName>Bear/Bird Token</productName>
+    </name>
+    <name>
+      <idLanguage>3</idLanguage>
+      <languageName>German</languageName>
+      <productName>Bear/Bird Token</productName>
+    </name>
+    <name>
+      <idLanguage>4</idLanguage>
+      <languageName>Spanish</languageName>
+      <productName>Bear/Bird Token</productName>
+    </name>
+    <name>
+      <idLanguage>5</idLanguage>
+      <languageName>Italian</languageName>
+      <productName>Bear/Bird Token</productName>
+    </name>
+    <website>/Products/Singles/Your+Move+Games+Tokens/Bear%2FBird+Token</website>
+    <image>./img/cards/Your_Move_Games_Tokens/bearbird_token.jpg</image>
+    <category>
+      <idCategory>1</idCategory>
+      <categoryName>Magic Single</categoryName>
+    </category>
+    <priceGuide>
+      <SELL>0</SELL>
+      <LOW>0.99</LOW>
+      <LOWEX>0.99</LOWEX>
+      <LOWFOIL>0</LOWFOIL>
+      <AVG>1.49</AVG>
+      <TREND>1.27</TREND>
+    </priceGuide>
+    <expansion>Your Move Games Tokens</expansion>
+    <expIcon>193</expIcon>
+    <number></number>
+    <rarity>Token</rarity>
+  </product>
+  <product>
+    <idProduct>248102</idProduct>
+    <idMetaproduct>203549</idMetaproduct>
+    <idGame>1</idGame>
+    <countReprints>1</countReprints>
+    <name>
+      <idLanguage>1</idLanguage>
+      <languageName>English</languageName>
+      <productName>Beast/Bird Token</productName>
+    </name>
+    <name>
+      <idLanguage>2</idLanguage>
+      <languageName>French</languageName>
+      <productName>Beast/Bird Token</productName>
+    </name>
+    <name>
+      <idLanguage>3</idLanguage>
+      <languageName>German</languageName>
+      <productName>Beast/Bird Token</productName>
+    </name>
+    <name>
+      <idLanguage>4</idLanguage>
+      <languageName>Spanish</languageName>
+      <productName>Beast/Bird Token</productName>
+    </name>
+    <name>
+      <idLanguage>5</idLanguage>
+      <languageName>Italian</languageName>
+      <productName>Beast/Bird Token</productName>
+    </name>
+    <website>/Products/Singles/Your+Move+Games+Tokens/Beast%2FBird+Token</website>
+    <image>./img/cards/Your_Move_Games_Tokens/beastbird_token.jpg</image>
+    <category>
+      <idCategory>1</idCategory>
+      <categoryName>Magic Single</categoryName>
+    </category>
+    <priceGuide>
+      <SELL>0</SELL>
+      <LOW>0.49</LOW>
+      <LOWEX>0.49</LOWEX>
+      <LOWFOIL>0</LOWFOIL>
+      <AVG>0.92</AVG>
+      <TREND>0.86</TREND>
+    </priceGuide>
+    <expansion>Your Move Games Tokens</expansion>
+    <expIcon>193</expIcon>
+    <number></number>
+    <rarity>Token</rarity>
+  </product>
+  <product>
+    <idProduct>18148</idProduct>
+    <idMetaproduct>10032</idMetaproduct>
+    <idGame>1</idGame>
+    <countReprints>2</countReprints>
+    <name>
+      <idLanguage>1</idLanguage>
+      <languageName>English</languageName>
+      <productName>Bird Token (Blue 1/1)</productName>
+    </name>
+    <name>
+      <idLanguage>2</idLanguage>
+      <languageName>French</languageName>
+      <productName>Bird Token (Blue 1/1)</productName>
+    </name>
+    <name>
+      <idLanguage>3</idLanguage>
+      <languageName>German</languageName>
+      <productName>Bird Token (Blue 1/1)</productName>
+    </name>
+    <name>
+      <idLanguage>4</idLanguage>
+      <languageName>Spanish</languageName>
+      <productName>Bird Token (Blue 1/1)</productName>
+    </name>
+    <name>
+      <idLanguage>5</idLanguage>
+      <languageName>Italian</languageName>
+      <productName>Bird Token (Blue 1/1)</productName>
+    </name>
+    <website>/Products/Singles/Player+Rewards+Promos/Bird+Token+%28Blue+1%2F1%29</website>
+    <image>./img/cards/Player_Rewards_Promos/bird_token_blue_11.jpg</image>
+    <category>
+      <idCategory>1</idCategory>
+      <categoryName>Magic Single</categoryName>
+    </category>
+    <priceGuide>
+      <SELL>3.7</SELL>
+      <LOW>3</LOW>
+      <LOWEX>3</LOWEX>
+      <LOWFOIL>0</LOWFOIL>
+      <AVG>4.56</AVG>
+      <TREND>4.13</TREND>
+    </priceGuide>
+    <expansion>Player Rewards Promos</expansion>
+    <expIcon>76</expIcon>
+    <number>24</number>
+    <rarity>Token</rarity>
+  </product>
+  <product>
+    <idProduct>19645</idProduct>
+    <idMetaproduct>10032</idMetaproduct>
+    <idGame>1</idGame>
+    <countReprints>2</countReprints>
+    <name>
+      <idLanguage>1</idLanguage>
+      <languageName>English</languageName>
+      <productName>Bird Token (Blue 1/1)</productName>
+    </name>
+    <name>
+      <idLanguage>2</idLanguage>
+      <languageName>French</languageName>
+      <productName>Bird Token (Blue 1/1)</productName>
+    </name>
+    <name>
+      <idLanguage>3</idLanguage>
+      <languageName>German</languageName>
+      <productName>Bird Token (Blue 1/1)</productName>
+    </name>
+    <name>
+      <idLanguage>4</idLanguage>
+      <languageName>Spanish</languageName>
+      <productName>Bird Token (Blue 1/1)</productName>
+    </name>
+    <name>
+      <idLanguage>5</idLanguage>
+      <languageName>Italian</languageName>
+      <productName>Bird Token (Blue 1/1)</productName>
+    </name>
+    <website>/Products/Singles/Eventide/Bird+Token+%28Blue+1%2F1%29</website>
+    <image>./img/cards/Eventide/bird_token_blue_11.jpg</image>
+    <category>
+      <idCategory>1</idCategory>
+      <categoryName>Magic Single</categoryName>
+    </category>
+    <priceGuide>
+      <SELL>0.15</SELL>
+      <LOW>0.02</LOW>
+      <LOWEX>0.02</LOWEX>
+      <LOWFOIL>0</LOWFOIL>
+      <AVG>0.19</AVG>
+      <TREND>0.1</TREND>
+    </priceGuide>
+    <expansion>Eventide</expansion>
+    <expIcon>96</expIcon>
+    <number>T02</number>
+    <rarity>Token</rarity>
+  </product>
+  <product>
+    <idProduct>266082</idProduct>
+    <idMetaproduct>209424</idMetaproduct>
+    <idGame>1</idGame>
+    <countReprints>1</countReprints>
+    <name>
+      <idLanguage>1</idLanguage>
+      <languageName>English</languageName>
+      <productName>Bird Token (Blue 2/2 Enchantment)</productName>
+    </name>
+    <name>
+      <idLanguage>2</idLanguage>
+      <languageName>French</languageName>
+      <productName>Bird Token (Blue 2/2 Enchantment)</productName>
+    </name>
+    <name>
+      <idLanguage>3</idLanguage>
+      <languageName>German</languageName>
+      <productName>Bird Token (Blue 2/2 Enchantment)</productName>
+    </name>
+    <name>
+      <idLanguage>4</idLanguage>
+      <languageName>Spanish</languageName>
+      <productName>Bird Token (Blue 2/2 Enchantment)</productName>
+    </name>
+    <name>
+      <idLanguage>5</idLanguage>
+      <languageName>Italian</languageName>
+      <productName>Bird Token (Blue 2/2 Enchantment)</productName>
+    </name>
+    <website>/Products/Singles/Born+of+the+Gods/Bird+Token+%28Blue+2%2F2+Enchantment%29</website>
+    <image>./img/cards/Born_of_the_Gods/bird_token_blue_22_enchantment.jpg</image>
+    <category>
+      <idCategory>1</idCategory>
+      <categoryName>Magic Single</categoryName>
+    </category>
+    <priceGuide>
+      <SELL>0.04</SELL>
+      <LOW>0.02</LOW>
+      <LOWEX>0.02</LOWEX>
+      <LOWFOIL>0</LOWFOIL>
+      <AVG>0.09</AVG>
+      <TREND>0.04</TREND>
+    </priceGuide>
+    <expansion>Born of the Gods</expansion>
+    <expIcon>246</expIcon>
+    <number>T4</number>
+    <rarity>Token</rarity>
+  </product>
+  <product>
+    <idProduct>264340</idProduct>
+    <idMetaproduct>208825</idMetaproduct>
+    <idGame>1</idGame>
+    <countReprints>3</countReprints>
+    <name>
+      <idLanguage>1</idLanguage>
+      <languageName>English</languageName>
+      <productName>Bird Token (Blue 2/2)</productName>
+    </name>
+    <name>
+      <idLanguage>2</idLanguage>
+      <languageName>French</languageName>
+      <productName>Bird Token (Blue 2/2)</productName>
+    </name>
+    <name>
+      <idLanguage>3</idLanguage>
+      <languageName>German</languageName>
+      <productName>Bird Token (Blue 2/2)</productName>
+    </name>
+    <name>
+      <idLanguage>4</idLanguage>
+      <languageName>Spanish</languageName>
+      <productName>Bird Token (Blue 2/2)</productName>
+    </name>
+    <name>
+      <idLanguage>5</idLanguage>
+      <languageName>Italian</languageName>
+      <productName>Bird Token (Blue 2/2)</productName>
+    </name>
+    <website>/Products/Singles/Theros/Bird+Token+%28Blue+2%2F2%29</website>
+    <image>./img/cards/Theros/bird_token_blue_22.jpg</image>
+    <category>
+      <idCategory>1</idCategory>
+      <categoryName>Magic Single</categoryName>
+    </category>
+    <priceGuide>
+      <SELL>0.1</SELL>
+      <LOW>0.02</LOW>
+      <LOWEX>0.02</LOWEX>
+      <LOWFOIL>0</LOWFOIL>
+      <AVG>0.2</AVG>
+      <TREND>0.09</TREND>
+    </priceGuide>
+    <expansion>Theros</expansion>
+    <expIcon>225</expIcon>
+    <number>T4</number>
+    <rarity>Token</rarity>
+  </product>
+  <product>
+    <idProduct>269286</idProduct>
+    <idMetaproduct>208825</idMetaproduct>
+    <idGame>1</idGame>
+    <countReprints>3</countReprints>
+    <name>
+      <idLanguage>1</idLanguage>
+      <languageName>English</languageName>
+      <productName>Bird Token (Blue 2/2)</productName>
+    </name>
+    <name>
+      <idLanguage>2</idLanguage>
+      <languageName>French</languageName>
+      <productName>Bird Token (Blue 2/2)</productName>
+    </name>
+    <name>
+      <idLanguage>3</idLanguage>
+      <languageName>German</languageName>
+      <productName>Bird Token (Blue 2/2)</productName>
+    </name>
+    <name>
+      <idLanguage>4</idLanguage>
+      <languageName>Spanish</languageName>
+      <productName>Bird Token (Blue 2/2)</productName>
+    </name>
+    <name>
+      <idLanguage>5</idLanguage>
+      <languageName>Italian</languageName>
+      <productName>Bird Token (Blue 2/2)</productName>
+    </name>
+    <website>/Products/Singles/Custom+Tokens/Bird+Token+%28Blue+2%2F2%29</website>
+    <image>./img/cards/Custom_Tokens/bird_token_blue_22.jpg</image>
+    <category>
+      <idCategory>1</idCategory>
+      <categoryName>Magic Single</categoryName>
+    </category>
+    <priceGuide>
+      <SELL>0</SELL>
+      <LOW>1.4</LOW>
+      <LOWEX>0</LOWEX>
+      <LOWFOIL>0</LOWFOIL>
+      <AVG>3.46</AVG>
+      <TREND>0</TREND>
+    </priceGuide>
+    <expansion>Custom Tokens</expansion>
+    <expIcon>257</expIcon>
+    <number></number>
+    <rarity>Token</rarity>
+  </product>
+  <product>
+    <idProduct>269308</idProduct>
+    <idMetaproduct>208825</idMetaproduct>
+    <idGame>1</idGame>
+    <countReprints>3</countReprints>
+    <name>
+      <idLanguage>1</idLanguage>
+      <languageName>English</languageName>
+      <productName>Bird Token (Blue 2/2)</productName>
+    </name>
+    <name>
+      <idLanguage>2</idLanguage>
+      <languageName>French</languageName>
+      <productName>Bird Token (Blue 2/2)</productName>
+    </name>
+    <name>
+      <idLanguage>3</idLanguage>
+      <languageName>German</languageName>
+      <productName>Bird Token (Blue 2/2)</productName>
+    </name>
+    <name>
+      <idLanguage>4</idLanguage>
+      <languageName>Spanish</languageName>
+      <productName>Bird Token (Blue 2/2)</productName>
+    </name>
+    <name>
+      <idLanguage>5</idLanguage>
+      <languageName>Italian</languageName>
+      <productName>Bird Token (Blue 2/2)</productName>
+    </name>
+    <website>/Products/Singles/Starcity+Games%3A+Commemorative+Tokens/Bird+Token+%28Blue+2%2F2%29</website>
+    <image>./img/cards/Starcity_Games_Commemorative_Tokens/bird_token_blue_22.jpg</image>
+    <category>
+      <idCategory>1</idCategory>
+      <categoryName>Magic Single</categoryName>
+    </category>
+    <priceGuide>
+      <SELL>3.5</SELL>
+      <LOW>99.99</LOW>
+      <LOWEX>0</LOWEX>
+      <LOWFOIL>0</LOWFOIL>
+      <AVG>99.99</AVG>
+      <TREND>3.5</TREND>
+    </priceGuide>
+    <expansion>Starcity Games: Commemorative Tokens</expansion>
+    <expIcon>217</expIcon>
+    <number></number>
+    <rarity>Token</rarity>
+  </product>
+  <product>
+    <idProduct>21821</idProduct>
+    <idMetaproduct>10805</idMetaproduct>
+    <idGame>1</idGame>
+    <countReprints>6</countReprints>
+    <name>
+      <idLanguage>1</idLanguage>
+      <languageName>English</languageName>
+      <productName>Bird Token (White 1/1)</productName>
+    </name>
+    <name>
+      <idLanguage>2</idLanguage>
+      <languageName>French</languageName>
+      <productName>Bird Token (White 1/1)</productName>
+    </name>
+    <name>
+      <idLanguage>3</idLanguage>
+      <languageName>German</languageName>
+      <productName>Bird Token (White 1/1)</productName>
+    </name>
+    <name>
+      <idLanguage>4</idLanguage>
+      <languageName>Spanish</languageName>
+      <productName>Bird Token (White 1/1)</productName>
+    </name>
+    <name>
+      <idLanguage>5</idLanguage>
+      <languageName>Italian</languageName>
+      <productName>Bird Token (White 1/1)</productName>
+    </name>
+    <website>/Products/Singles/Zendikar/Bird+Token+%28White+1%2F1%29</website>
+    <image>./img/cards/Zendikar/bird_token_white_11.jpg</image>
+    <category>
+      <idCategory>1</idCategory>
+      <categoryName>Magic Single</categoryName>
+    </category>
+    <priceGuide>
+      <SELL>0.18</SELL>
+      <LOW>0.02</LOW>
+      <LOWEX>0.02</LOWEX>
+      <LOWFOIL>0</LOWFOIL>
+      <AVG>0.16</AVG>
+      <TREND>0.15</TREND>
+    </priceGuide>
+    <expansion>Zendikar</expansion>
+    <expIcon>111</expIcon>
+    <number>T2</number>
+    <rarity>Token</rarity>
+  </product>
+  <product>
+    <idProduct>258544</idProduct>
+    <idMetaproduct>10805</idMetaproduct>
+    <idGame>1</idGame>
+    <countReprints>6</countReprints>
+    <name>
+      <idLanguage>1</idLanguage>
+      <languageName>English</languageName>
+      <productName>Bird Token (White 1/1)</productName>
+    </name>
+    <name>
+      <idLanguage>2</idLanguage>
+      <languageName>French</languageName>
+      <productName>Bird Token (White 1/1)</productName>
+    </name>
+    <name>
+      <idLanguage>3</idLanguage>
+      <languageName>German</languageName>
+      <productName>Bird Token (White 1/1)</productName>
+    </name>
+    <name>
+      <idLanguage>4</idLanguage>
+      <languageName>Spanish</languageName>
+      <productName>Bird Token (White 1/1)</productName>
+    </name>
+    <name>
+      <idLanguage>5</idLanguage>
+      <languageName>Italian</languageName>
+      <productName>Bird Token (White 1/1)</productName>
+    </name>
+    <website>/Products/Singles/Return+to+Ravnica/Bird+Token+%28White+1%2F1%29</website>
+    <image>./img/cards/Return_to_Ravnica/bird_token_white_11.jpg</image>
+    <category>
+      <idCategory>1</idCategory>
+      <categoryName>Magic Single</categoryName>
+    </category>
+    <priceGuide>
+      <SELL>0.05</SELL>
+      <LOW>0.02</LOW>
+      <LOWEX>0.02</LOWEX>
+      <LOWFOIL>0</LOWFOIL>
+      <AVG>0.09</AVG>
+      <TREND>0.05</TREND>
+    </priceGuide>
+    <expansion>Return to Ravnica</expansion>
+    <expIcon>121</expIcon>
+    <number>T1</number>
+    <rarity>Token</rarity>
+  </product>
+  <product>
+    <idProduct>266081</idProduct>
+    <idMetaproduct>10805</idMetaproduct>
+    <idGame>1</idGame>
+    <countReprints>6</countReprints>
+    <name>
+      <idLanguage>1</idLanguage>
+      <languageName>English</languageName>
+      <productName>Bird Token (White 1/1)</productName>
+    </name>
+    <name>
+      <idLanguage>2</idLanguage>
+      <languageName>French</languageName>
+      <productName>Bird Token (White 1/1)</productName>
+    </name>
+    <name>
+      <idLanguage>3</idLanguage>
+      <languageName>German</languageName>
+      <productName>Bird Token (White 1/1)</productName>
+    </name>
+    <name>
+      <idLanguage>4</idLanguage>
+      <languageName>Spanish</languageName>
+      <productName>Bird Token (White 1/1)</productName>
+    </name>
+    <name>
+      <idLanguage>5</idLanguage>
+      <languageName>Italian</languageName>
+      <productName>Bird Token (White 1/1)</productName>
+    </name>
+    <website>/Products/Singles/Born+of+the+Gods/Bird+Token+%28White+1%2F1%29</website>
+    <image>./img/cards/Born_of_the_Gods/bird_token_white_11.jpg</image>
+    <category>
+      <idCategory>1</idCategory>
+      <categoryName>Magic Single</categoryName>
+    </category>
+    <priceGuide>
+      <SELL>0.04</SELL>
+      <LOW>0.02</LOW>
+      <LOWEX>0.02</LOWEX>
+      <LOWFOIL>0</LOWFOIL>
+      <AVG>0.13</AVG>
+      <TREND>0.06</TREND>
+    </priceGuide>
+    <expansion>Born of the Gods</expansion>
+    <expIcon>246</expIcon>
+    <number>T1</number>
+    <rarity>Token</rarity>
+  </product>
+  <product>
+    <idProduct>269805</idProduct>
+    <idMetaproduct>10805</idMetaproduct>
+    <idGame>1</idGame>
+    <countReprints>6</countReprints>
+    <name>
+      <idLanguage>1</idLanguage>
+      <languageName>English</languageName>
+      <productName>Bird Token (White 1/1)</productName>
+    </name>
+    <name>
+      <idLanguage>2</idLanguage>
+      <languageName>French</languageName>
+      <productName>Bird Token (White 1/1)</productName>
+    </name>
+    <name>
+      <idLanguage>3</idLanguage>
+      <languageName>German</languageName>
+      <productName>Bird Token (White 1/1)</productName>
+    </name>
+    <name>
+      <idLanguage>4</idLanguage>
+      <languageName>Spanish</languageName>
+      <productName>Bird Token (White 1/1)</productName>
+    </name>
+    <name>
+      <idLanguage>5</idLanguage>
+      <languageName>Italian</languageName>
+      <productName>Bird Token (White 1/1)</productName>
+    </name>
+    <website>/Products/Singles/Starcity+Games%3A+Creature+Collection/Bird+Token+%28White+1%2F1%29</website>
+    <image>./img/cards/Starcity_Games_Creature_Collection/bird_token_white_11.jpg</image>
+    <category>
+      <idCategory>1</idCategory>
+      <categoryName>Magic Single</categoryName>
+    </category>
+    <priceGuide>
+      <SELL>0</SELL>
+      <LOW>2.8</LOW>
+      <LOWEX>0</LOWEX>
+      <LOWFOIL>0</LOWFOIL>
+      <AVG>8.02</AVG>
+      <TREND>0.02</TREND>
+    </priceGuide>
+    <expansion>Starcity Games: Creature Collection</expansion>
+    <expIcon>217</expIcon>
+    <number></number>
+    <rarity>Token</rarity>
+  </product>
+  <product>
+    <idProduct>261719</idProduct>
+    <idMetaproduct>10805</idMetaproduct>
+    <idGame>1</idGame>
+    <countReprints>6</countReprints>
+    <name>
+      <idLanguage>1</idLanguage>
+      <languageName>English</languageName>
+      <productName>Bird Token (White 1/1)</productName>
+    </name>
+    <name>
+      <idLanguage>2</idLanguage>
+      <languageName>French</languageName>
+      <productName>Bird Token (White 1/1)</productName>
+    </name>
+    <name>
+      <idLanguage>3</idLanguage>
+      <languageName>German</languageName>
+      <productName>Bird Token (White 1/1)</productName>
+    </name>
+    <name>
+      <idLanguage>4</idLanguage>
+      <languageName>Spanish</languageName>
+      <productName>Bird Token (White 1/1)</productName>
+    </name>
+    <name>
+      <idLanguage>5</idLanguage>
+      <languageName>Italian</languageName>
+      <productName>Bird Token (White 1/1)</productName>
+    </name>
+    <website>/Products/Singles/League+Tokens/Bird+Token+%28White+1%2F1%29</website>
+    <image>./img/cards/League_Tokens/bird_token_white_11.jpg</image>
+    <category>
+      <idCategory>1</idCategory>
+      <categoryName>Magic Single</categoryName>
+    </category>
+    <priceGuide>
+      <SELL>0.38</SELL>
+      <LOW>0.08</LOW>
+      <LOWEX>0</LOWEX>
+      <LOWFOIL>0</LOWFOIL>
+      <AVG>0.53</AVG>
+      <TREND>0.37</TREND>
+    </priceGuide>
+    <expansion>League Tokens</expansion>
+    <expIcon>333</expIcon>
+    <number>1</number>
+    <rarity>Token</rarity>
+  </product>
+  <product>
+    <idProduct>282204</idProduct>
+    <idMetaproduct>10805</idMetaproduct>
+    <idGame>1</idGame>
+    <countReprints>6</countReprints>
+    <name>
+      <idLanguage>1</idLanguage>
+      <languageName>English</languageName>
+      <productName>Bird Token (White 1/1)</productName>
+    </name>
+    <name>
+      <idLanguage>2</idLanguage>
+      <languageName>French</languageName>
+      <productName>Bird Token (White 1/1)</productName>
+    </name>
+    <name>
+      <idLanguage>3</idLanguage>
+      <languageName>German</languageName>
+      <productName>Bird Token (White 1/1)</productName>
+    </name>
+    <name>
+      <idLanguage>4</idLanguage>
+      <languageName>Spanish</languageName>
+      <productName>Bird Token (White 1/1)</productName>
+    </name>
+    <name>
+      <idLanguage>5</idLanguage>
+      <languageName>Italian</languageName>
+      <productName>Bird Token (White 1/1)</productName>
+    </name>
+    <website>/Products/Singles/GamingEtc+Tokens/Bird+Token+%28White+1%2F1%29</website>
+    <image>./img/cards/GamingEtc_Tokens/bird_token_white_11.jpg</image>
+    <category>
+      <idCategory>1</idCategory>
+      <categoryName>Magic Single</categoryName>
+    </category>
+    <priceGuide>
+      <SELL>0</SELL>
+      <LOW>0</LOW>
+      <LOWEX>0</LOWEX>
+      <LOWFOIL>0</LOWFOIL>
+      <AVG>0</AVG>
+      <TREND>0</TREND>
+    </priceGuide>
+    <expansion>GamingEtc Tokens</expansion>
+    <expIcon>202</expIcon>
+    <number>203</number>
+    <rarity>Token</rarity>
+  </product>
+  <product>
+    <idProduct>241963</idProduct>
+    <idMetaproduct>200458</idMetaproduct>
+    <idGame>1</idGame>
+    <countReprints>2</countReprints>
+    <name>
+      <idLanguage>1</idLanguage>
+      <languageName>English</languageName>
+      <productName>Bird Token (White 3/3)</productName>
+    </name>
+    <name>
+      <idLanguage>2</idLanguage>
+      <languageName>French</languageName>
+      <productName>Bird Token (White 3/3)</productName>
+    </name>
+    <name>
+      <idLanguage>3</idLanguage>
+      <languageName>German</languageName>
+      <productName>Bird Token (White 3/3)</productName>
+    </name>
+    <name>
+      <idLanguage>4</idLanguage>
+      <languageName>Spanish</languageName>
+      <productName>Bird Token (White 3/3)</productName>
+    </name>
+    <name>
+      <idLanguage>5</idLanguage>
+      <languageName>Italian</languageName>
+      <productName>Bird Token (White 3/3)</productName>
+    </name>
+    <website>/Products/Singles/Magic+2011/Bird+Token+%28White+3%2F3%29</website>
+    <image>./img/cards/Magic_2011/bird_token_white_33.jpg</image>
+    <category>
+      <idCategory>1</idCategory>
+      <categoryName>Magic Single</categoryName>
+    </category>
+    <priceGuide>
+      <SELL>0.06</SELL>
+      <LOW>0.02</LOW>
+      <LOWEX>0.02</LOWEX>
+      <LOWFOIL>0</LOWFOIL>
+      <AVG>0.11</AVG>
+      <TREND>0.03</TREND>
+    </priceGuide>
+    <expansion>Magic 2011</expansion>
+    <expIcon>159</expIcon>
+    <number>T2</number>
+    <rarity>Token</rarity>
+  </product>
+  <product>
+    <idProduct>248062</idProduct>
+    <idMetaproduct>200458</idMetaproduct>
+    <idGame>1</idGame>
+    <countReprints>2</countReprints>
+    <name>
+      <idLanguage>1</idLanguage>
+      <languageName>English</languageName>
+      <productName>Bird Token (White 3/3)</productName>
+    </name>
+    <name>
+      <idLanguage>2</idLanguage>
+      <languageName>French</languageName>
+      <productName>Bird Token (White 3/3)</productName>
+    </name>
+    <name>
+      <idLanguage>3</idLanguage>
+      <languageName>German</languageName>
+      <productName>Bird Token (White 3/3)</productName>
+    </name>
+    <name>
+      <idLanguage>4</idLanguage>
+      <languageName>Spanish</languageName>
+      <productName>Bird Token (White 3/3)</productName>
+    </name>
+    <name>
+      <idLanguage>5</idLanguage>
+      <languageName>Italian</languageName>
+      <productName>Bird Token (White 3/3)</productName>
+    </name>
+    <website>/Products/Singles/Magic+2012/Bird+Token+%28White+3%2F3%29</website>
+    <image>./img/cards/Magic_2012/bird_token_white_33.jpg</image>
+    <category>
+      <idCategory>1</idCategory>
+      <categoryName>Magic Single</categoryName>
+    </category>
+    <priceGuide>
+      <SELL>0.03</SELL>
+      <LOW>0.02</LOW>
+      <LOWEX>0.02</LOWEX>
+      <LOWFOIL>0</LOWFOIL>
+      <AVG>0.1</AVG>
+      <TREND>0.04</TREND>
+    </priceGuide>
+    <expansion>Magic 2012</expansion>
+    <expIcon>192</expIcon>
+    <number>T1</number>
+    <rarity>Token</rarity>
+  </product>
+  <product>
+    <idProduct>269740</idProduct>
+    <idMetaproduct>210427</idMetaproduct>
+    <idGame>1</idGame>
+    <countReprints>2</countReprints>
+    <name>
+      <idLanguage>1</idLanguage>
+      <languageName>English</languageName>
+      <productName>Bird Token (White 3/4)</productName>
+    </name>
+    <name>
+      <idLanguage>2</idLanguage>
+      <languageName>French</languageName>
+      <productName>Bird Token (White 3/4)</productName>
+    </name>
+    <name>
+      <idLanguage>3</idLanguage>
+      <languageName>German</languageName>
+      <productName>Bird Token (White 3/4)</productName>
+    </name>
+    <name>
+      <idLanguage>4</idLanguage>
+      <languageName>Spanish</languageName>
+      <productName>Bird Token (White 3/4)</productName>
+    </name>
+    <name>
+      <idLanguage>5</idLanguage>
+      <languageName>Italian</languageName>
+      <productName>Bird Token (White 3/4)</productName>
+    </name>
+    <website>/Products/Singles/Khans+of+Tarkir/Bird+Token+%28White+3%2F4%29</website>
+    <image>./img/cards/Khans_of_Tarkir/bird_token_white_34.jpg</image>
+    <category>
+      <idCategory>1</idCategory>
+      <categoryName>Magic Single</categoryName>
+    </category>
+    <priceGuide>
+      <SELL>0.2</SELL>
+      <LOW>0.02</LOW>
+      <LOWEX>0.02</LOWEX>
+      <LOWFOIL>0</LOWFOIL>
+      <AVG>0.37</AVG>
+      <TREND>0.21</TREND>
+    </priceGuide>
+    <expansion>Khans of Tarkir</expansion>
+    <expIcon>255</expIcon>
+    <number>T1</number>
+    <rarity>Token</rarity>
+  </product>
+  <product>
+    <idProduct>271413</idProduct>
+    <idMetaproduct>210427</idMetaproduct>
+    <idGame>1</idGame>
+    <countReprints>2</countReprints>
+    <name>
+      <idLanguage>1</idLanguage>
+      <languageName>English</languageName>
+      <productName>Bird Token (White 3/4)</productName>
+    </name>
+    <name>
+      <idLanguage>2</idLanguage>
+      <languageName>French</languageName>
+      <productName>Bird Token (White 3/4)</productName>
+    </name>
+    <name>
+      <idLanguage>3</idLanguage>
+      <languageName>German</languageName>
+      <productName>Bird Token (White 3/4)</productName>
+    </name>
+    <name>
+      <idLanguage>4</idLanguage>
+      <languageName>Spanish</languageName>
+      <productName>Bird Token (White 3/4)</productName>
+    </name>
+    <name>
+      <idLanguage>5</idLanguage>
+      <languageName>Italian</languageName>
+      <productName>Bird Token (White 3/4)</productName>
+    </name>
+    <website>/Products/Singles/Custom+Tokens/Bird+Token+%28White+3%2F4%29</website>
+    <image>./img/cards/Custom_Tokens/bird_token_white_34.jpg</image>
+    <category>
+      <idCategory>1</idCategory>
+      <categoryName>Magic Single</categoryName>
+    </category>
+    <priceGuide>
+      <SELL>0</SELL>
+      <LOW>4</LOW>
+      <LOWEX>0</LOWEX>
+      <LOWFOIL>4</LOWFOIL>
+      <AVG>0</AVG>
+      <TREND>0</TREND>
+    </priceGuide>
+    <expansion>Custom Tokens</expansion>
+    <expIcon>257</expIcon>
+    <number></number>
+    <rarity>Token</rarity>
+  </product>
+  <product>
+    <idProduct>271353</idProduct>
+    <idMetaproduct>210682</idMetaproduct>
+    <idGame>1</idGame>
+    <countReprints>1</countReprints>
+    <name>
+      <idLanguage>1</idLanguage>
+      <languageName>English</languageName>
+      <productName>Bird Token (White 3/4)</productName>
+    </name>
+    <name>
+      <idLanguage>2</idLanguage>
+      <languageName>French</languageName>
+      <productName>Bird Token (White 3/4)</productName>
+    </name>
+    <name>
+      <idLanguage>3</idLanguage>
+      <languageName>German</languageName>
+      <productName>Bird Token (White 3/4)</productName>
+    </name>
+    <name>
+      <idLanguage>4</idLanguage>
+      <languageName>Spanish</languageName>
+      <productName>Bird Token (White 3/4)</productName>
+    </name>
+    <name>
+      <idLanguage>5</idLanguage>
+      <languageName>Italian</languageName>
+      <productName>Bird Token (White 3/4)</productName>
+    </name>
+    <website>/Products/Singles/Tokens+for+MTG/Bird+Token+%28White+3%2F4%29</website>
+    <image>./img/cards/Tokens_for_MTG/bird_token_white_34.jpg</image>
+    <category>
+      <idCategory>1</idCategory>
+      <categoryName>Magic Single</categoryName>
+    </category>
+    <priceGuide>
+      <SELL>1.9</SELL>
+      <LOW>1.69</LOW>
+      <LOWEX>0</LOWEX>
+      <LOWFOIL>1.69</LOWFOIL>
+      <AVG>1.87</AVG>
+      <TREND>1.76</TREND>
+    </priceGuide>
+    <expansion>Tokens for MTG</expansion>
+    <expIcon>258</expIcon>
+    <number></number>
+    <rarity>Token</rarity>
+  </product>
+</response>

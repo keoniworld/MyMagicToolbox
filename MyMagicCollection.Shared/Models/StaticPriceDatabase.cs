@@ -50,6 +50,10 @@ namespace MyMagicCollection.Shared.Models
 			bool forcePriceUpdate)
         {
             MagicCardPrice price = null;
+            if (definition == null)
+            {
+                return price;
+            }
 
             if (!PriceCache.TryGetValue(definition.CardId, out price))
             {

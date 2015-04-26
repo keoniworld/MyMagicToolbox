@@ -16,64 +16,73 @@ using MyMagicCollection.Shared.Models;
 
 namespace MyMagicCollection.wpf.UserControls
 {
-    /// <summary>
-    /// Interaction logic for CardPriceControl.xaml
-    /// </summary>
-    public partial class CardPriceControl : UserControl
-    {
-        public static readonly DependencyProperty CardPriceProperty =
-           DependencyProperty.Register("CardPrice", typeof(MagicCardPrice),
-           typeof(CardPriceControl), new FrameworkPropertyMetadata(OnImageChanged));
+	/// <summary>
+	/// Interaction logic for CardPriceControl.xaml
+	/// </summary>
+	public partial class CardPriceControl : UserControl
+	{
+		public static readonly DependencyProperty CardPriceProperty =
+		   DependencyProperty.Register("CardPrice", typeof(MagicCardPrice),
+		   typeof(CardPriceControl), new FrameworkPropertyMetadata(OnImageChanged));
 
-        public CardPriceControl()
-        {
-            InitializeComponent();
+		public static readonly DependencyProperty ShowLastUpdateDateProperty =
+		  DependencyProperty.Register("ShowLastUpdateDate", typeof(bool),
+		  typeof(CardPriceControl), new FrameworkPropertyMetadata(true));
 
-            rootControl.DataContext = this;
-        }
+		public CardPriceControl()
+		{
+			InitializeComponent();
 
-        public MagicCardPrice CardPrice
-        {
-            get { return (MagicCardPrice)GetValue(CardPriceProperty); }
-            set { SetValue(CardPriceProperty, value); }
-        }
+			rootControl.DataContext = this;
+		}
 
-        public static void OnImageChanged(
-           DependencyObject d,
-           DependencyPropertyChangedEventArgs e)
-        {
-            ////var instance = d as CardImage;
-            ////if (instance != null)
-            ////{
-            ////    instance.imageControl.Source = instance._emptyImage;
+		public MagicCardPrice CardPrice
+		{
+			get { return (MagicCardPrice)GetValue(CardPriceProperty); }
+			set { SetValue(CardPriceProperty, value); }
+		}
 
-            ////    // Trigger download and display
-            ////    var card = instance.SelectedCard;
+		public bool ShowLastUpdateDate
+		{
+			get { return (bool)GetValue(ShowLastUpdateDateProperty); }
+			set { SetValue(ShowLastUpdateDateProperty, value); }
+		}
+		public static void OnImageChanged(
+		   DependencyObject d,
+		   DependencyPropertyChangedEventArgs e)
+		{
+			var instance = d as CardPriceControl;
+			////if (instance != null)
+			////{
+			////    instance.imageControl.Source = instance._emptyImage;
 
-            ////    instance.SetDefinition = card != null
-            ////        ? StaticMagicData.SetDefinitionsBySetCode[card.SetCode]
-            ////        : null;
+			////    // Trigger download and display
+			////    var card = instance.SelectedCard;
 
-            ////    var cardFileName = string.Empty;
-            ////    Task.Factory.StartNew(() =>
-            ////    {
-            ////        var download = new CardImageDownload(instance._notificationCenter);
-            ////        cardFileName = download.DownloadImage(card);
-            ////    }).ContinueWith(task =>
-            ////    {
-            ////        if (string.IsNullOrWhiteSpace(cardFileName))
-            ////        {
-            ////            instance.imageControl.Source = instance._emptyImage;
-            ////        }
-            ////        else
-            ////        {
-            ////            var uri = new Uri(cardFileName);
-            ////            var bitmap = new BitmapImage(uri);
-            ////            bitmap.Freeze();
-            ////            instance.imageControl.Source = bitmap;
-            ////        }
-            ////    }, TaskScheduler.FromCurrentSynchronizationContext());
-            ////}
-        }
-    }
+			////    instance.SetDefinition = card != null
+			////        ? StaticMagicData.SetDefinitionsBySetCode[card.SetCode]
+			////        : null;
+
+			////    var cardFileName = string.Empty;
+			////    Task.Factory.StartNew(() =>
+			////    {
+			////        var download = new CardImageDownload(instance._notificationCenter);
+			////        cardFileName = download.DownloadImage(card);
+			////    }).ContinueWith(task =>
+			////    {
+			////        if (string.IsNullOrWhiteSpace(cardFileName))
+			////        {
+			////            instance.imageControl.Source = instance._emptyImage;
+			////        }
+			////        else
+			////        {
+			////            var uri = new Uri(cardFileName);
+			////            var bitmap = new BitmapImage(uri);
+			////            bitmap.Freeze();
+			////            instance.imageControl.Source = bitmap;
+			////        }
+			////    }, TaskScheduler.FromCurrentSynchronizationContext());
+			////}
+		}
+	}
 }

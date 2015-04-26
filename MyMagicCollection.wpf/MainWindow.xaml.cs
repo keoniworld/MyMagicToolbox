@@ -216,7 +216,7 @@ namespace MyMagicCollection.wpf
                 var definitions = StaticMagicData.CardDefinitions.ToList();
                 foreach (var card in definitions)
                 {
-                    download.DownloadImage(card);
+                    download.DownloadImage(card, null);
                 }
             });
         }

@@ -20,6 +20,7 @@ using MyMagicCollection.Shared.ViewModels;
 using MyMagicCollection.wpf.Settings;
 using NLog;
 using SettingsProviderNet;
+using MyMagicCollection.Shared.Price;
 
 namespace MyMagicCollection.wpf
 {
@@ -124,7 +125,9 @@ namespace MyMagicCollection.wpf
             }
         }
 
-        public MagicLanguage SelectedLanguage
+		public MkmRequestCounter MkmRequestCounter { get; } = CardPriceRequest.RequestCounter;
+
+		public MagicLanguage SelectedLanguage
         {
             get
             {
@@ -530,7 +533,9 @@ namespace MyMagicCollection.wpf
 
             searchResult = searchResult
 				.DistinctBy(c => c.NameEN)
-				.Where(c=>!c.CardPrice.IsPriceUpToDate())
+				.Where(c=>c.CardPrice != null || !c.CardPrice.IsPriceUpToDate())
+				.OrderBy(c=>!c.CardPrice.CheapestPrice.HasValue)
+				.ThenByDescending(c=> c.CardPrice.CheapestPrice)
 				.ToList();
 
             _notificationCenter.FireNotification(
@@ -551,7 +556,7 @@ namespace MyMagicCollection.wpf
                     {
                         StaticPriceDatabase.Write();
 
-						var seconds = 120;
+						var seconds = 30;
 						_notificationCenter.FireNotification(
 							LogLevel.Debug,
 							string.Format("Waiting {0} seconds to avoid being locked out by MKM", seconds));

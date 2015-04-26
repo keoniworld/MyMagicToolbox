@@ -8,6 +8,8 @@
 
         public string NameDE { get; set; }
 
+        public string NameMkm { get; set; }
+
         public string SetCode { get; set; }
 
         public string CardType { get; set; }

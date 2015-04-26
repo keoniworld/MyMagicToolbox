@@ -31,6 +31,8 @@ namespace MyMagicCollection.Shared.Models
         private decimal? _cheapestPrice;
         private decimal? _cheapestPriceFoil;
 
+        private string _mkmId;
+
         public event EventHandler<EventArgs> PriceChanged;
         public void RaisePriceChanged()
         {
@@ -52,6 +54,19 @@ namespace MyMagicCollection.Shared.Models
             {
                 _cardId = value;
                 RaisePropertyChanged(() => CardId);
+            }
+        }
+
+        public string MkmId
+        {
+            get
+            {
+                return _mkmId;
+            }
+            set
+            {
+                _mkmId = value;
+                RaisePropertyChanged(() => MkmId);
             }
         }
 
@@ -216,7 +231,8 @@ namespace MyMagicCollection.Shared.Models
 		{
 			const int hoursSinceLastCall = 7 * 24;
 
-			return UpdateUtc.HasValue
+			return CheapestPrice.HasValue
+                && UpdateUtc.HasValue
 				&& UpdateUtc.Value.AddHours(hoursSinceLastCall) > DateTime.UtcNow;
         }
 

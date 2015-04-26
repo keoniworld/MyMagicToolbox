@@ -7,5 +7,7 @@
         German = 3,
         Spanish = 4,
         Italian = 5,
-    }
+		Japanese = 6,
+		Chinese = 7,
+	}
 }

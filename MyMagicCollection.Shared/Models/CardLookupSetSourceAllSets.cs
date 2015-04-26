@@ -20,7 +20,6 @@ namespace MyMagicCollection.Shared.Models
             var allSets = StaticMagicData.SetDefinitions
                 .OrderByDescending(s => s.ReleaseDateTime)
                 .ThenBy(s => s.Name)
-
                 .ToList();
 
             allSets.Insert(0, _allSets);

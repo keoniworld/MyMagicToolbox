@@ -33,9 +33,11 @@ namespace MyMagicCollection.Shared.Helper
             {
                 cardName = card.NameMkm
                     .Replace("\\", "-")
+                    .Replace(",", "-")
                     .Replace("(", "")
                     .Replace(")", "")
-                    .Replace("/", "-");
+                    .Replace("/", "-")
+					.Replace("*", "X");
             }
 
             if (card.MagicCardType == MagicCardType.Token)

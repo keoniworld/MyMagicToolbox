@@ -2,6 +2,8 @@
 {
     public class MagicCardDefinition : IMagicCardDefinition
     {
+		private string _displayNameEnCache;
+
         public string CardId { get; set; }
 
         public string NameEN { get; set; }
@@ -9,6 +11,18 @@
         public string NameDE { get; set; }
 
         public string NameMkm { get; set; }
+
+		public string DisplayNameEn
+		{
+			get
+			{
+				if (_displayNameEnCache == null)
+				{
+					_displayNameEnCache = string.IsNullOrWhiteSpace(NameMkm) ? NameEN : NameMkm;
+                }
+				return _displayNameEnCache;
+            }
+		}
 
         public string SetCode { get; set; }
 

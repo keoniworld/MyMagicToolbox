@@ -97,7 +97,7 @@ namespace MyMagicCollection.Shared.FileFormats.MyMagicCollection
 
                 result = new MagicBinder(Consolidate(collectionCards.Where(c => c.Quantity > 0 || c.QuantityTrade > 0 || c.QuantityWanted > 0)));
 
-                using (var inputCsv = new CsvReader(new StringReader(header)))
+                using (var inputCsv = new CsvReader(new StringReader(header), _config))
                 {
                     inputCsv.Configuration.CultureInfo = CultureInfo.InvariantCulture;
 

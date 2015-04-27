@@ -17,7 +17,7 @@ namespace MyMagicCollection.Shared.DataSource
             IMagicCardDefinition definition,
             CardLookup lookup)
         {
-            if (definition.NameEN.IndexOf(lookup.SearchTerm, StringComparison.InvariantCultureIgnoreCase) >= 0)
+            if (definition.DisplayNameEn.IndexOf(lookup.SearchTerm, StringComparison.InvariantCultureIgnoreCase) >= 0)
             {
                 return true;
             }
@@ -56,7 +56,7 @@ namespace MyMagicCollection.Shared.DataSource
 
             if (lookupOptions.DisplayDistinct)
             {
-                result = result.DistinctBy(c => c.NameEN);
+                result = result.DistinctBy(c => c.DisplayNameEn);
             }
 
             return MapResult(result).ToList();

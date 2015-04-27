@@ -287,7 +287,7 @@
                                 <DataGridTextColumn SortMemberPath="Quantity" Header="Qty" Binding="{Binding Quantity, Mode=OneWay}" />
                                 <DataGridTextColumn SortMemberPath="QuantityTrade" Header="Trd" Binding="{Binding QuantityTrade, Mode=OneWay}" />
                                 <DataGridTextColumn SortMemberPath="QuantityWanted" Header="Wnt" Binding="{Binding QuantityWanted, Mode=OneWay}" />
-                                <DataGridTextColumn SortMemberPath="NameEN" Header="Name" Binding="{Binding NameEN, Mode=OneWay}" />
+                                <DataGridTextColumn SortMemberPath="DisplayNameEn" Header="Name" Binding="{Binding DisplayNameEn, Mode=OneWay}" />
 
                                 <DataGridTemplateColumn Header="Set" SortMemberPath="SetCode">
                                     <DataGridTemplateColumn.CellTemplate>

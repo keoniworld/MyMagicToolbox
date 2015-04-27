@@ -8,6 +8,7 @@ using CsvHelper;
 using CsvHelper.Configuration;
 using MyMagicCollection.Shared;
 using MyMagicCollection.Shared.Models;
+using MyMagicCollection.Shared.CSV;
 
 namespace UpdateCardDatabase
 {
@@ -396,7 +397,9 @@ namespace UpdateCardDatabase
                 CultureInfo = CultureInfo.InvariantCulture,
             };
 
-            var availableSets = new Dictionary<string, MagicSetDefinition>();
+			// config.RegisterClassMap(new MagicCardDefinitionCsvMapper());
+
+			var availableSets = new Dictionary<string, MagicSetDefinition>();
 
             var writer = new CsvWriter(textWriter, config);
             writer.WriteHeader<MagicCardDefinition>();
@@ -451,7 +454,18 @@ namespace UpdateCardDatabase
                         continue;
                     }
 
-                    card.RulesText = inputCsv.GetField<string>("ability");
+					// TODO: Add Patch for MKM Name (multiple versions, etc.)
+					string mkmName = null;
+					if (PatchCardDefinitions.PatchMkmCardDefinition.TryGetValue(card.CardId, out mkmName))
+					{
+						card.NameMkm = mkmName;
+					}
+					//else
+					//{
+					//	card.NameMkm = card.NameEN;
+					//}
+
+					card.RulesText = inputCsv.GetField<string>("ability");
                     // .Replace("£", Environment.NewLine);
 
                     card.RulesTextDE = inputCsv.GetField<string>("ability_DE");

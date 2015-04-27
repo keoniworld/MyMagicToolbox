@@ -229,9 +229,11 @@ namespace MyMagicCollection.wpf
                 RaisePropertyChanged(() => SelectedCard);
 
                 if (_selectedCard != null
-					&& !_selectedCard.CardPrice.IsPriceUpOfToday())
+					&& !_selectedCard.CardPrice.IsPriceUpOfToday()
+                    && !string.IsNullOrWhiteSpace(_selectedCard.CardPrice.ImagePath))
                 {
 					// Only fetch card price once a day
+                    // Ignore if image path is not set -> The image download will update the price
                     _selectedCard.UpdatePriceData(true, true, "", true);
                 }
 
@@ -556,13 +558,13 @@ namespace MyMagicCollection.wpf
                     {
                         StaticPriceDatabase.Write();
 
-						var seconds = 30;
-						_notificationCenter.FireNotification(
-							LogLevel.Debug,
-							string.Format("Waiting {0} seconds to avoid being locked out by MKM", seconds));
+						////var seconds = 30;
+						////_notificationCenter.FireNotification(
+						////	LogLevel.Debug,
+						////	string.Format("Waiting {0} seconds to avoid being locked out by MKM", seconds));
 
-						// Wait a bit between requests
-						Thread.Sleep(seconds * 1000);
+						////// Wait a bit between requests
+						////Thread.Sleep(seconds * 1000);
 					}
 				}
 

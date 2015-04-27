@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 
@@ -13,7 +14,14 @@ namespace MyMagicCollection.Shared.Helper
 				.FirstOrDefault(n => n.ToLowerInvariant().Contains(resourceName));
 		}
 
-		public static Stream GetEmbeddedResourceStream(this Assembly assembly, string resourceName)
+        public static IEnumerable<string> FindAllEmbeddedResource(this Assembly assembly, string resourceName)
+        {
+            resourceName = resourceName.ToLowerInvariant();
+            return assembly.GetManifestResourceNames()
+                .Where(n => n.ToLowerInvariant().Contains(resourceName));
+        }
+
+        public static Stream GetEmbeddedResourceStream(this Assembly assembly, string resourceName)
 		{
 			var fullName = assembly.FindEmbeddedResource(resourceName);
 			if (string.IsNullOrWhiteSpace(fullName))

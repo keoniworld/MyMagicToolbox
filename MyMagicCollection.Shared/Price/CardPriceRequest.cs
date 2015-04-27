@@ -11,8 +11,6 @@ namespace MyMagicCollection.Shared.Price
 {
     public class CardPriceRequest
     {
-        public static MkmRequestCounter RequestCounter { get; } = new MkmRequestCounter();
-
         private static int _timeoutHelper = 0;
 
         private static object _timeoutSync = new object();
@@ -23,6 +21,8 @@ namespace MyMagicCollection.Shared.Price
         {
             _notificationCenter = notificationCenter;
         }
+
+        public static MkmRequestCounter RequestCounter { get; } = new MkmRequestCounter();
 
         public void PerformRequest(
             IMagicCardDefinition card,
@@ -70,10 +70,11 @@ namespace MyMagicCollection.Shared.Price
                 var helper = new RequestHelper(_notificationCenter, additionalLogText);
                 using (var result = helper.MakeRequest(RequestHelper.CreateGetProductsUrl(cardName, MagicLanguage.English, card.MagicCardType != MagicCardType.Token, null)))
                 {
-                    var exactNameMatch = false;
                     var productNodes = result.Response.Root.Elements("product");
                     foreach (var productNode in productNodes)
                     {
+                        var exactNameMatch = false;
+
                         var expansion = productNode.Element("expansion");
                         if (expansion == null || !expansion.Value.Equals(setName, StringComparison.InvariantCultureIgnoreCase))
                         {
@@ -135,20 +136,23 @@ namespace MyMagicCollection.Shared.Price
                         cardPrice.UpdateUtc = DateTime.UtcNow;
                         _notificationCenter.FireNotification(
                             LogLevel.Debug,
-                            string.Format("Downloaded price data for '{0}({1})': {2}/{3}/{4}", card.NameEN, card.SetCode, cardPrice.PriceLow, cardPrice.PriceAvg, cardPrice.PriceTrend) + additionalLogText);
+                            string.Format("Downloaded price data for '{0}({1})': {2}/{3}/{4}/'{5}'", card.DisplayNameEn, card.SetCode, cardPrice.PriceLow, cardPrice.PriceAvg, cardPrice.PriceTrend, cardPrice.ImagePath) + additionalLogText);
+
+                        // Found my price -> Can exit loop now
+                        break;
                     }
 
                     if (!foundSet)
                     {
                         _notificationCenter.FireNotification(
                             LogLevel.Debug,
-                            string.Format("Cannot find price data for '{0}({1})'. Request: {2}", card.NameEN, setDefinition.Name, result.Response.Root) + additionalLogText);
+                            string.Format("Cannot find price data for '{0}({1})'. Request: {2}", card.DisplayNameEn, setDefinition.Name, result.Response.Root) + additionalLogText);
                     }
 
                     if (notifyOfPriceUpdate)
                     {
                         cardPrice.RaisePriceChanged();
-                        RequestCounter.Save();
+                        RequestCounter.Save();                        
                     }
                 }
             }
@@ -161,7 +165,7 @@ namespace MyMagicCollection.Shared.Price
 
                 _notificationCenter.FireNotification(
                     LogLevel.Error,
-                    string.Format("Error downloading price data for '{0}({1})': {2}", card.NameEN, card.SetCode, error.Message) + additionalLogText);
+                    string.Format("Error downloading price data for '{0}({1})': {2}", card.DisplayNameEn, card.SetCode, error.Message) + additionalLogText);
             }
         }
 

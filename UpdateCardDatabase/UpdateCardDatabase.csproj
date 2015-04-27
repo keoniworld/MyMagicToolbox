@@ -73,11 +73,23 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PatchCardDefinitions.cs" />
     <Compile Include="TokenDefinitions.cs" />
     <Compile Include="SetDefinitions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <EmbeddedResource Include="CardCsv\DTK\CardPatches.csv" />
+    <EmbeddedResource Include="CardCsv\DTK\TokenDefinitions.csv" />
+    <EmbeddedResource Include="CardCsv\FRF\CardPatches.csv" />
+    <EmbeddedResource Include="CardCsv\FRF\TokenDefinitions.csv" />
+    <EmbeddedResource Include="CardCsv\KTK\TokenDefinitions.csv" />
+    <EmbeddedResource Include="CardCsv\CNS\TokenDefinitions.csv" />
+    <EmbeddedResource Include="CardCsv\M15\TokenDefinitions.csv" />
+    <EmbeddedResource Include="CardCsv\BNG\TokenDefinitions.csv" />
+    <EmbeddedResource Include="CardCsv\THS\TokenDefinitions.csv" />
+    <EmbeddedResource Include="CardCsv\WWK\TokenDefinitions.csv" />
+    <EmbeddedResource Include="CardCsv\RTR\TokenDefinitions.csv" />
     <None Include="CSV\AllSets_Original.csv" />
     <None Include="CSV\set_AllSets.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

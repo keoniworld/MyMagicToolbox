@@ -12,7 +12,7 @@ namespace MyMagicCollection.Shared.FileFormats.MyMagicCollection
 	{
 		public MagicCollectionCsvMapper()
 		{
-			Map(m => m.Cards).Ignore();
+			Map(m => m.Cards).Ignore();			
 		}
 	}
 }

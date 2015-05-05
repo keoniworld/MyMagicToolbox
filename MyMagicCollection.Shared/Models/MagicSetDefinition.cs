@@ -38,10 +38,24 @@ namespace MyMagicCollection.Shared.Models
                 }
                 else
                 {
-                    var parts = _releaseDate.Split('/');
-                    _releaseDateConverted = new DateTime(int.Parse(parts[1]), int.Parse(parts[0]), 1);
+                    
+                    _releaseDateConverted = ParseReleaseDate(_releaseDate);
                 }
             }
+        }
+
+        public static DateTime? ParseReleaseDate(string releaseDate)
+        {
+            if (string.IsNullOrWhiteSpace(releaseDate))
+            {
+                return null;
+            }
+
+            var parts = releaseDate.Split(new[] { '-', '/', '.' }, StringSplitOptions.RemoveEmptyEntries);
+            return new DateTime(
+                int.Parse(parts[0]),
+                parts.Length >= 2 ? int.Parse(parts[1]) : 12,
+                parts.Length >= 3 ? int.Parse(parts[2]) : 1);
         }
 
         // TODO: Actual DateTime as getter

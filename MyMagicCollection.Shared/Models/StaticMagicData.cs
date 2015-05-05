@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using MyMagicCollection.Shared.CSV;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using MyMagicCollection.Shared.CSV;
 
 namespace MyMagicCollection.Shared.Models
 {
@@ -20,8 +20,15 @@ namespace MyMagicCollection.Shared.Models
                 CardDefinitions = loader.LoadCardDatabase().ToList();
                 SetDefinitions = loader.LoadSetDatabase().ToList();
 
-                ////var duplicateValues = CardDefinitions.GroupBy(c => MakeNameSetCode(c.SetCode, c.NameEN, c.NumberInSet)).Where(x => x.Count() > 1)
+                ////var duplicateValues = CardDefinitions
+                ////    .GroupBy(c => MakeNameSetCode(c.SetCode, c.NameEN, c.NumberInSet))
+                ////    .Where(x => x.Count() > 1)
                 ////    .ToArray();
+
+                ////var duplicateValues = CardDefinitions
+                ////                 .GroupBy(c => c.CardId)
+                ////                 .Where(x => x.Count() > 1)
+                ////                 .ToArray();
 
                 var dict = new Dictionary<string, MagicCardDefinition>();
                 foreach (var def in CardDefinitions)
@@ -34,7 +41,7 @@ namespace MyMagicCollection.Shared.Models
                 }
 
                 CardDefinitionsByNameSetCode = dict;
-                CardDefinitionsByCardId = CardDefinitions.ToDictionary(c => c.CardId);
+                CardDefinitionsByCardId = dict.Values.ToDictionary(c => c.CardId);
 
                 SetDefinitionsBySetCode = SetDefinitions.ToDictionary(c => c.Code);
                 SetDefinitionsBySetName = SetDefinitions.ToDictionary(c => c.Name);
@@ -48,7 +55,7 @@ namespace MyMagicCollection.Shared.Models
             }
         }
 
-        public static string MakeNameSetCode(string setCode, string name, int? cardNumber)
+        public static string MakeNameSetCode(string setCode, string name, string cardNumber)
         {
             return setCode + name + (cardNumber?.ToString() ?? "");
         }

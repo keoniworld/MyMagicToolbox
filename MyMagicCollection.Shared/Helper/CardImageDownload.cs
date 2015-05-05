@@ -23,9 +23,15 @@ namespace MyMagicCollection.Shared.Helper
 
 		public string CreateCardIdPart(MagicCardDefinition card, char delimiter, bool useMkmName)
 		{
-			if (!card.NumberInSet.HasValue || string.IsNullOrWhiteSpace(card.SetCode))
+            var numberInSet = card.NumberInSet;
+            if (string.IsNullOrWhiteSpace(numberInSet))
+            {
+                numberInSet = card.CardId;
+            }
+
+            if (string.IsNullOrWhiteSpace(card.SetCode))
 			{
-				return null;
+				return "";
 			}
 
             var cardName = card.NameEN;
@@ -60,7 +66,7 @@ namespace MyMagicCollection.Shared.Helper
 			   CultureInfo.InvariantCulture,
 			   "{2}{0}{2}{1}.jpg",
 			   setCode.ToLowerInvariant(),
-			   card.NumberInSet,
+               numberInSet,
 			   delimiter);
 		}
 
@@ -79,7 +85,7 @@ namespace MyMagicCollection.Shared.Helper
             FileInfo localStorage = null;
 			try
 			{
-				var cache = PathHelper.ImageCacheFolder;
+				var cache = PathHelper.CardImageCacheFolder;
 				localStorage = new FileInfo(Path.Combine(cache, CreateCardIdPart(card, '\\', true).TrimStart('\\')));
 				if (localStorage.Exists)
 				{

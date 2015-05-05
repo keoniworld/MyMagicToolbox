@@ -64,9 +64,10 @@ namespace MyMagicCollection.Shared.Price
         public RequestResult MakeRequest(string urlRequest)
         {
             String method = "GET";
-            String url = string.Format("https://www.mkmapi.eu/ws/v1.1/{0}", urlRequest);
+			String url = string.Format("https://www.mkmapi.eu/ws/v1.1/{0}", urlRequest);
+			// String url = string.Format("https://sandbox.mkmapi.eu/ws/v1.1/{0}", urlRequest);
 
-            var stopwatch = Stopwatch.StartNew();
+			var stopwatch = Stopwatch.StartNew();
 
             _notificationCenter.FireNotification(
                LogLevel.Debug,

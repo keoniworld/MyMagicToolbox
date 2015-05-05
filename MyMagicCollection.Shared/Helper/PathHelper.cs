@@ -13,6 +13,7 @@ namespace MyMagicCollection.Shared
 			ImageCacheFolder = Path.Combine(UserDataFolder, "ImageCache");
 			SymbolCacheFolder = Path.Combine(ImageCacheFolder, "Symbols");
 			SetCacheFolder = Path.Combine(ImageCacheFolder, "Sets");
+            CardImageCacheFolder = Path.Combine(ImageCacheFolder, "Cards");
         }
 
 		public static string MakeAbsolutePath(this FileSystemInfo folder, string fileName)
@@ -57,7 +58,9 @@ namespace MyMagicCollection.Shared
 
 		public static string ImageCacheFolder { get; private set; }
 
-		public static string SymbolCacheFolder { get; private set; }
+        public static string CardImageCacheFolder { get; private set; }
+
+        public static string SymbolCacheFolder { get; private set; }
 
 		public static string SetCacheFolder { get; private set; }
     }

@@ -63,7 +63,7 @@ namespace MyMagicCollection.Shared.Price
                 }
 
                 Count += 1;
-                return Count < 5000;
+                return Count < 4000;
             }
         }
 
@@ -71,9 +71,9 @@ namespace MyMagicCollection.Shared.Price
         {
             try
             {
-                if (Count >= 5000)
+                if (Count >= 4000)
                 {
-                    var ignoreSave = Count > 5001 && _savedHighCount;
+                    var ignoreSave = Count > 4001 && _savedHighCount;
                     if (ignoreSave)
                     {
                         return;

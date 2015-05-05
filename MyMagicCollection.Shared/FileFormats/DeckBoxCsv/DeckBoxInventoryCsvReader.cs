@@ -48,7 +48,7 @@ namespace MyMagicCollection.Shared.FileFormats.DeckBoxCsv
                         Language = inputCsv.GetField<string>("Language").ToMagicLanguage()
                     };
 
-                    var cardNumber = inputCsv.GetField<int?>("Card Number");
+                    var cardNumber = inputCsv.GetField<string>("Card Number");
                     var cardName = inputCsv.GetField<string>("Name");
                     var setName = inputCsv.GetField<string>("Edition");
                     if (set == null || !set.Name.Equals(setName, StringComparison.InvariantCultureIgnoreCase))

@@ -1,5 +1,8 @@
-﻿namespace MyMagicCollection.Shared.Models
+﻿using System.Diagnostics;
+
+namespace MyMagicCollection.Shared.Models
 {
+    [DebuggerDisplay("{CardId} - {NameEN} - {SetCode}")]
     public class MagicCardDefinition : IMagicCardDefinition
     {
 		private string _displayNameEnCache;
@@ -32,7 +35,7 @@
 
         public string RulesTextDE { get; set; }
 
-        public int? NumberInSet { get; set; }
+        public string NumberInSet { get; set; }
 
         public bool? LegalityStandard { get; set; }
 

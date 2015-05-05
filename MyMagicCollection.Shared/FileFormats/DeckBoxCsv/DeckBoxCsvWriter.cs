@@ -17,7 +17,6 @@ namespace MyMagicCollection.Shared.FileFormats.DeckBoxCsv
         public void Write(
             string fileName,
             IEnumerable<IMagicBinderCardViewModel> cards,
-            bool isFoil,
             MagicLanguage language,
             MagicGrade grade,
             Func<IMagicBinderCardViewModel, int> quantitySelector)
@@ -45,7 +44,7 @@ namespace MyMagicCollection.Shared.FileFormats.DeckBoxCsv
                 outputCsv.WriteField(quantitySelector(card));
                 outputCsv.WriteField(card.NameEN, true);
                 outputCsv.WriteField(definition.Name.Replace("Magic: The Gathering�Conspiracy", "Conspiracy"), true);
-                outputCsv.WriteField(isFoil ? "foil" : null);
+                outputCsv.WriteField(card.IsFoil ? "foil" : null);
                 outputCsv.WriteField(card.Language.HasValue ? card.Language.Value.ToString() : language.ToString());
                 outputCsv.WriteField(card.Grade.HasValue ? card.Grade.Value.ToCsv() : grade.ToCsv());
                 outputCsv.NextRecord();
@@ -57,14 +56,12 @@ namespace MyMagicCollection.Shared.FileFormats.DeckBoxCsv
         public void Write(
            string fileName,
            IEnumerable<IMagicBinderCardViewModel> cards,
-           bool isFoil,
            MagicLanguage language,
            MagicGrade grade)
         {
             Write(
                 fileName,
                 cards,
-                isFoil,
                 language,
                 grade,
                 new Func<IMagicBinderCardViewModel, int>((card) => card.Quantity));

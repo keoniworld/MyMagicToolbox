@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Minimod.NotificationObject;
 using MyMagicCollection.Shared.Models;
 using MyMagicCollection.Shared.VieModels;
+using NLog;
 
 namespace MyMagicCollection.Shared.ViewModels
 {
@@ -18,10 +19,13 @@ namespace MyMagicCollection.Shared.ViewModels
 
         private IEnumerable<MagicCardDefinition> _reprints;
 
+        private INotificationCenter _notificationCenter;
+
         public MagicBinderCardViewModel(
             IMagicCardDefinition definition,
             MagicBinderCard card)
         {
+            _notificationCenter = NotificationCenter.Instance;
             _definition = definition;
             _card = card;
             _price = StaticPriceDatabase.FindPrice(_definition, false, false, "", false);
@@ -229,7 +233,13 @@ namespace MyMagicCollection.Shared.ViewModels
                                         if (forcePriceUpdate || update)
                                         {
                                             StaticPriceDatabase.UpdatePrice(_definition, _price, writeDatabase, additionalLogText, forcePriceUpdate);
-											UpdatePrice();
+                                            UpdatePrice();
+                                        }
+                                        else
+                                        {
+                                            _notificationCenter.FireNotification(
+                                                LogLevel.Debug,
+                                                "Skipping price update for " + _definition.DisplayNameEn + " " + additionalLogText);
                                         }
                                     });
 

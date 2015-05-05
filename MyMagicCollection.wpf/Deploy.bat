@@ -1,6 +1,6 @@
 xcopy *.dll ..\..\..\..\..\MyMagicCollection /y /z
 xcopy *.exe ..\..\..\..\..\MyMagicCollection /y /z
 xcopy nlog.config ..\..\..\..\..\MyMagicCollection /y /z
-xcopy App_Data\ImageCache\Sets\* ..\..\..\..\..\MyMagicCollection\App_Data\ImageCache\Sets /s /y /z
+xcopy App_Data\ImageCache\Sets\* ..\..\..\..\..\MyMagicCollection\App_Data\ImageCache\Sets /s /y /z /I
 
 del ..\..\..\..\..\MyMagicCollection\*.vshost.exe /Q

@@ -44,7 +44,7 @@ namespace UpdateCardDatabase
                             var cardDefinition = new MagicCardDefinition()
                             {
                                 SetCode = setCode,
-                                NumberInSet = inputCsv.GetField<int>(1),
+                                NumberInSet = inputCsv.GetField<string>(1),
                                 NameEN = inputCsv.GetField<string>(2).Trim(),
                                 NameDE = inputCsv.GetField<string>(3).Trim(),
                                 NameMkm = inputCsv.GetField<string>(4).Trim(),

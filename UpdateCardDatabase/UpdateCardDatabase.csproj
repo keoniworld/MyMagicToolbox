@@ -49,6 +49,10 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1-beta3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -71,6 +75,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CardDatabaseHelper.cs" />
+    <Compile Include="ProgramOld.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PatchCardDefinitions.cs" />
@@ -78,6 +84,9 @@
     <Compile Include="SetDefinitions.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="AllSets-x.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="App.config" />
     <EmbeddedResource Include="CardCsv\DTK\CardPatches.csv" />
     <EmbeddedResource Include="CardCsv\DTK\TokenDefinitions.csv" />
@@ -90,7 +99,34 @@
     <EmbeddedResource Include="CardCsv\THS\TokenDefinitions.csv" />
     <EmbeddedResource Include="CardCsv\WWK\TokenDefinitions.csv" />
     <EmbeddedResource Include="CardCsv\RTR\TokenDefinitions.csv" />
+    <EmbeddedResource Include="CardCsv\ALL\CardPatches.csv" />
+    <EmbeddedResource Include="CardCsv\FEM\CardPatches.csv" />
+    <EmbeddedResource Include="CardCsv\ME4\CardPatches.csv" />
+    <EmbeddedResource Include="CardCsv\4ED\CardPatches.csv" />
+    <EmbeddedResource Include="CardCsv\3ED\CardPatches.csv" />
+    <EmbeddedResource Include="CardCsv\CHR\CardPatches.csv" />
+    <EmbeddedResource Include="CardCsv\BRB\CardPatches.csv" />
+    <EmbeddedResource Include="CardCsv\MIR\CardPatches.csv" />
+    <EmbeddedResource Include="CardCsv\5ED\CardPatches.csv" />
+    <EmbeddedResource Include="CardCsv\ATQ\CardPatches.csv" />
+    <EmbeddedResource Include="CardCsv\2ED\CardPatches.csv" />
+    <EmbeddedResource Include="CardCsv\ARN\CardPatches.csv" />
+    <EmbeddedResource Include="CardCsv\LEB\CardPatches.csv" />
+    <EmbeddedResource Include="CardCsv\TMP\CardPatches.csv" />
+    <EmbeddedResource Include="CardCsv\POR\CardPatches.csv" />
+    <EmbeddedResource Include="CardCsv\LEA\CardPatches.csv" />
+    <EmbeddedResource Include="CardCsv\BTD\CardPatches.csv" />
+    <EmbeddedResource Include="CardCsv\PLS\CardPatches.csv" />
+    <EmbeddedResource Include="CardCsv\S00\CardPatches.csv" />
+    <EmbeddedResource Include="CardCsv\PO2\CardPatches.csv" />
+    <EmbeddedResource Include="CardCsv\VIS\CardPatches.csv" />
+    <EmbeddedResource Include="CardCsv\6ED\CardPatches.csv" />
+    <EmbeddedResource Include="CardCsv\THS\CardPatches.csv" />
+    <EmbeddedResource Include="CardCsv\DDL\CardPatches.csv" />
+    <EmbeddedResource Include="CardCsv\RTR\CardPatches.csv" />
+    <EmbeddedResource Include="CardCsv\DDJ\CardPatches.csv" />
     <None Include="CSV\AllSets_Original.csv" />
+    <None Include="CSV\SetsDoneStatus.xls" />
     <None Include="CSV\set_AllSets.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

@@ -15,12 +15,12 @@ using MyMagicCollection.Shared.FileFormats;
 using MyMagicCollection.Shared.FileFormats.DeckBoxCsv;
 using MyMagicCollection.Shared.Helper;
 using MyMagicCollection.Shared.Models;
+using MyMagicCollection.Shared.Price;
 using MyMagicCollection.Shared.VieModels;
 using MyMagicCollection.Shared.ViewModels;
 using MyMagicCollection.wpf.Settings;
 using NLog;
 using SettingsProviderNet;
-using MyMagicCollection.Shared.Price;
 
 namespace MyMagicCollection.wpf
 {
@@ -125,9 +125,9 @@ namespace MyMagicCollection.wpf
             }
         }
 
-		public MkmRequestCounter MkmRequestCounter { get; } = CardPriceRequest.RequestCounter;
+        public MkmRequestCounter MkmRequestCounter { get; } = CardPriceRequest.RequestCounter;
 
-		public MagicLanguage SelectedLanguage
+        public MagicLanguage SelectedLanguage
         {
             get
             {
@@ -229,10 +229,10 @@ namespace MyMagicCollection.wpf
                 RaisePropertyChanged(() => SelectedCard);
 
                 if (_selectedCard != null
-					&& !_selectedCard.CardPrice.IsPriceUpOfToday()
+                    && !_selectedCard.CardPrice.IsPriceUpOfToday()
                     && !string.IsNullOrWhiteSpace(_selectedCard.CardPrice.ImagePath))
                 {
-					// Only fetch card price once a day
+                    // Only fetch card price once a day
                     // Ignore if image path is not set -> The image download will update the price
                     _selectedCard.UpdatePriceData(true, true, "", true);
                 }
@@ -534,11 +534,11 @@ namespace MyMagicCollection.wpf
             }
 
             searchResult = searchResult
-				.DistinctBy(c => c.NameEN)
-				.Where(c=>c.CardPrice != null || !c.CardPrice.IsPriceUpToDate())
-				.OrderBy(c=>!c.CardPrice.CheapestPrice.HasValue)
-				.ThenByDescending(c=> c.CardPrice.CheapestPrice)
-				.ToList();
+                .DistinctBy(c => c.NameEN)
+                .Where(c => c.CardPrice == null || !c.CardPrice.IsPriceUpToDate())
+                .OrderBy(c => !c.CardPrice.CheapestPrice.HasValue)
+                .ThenByDescending(c => c.CardPrice.CheapestPrice)
+                .ToList();
 
             _notificationCenter.FireNotification(
                 LogLevel.Info,
@@ -558,15 +558,15 @@ namespace MyMagicCollection.wpf
                     {
                         StaticPriceDatabase.Write();
 
-						////var seconds = 30;
-						////_notificationCenter.FireNotification(
-						////	LogLevel.Debug,
-						////	string.Format("Waiting {0} seconds to avoid being locked out by MKM", seconds));
+                        ////var seconds = 30;
+                        ////_notificationCenter.FireNotification(
+                        ////	LogLevel.Debug,
+                        ////	string.Format("Waiting {0} seconds to avoid being locked out by MKM", seconds));
 
-						////// Wait a bit between requests
-						////Thread.Sleep(seconds * 1000);
-					}
-				}
+                        ////// Wait a bit between requests
+                        ////Thread.Sleep(seconds * 1000);
+                    }
+                }
 
                 StaticPriceDatabase.Write();
 
@@ -619,7 +619,7 @@ namespace MyMagicCollection.wpf
             var watch = Stopwatch.StartNew();
 
             var writer = new DeckBoxCsvWriter();
-            writer.Write(fileName, cardsToExport, SelectedCardIsFoil, SelectedLanguage, SelectedGrade, quantitySelector);
+            writer.Write(fileName, cardsToExport, SelectedLanguage, SelectedGrade, quantitySelector);
 
             watch.Stop();
             _notificationCenter.FireNotification(null, string.Format("Exported '{0}' in {1}", info.Name, watch.Elapsed));

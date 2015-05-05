@@ -36,7 +36,7 @@ M10, M10, M10, Magic 2010,,07/2009,False
 
 10E, 10E, 10E, Tenth Edition,,07/2007,False
 9E, 9E, 9E, Ninth Edition,,07/2005,False
-8E, 8E, 8E, Eight Edition,,07/2003,False
+8E, 8E, 8E, Eighth Edition,,07/2003,False
 7E, 7E, 7E, Seventh Edition,,07/2001,False
 6E, 6E, 6E, Sixth Edition,,07/1999,False
 5E, 5E, 5E, Fifth Edition,,07/1997,False
@@ -44,11 +44,15 @@ M10, M10, M10, Magic 2010,,07/2009,False
 R,3ED, RV, Revised,,04/1994,False
 
 C14, C14, C14,Commander 2014,,11/2014,False
-C13, C13, C13,Commander 201,,11/2013,False
+C13, C13, C13,Commander 2013,,11/2013,False
 CNS, CNS, CNS,Conspiracy,,06/2014,False
 DDM,DDM,DDM,Duel Decks: Jace vs. Vraska,,03/2014,False
 
 LEG, V11, FVL, From the Vault: Legends,,08/2011,True
+
+CS,CSP,CS, Coldsnap, Coldsnap, 06/2006, False
+AL,AL,AI, Alliances, Ice Age, 06/1996, False
+IA,IA,IA, Ice Age, Ice Age, 06/1995, False
 ";
 
         static SetDefinitions()

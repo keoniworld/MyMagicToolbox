@@ -29,5 +29,7 @@ namespace MyMagicCollection.Shared.Models
         public string CardId { get; set; }
 
         public MagicGrade? Grade { get; set; }
+
+        public string Comment { get; set; }
     }
 }

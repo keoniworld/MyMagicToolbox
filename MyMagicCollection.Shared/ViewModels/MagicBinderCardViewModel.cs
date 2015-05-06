@@ -140,6 +140,20 @@ namespace MyMagicCollection.Shared.ViewModels
             }
         }
 
+        public string Comment
+        {
+            get
+            {
+                return _card.Comment;
+            }
+
+            set
+            {
+                _card.Comment = value;
+                RaisePropertyChanged(() => Comment);
+            }
+        }
+
         public bool IsFoil
         {
             get

@@ -113,6 +113,11 @@ namespace UpdateCardDatabase
                         foreach (var card in cards.Cast<JObject>())
                         {
                             var cardName = card.GetValue("name").ToString().Trim();
+                            var nameParts = card.GetValue("names");
+                            if (nameParts != null)
+                            {
+                                cardName = string.Join(" // ", nameParts.Select(c => c.ToString()));
+                            }
 
                             var multiverseId = card.GetValue("multiverseid");
                             if (multiverseId == null)
@@ -121,11 +126,12 @@ namespace UpdateCardDatabase
                                 // multiverseId = setData.Code + "_" + cardName;
                             }
 
-                            var rulesText = card.GetValue("text");
+                            var rulesText = card.GetValue("originalText");
                             var manaCost = card.GetValue("manaCost");
                             var convertedManaCost = card.GetValue("cmc");
                             var rarity = card.GetValue("rarity");
                             var numberInSet = card.GetValue("number");
+                            var cardLayout = card.GetValue("layout");
 
                             // TODO: Card Type
 
@@ -140,6 +146,7 @@ namespace UpdateCardDatabase
                                 SetCode = setData.Code,
                                 NumberInSet = numberInSet != null ? numberInSet.ToString() : null,
                                 Rarity = CardDatabaseHelper.ComputeRarity(rarity != null ? rarity.ToString() : null),
+                                CardLayout = cardLayout != null ? cardLayout.ToString() : null,
                             };
 
                             // Patch special names for MKM (land versions, etc.)
@@ -205,15 +212,35 @@ namespace UpdateCardDatabase
                                 }
                             }
 
+                            // Foreign languages
+                            var languages = card.GetValue("foreignNames");
+                            if (languages != null)
+                            {
+                                foreach (var language in languages.Cast<JObject>().ToList())
+                                {
+                                    var languageName = language.GetValue("language").ToString().ToLowerInvariant();
+                                    switch (languageName)
+                                    {
+                                        case "german":
+                                            cardDefinition.NameDE = language.GetValue("name").ToString();
+                                            break;
+
+                                        default:
+                                            break;
+                                    }
+                                }
+                            }
+
                             availableCards.Add(cardDefinition);
 
                             //Console.WriteLine("Working card " + cardDefinition.NameEN + "...");
                         }
                     }
                 }
-
-            
             }
+
+            // Remove split card duplicates
+            CardDatabaseHelper.RemoveSplitCardDuplicates(availableCards);
 
             // Add Tokens
             availableCards.AddRange(TokenDefinitions.TockenDefinition);

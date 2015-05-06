@@ -1,13 +1,13 @@
-﻿using System;
+﻿using CsvHelper;
+using CsvHelper.Configuration;
+using MyMagicCollection.Shared.Models;
+using NLog;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
-using CsvHelper;
-using CsvHelper.Configuration;
-using MyMagicCollection.Shared.Models;
-using NLog;
 
 namespace MyMagicCollection.Shared.FileFormats.MyMagicCollection
 {
@@ -23,6 +23,8 @@ namespace MyMagicCollection.Shared.FileFormats.MyMagicCollection
                 Encoding = Encoding.UTF8,
                 HasHeaderRecord = true,
                 CultureInfo = CultureInfo.InvariantCulture,
+                TrimFields = true,
+                WillThrowOnMissingField = false,
             };
 
             _config.RegisterClassMap(new MagicCollectionCsvMapper());
@@ -126,20 +128,19 @@ namespace MyMagicCollection.Shared.FileFormats.MyMagicCollection
             foreach (var group in grouped)
             {
                 var first = group.First();
-                first.Quantity = group.Sum(c=>c.Quantity);
+                first.Quantity = group.Sum(c => c.Quantity);
                 first.QuantityTrade = group.Sum(c => c.QuantityTrade);
-                first.QuantityWanted= group.Sum(c => c.QuantityWanted);
+                first.QuantityWanted = group.Sum(c => c.QuantityWanted);
 
                 result.Add(first);
             }
 
             return result;
-
         }
 
         public string MakeConsolidateString(MagicBinderCard card)
         {
-            return card.IsFoil.ToString() + card.CardId + card.Language;
+            return card.IsFoil.ToString() + card.CardId + card.Language + card.Comment;
         }
     }
 }

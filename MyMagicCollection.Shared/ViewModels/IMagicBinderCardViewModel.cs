@@ -12,5 +12,6 @@ namespace MyMagicCollection.Shared.VieModels
         IMagicCardDefinition Definition { get; }
 
         string NameEN { get; }
+        string Comment { get; }
     }
 }

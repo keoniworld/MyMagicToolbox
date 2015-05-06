@@ -50,6 +50,8 @@ namespace MyMagicCollection.Shared.ViewModels
 
         public string SetCode => _viewModel?.Definition?.SetCode;
 
+        public string Comment => _viewModel?.Comment;
+
         public int Quantity => _viewModel != null ? _viewModel.Quantity : 0;
 
         public int QuantityTrade => _viewModel != null ? _viewModel.QuantityTrade : 0;
@@ -113,6 +115,7 @@ namespace MyMagicCollection.Shared.ViewModels
                 case "quantitytrade":
                 case "quantitywanted":
                 case "quantity":
+                case "comment":
                     RaisePropertyChanged(e.PropertyName);
                     break;
 

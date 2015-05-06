@@ -28,10 +28,10 @@ namespace UpdateCardDatabase
                 case "Classic Sixth Edition":
                     return "Sixth Edition";
 
-                 case "Battle Royale Box Set":
+                case "Battle Royale Box Set":
                     return "Battle Royale";
 
-               case "Commander 2013 Edition":
+                case "Commander 2013 Edition":
                     return "Commander 2013";
 
                 case "Prerelease Events":
@@ -110,8 +110,8 @@ namespace UpdateCardDatabase
         {
             var result = new StringBuilder();
 
-            var swamps = StaticMagicData.CardDefinitions.Where(c => c.NameEN.IndexOf("swamp", StringComparison.InvariantCultureIgnoreCase) >= 0 && c.SetCode == "RTR")
-                .ToList();
+            ////var swamps = StaticMagicData.CardDefinitions.Where(c => c.NameEN.IndexOf("swamp", StringComparison.InvariantCultureIgnoreCase) >= 0 && c.SetCode == "RTR")
+            ////    .ToList();
 
             var grouped = cards
                 .GroupBy(c => StaticMagicData.MakeNameSetCode(c.SetCode, c.NameMkm, ""))
@@ -133,12 +133,26 @@ namespace UpdateCardDatabase
             return result.ToString();
         }
 
+        public static void RemoveSplitCardDuplicates(IList<MagicCardDefinition> cards)
+        {
+            var splitCards = cards
+                .Where(c => c.CardLayout == "split")
+                .GroupBy(c => c.NameEN + c.SetCode)
+                .Select(c => c.OrderBy(g => g.NumberInSet).ElementAt(1))
+                .ToList();
+
+            foreach (var item in splitCards)
+            {
+                cards.Remove(item);
+            }
+        }
+
         public static void PatchPotentialVersionCardData(IEnumerable<MagicCardDefinition> cards)
         {
             var result = new StringBuilder();
 
-            var swamps = StaticMagicData.CardDefinitions.Where(c => c.NameEN.IndexOf("swamp", StringComparison.InvariantCultureIgnoreCase) >= 0 && c.SetCode == "RTR")
-                .ToList();
+            ////var swamps = StaticMagicData.CardDefinitions.Where(c => c.NameEN.IndexOf("swamp", StringComparison.InvariantCultureIgnoreCase) >= 0 && c.SetCode == "RTR")
+            ////    .ToList();
 
             var grouped = cards
                 .GroupBy(c => StaticMagicData.MakeNameSetCode(c.SetCode, c.NameMkm, ""))
@@ -157,8 +171,6 @@ namespace UpdateCardDatabase
                     version++;
                 }
             }
-
-         
         }
     }
 }

@@ -178,6 +178,7 @@
                                         <RowDefinition Height="Auto" />
                                         <RowDefinition Height="Auto" />
                                         <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
                                     </Grid.RowDefinitions>
 
                                     <Grid.ColumnDefinitions>
@@ -261,6 +262,9 @@
                                                    Text="{Binding CardPrice.PriceFoilLow, Mode=OneWay, StringFormat={}{0:F2}€)}"
                                                     />
                                     </StackPanel>
+                                    
+                                    <TextBlock Grid.Row="3" VerticalAlignment="Center">Comment:</TextBlock>
+                                    <TextBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="4" Margin="3,1,0,0" Text="{Binding Comment, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Delay=500}" />
                                 </Grid>
                             </DataTemplate>
                         </ListView.ItemTemplate>

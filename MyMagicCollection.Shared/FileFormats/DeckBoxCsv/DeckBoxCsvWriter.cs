@@ -29,6 +29,7 @@ namespace MyMagicCollection.Shared.FileFormats.DeckBoxCsv
             outputCsv.WriteField("Foil");
             outputCsv.WriteField("Language");
             outputCsv.WriteField("Condition");
+            outputCsv.WriteField("Comment");
             outputCsv.NextRecord();
 
             string lastSetCode = "";
@@ -40,13 +41,14 @@ namespace MyMagicCollection.Shared.FileFormats.DeckBoxCsv
                     lastSetCode = card.Definition.SetCode;
                     definition = StaticMagicData.SetDefinitionsBySetCode[lastSetCode];
                 }
-
+                
                 outputCsv.WriteField(quantitySelector(card));
                 outputCsv.WriteField(card.NameEN, true);
                 outputCsv.WriteField(definition.Name.Replace("Magic: The Gathering�Conspiracy", "Conspiracy"), true);
                 outputCsv.WriteField(card.IsFoil ? "foil" : null);
                 outputCsv.WriteField(card.Language.HasValue ? card.Language.Value.ToString() : language.ToString());
                 outputCsv.WriteField(card.Grade.HasValue ? card.Grade.Value.ToCsv() : grade.ToCsv());
+                outputCsv.WriteField(card.Comment);
                 outputCsv.NextRecord();
             }
 

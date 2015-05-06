@@ -58,5 +58,7 @@ namespace MyMagicCollection.Shared.Models
         public int? ConvertedManaCost { get; set; }
 
         public MagicCardType MagicCardType { get; set; }
+
+        public string CardLayout { get; set; }
     }
 }

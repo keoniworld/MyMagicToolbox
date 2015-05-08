@@ -1,7 +1,7 @@
 Code,Name,CodeMagicCardsInfo,ReleaseDate,Block,IsPromoEdition
 10E,Tenth Edition,10e,2007-07-13,,False
-2ED,Unlimited Edition,un,1993-12-01,,False
-3ED,Revised Edition,rv,1994-04-01,,False
+2ED,Unlimited,un,1993-12-01,,False
+3ED,Revised,rv,1994-04-01,,False
 4ED,Fourth Edition,4e,1995-04-01,,False
 5DN,Fifth Dawn,5dn,2004-06-04,Mirrodin,False
 5ED,Fifth Edition,5e,1997-03-24,,False

@@ -57,7 +57,7 @@ namespace MyMagicCollection.Shared.Helper
 				   CultureInfo.InvariantCulture,
 				   "{2}{0}{2}{1}.jpg",
 				   setName,
-                   cardName.ToLowerInvariant(),
+                   cardName.ToLowerInvariant().Replace("Æ", "Ae"),
 				   delimiter);
 			}
 
@@ -82,7 +82,11 @@ namespace MyMagicCollection.Shared.Helper
                 cardPrice = StaticPriceDatabase.FindPrice(card, false, false, "CardImage download", false);
             }
 
+            // Add default image path if needed
+            cardPrice.BuildDefaultMkmImagePath(card);
+
             FileInfo localStorage = null;
+            string fullUrl = null;
 			try
 			{
 				var cache = PathHelper.CardImageCacheFolder;
@@ -111,7 +115,7 @@ namespace MyMagicCollection.Shared.Helper
 						? "http://magiccards.info/scans/en"
 						: "http://magiccards.info/extras/token";
 
-                    var fullUrl = !string.IsNullOrWhiteSpace(cardPrice.ImagePath)
+                    fullUrl = !string.IsNullOrWhiteSpace(cardPrice.ImagePath)
                         ? "http://www.magickartenmarkt.de/" + cardPrice.ImagePath
                         : rootUrl + url;
 
@@ -127,7 +131,7 @@ namespace MyMagicCollection.Shared.Helper
 			{
 				_notificationCenter.FireNotification(
 					LogLevel.Debug,
-					string.Format("Error downloading image for '{0}[{1}]': {2}", card.NameEN, card.SetCode, error.Message));
+					string.Format("Error downloading image for '{0}[{1}]': {2} ({3})", card.NameEN, card.SetCode, error.Message, fullUrl));
 
 				return null;
 			}

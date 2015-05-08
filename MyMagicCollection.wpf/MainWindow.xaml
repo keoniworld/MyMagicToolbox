@@ -59,8 +59,8 @@
         <GroupBox Header="Misc">
             <StackPanel Orientation="Vertical">
                 <TextBlock Text="{Binding DatabaseSummary}" />
-                <StackPanel Orientation="Horizontal" Visibility="Collapsed">
-                    <Button VerticalAlignment="Top" Click="OnDownloadMissingImages"
+                <StackPanel Orientation="Horizontal" >
+                    <Button VerticalAlignment="Top" Click="OnDownloadMissingImages" Visibility="Collapsed"
                         ToolTip="Downloads all missing set symbols">Download Set Images</Button>
                     <Button VerticalAlignment="Top" Margin="3,0,0,0" Click="OnDownloadCardImages"
                             ToolTip="Downloads all missing card data from all sets.">Download Card Images</Button>

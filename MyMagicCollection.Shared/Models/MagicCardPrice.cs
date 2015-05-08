@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Minimod.NotificationObject;
+﻿using Minimod.NotificationObject;
+using System;
+using System.Globalization;
 
 namespace MyMagicCollection.Shared.Models
 {
@@ -16,9 +13,9 @@ namespace MyMagicCollection.Shared.Models
 
         private decimal? _priceAvg;
 
-		private decimal? _priceSell;
+        private decimal? _priceSell;
 
-		private decimal? _priceFoilLow;
+        private decimal? _priceFoilLow;
 
         private DateTime? _updateUtc;
 
@@ -34,13 +31,13 @@ namespace MyMagicCollection.Shared.Models
         private string _mkmId;
 
         public event EventHandler<EventArgs> PriceChanged;
+
         public void RaisePriceChanged()
         {
             var price = PriceChanged;
             if (price != null)
             {
                 price(this, EventArgs.Empty);
-
             }
         }
 
@@ -83,21 +80,20 @@ namespace MyMagicCollection.Shared.Models
             }
         }
 
+        public decimal? PriceSell
+        {
+            get
+            {
+                return _priceSell;
+            }
+            set
+            {
+                _priceSell = value;
+                RaisePropertyChanged(() => PriceSell);
+            }
+        }
 
-		public decimal? PriceSell
-		{
-			get
-			{
-				return _priceSell;
-			}
-			set
-			{
-				_priceSell = value;
-				RaisePropertyChanged(() => PriceSell);
-			}
-		}
-
-		public decimal? PriceLow
+        public decimal? PriceLow
         {
             get
             {
@@ -209,10 +205,11 @@ namespace MyMagicCollection.Shared.Models
             }
             set
             {
-                _cheapestPrice= value;
+                _cheapestPrice = value;
                 RaisePropertyChanged(() => CheapestPrice);
             }
         }
+
         public decimal? CheapestPriceFoil
         {
             get
@@ -226,21 +223,64 @@ namespace MyMagicCollection.Shared.Models
             }
         }
 
+        public bool IsPriceUpToDate()
+        {
+            const int hoursSinceLastCall = 7 * 24;
 
-		public bool IsPriceUpToDate()
-		{
-			const int hoursSinceLastCall = 7 * 24;
-
-			return CheapestPrice.HasValue
+            return CheapestPrice.HasValue
                 && UpdateUtc.HasValue
-				&& UpdateUtc.Value.AddHours(hoursSinceLastCall) > DateTime.UtcNow;
+                && UpdateUtc.Value.AddHours(hoursSinceLastCall) > DateTime.UtcNow;
         }
 
-		public bool IsPriceUpOfToday()
-		{
-			return UpdateUtc.HasValue
-				&& UpdateUtc.Value.Date >= DateTime.UtcNow.Date;
-		}
+        public bool IsPriceUpOfToday()
+        {
+            return UpdateUtc.HasValue
+                && UpdateUtc.Value.Date >= DateTime.UtcNow.Date;
+        }
 
-	}
+        public void BuildDefaultMkmImagePath(IMagicCardDefinition definition)
+        {
+            if (string.IsNullOrEmpty(_imagePath))
+            {
+                var setDefinition = StaticMagicData.SetDefinitionsBySetCode[definition.SetCode];
+
+                _imagePath = string.Format(
+                    CultureInfo.InvariantCulture,
+                    "./img/cards/{0}/{1}.jpg",
+                    setDefinition.Name
+                        .Replace(" ", "_")
+                        .Replace(".", "")
+                        .Replace(" ", "_")
+                        .Replace("-", "_")
+                        .Replace(",", "")
+                        .Replace("'", "")
+                        .Replace("Duel_Decks_Anthology__Elves_vs_Goblins", "Duel_Decks_Anthology")
+                        .Replace("Duel_Decks_Anthology__Garruk_vs_Liliana", "Duel_Decks_Anthology")
+                        .Replace("Duel_Decks_Anthology__Jace_vs_Chandra", "Duel_Decks_Anthology"),
+                    definition.NameMkm
+                        .Replace("Æ", "ae")
+                        .Replace("û", "u")
+                        .Replace("â", "a")
+                        .Replace("á", "a")
+                        .Replace("'", "")                        
+                        .Replace(".", "")
+                        .Replace(":", "")
+                        .Replace(" // ", "_")
+                        .ToLowerInvariant()
+                        .Replace(", planeswalker", "")
+                        .Replace(" (version 1)", "1")
+                        .Replace(" (version 2)", "2")
+                        .Replace(" (version 3)", "3")
+                        .Replace(" (version 4)", "4")
+                        .Replace(" (version 5)", "5")
+                        .Replace(" (version 6)", "6")
+                        .Replace(" (version 7)", "7")
+                        .Replace(" (version 8)", "8")
+                        .Replace(" (version 9)", "9")
+                        .Replace(" ", "_")
+                        .Replace("-", "_")                        
+                        .Replace(",", ""));
+            }
+        }
+    }
 }

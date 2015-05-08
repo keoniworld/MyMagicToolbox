@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CsvHelper;
+﻿using CsvHelper;
 using MyMagicCollection.Shared.Helper;
 using MyMagicCollection.Shared.Models;
 using MyMagicCollection.Shared.ViewModels;
 using NLog;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 
 namespace MyMagicCollection.Shared.FileFormats.DeckBoxCsv
 {
@@ -25,6 +23,8 @@ namespace MyMagicCollection.Shared.FileFormats.DeckBoxCsv
         {
             return ReadFileContent(File.ReadAllText(fileName));
         }
+
+      
 
         public IEnumerable<MagicBinderCardViewModel> ReadFileContent(string content)
         {

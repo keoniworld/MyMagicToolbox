@@ -25,6 +25,12 @@ namespace UpdateCardDatabase
                 ////case "Magic 2015 Core Set":
                 ////    return "Magic 2015";
 
+                case "Unlimited Edition":
+                    return "Unlimited";
+
+                case "Revised Edition":
+                    return "Revised";
+
                 case "Classic Sixth Edition":
                     return "Sixth Edition";
 

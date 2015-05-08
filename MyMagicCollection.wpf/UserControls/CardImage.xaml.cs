@@ -1,17 +1,12 @@
-﻿using System;
+﻿using MyMagicCollection.Shared;
+using MyMagicCollection.Shared.Helper;
+using MyMagicCollection.Shared.Models;
+using System;
 using System.ComponentModel;
-using System.Diagnostics;
-using System.Globalization;
-using System.IO;
-using System.Net;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
-using MyMagicCollection.Shared;
-using MyMagicCollection.Shared.Helper;
-using MyMagicCollection.Shared.Models;
-using NLog;
 
 namespace MyMagicCollection.wpf.UserControls
 {
@@ -76,29 +71,29 @@ namespace MyMagicCollection.wpf.UserControls
             }
 
             private set
-			{
-				_setDefinition = value;
-				RaisePropertyChanges("SetDefinition");
-			}
+            {
+                _setDefinition = value;
+                RaisePropertyChanges("SetDefinition");
+            }
         }
 
+        private MagicCardPrice _cardPrice;
 
-		private MagicCardPrice _cardPrice;
         public MagicCardPrice CardPrice
-		{
-			get
-			{
-				return _cardPrice;
-			}
+        {
+            get
+            {
+                return _cardPrice;
+            }
 
-			private set
-			{
-				_cardPrice = value;
-				RaisePropertyChanges("CardPrice");
-			}
-		}
+            private set
+            {
+                _cardPrice = value;
+                RaisePropertyChanges("CardPrice");
+            }
+        }
 
-		public static void OnImageChanged(
+        public static void OnImageChanged(
             DependencyObject d,
             DependencyPropertyChangedEventArgs e)
         {
@@ -120,20 +115,14 @@ namespace MyMagicCollection.wpf.UserControls
                 {
                     cardPrice = StaticPriceDatabase.FindPrice(card, false, false, "CardImage control", false);
 
-                    if (cardPrice != null && string.IsNullOrWhiteSpace(cardPrice.ImagePath))
-                    {
-                        // Force first price cache update to get image URL
-                        StaticPriceDatabase.UpdatePrice(card, cardPrice, true, "CardImage control", false);
-                    }
-
                     var download = new CardImageDownload(instance._notificationCenter);
                     cardFileName = download.DownloadImage(card, cardPrice);
                 }).ContinueWith(task =>
                     {
-						// Lookup card price:
-						instance.CardPrice = cardPrice;
+                        // Lookup card price:
+                        instance.CardPrice = cardPrice;
 
-						if (string.IsNullOrWhiteSpace(cardFileName))
+                        if (string.IsNullOrWhiteSpace(cardFileName))
                         {
                             instance.imageControl.Source = instance._emptyImage;
                         }

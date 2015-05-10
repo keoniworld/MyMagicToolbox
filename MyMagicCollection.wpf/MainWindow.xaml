@@ -16,6 +16,7 @@
         <Controls:WindowCommands>
             <Button Content="settings" IsEnabled="False" />
             <Button Margin="3,0,0,0" Content="Show Logs" Click="OnShowLogFolder" />
+            <Button Margin="3,0,0,0" Content="Reset Images"  Click="OnResetImages"/>
             <!--<Button>
                 <StackPanel Orientation="Horizontal">
                     <Rectangle Width="20" Height="20"

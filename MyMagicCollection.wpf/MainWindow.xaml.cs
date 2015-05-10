@@ -387,5 +387,15 @@ namespace MyMagicCollection.wpf
                     MessageBoxImage.Error);
             }
         }
+
+        private void OnResetImages(object sender, RoutedEventArgs e)
+        {
+            Task.Factory
+                   .StartNew(() =>
+                   {
+                       StaticPriceDatabase.ClearImageData(NotificationCenter.Instance);
+                   });
+            
+        }
     }
 }

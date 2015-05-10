@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using CsvHelper;
 using MyMagicCollection.Shared.Price;
 using NLog;
+using System.Diagnostics;
 
 namespace MyMagicCollection.Shared.Models
 {
@@ -76,6 +77,35 @@ namespace MyMagicCollection.Shared.Models
             }
 
             return price;
+        }
+
+        public static void ClearImageData(INotificationCenter notificationCenter)
+        {
+            var watch = Stopwatch.StartNew();
+            notificationCenter.FireNotification(LogLevel.Debug, "Resetting image paths");
+            foreach (var item in PriceCache.Values.ToList())
+            {
+                item.ImagePath = "";
+            }
+
+            notificationCenter.FireNotification(LogLevel.Debug, "Flush image cache");
+            Write();
+
+            foreach (var file in Directory.EnumerateFiles(PathHelper.CardImageCacheFolder, "*.*", SearchOption.AllDirectories))
+            {
+                try
+                {
+                    notificationCenter.FireNotification(LogLevel.Debug, "Deleting file " + file);
+                    File.Delete(file);
+                }
+                catch (Exception error)
+                {
+                    notificationCenter.FireNotification(LogLevel.Error, "Error deleting file '" + file + "':" + error.Message);
+                }
+            }
+
+            watch.Stop();
+            notificationCenter.FireNotification(LogLevel.Debug, "Clear image data took " + watch.Elapsed);
         }
 
         public static void UpdatePrice(

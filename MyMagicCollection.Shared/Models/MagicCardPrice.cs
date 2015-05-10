@@ -244,19 +244,23 @@ namespace MyMagicCollection.Shared.Models
             {
                 var setDefinition = StaticMagicData.SetDefinitionsBySetCode[definition.SetCode];
 
+                var setName = setDefinition.Name;
+                var anthology = setName.IndexOf("Duel Decks Anthology", 0, StringComparison.InvariantCultureIgnoreCase);
+                if (anthology == 0)
+                {
+                    setName = setName.Substring(0, "Duel Decks Anthology".Length);
+                }
+
+
                 _imagePath = string.Format(
                     CultureInfo.InvariantCulture,
                     "./img/cards/{0}/{1}.jpg",
-                    setDefinition.Name
+                    setName
                         .Replace(" ", "_")
-                        .Replace(".", "")
-                        .Replace(" ", "_")
+                        .Replace(":", "")
                         .Replace("-", "_")
                         .Replace(",", "")
-                        .Replace("'", "")
-                        .Replace("Duel_Decks_Anthology__Elves_vs_Goblins", "Duel_Decks_Anthology")
-                        .Replace("Duel_Decks_Anthology__Garruk_vs_Liliana", "Duel_Decks_Anthology")
-                        .Replace("Duel_Decks_Anthology__Jace_vs_Chandra", "Duel_Decks_Anthology"),
+                        .Replace("'", ""),
                     definition.NameMkm
                         .Replace("Æ", "ae")
                         .Replace("û", "u")

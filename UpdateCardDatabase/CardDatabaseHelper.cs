@@ -48,6 +48,9 @@ namespace UpdateCardDatabase
 
                 case "Planechase 2012 Edition":
                     return "Planechase 2012";
+
+                case "Ugin's Fate promos":
+                    return "Ugin's Fate Promos";
             }
 
             return setCode;

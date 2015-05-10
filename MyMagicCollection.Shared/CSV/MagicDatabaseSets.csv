@@ -60,7 +60,7 @@ EVG,Duel Decks: Elves vs. Goblins,evg,2007-11-16,,False
 EXO,Exodus,ex,1998-06-15,Tempest,False
 FEM,Fallen Empires,fe,1994-11-01,,False
 FRF,Fate Reforged,frf,2015-01-23,Khans of Tarkir,False
-FRF_UGIN,Ugin's Fate promos,FRF_UGIN,2015-01-17,,False
+FRF_UGIN,Ugin's Fate Promos,FRF_UGIN,2015-01-17,,False
 FUT,Future Sight,fut,2007-05-04,Time Spiral,False
 GPT,Guildpact,gp,2006-02-03,Ravnica,False
 GTC,Gatecrash,gtc,2013-02-01,Return to Ravnica,False
@@ -86,10 +86,6 @@ M14,Magic 2014 Core Set,m14,2013-07-19,,False
 M15,Magic 2015 Core Set,m15,2014-07-18,,False
 MBS,Mirrodin Besieged,mbs,2011-02-04,Scars of Mirrodin,False
 MD1,Modern Event Deck 2014,md1,2014-05-30,,False
-ME2,Masters Edition II,me2,2008-09-22,,False
-ME3,Masters Edition III,me3,2009-09-07,,False
-ME4,Masters Edition IV,me4,2011-01-10,,False
-MED,Masters Edition,med,2007-09-10,,False
 MIR,Mirage,mr,1996-10-08,Mirage,False
 MMA,Modern Masters,mma,2013-06-07,,False
 MMQ,Mercadian Masques,mm,1999-10-04,Masques,False
@@ -122,7 +118,6 @@ STH,Stronghold,sh,1998-03-02,Tempest,False
 THS,Theros,ths,2013-09-27,Theros,False
 TMP,Tempest,tp,1997-10-14,Tempest,False
 TOR,Torment,tr,2002-02-04,Odyssey,False
-TPR,Tempest Remastered,TPR,2015-05-06,,False
 TSB,"Time Spiral ""Timeshifted""",tsts,2006-10-06,Time Spiral,False
 TSP,Time Spiral,ts,2006-10-06,Time Spiral,False
 UDS,Urza's Destiny,ud,1999-06-07,Urza's,False
@@ -138,7 +133,6 @@ V13,From the Vault: Twenty,v13,2013-08-23,,False
 V14,From the Vault: Annihilation,v14,2014-08-22,,False
 VAN,Vanguard,VAN,1997-05-01,,False
 VIS,Visions,vi,1997-02-03,Mirage,False
-VMA,Vintage Masters,vma,2014-06-16,,False
 WTH,Weatherlight,wl,1997-06-09,Mirage,False
 WWK,Worldwake,wwk,2010-02-05,Zendikar,False
 ZEN,Zendikar,zen,2009-10-02,Zendikar,False

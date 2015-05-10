@@ -96,6 +96,12 @@ namespace UpdateCardDatabase
                         var mkmCode = casted.GetValue("magicCardsInfoCode");
                         var code = casted.GetValue("code").ToString();
                         var releaseDate = casted.GetValue("releaseDate");
+                        var onlineOnly = casted.GetValue("onlineOnly");
+                        if (onlineOnly != null)
+                            // && onlineOnly.Value.ToString() == "true")
+                        {
+                            continue;
+                        }
 
                         var setData = new MagicSetDefinition
                         {
@@ -113,6 +119,9 @@ namespace UpdateCardDatabase
                         foreach (var card in cards.Cast<JObject>())
                         {
                             var cardName = card.GetValue("name").ToString().Trim();
+
+
+
                             var nameParts = card.GetValue("names");
                             if (nameParts != null)
                             {
@@ -133,6 +142,14 @@ namespace UpdateCardDatabase
                             var numberInSet = card.GetValue("number");
                             var cardLayout = card.GetValue("layout");
 
+                            MagicCardType magicCardType = MagicCardType.Unknown;
+                            var cardLayoutValue = cardLayout != null ? cardLayout.ToString() : null;
+                            if (cardLayoutValue == "token")
+                            {
+                                cardName += " Token";
+                                magicCardType = MagicCardType.Token;
+                            }
+
                             // TODO: Card Type
 
                             var cardDefinition = new MagicCardDefinition
@@ -146,7 +163,8 @@ namespace UpdateCardDatabase
                                 SetCode = setData.Code,
                                 NumberInSet = numberInSet != null ? numberInSet.ToString() : null,
                                 Rarity = CardDatabaseHelper.ComputeRarity(rarity != null ? rarity.ToString() : null),
-                                CardLayout = cardLayout != null ? cardLayout.ToString() : null,
+                                CardLayout = cardLayoutValue,
+                                MagicCardType = magicCardType,
                             };
 
                             // Patch special names for MKM (land versions, etc.)
